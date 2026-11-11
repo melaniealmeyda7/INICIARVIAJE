@@ -297,10 +297,10 @@ function updateUIForUser() {
     }
 
     authBtn.innerHTML = `
-      <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
-      <span>INICIAR MI VIAJE / USUARIO</span>
+      <span class="w-2.5 h-2.5 rounded-full bg-slate-950 animate-ping"></span>
+      <span class="tracking-wide">✈️ INICIAR MI VIAJE / USUARIO</span>
     `;
-    authBtn.className = "px-5 py-2.5 rounded-full text-xs sm:text-sm font-black bg-[#ffd200] hover:bg-yellow-400 text-slate-950 shadow-lg hover:scale-105 transition-all flex items-center gap-2 border-2 border-yellow-300 select-none";
+    authBtn.className = "px-6 py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:via-amber-400 hover:to-yellow-500 text-slate-950 shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:shadow-[0_0_35px_rgba(250,204,21,0.9)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-yellow-200 cursor-pointer select-none";
     authBtn.onclick = () => openModal('loginModal');
   }
 }
