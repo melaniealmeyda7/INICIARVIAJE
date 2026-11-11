@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POLYGLOT MAP · Bootcamps y Clubes de Idiomas Gratuitos | Modo Viajero</title>
+  <meta name="description" content="Portal de inicio de sesión y reservas de Bootcamps Gratuitos de Idiomas Polyglot Map. Temática viajero, pasaportes de aprendizaje y pases de abordar.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            polyglot: {
+              blue: '#0e34a0',
+              electric: '#1447e6',
+              deep: '#092070',
+              yellow: '#ffd200',
+              yellowHover: '#f0c400',
+              navy: '#05103a'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- html2canvas para descargar la credencial en PNG -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Estilos Personalizados de la Temática Viajero -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="flight-grid-bg min-h-screen flex flex-col justify-between selection:bg-yellow-400 selection:text-slate-900">
+
+  <!-- ========================================== -->
+  <!-- BARRA DE NAVEGACIÓN Y CABECERA DEL FLYER   -->
+  <!-- ========================================== -->
+  <header class="w-full max-w-5xl mx-auto pt-6 px-4 sm:px-6">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Lado Izquierdo: Logotipo y Próximos Eventos (Fieles al Flyer) -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Píldora 1: Logo POLYGLOT MAP con Globo y Avión -->
+        <a href="#" class="inline-flex items-center gap-2.5 bg-white text-slate-950 font-black px-4 py-2 rounded-full shadow-lg border border-white/40 hover:scale-105 transition-transform duration-200">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white relative shadow-inner overflow-hidden">
+            <svg class="w-5 h-5 text-yellow-300 animate-plane-float" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+            </svg>
+          </div>
+          <span class="tracking-tight text-sm sm:text-base font-black text-[#0c2b94]">POLYGLOT MAP</span>
+        </a>
+
+        <!-- Píldora 2: PRÓXIMOS EVENTOS -->
+        <div class="inline-flex items-center bg-white text-[#0e34a0] font-black text-xs sm:text-sm px-4 py-2 rounded-full shadow-md uppercase tracking-wide border border-white/30">
+          PRÓXIMOS EVENTOS
+        </div>
+
+      </div>
+
+      <!-- Lado Derecho: Acciones de Viajero / Credencial / Inicio de Sesión -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+        
+        <!-- Botón Directo a Panel de Clases (Solo visible tras iniciar sesión) -->
+        <a id="aulaNavBtn" href="aula.html" target="_blank" class="hidden px-4 py-2 rounded-full text-xs font-black bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white shadow-md hover:scale-105 transition-all items-center gap-1.5 select-none border border-white/20">
+          <span>💻 Panel de Clases »</span>
+        </a>
+
+        <!-- Botón Directo a Credencial de Participación -->
+        <a href="#credencial" class="px-3.5 py-2 rounded-full text-xs font-black bg-[#ffd200] hover:bg-yellow-400 text-slate-950 shadow-md hover:scale-105 transition-all flex items-center gap-1.5 select-none">
+          <span>🎫 Crear Credencial</span>
+        </a>
+
+        <!-- Saludo de usuario logueado -->
+        <div id="userGreeting" class="hidden text-right leading-tight pr-1"></div>
+
+        <!-- Botón Ver Mis Pases (Oculto por solicitud) -->
+        <button id="boardingPassesNavBtn" onclick="openMyBookingsModal()" class="hidden px-3.5 py-2 rounded-full text-xs font-bold bg-white/15 hover:bg-white/25 text-white border border-white/20 transition-all items-center gap-1.5">
+          <span>Mis Pases</span>
+        </button>
+
+        <!-- Botón Ver Pasaporte -->
+        <button id="userPassportBadge" onclick="openPassportModal()" class="hidden px-3.5 py-2 rounded-full text-xs font-extrabold bg-gradient-to-r from-yellow-400 to-amber-300 text-slate-950 shadow-md hover:scale-105 transition-all flex items-center gap-1.5">
+          🛂 Pasaporte
+        </button>
+
+        <!-- Píldora de Millas -->
+        <div id="userMilesBadge" class="hidden px-3 py-2 rounded-full text-xs font-mono font-bold bg-blue-900/80 text-yellow-300 border border-yellow-400/30">
+          🌟 1,500 Millas
+        </div>
+
+        <!-- Botón Principal: INICIAR MI VIAJE / USUARIO -->
+        <button id="authBtn" class="px-5 py-2.5 rounded-full text-xs sm:text-sm font-black bg-[#ffd200] hover:bg-yellow-400 text-slate-950 shadow-lg hover:scale-105 transition-all flex items-center gap-2 border-2 border-yellow-300">
+          <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
+          <span>INICIAR MI VIAJE / USUARIO</span>
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- CONTENIDO PRINCIPAL: TÍTULO Y CURSOS       -->
+  <!-- ========================================== -->
+  <main class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex-1">
+    
+    <!-- TÍTULO PRINCIPAL (IDÉNTICO AL FLYER) -->
+    <div class="mb-8 text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-white/10 text-yellow-300 border border-yellow-400/20 mb-3">
+        <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+        TERMINAL DE SALIDAS • VUELOS LINGÜÍSTICOS 2026
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-white">
+        Bootcamps y clubes <br/>
+        <span class="text-[#ffd200]">de idiomas</span>
+      </h1>
+      <p class="text-blue-100 text-sm sm:text-base mt-2 max-w-2xl font-medium">
+        Embarca en tu viaje hacia la fluidez internacional. Clases 100% en vivo, metodología inmersiva y comunidad de viajeros políglotas. ¡Cupos sin costo hasta agotar sala!
+      </p>
+    </div>
+
+    <!-- BARRA DE FILTROS TEMÁTICA DE VUELOS -->
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-6 bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/15">
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <button data-filter="all" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-yellow-400 text-slate-950 transition-all shadow-sm">
+          ✈️ Todos los Vuelos (4)
+        </button>
+        <button data-filter="ingles" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all">
+          🇺🇸 Inglés
+        </button>
+        <button data-filter="portugues" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all">
+          🇧🇷 Portugués
+        </button>
+        <button data-filter="bootcamp" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all">
+          🔥 Bootcamps Intensivos
+        </button>
+        <button data-filter="club" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all">
+          🗣️ Clubes Conversacionales
+        </button>
+      </div>
+
+      <div class="hidden sm:flex items-center gap-2 text-xs font-mono text-yellow-300 font-semibold pr-2">
+        <span>PUERTA ABIERTA</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR DE TARJETAS DE CURSOS (DEL FLYER) -->
+    <div id="coursesContainer" class="space-y-5 sm:space-y-6">
+      <!-- Inyectado dinámicamente por app.js con Portugués separado -->
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN INTERACTIVA: CREAR CREDENCIAL DE PARTICIPACIÓN (MODO LINKEDIN)     -->
+    <!-- ========================================================================= -->
+    <section id="credencial" class="mt-16 pt-10 border-t border-white/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-widest bg-yellow-400/20 text-[#ffd200] border border-yellow-400/30">
+          🎓 GAFETE DIGITAL OFICIAL • EVENTOS POLYGLOT MAP
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 tracking-tight">
+          Crea tu Credencial de Participación
+        </h2>
+        <p class="text-blue-100 text-sm sm:text-base mt-2">
+          Personaliza tu credencial oficial del bootcamp de idiomas con tu nombre, compártela en LinkedIn para inspirar a tu red y descárgala en alta resolución.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- COLUMNA IZQUIERDA: FORMULARIO PARA COLOCAR NOMBRES Y DATOS -->
+        <div class="lg:col-span-6 bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+          
+          <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-[#ffd200] text-slate-950 flex items-center justify-center text-xl font-black">
+              ✍️
+            </div>
+            <div>
+              <h4 class="text-lg font-black text-white">Datos del Asistente</h4>
+              <p class="text-xs text-slate-300">Completa tu información para generar la credencial en vivo</p>
+            </div>
+          </div>
+
+          <!-- Input para colocar nombres -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
+              Tu Nombre y Apellidos (Aparecerá en la credencial)
+            </label>
+            <input 
+              type="text" 
+              id="credNameInput" 
+              placeholder="Ej. Camila Morales" 
+              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-base font-bold transition"
+            />
+          </div>
+
+          <!-- Selección de Bootcamp -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+              Selecciona tu Bootcamp / Club de Idiomas
+            </label>
+            <select id="credCourseSelect" class="w-full bg-slate-800 border border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white focus:outline-none text-sm font-semibold transition">
+              <option value="bootcamp-ingles-cero">🇺🇸 Bootcamp Inglés desde cero (DEL 18 NOV AL 18 DIC)</option>
+              <option value="club-ingles-a2">🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)</option>
+              <option value="bootcamp-portugues-cero">🇧🇷 Bootcamp Portugués · Desde cero (DEL 17 NOV AL 17 DIC · 7:00 pm)</option>
+              <option value="bootcamp-portugues-basico2">🇧🇷 Bootcamp Portugués · Básico 2 (DEL 17 NOV AL 17 DIC · 7:00 pm a 8:30 pm)</option>
+            </select>
+          </div>
+
+          <!-- Rol en la Credencial -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+              Título / Rol
+            </label>
+            <select id="credRoleSelect" class="w-full bg-slate-800 border border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white focus:outline-none text-sm font-semibold transition">
+              <option value="PARTICIPANTE OFICIAL">PARTICIPANTE OFICIAL</option>
+              <option value="VIAJERO LINGÜÍSTICO">VIAJERO LINGÜÍSTICO</option>
+              <option value="FUTURO POLÍGLOTA">FUTURO POLÍGLOTA</option>
+              <option value="COMMUNITY TRAVELER">COMMUNITY TRAVELER</option>
+            </select>
+          </div>
+
+          <!-- Selector de Foto o Avatar con opción destacada Subir mi Foto (Opcional) -->
+          <div class="space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+              Foto del Participante (Opcional) o Elige un Avatar
+            </label>
+            
+            <!-- Zona de Subir mi Foto (Opcional) -->
+            <div class="p-3.5 bg-white/5 border-2 border-dashed border-white/20 hover:border-yellow-400 rounded-2xl transition flex flex-col items-center justify-center text-center gap-2">
+              <label class="cursor-pointer bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow transition">
+                <span>📷 Subir mi Foto (Opcional)</span>
+                <input type="file" id="credPhotoInput" accept="image/*" class="hidden" />
+              </label>
+              <div id="uploadPhotoStatus" class="text-xs text-slate-300">
+                Formatos: JPG, PNG o WEBP. Si no subes foto, puedes usar un avatar viajero:
+              </div>
+            </div>
+
+            <!-- Botones de Avatar Rápido -->
+            <div class="flex items-center gap-2 flex-wrap pt-1">
+              <span class="text-xs text-slate-400 font-semibold mr-1">Avatares:</span>
+              <button type="button" onclick="setCredentialAvatar('👨‍✈️')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-yellow-400/30 border border-white/20 text-lg flex items-center justify-center transition">👨‍✈️</button>
+              <button type="button" onclick="setCredentialAvatar('👩‍🚀')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-yellow-400/30 border border-white/20 text-lg flex items-center justify-center transition">👩‍🚀</button>
+              <button type="button" onclick="setCredentialAvatar('🌍')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-yellow-400/30 border border-white/20 text-lg flex items-center justify-center transition">🌍</button>
+              <button type="button" onclick="setCredentialAvatar('✈️')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-yellow-400/30 border border-white/20 text-lg flex items-center justify-center transition">✈️</button>
+              <button type="button" onclick="setCredentialAvatar('💼')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-yellow-400/30 border border-white/20 text-lg flex items-center justify-center transition">💼</button>
+            </div>
+          </div>
+
+          <!-- CAJA DE COPY PARA LINKEDIN (EVENTO FUTURE READY) -->
+          <div class="p-4 bg-slate-950/60 rounded-2xl border border-blue-500/30 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-sky-300 flex items-center gap-1.5">
+                <span>📝</span> COPY PARA LINKEDIN • EVENTO FUTURE READY
+              </span>
+              <button type="button" onclick="copyLinkedInText()" class="text-[11px] font-bold text-yellow-300 hover:text-yellow-200 underline flex items-center gap-1">
+                <span>📋</span> Copiar Texto
+              </button>
+            </div>
+            
+            <textarea 
+              id="linkedinCopyText" 
+              rows="4" 
+              class="w-full bg-slate-900/90 text-xs text-blue-100 font-mono p-3 rounded-xl border border-white/10 focus:outline-none focus:border-yellow-400 resize-none select-all"
+              readonly
+            ></textarea>
+            
+            <p class="text-[10px] text-slate-400">
+              💡 Este copy se actualiza automáticamente con tus nombres y el bootcamp seleccionado.
+            </p>
+          </div>
+
+          <!-- BOTONES DE COMPARTIR Y DESCARGAR -->
+          <div class="pt-3 border-t border-white/15 space-y-3">
+            
+            <!-- Botón Compartir en LinkedIn -->
+            <button onclick="shareCredentialLinkedIn()" class="w-full btn-linkedin font-black py-3 px-5 rounded-2xl text-sm flex items-center justify-center gap-2.5 shadow-lg group">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.4 10.24v-8.37H5.06v8.37h2.8z"/>
+              </svg>
+              <span>Compartir en LinkedIn (Evento Future Ready)</span>
+            </button>
+
+            <div class="grid grid-cols-2 gap-3">
+              <!-- Botón Descargar PNG -->
+              <button onclick="downloadCredentialImage()" class="bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition">
+                <span>📥 Descargar PNG</span>
+              </button>
+
+              <!-- Botón WhatsApp -->
+              <button onclick="shareCredentialWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition">
+                <span>📲 Compartir WhatsApp</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA: PREVISUALIZACIÓN EN VIVO DEL GAFETE/CREDENCIAL -->
+        <div class="lg:col-span-6 flex flex-col items-center">
+          
+          <div class="text-xs font-mono text-yellow-300 font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            VISTA PREVIA EN TIEMPO REAL
+          </div>
+
+          <!-- Lanyard / Cordón de suspensión -->
+          <div class="lanyard-strap">
+            <div class="lanyard-hole"></div>
+          </div>
+          <div class="lanyard-clip"></div>
+
+          <!-- Tarjeta Credencial Gafete VIP -->
+          <div id="credentialBadgeCard" class="w-full max-w-sm bg-gradient-to-b from-[#071948] via-[#0b2875] to-[#040e2d] text-white rounded-3xl p-6 shadow-2xl border-2 border-yellow-400/40 relative overflow-hidden select-none">
+            
+            <!-- Marca de agua decorativa -->
+            <div class="absolute -right-8 -top-8 w-40 h-40 rounded-full border-4 border-yellow-400/10 flex items-center justify-center text-7xl opacity-20 pointer-events-none">
+              🌍
+            </div>
+
+            <!-- Cabecera del Gafete -->
+            <div class="flex items-center justify-between pb-4 border-b border-white/20">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-[#ffd200] text-slate-950 flex items-center justify-center text-base font-black shadow">
+                  ✈️
+                </div>
+                <div>
+                  <span class="text-[9px] font-mono tracking-widest text-[#ffd200] uppercase block font-black">POLYGLOT MAP</span>
+                  <h5 class="text-xs font-black tracking-tight text-white uppercase">BOOTCAMPS GRATUITOS</h5>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-500 text-white uppercase tracking-wider">
+                  2026 PASS
+                </span>
+              </div>
+            </div>
+
+            <!-- Avatar del Asistente -->
+            <div class="my-5 flex flex-col items-center text-center">
+              <div id="credBadgeAvatar" class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#ffd200] to-amber-200 border-4 border-white/90 shadow-xl flex items-center justify-center text-white overflow-hidden mb-3">
+                <span class="text-5xl select-none">👩‍🚀</span>
+              </div>
+
+              <!-- Nombre colocado -->
+              <h3 id="credBadgeName" class="text-2xl font-black text-white tracking-tight leading-snug">
+                Camila Morales
+              </h3>
+
+              <!-- Rol seleccionado -->
+              <span id="credBadgeRole" class="inline-block mt-1 px-3 py-0.5 rounded-full text-[10px] font-mono font-black bg-yellow-400/20 text-[#ffd200] border border-yellow-400/30 uppercase tracking-widest">
+                PARTICIPANTE OFICIAL
+              </span>
+            </div>
+
+            <!-- Bootcamp Seleccionado -->
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 space-y-1 mb-4 text-left">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-black text-sky-300 uppercase tracking-wider">CURSO INSCRITO</span>
+                <span id="credBadgeFlag" class="text-lg">🇺🇸</span>
+              </div>
+              <h6 id="credBadgeCourse" class="text-base font-black text-white">
+                Inglés desde cero
+              </h6>
+              <p id="credBadgeSchedule" class="text-[11px] font-medium text-slate-300">
+                📅 Miércoles y viernes | 🕒 7:00 a 8:00 p. m.
+              </p>
+            </div>
+
+            <!-- Pie de Credencial con QR e ID -->
+            <div class="flex items-center justify-between pt-3 border-t border-white/20">
+              <div class="space-y-0.5">
+                <span class="text-[9px] font-mono text-slate-400 uppercase tracking-widest block">ID DE ACCESO</span>
+                <span id="credBadgeId" class="text-xs font-mono font-black text-[#ffd200]">
+                  #PM-CRED-ENG01-2026
+                </span>
+                <span class="text-[9px] text-blue-200 block">Horario en Hora Peruana (UTC-5)</span>
+              </div>
+
+              <!-- Código QR Estilizado -->
+              <div class="w-12 h-12 bg-white rounded-lg p-1 flex items-center justify-center shadow-md">
+                <svg class="w-full h-full text-slate-900" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h2v2h-2v-2zm-4 0h2v4h-2v-4zm4 4h2v4h-4v-2h2v-2zm-2 2h-2v2h2v-2zm4-2h2v4h-2v-4z"/>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="text-[11px] text-slate-300 text-center mt-3 max-w-xs">
+            ✨ Al hacer clic en <strong>Compartir en LinkedIn</strong>, se copiará el texto oficial listo para publicar con la invitación a tu red.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- BARRA INFERIOR / FOOTER (IDÉNTICO AL FLYER)-->
+  <!-- ========================================== -->
+  <footer class="w-full max-w-5xl mx-auto px-4 sm:px-6 pb-8 pt-4">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/15 pt-6">
+      
+      <!-- Zona Horaria y Botón de Reserva del Flyer -->
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-6 text-center sm:text-left">
+        <div>
+          <p class="text-white text-sm sm:text-base font-semibold tracking-wide">
+            Horarios en hora peruana
+          </p>
+          <span class="text-xs text-blue-200 font-mono">Zona Horaria: UTC-5 (Lima, Bogotá, Quito) 🇵🇪</span>
+        </div>
+
+        <!-- BOTÓN AMARILLO DE RESERVA IDÉNTICO AL FLYER -->
+        <button onclick="handleGlobalReserveClick()" class="bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black text-base sm:text-lg px-8 py-3 rounded-full shadow-2xl transition-transform hover:scale-105 active:scale-95 flex items-center gap-2 select-none">
+          <span>Reserva tu cupo »</span>
+        </button>
+      </div>
+
+      <!-- Enlace oficial del flyer -->
+      <div class="text-center sm:text-right">
+        <a href="https://polyglotmap.com" target="_blank" class="text-white font-black text-xl sm:text-2xl tracking-tight hover:text-[#ffd200] transition-colors">
+          polyglotmap.com
+        </a>
+        <p class="text-xs text-blue-200 mt-0.5">© 2026 Polyglot Map • Pasaporte al Mundo</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL 1: CHECK-IN / INICIO DE SESIÓN       -->
+  <!-- ========================================== -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="bg-gradient-to-br from-[#0a1a4a] to-[#050d26] text-white rounded-3xl max-w-sm w-full p-6 sm:p-7 border-2 border-white/20 shadow-2xl relative">
+      
+      <button onclick="closeModal('loginModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-bold">
+        ✕
+      </button>
+
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-[#ffd200] text-slate-950 flex items-center justify-center text-2xl shadow-lg mb-2.5">
+          🔑
+        </div>
+        <span class="text-[11px] uppercase font-mono tracking-widest text-[#ffd200] font-bold">Terminal Polyglot Map</span>
+        <h3 class="text-2xl font-black text-white mt-0.5">Check-in Viajero</h3>
+        <p class="text-xs text-slate-300 mt-1">Ingresa la palabra clave del evento para desbloquear tu acceso</p>
+      </div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-center">
+            INGRESAR PALABRA CLAVE
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="loginPasscode" 
+              required 
+              placeholder="Escribe la palabra clave aquí" 
+              autocomplete="off"
+              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-center text-sm sm:text-base font-black tracking-wider uppercase transition shadow-inner"
+            />
+          </div>
+          <p id="passcodeError" class="hidden text-xs text-rose-400 font-bold text-center mt-1.5">
+            ⚠️ Palabra clave incorrecta. Intenta nuevamente.
+          </p>
+        </div>
+
+        <button type="submit" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 rounded-xl text-sm shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 select-none">
+          <span>Entrar al Panel de Clases »</span>
+        </button>
+      </form>
+
+      <!-- PALABRA CLAVE RECORDATORIO / 1-CLICK -->
+      <div class="mt-4 pt-3.5 border-t border-white/10 text-center">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-3">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block mb-1">Palabra Clave Oficial:</span>
+          <code class="text-xs sm:text-sm font-black font-mono text-[#ffd200] tracking-widest bg-black/40 px-3 py-1 rounded-lg inline-block border border-yellow-400/30">
+            GRACIASPOLYGLOTMAP
+          </code>
+          <button type="button" onclick="autoFillPasscode()" class="mt-2 text-[11px] text-blue-200 hover:text-white underline block mx-auto font-semibold">
+            ⚡ Autocompletar palabra clave
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 2: REGISTRO RÁPIDO PARA RESERVA      -->
+  <!-- ========================================== -->
+  <div id="quickRegisterModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="bg-gradient-to-br from-[#0c2461] to-[#05103a] text-white rounded-3xl max-w-md w-full p-6 sm:p-8 border-2 border-[#ffd200]/40 shadow-2xl relative">
+      
+      <button onclick="closeModal('quickRegisterModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-bold">
+        ✕
+      </button>
+
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 mx-auto rounded-xl bg-yellow-400 text-slate-950 flex items-center justify-center text-2xl font-black mb-2 shadow">
+          🎫
+        </div>
+        <span class="text-xs uppercase font-mono tracking-widest text-yellow-300 font-bold">Reserva de Asiento</span>
+        <h3 id="bookingCourseName" class="text-2xl font-black text-white mt-1">Curso</h3>
+        <p id="bookingCourseSchedule" class="text-xs font-mono text-sky-200 mt-1">Horario</p>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Nombre para tu Boarding Pass</label>
+          <input type="text" id="quickName" placeholder="Tu Nombre y Apellido" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-[#ffd200] text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">WhatsApp o Correo (Para el link de Zoom)</label>
+          <input type="text" id="quickContact" placeholder="+51 999 888 777 o correo@ejemplo.com" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-[#ffd200] text-sm">
+        </div>
+
+        <button onclick="handleQuickBookingSubmit()" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 rounded-xl text-sm shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-2">
+          <span>Confirmar Reserva y Emitir Boleto »</span>
+        </button>
+
+        <p class="text-[11px] text-center text-slate-300">
+          🔒 Inscripción 100% gratuita garantizada por Polyglot Map. Sin cobros posteriores.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 3: BOARDING PASS DIGITAL (BOLETO)    -->
+  <!-- ========================================== -->
+  <div id="boardingPassModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+    <div class="max-w-2xl w-full my-8 relative">
+      <button onclick="closeModal('boardingPassModal')" class="absolute -top-3 -right-3 z-20 w-8 h-8 rounded-full bg-white text-slate-950 font-black flex items-center justify-center shadow-lg hover:scale-110 transition">
+        ✕
+      </button>
+      <div id="boardingPassContent">
+        <!-- Renderizado dinámico desde app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 4: PASAPORTE DIGITAL DEL VIAJERO     -->
+  <!-- ========================================== -->
+  <div id="passportModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+    <div class="max-w-2xl w-full my-8 relative">
+      <button onclick="closeModal('passportModal')" class="absolute -top-3 -right-3 z-20 w-8 h-8 rounded-full bg-white text-slate-950 font-black flex items-center justify-center shadow-lg hover:scale-110 transition">
+        ✕
+      </button>
+      <div id="passportContent">
+        <!-- Renderizado dinámico desde app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Lógica Principal -->
+  <script src="js/app.js?v=5"></script>
+  <script>
+    function handleQuickBookingSubmit() {
+      const name = document.getElementById('quickName').value.trim() || 'Viajero Políglota';
+      const contact = document.getElementById('quickContact').value.trim() || 'viajero@polyglotmap.com';
+      if (currentBookingCourse) {
+        finalizeBooking(currentBookingCourse, name, contact);
+      }
+    }
+  </script>
+</body>
+</html>

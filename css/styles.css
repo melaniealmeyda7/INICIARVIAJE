@@ -1,0 +1,186 @@
+/* Polyglot Map - Estilos de Temática Viajero */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+  --primary-blue: #1447e6;
+  --deep-blue: #092070;
+  --dark-navy: #05103a;
+  --accent-yellow: #ffd200;
+  --accent-yellow-hover: #f0c400;
+  --sky-blue: #38bdf8;
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Space Grotesk', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #0c2b94;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Fondo con cuadrícula de aviación y navegación aérea */
+.flight-grid-bg {
+  background-color: #0e34a0;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.45) 0%, transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+/* Tarjeta estilo ticket de vuelo con bordes recortados */
+.ticket-card {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ticket-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.35);
+}
+
+/* Sello de Pasaporte */
+.passport-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed rgba(255, 210, 0, 0.8);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffd200;
+  transform: rotate(-6deg);
+  box-shadow: inset 0 0 10px rgba(255, 210, 0, 0.2);
+  user-select: none;
+}
+
+.passport-stamp.red {
+  border-color: #ef4444;
+  color: #ef4444;
+  box-shadow: inset 0 0 10px rgba(239, 68, 68, 0.2);
+  transform: rotate(4deg);
+}
+
+.passport-stamp.green {
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.2);
+  transform: rotate(-3deg);
+}
+
+/* Animación sutil de avión en vuelo */
+@keyframes planeFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+.animate-plane-float {
+  animation: planeFloat 3.5s ease-in-out infinite;
+}
+
+/* Código de barras simulado */
+.barcode-strip {
+  background: repeating-linear-gradient(
+    90deg,
+    #0f172a,
+    #0f172a 2px,
+    transparent 2px,
+    transparent 4px,
+    #0f172a 4px,
+    #0f172a 7px,
+    transparent 7px,
+    transparent 10px,
+    #0f172a 10px,
+    #0f172a 13px
+  );
+  height: 48px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #061545;
+}
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* =========================================================
+   CREDENCIAL DE PARTICIPACIÓN / GAFETE OFICIAL
+   ========================================================= */
+
+/* Cinta superior del gafete (Lanyard) */
+.lanyard-strap {
+  position: relative;
+  width: 140px;
+  height: 38px;
+  background: repeating-linear-gradient(
+    45deg,
+    #0e34a0,
+    #0e34a0 10px,
+    #ffd200 10px,
+    #ffd200 20px
+  );
+  border-radius: 6px 6px 0 0;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.lanyard-clip {
+  width: 44px;
+  height: 18px;
+  background: linear-gradient(180deg, #e2e8f0, #94a3b8);
+  border-radius: 4px;
+  margin: -6px auto 0;
+  border: 1px solid #64748b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.lanyard-hole {
+  width: 28px;
+  height: 8px;
+  background: #05103a;
+  border-radius: 999px;
+  margin: 8px auto 0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
+
+/* Efecto holográfico para credencial VIP */
+.badge-hologram {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 210, 0, 0.15) 30%,
+    rgba(56, 189, 248, 0.15) 60%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+/* Botón estilo LinkedIn oficial */
+.btn-linkedin {
+  background-color: #0A66C2;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-linkedin:hover {
+  background-color: #004182;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(10, 102, 194, 0.4);
+}

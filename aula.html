@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula Virtual & Dashboard del Estudiante · POLYGLOT MAP</title>
+  <meta name="description" content="Dashboard del estudiante para los Bootcamps Gratuitos de Polyglot Map. Horarios, links de reunión, asistencia en Google Forms y materiales de clase.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            polyglot: {
+              blue: '#144bd8',
+              deep: '#0d36b0',
+              navy: '#092374',
+              yellow: '#ffd200',
+              yellowHover: '#f0c400',
+              softBlue: '#e8f1ff',
+              textBlue: '#0c2364'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Estilos Personalizados del Flyer Oficial -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* Fondo limpio idéntico al flyer oficial */
+    .flyer-clean-bg {
+      background-color: #113ec4;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.35) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 36px 36px, 36px 36px;
+    }
+
+    /* Tarjetas blancas limpias de alta gama del flyer */
+    .white-flyer-card {
+      background-color: #ffffff;
+      color: #0f172a;
+      border-radius: 1.5rem;
+      box-shadow: 0 16px 35px -8px rgba(3, 14, 53, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .white-flyer-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -8px rgba(3, 14, 53, 0.36);
+    }
+  </style>
+</head>
+
+<body class="flyer-clean-bg text-white min-h-screen flex flex-col font-sans selection:bg-yellow-400 selection:text-slate-900">
+
+  <!-- ========================================== -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR (ESTILO FLYER)-->
+  <!-- ========================================== -->
+  <header class="w-full max-w-6xl mx-auto pt-5 px-4 sm:px-6">
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+      
+      <!-- Lado Izquierdo: Logotipo y Badge de Aula -->
+      <div class="flex items-center gap-3">
+        <!-- Logo POLYGLOT MAP -->
+        <a href="index.html" class="inline-flex items-center gap-2.5 bg-white text-slate-950 font-black px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform duration-200">
+          <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white relative shadow-inner">
+            <span class="text-xs">✈️</span>
+          </div>
+          <span class="tracking-tight text-sm font-black text-[#0c2b94]">POLYGLOT MAP</span>
+        </a>
+
+        <!-- Badge AULA VIRTUAL -->
+        <div class="inline-flex items-center bg-white text-[#0e34a0] font-black text-xs px-3.5 py-2 rounded-full shadow-sm uppercase tracking-wide">
+          AULA VIRTUAL
+        </div>
+      </div>
+
+      <!-- Lado Derecho: Selector de Curso y Enlaces -->
+      <div class="flex items-center gap-2.5 flex-wrap">
+        
+        <!-- Selector de Curso con estética limpia -->
+        <div class="relative">
+          <select id="courseSwitchSelect" class="bg-white text-[#0e34a0] font-black text-xs rounded-full px-4 py-2 shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer">
+            <option value="bootcamp-ingles-cero">🇺🇸 Inglés desde cero (DEL 18 NOV AL 18 DIC)</option>
+            <option value="club-ingles-a2">🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)</option>
+            <option value="bootcamp-portugues-cero">🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC)</option>
+            <option value="bootcamp-portugues-basico2">🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC)</option>
+          </select>
+        </div>
+
+        <!-- Botón Volver al Portal -->
+        <a href="index.html" class="bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-3.5 py-2 rounded-full border border-white/20 transition-all flex items-center gap-1.5">
+          <span>← Portal de Inicio</span>
+        </a>
+
+        <!-- Botón Mi Credencial -->
+        <a href="index.html#credencial" class="bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black text-xs px-4 py-2 rounded-full shadow transition-all flex items-center gap-1.5 select-none">
+          <span>🎫 Mi Credencial</span>
+        </a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- CONTENIDO PRINCIPAL: DASHBOARD DEL ALUMNO  -->
+  <!-- ========================================== -->
+  <main class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 space-y-8">
+    
+    <!-- ENCABEZADO PRINCIPAL (TIPOGRAFÍA IDÉNTICA AL FLYER) -->
+    <div class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-white/10 text-yellow-300 border border-white/15">
+        <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+        <span id="dashCourseBadge">BOOTCAMP · INGLÉS</span>
+        <span class="text-white/40">•</span>
+        <span>HORARIOS EN HORA PERUANA (UTC-5) 🇵🇪</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+            Panel de Clases <br/>
+            <span id="dashCourseTitle" class="text-[#ffd200]">Inglés desde cero</span>
+          </h1>
+          <p id="dashCourseSchedule" class="text-blue-100 text-sm sm:text-base mt-1.5 font-medium flex items-center gap-2">
+            📅 Miércoles y viernes • 🕒 7:00 a 8:00 p. m.
+          </p>
+        </div>
+
+        <!-- Bloque de Fecha Oficial Amarillo idéntico al Flyer -->
+        <div class="bg-[#ffd200] text-slate-950 rounded-2xl w-36 sm:w-44 py-3 px-3 text-center shadow-lg flex flex-col justify-center select-none flex-shrink-0">
+          <span class="text-xs uppercase tracking-wider font-extrabold text-slate-900/90">DEL</span>
+          <span id="dashCourseDates" class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-0.5">18 NOV</span>
+          <span class="text-xs uppercase tracking-wider font-extrabold text-slate-900/90">AL 18 DIC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 4 TARJETAS PRINCIPALES DEL HUB (LIMPIAS EN BLANCO, SIN SATURACIÓN)         -->
+    <!-- ========================================================================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- 1. CLASE EN VIVO (GENERAL + BOTÓN DE TRANSMISIÓN) -->
+      <div class="white-flyer-card p-5 flex flex-col justify-between gap-3">
+        <div class="flex items-center justify-between">
+          <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-black border border-emerald-200">
+            🔴
+          </span>
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+            Enlace Activo
+          </span>
+        </div>
+
+        <div>
+          <h4 class="text-base font-black text-[#0c2364] leading-tight">Clase en Vivo</h4>
+          <p class="text-xs text-slate-500 mt-0.5">Acceso directo a la sala virtual de clase</p>
+        </div>
+
+        <div class="space-y-2 pt-1">
+          <!-- Botón Principal: Entrar a la Clase -->
+          <a id="btnLiveClass" href="https://zoom.us" target="_blank" class="w-full bg-[#0c2364] hover:bg-[#144bd8] text-white font-bold py-2.5 px-3 rounded-xl text-xs text-center shadow transition-colors flex items-center justify-center gap-1.5">
+            <span>🔴 Entrar a la Clase »</span>
+          </a>
+
+          <!-- Botón de Transmisión si se llena la sala -->
+          <a id="btnLiveStream" href="https://youtube.com/live" target="_blank" class="w-full bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold py-2 px-2.5 rounded-xl text-[11px] text-center border border-rose-200/80 transition-colors flex items-center justify-center gap-1.5 leading-tight">
+            <span>📺 ¿No pudiste ingresar porque se llenó la sala? Mira la transmisión en vivo »</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. ASISTENCIA EN GOOGLE FORMS -->
+      <div class="white-flyer-card p-5 flex flex-col justify-between gap-3">
+        <div class="flex items-center justify-between">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-black border border-blue-200">
+            📋
+          </span>
+          <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+            Google Forms
+          </span>
+        </div>
+
+        <div>
+          <h4 class="text-base font-black text-[#0c2364] leading-tight">Registrar Asistencia</h4>
+          <p class="text-xs text-slate-500 mt-0.5">Formulario oficial de cada fecha</p>
+        </div>
+
+        <button onclick="openGoogleFormAttendanceModal()" class="w-full bg-[#144bd8] hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs text-center shadow transition-colors flex items-center justify-center gap-1.5">
+          <span>Marcar Asistencia »</span>
+        </button>
+      </div>
+
+      <!-- 3. GRABACIONES EN DRIVE -->
+      <div class="white-flyer-card p-5 flex flex-col justify-between gap-3">
+        <div class="flex items-center justify-between">
+          <span class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-black border border-amber-200">
+            📹
+          </span>
+          <span class="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+            Google Drive HD
+          </span>
+        </div>
+
+        <div>
+          <h4 class="text-base font-black text-[#0c2364] leading-tight">Link Grabación</h4>
+          <p class="text-xs text-slate-500 mt-0.5">Videos subidos después de clase</p>
+        </div>
+
+        <button onclick="openRecordingsArchiveModal()" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs text-center shadow transition-colors flex items-center justify-center gap-1.5">
+          <span>Ver Grabaciones »</span>
+        </button>
+      </div>
+
+      <!-- 4. EXAMEN FINAL (BLOQUEADO) -->
+      <div class="white-flyer-card p-5 flex flex-col justify-between gap-3 opacity-90 border-2 border-slate-100">
+        <div class="flex items-center justify-between">
+          <span class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center text-lg font-black">
+            🔒
+          </span>
+          <span class="text-[11px] font-bold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
+            Bloqueado
+          </span>
+        </div>
+
+        <div>
+          <h4 class="text-base font-black text-slate-700 leading-tight">Examen Final</h4>
+          <p class="text-xs text-slate-400 mt-0.5">Se habilita con 80% asistencia</p>
+        </div>
+
+        <button onclick="showLockedExamDetails()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-xs text-center transition-colors flex items-center justify-center gap-1">
+          <span>Ver Requisitos »</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- CRONOGRAMA DE CLASES Y ESPACIO DE MATERIALES POR FECHA                     -->
+    <!-- (TARJETAS BLANCAS LIMPIAS IDÉNTICAS AL FLYER, SIN SATURACIÓN)              -->
+    <!-- ========================================================================= -->
+    <div class="space-y-4">
+      
+      <div class="flex items-center justify-between pb-1">
+        <div>
+          <h3 class="text-2xl font-black text-white tracking-tight flex items-center gap-2">
+            <span>📅</span>
+            <span>Fechas de Clases y Materiales</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-blue-100 mt-0.5">
+            Cronograma oficial del bootcamp. Los materiales se irán activando según el avance de cada fecha.
+          </p>
+        </div>
+      </div>
+
+      <!-- CONTENEDOR DE TARJETAS DE SESIONES -->
+      <div id="sessionsCardsContainer" class="space-y-4">
+        <!-- Inyectado dinámicamente con estética limpia idéntica al flyer -->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: ASISTENCIA EN FORMULARIO GOOGLE                                    -->
+  <!-- ========================================================================= -->
+  <div id="googleFormAttendanceModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white text-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100">
+      
+      <button onclick="closeModal('googleFormAttendanceModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 text-xl font-bold">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl font-black mb-2">
+          📋
+        </div>
+        <span class="text-xs uppercase font-mono tracking-widest text-blue-600 font-bold">Registro Oficial • Google Forms</span>
+        <h3 class="text-2xl font-black text-[#0c2364] mt-1">Marcar Asistencia</h3>
+        <p class="text-xs text-slate-500 mt-1">Registra tu asistencia para sumar al 80% requerido para el certificado.</p>
+      </div>
+
+      <form id="googleAttendanceForm" onsubmit="handleGoogleAttendanceSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Nombres y Apellidos *
+          </label>
+          <input type="text" id="attFullName" required placeholder="Tu nombre completo" class="w-full bg-slate-50 border border-slate-200 focus:border-[#144bd8] rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Correo Electrónico *
+          </label>
+          <input type="email" id="attEmail" required placeholder="tu@correo.com" class="w-full bg-slate-50 border border-slate-200 focus:border-[#144bd8] rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Sesión a Registrar *
+          </label>
+          <select id="attSessionSelect" class="w-full bg-slate-50 border border-slate-200 focus:border-[#144bd8] rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none">
+            <option value="1">Sesión 1</option>
+            <option value="2">Sesión 2</option>
+            <option value="3">Sesión 3</option>
+            <option value="4">Sesión 4</option>
+            <option value="5">Sesión 5</option>
+            <option value="6">Sesión 6</option>
+            <option value="7">Sesión 7</option>
+            <option value="8">Sesión 8</option>
+            <option value="9">Sesión 9</option>
+            <option value="10">Sesión 10</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full bg-[#144bd8] hover:bg-blue-700 text-white font-black py-3 rounded-xl text-sm shadow transition flex items-center justify-center gap-2">
+          <span>Enviar Asistencia »</span>
+        </button>
+
+        <div class="text-center pt-2">
+          <a href="https://docs.google.com/forms" target="_blank" class="text-xs text-blue-600 hover:underline font-semibold">
+            🔗 Abrir formulario directo de Google Forms en nueva pestaña
+          </a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: REPOSITORIO DE GRABACIONES DRIVE                                   -->
+  <!-- ========================================================================= -->
+  <div id="recordingsModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white text-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100">
+      
+      <button onclick="closeModal('recordingsModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 text-xl font-bold">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl font-black mb-2">
+          📹
+        </div>
+        <span class="text-xs uppercase font-mono tracking-widest text-amber-700 font-bold">Google Drive • Repositorio Oficial</span>
+        <h3 class="text-2xl font-black text-[#0c2364] mt-1">Grabaciones del Bootcamp</h3>
+        <p class="text-xs text-slate-500 mt-1">Las grabaciones se suben automáticamente 24 horas después de cada clase en vivo.</p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+          <div>
+            <h6 class="font-bold text-slate-900 text-sm">Carpeta Oficial en Drive</h6>
+            <span class="text-xs text-slate-500">Acceso libre en calidad 1080p HD</span>
+          </div>
+          <a href="https://drive.google.com" target="_blank" class="px-4 py-2 bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black rounded-xl text-xs transition">
+            Abrir Drive »
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Pie de Página Fiel al Flyer -->
+  <footer class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 border-t border-white/15 text-center sm:flex sm:items-center sm:justify-between text-xs text-blue-200">
+    <span class="font-medium">© 2026 POLYGLOT MAP • Horarios en hora peruana (UTC-5) 🇵🇪</span>
+    <a href="https://polyglotmap.com" target="_blank" class="font-black text-white hover:text-yellow-300 transition-colors mt-1 sm:mt-0 inline-block">
+      polyglotmap.com
+    </a>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL OBLIGATORIO: INICIAR MI VIAJE / USUARIO PARA ACCEDER AL AULA        -->
+  <!-- ========================================================================= -->
+  <div id="aulaAuthModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="bg-gradient-to-br from-[#0c2b94] via-[#092070] to-[#05103a] text-white rounded-3xl max-w-md w-full p-6 sm:p-8 border-2 border-yellow-400/40 shadow-2xl relative">
+      
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-[#ffd200] text-slate-950 flex items-center justify-center text-3xl shadow-lg mb-3">
+          ✈️
+        </div>
+        <span class="text-xs uppercase font-mono tracking-widest text-[#ffd200] font-bold">Terminal Polyglot Map • Aula Virtual</span>
+        <h3 class="text-2xl font-black text-white mt-1">Iniciar Mi Viaje / Usuario</h3>
+        <p class="text-xs text-blue-200 mt-1.5">
+          Para acceder al temario, grabaciones, asistencia y materiales de clase, inicia tu viaje como usuario registrado.
+        </p>
+      </div>
+
+      <form id="aulaLoginForm" onsubmit="handleAulaLoginSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-center">
+            INGRESAR PALABRA CLAVE
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="aulaLoginPasscode" 
+              required 
+              placeholder="Escribe la palabra clave aquí" 
+              autocomplete="off"
+              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-center text-sm sm:text-base font-black tracking-wider uppercase transition shadow-inner"
+            />
+          </div>
+          <p id="aulaPasscodeError" class="hidden text-xs text-rose-400 font-bold text-center mt-1.5">
+            ⚠️ Palabra clave incorrecta. Intenta nuevamente.
+          </p>
+        </div>
+
+        <button type="submit" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 rounded-xl text-sm shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 select-none">
+          <span>Entrar al Panel de Clases »</span>
+        </button>
+      </form>
+
+      <!-- PALABRA CLAVE RECORDATORIO / 1-CLICK -->
+      <div class="mt-4 pt-3.5 border-t border-white/15 text-center">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-3">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block mb-1">Palabra Clave Oficial:</span>
+          <code class="text-xs sm:text-sm font-black font-mono text-[#ffd200] tracking-widest bg-black/40 px-3 py-1 rounded-lg inline-block border border-yellow-400/30">
+            GRACIASPOLYGLOTMAP
+          </code>
+          <button type="button" onclick="autoFillAulaPasscode()" class="mt-2 text-[11px] text-blue-200 hover:text-white underline block mx-auto font-semibold">
+            ⚡ Autocompletar palabra clave
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center pt-3">
+        <a href="index.html" class="text-xs text-blue-200 hover:text-white underline">
+          ← Volver a la portada de idiomas
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    let currentAulaCourse = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get('course') || 'bootcamp-ingles-cero';
+
+      const select = document.getElementById('courseSwitchSelect');
+      if (select) {
+        select.value = courseId;
+        select.addEventListener('change', (e) => {
+          loadAulaForCourse(e.target.value);
+        });
+      }
+
+      loadAulaForCourse(courseId);
+
+      // Verificación de inicio de sesión: si no ha iniciado sesión, requiere identificación
+      if (!currentUser) {
+        openModal('aulaAuthModal');
+      } else {
+        const attNameInput = document.getElementById('attFullName');
+        if (attNameInput) attNameInput.value = currentUser.name;
+        const attEmailInput = document.getElementById('attEmail');
+        if (attEmailInput) attEmailInput.value = currentUser.email;
+      }
+    });
+
+    function autoFillAulaPasscode() {
+      const input = document.getElementById('aulaLoginPasscode');
+      if (input) {
+        input.value = 'GRACIASPOLYGLOTMAP';
+        input.focus();
+      }
+    }
+
+    function handleAulaLoginSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('aulaLoginPasscode');
+      const errorMsg = document.getElementById('aulaPasscodeError');
+      const entered = (input ? input.value.trim().toUpperCase() : '').replace(/\s+/g, '');
+      
+      if (entered !== 'GRACIASPOLYGLOTMAP') {
+        if (errorMsg) errorMsg.classList.remove('hidden');
+        if (input) {
+          input.classList.add('border-rose-500', 'bg-rose-950/20');
+          input.focus();
+        }
+        return;
+      }
+
+      if (errorMsg) errorMsg.classList.add('hidden');
+
+      saveUser({
+        name: 'Viajero Políglota',
+        email: 'viajero@polyglotmap.com',
+        passportNo: 'PM-2026',
+        miles: 2500,
+        avatar: '👨‍✈️',
+        bookedCourses: []
+      });
+
+      closeModal('aulaAuthModal');
+      triggerConfetti();
+      alertNotification(`¡Palabra clave correcta! Bienvenido al Panel de Clases.`);
+      loadAulaForCourse(currentAulaCourse ? currentAulaCourse.id : 'bootcamp-ingles-cero');
+    }
+
+    function loadAulaForCourse(courseId) {
+      currentAulaCourse = COURSES_DATA.find(c => c.id === courseId) || COURSES_DATA[0];
+      
+      document.getElementById('dashCourseTitle').innerText = currentAulaCourse.title;
+      document.getElementById('dashCourseBadge').innerText = currentAulaCourse.badgeText;
+      document.getElementById('dashCourseDates').innerText = currentAulaCourse.dateMain;
+      document.getElementById('dashCourseSchedule').innerHTML = `
+        📅 ${currentAulaCourse.scheduleDays} • 🕒 ${currentAulaCourse.scheduleTime} (Hora Peruana)
+      `;
+      document.getElementById('btnLiveClass').href = currentAulaCourse.classLink || 'https://zoom.us';
+      const streamBtn = document.getElementById('btnLiveStream');
+      if (streamBtn) {
+        streamBtn.href = currentAulaCourse.streamLink || 'https://youtube.com/live';
+      }
+
+      renderCleanFlyerSessions();
+    }
+
+    // Renderizar las Fechas de Clases con el diseño blanco limpio del flyer
+    function renderCleanFlyerSessions() {
+      const container = document.getElementById('sessionsCardsContainer');
+      if (!container || !currentAulaCourse) return;
+
+      const syllabus = currentAulaCourse.syllabus || [];
+      const flagSvg = getFlagSvg(currentAulaCourse.flag);
+
+      container.innerHTML = syllabus.map((item, idx) => {
+        return `
+          <div class="white-flyer-card p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            
+            <!-- Izquierda: Flag y Detalle de la Clase -->
+            <div class="flex items-start sm:items-center gap-4 flex-1">
+              
+              <!-- Bandera circular idéntica al flyer -->
+              <div class="w-14 h-14 rounded-full flex-shrink-0 flex items-center justify-center shadow-sm border border-slate-200 overflow-hidden bg-slate-50">
+                ${flagSvg}
+              </div>
+
+              <div class="space-y-1 flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="inline-block px-3 py-0.5 rounded-full text-[11px] font-black tracking-wide bg-[#e8f1ff] text-[#144bd8]">
+                    ${item.session}
+                  </span>
+                  <span class="text-xs font-bold text-slate-600 flex items-center gap-1">
+                    📅 ${item.date}
+                  </span>
+                  <span class="text-xs font-mono text-slate-500">
+                    🕒 ${item.time}
+                  </span>
+                </div>
+
+                <h4 class="text-xl sm:text-2xl font-black text-[#0c2364] tracking-tight">
+                  ${item.title}
+                </h4>
+
+                <p class="text-xs sm:text-sm text-slate-600 line-clamp-2">
+                  ${item.desc}
+                </p>
+
+                <!-- Espacios Limpios de Materiales según fecha -->
+                <div class="flex items-center gap-2 flex-wrap pt-2 text-xs">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+                    <span>📄</span> Material PDF (Próximamente)
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+                    <span>📹</span> Grabación Drive
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+                    <span>📝</span> Guía Práctica
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Derecha: Acciones Claras de la Fecha -->
+            <div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-2.5 w-full md:w-auto border-t md:border-t-0 md:border-l border-slate-100 pt-3 md:pt-0 md:pl-5">
+              <button onclick="openGoogleFormAttendanceModal()" class="w-full md:w-36 bg-[#144bd8] hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-xl text-xs text-center shadow transition-colors">
+                Asistencia »
+              </button>
+              <a href="${currentAulaCourse.classLink || 'https://zoom.us'}" target="_blank" class="w-full md:w-36 bg-slate-900 hover:bg-[#0c2364] text-[#ffd200] font-black py-2 px-3 rounded-xl text-xs text-center shadow transition-colors">
+                Entrar a Clase »
+              </a>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openGoogleFormAttendanceModal() {
+      openModal('googleFormAttendanceModal');
+    }
+
+    function handleGoogleAttendanceSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('attFullName').value;
+      closeModal('googleFormAttendanceModal');
+      triggerConfetti();
+      alertNotification(`✅ ¡Asistencia de ${name} enviada exitosamente!`);
+    }
+
+    function openRecordingsArchiveModal() {
+      openModal('recordingsModal');
+    }
+
+    function showLockedExamDetails() {
+      alert('🔒 Examen Final de Certificación BLOQUEADO\n\nEste examen se desbloqueará oficialmente en la semana final del bootcamp para los estudiantes que cuenten con el 80% o más de asistencia registrada en los formularios de Google oficiales.');
+    }
+  </script>
+</body>
+</html>
