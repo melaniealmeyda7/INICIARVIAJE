@@ -75,13 +75,354 @@ const COURSES_DATA = [
     description: 'Práctica intensiva 100% hablada para estudiantes con nivel básico-intermedio (A2). Dinámicas de debate, roleplay de viajes y networking global.',
     instructor: 'Facilitador Nativo & Políglota',
     perks: ['Grupos reducidos de práctica', 'Corrección de pronunciación en tiempo real', 'Temas semanales de cultura y viajes', 'Millas de fluidez'],
+    recordingFolderLink: 'https://drive.google.com/file/d/18OG0Sd3kQ9txIXLkjfR-_cwxOBG2uowF/view?usp=sharing',
     syllabus: [
-      { session: 'Sesión 1', date: 'Lunes 09 Nov', time: '10:00 - 11:00 a. m.', title: 'Breaking the Ice & Travel Anecdotes', desc: 'Superar el bloqueo mental al hablar, contar anécdotas de viajes pasados usando Past Simple y conectores.' },
-      { session: 'Sesión 2', date: 'Lunes 16 Nov', time: '10:00 - 11:00 a. m.', title: 'Debating Technology, AI & Remote Work', desc: 'Expresar opiniones de acuerdo y desacuerdo sobre el futuro del trabajo y la tecnología en equipos globales.' },
-      { session: 'Sesión 3', date: 'Lunes 23 Nov', time: '10:00 - 11:00 a. m.', title: 'Cultural Shock & Living Abroad', desc: 'Historias de choque cultural, diferencias de modales alrededor del mundo y vocabulario de adaptación.' },
-      { session: 'Sesión 4', date: 'Lunes 30 Nov', time: '10:00 - 11:00 a. m.', title: 'Professional Elevator Pitch & LinkedIn', desc: 'Presentar tu perfil profesional en 60 segundos en inglés fluido, networking y respuesta a preguntas clave.' },
-      { session: 'Sesión 5', date: 'Lunes 07 Dic', time: '10:00 - 11:00 a. m.', title: 'Negotiation & Crisis Scenarios', desc: 'Resolución de conflictos en el extranjero: vuelos cancelados, negociaciones y argumentos persuasivos.' },
-      { session: 'Sesión 6', date: 'Lunes 14 Dic', time: '10:00 - 11:00 a. m.', title: 'Global Summit Future Ready: Final Speech', desc: 'Micro-charlas finales individuales de 2 minutos por participante, retroalimentación y diplomas Future Ready.' }
+      {
+        session: 'Sesión 1',
+        unit: 'Unit 1 of 6',
+        date: 'Lunes 09 Nov',
+        time: '10:00 - 11:00 a. m.',
+        title: 'Amazing Daily Routines',
+        desc: 'Today you talk about your habits and discover your classmates’ routines. Adverbs of frequency (always, usually, sometimes, rarely, never) and -s endings.',
+        recordingUrl: 'https://drive.google.com/file/d/18OG0Sd3kQ9txIXLkjfR-_cwxOBG2uowF/view?usp=sharing',
+        recordingDate: '09 Noviembre 2026',
+        materials: {
+          tag: "ENGLISH A2 · UNIT 1 OF 6 · LET'S TALK!",
+          title: "Amazing Daily Routines",
+          subtitle: "Today you talk about your habits and discover your classmates' routines.",
+          goals: [
+            "Talk about your day: Describe what you do every day.",
+            "Say how often: Use always, usually, sometimes, rarely and never.",
+            "Ask and answer: Find out about your classmates' habits."
+          ],
+          goldenRule: "Golden rule: today the student talks more than the teacher.",
+          vocabulary: ["wake up", "get dressed", "commute", "skip breakfast", "take a nap", "go to bed", "always", "usually", "sometimes", "rarely", "never", "schedule"],
+          keyLanguage: [
+            "I usually wake up at ___.",
+            "She never skips breakfast.",
+            "Do you take a nap in the afternoon? Yes, I do. / No, I don't.",
+            "Frequency order: always > usually > sometimes > rarely > never"
+          ],
+          reading: {
+            title: "Famous Routines",
+            content: "Many successful people have interesting routines. Tim Cook, the CEO of Apple, wakes up at 3:45 a.m. He reads emails and goes to the gym early. The writer Haruki Murakami wakes up at 4 a.m. He writes for five hours and then he runs 10 kilometers. Benjamin Franklin always asked himself one question every morning: 'What good will I do today?'"
+          },
+          dialogue: {
+            title: "Morning or night? (Read 3 times: slow, normal, fast!)",
+            lines: [
+              { speaker: "Mia", text: "Hi Sam! Are you a morning person?" },
+              { speaker: "Sam", text: "Not really. I usually wake up at nine." },
+              { speaker: "Mia", text: "Nine? I always get up at six." },
+              { speaker: "Sam", text: "Wow! What do you do so early?" },
+              { speaker: "Mia", text: "I go for a run and then I make breakfast." },
+              { speaker: "Sam", text: "I never skip breakfast, but I rarely cook." },
+              { speaker: "Mia", text: "Come to my house tomorrow!" }
+            ]
+          },
+          readingPassage: {
+            title: "A Day in the Life of Lucía",
+            content: "Lucía wakes up at six thirty. / She takes a shower / and gets dressed. / She usually eats breakfast at home, / but sometimes she skips it. / She commutes to work by bus. / In the evening, she rarely cooks. / She goes to bed at eleven."
+          },
+          pronunciation: "Sound focus: -s endings (/s/ wakes, works, eats | /z/ runs, goes, reads | /ɪz/ watches, washes, relaxes). Tip: the -s sound depends on the sound before it.",
+          tongueTwisters: [
+            "1. Six sleepy sisters sometimes sleep in on Sundays.",
+            "2. She usually wakes up, washes her face and watches the sunrise."
+          ],
+          breakoutActivity: {
+            title: "Find Someone Who… (Breakout Rooms · 15 min)",
+            tasks: [
+              "Find someone who wakes up before 6 a.m.",
+              "Find someone who never drinks coffee",
+              "Find someone who always checks the phone in bed",
+              "Find someone who usually eats dinner after 9 p.m.",
+              "Find someone who takes a nap every day"
+            ]
+          },
+          homework: "Exit ticket: Record a 30-second audio about your daily routine."
+        }
+      },
+      {
+        session: 'Sesión 2',
+        unit: 'Unit 2 of 6',
+        date: 'Lunes 16 Nov',
+        time: '10:00 - 11:00 a. m.',
+        title: 'Food Around the World',
+        desc: 'Today you order, share your tastes and talk about food from your country. Asking for the bill and quantifiers.',
+        materials: {
+          tag: "ENGLISH A2 · UNIT 2 OF 6 · LET'S TALK!",
+          title: "Food Around the World",
+          subtitle: "Today you order, share your tastes and talk about food from your country.",
+          goals: [
+            "Order food: Ask for a dish, a drink and the bill at a restaurant.",
+            "Share your tastes: Say what you love, like and can't stand.",
+            "Count and measure: Use some, any, much and many correctly."
+          ],
+          goldenRule: "Golden rule: today the student talks more than the teacher.",
+          vocabulary: ["spicy", "sweet", "sour", "delicious", "fresh", "a bowl of", "a slice of", "a glass of", "menu", "bill", "tip", "dish"],
+          keyLanguage: [
+            "I'd like a bowl of soup, please.",
+            "Is it spicy?",
+            "How much is it? / How many people?",
+            "I love / I like / I can't stand ___.",
+            "some → I'd like some soup | any → Is there any rice? | much → uncountable | many → countable"
+          ],
+          reading: {
+            title: "Food Fun Facts",
+            content: "1. In Japan, eating while walking can seem impolite. 2. Peru has more than 4,000 varieties of potatoes. 3. In Italy, people don't drink cappuccino after lunch. 4. Honey never goes bad; archaeologists found edible honey in ancient Egyptian tombs."
+          },
+          dialogue: {
+            title: "At a restaurant / At the café",
+            lines: [
+              { speaker: "Waiter", text: "Good evening! Are you ready to order?" },
+              { speaker: "Customer", text: "Yes, please. What's today's special?" },
+              { speaker: "Waiter", text: "Grilled chicken with rice and salad." },
+              { speaker: "Customer", text: "Sounds good. Is it spicy?" },
+              { speaker: "Waiter", text: "No, it isn't. But the sauce is a little sweet." },
+              { speaker: "Customer", text: "Perfect. I'd like that, and a glass of water, please." }
+            ]
+          },
+          readingPassage: {
+            title: "Lunch in Lima",
+            content: "Every Sunday, my family eats lunch together. / My mother makes a big bowl of soup / and a spicy chicken dish with rice. / My brother loves fresh salad, / but I can't stand sour lemons! / For dessert we have a slice of sweet cake. / It's simple, but it's delicious."
+          },
+          pronunciation: "Sound focus: sh, ch, j (/ʃ/ fresh, dish, fish | /tʃ/ chicken, cheese, lunch | /dʒ/ juice, orange, vegetables). Tip: /ʃ/ is soft like 'shh'; /tʃ/ starts with a tiny 't'.",
+          tongueTwisters: [
+            "1. Chefs choose fresh cheese and sweet cherries.",
+            "2. Fresh fish and fried chicken for a cheap lunch."
+          ],
+          breakoutActivity: {
+            title: "Restaurant Role-Play (Breakout Rooms · 15 min)",
+            tasks: [
+              "Choose: Share a menu on screen (or invent one!) and pick roles.",
+              "Order: Order a starter, a main dish, a drink and dessert.",
+              "Pay: Ask for the bill, then swap roles."
+            ]
+          },
+          homework: "Exit ticket: Record a 30-second audio about your favorite dish."
+        }
+      },
+      {
+        session: 'Sesión 3',
+        unit: 'Unit 3 of 6',
+        date: 'Lunes 23 Nov',
+        time: '10:00 - 11:00 a. m.',
+        title: 'Travel Adventures & Living Abroad',
+        desc: 'Today you share travel anecdotes, describe past journeys using Simple Past and navigate airports in English.',
+        materials: {
+          tag: "ENGLISH A2 · UNIT 3 OF 6 · LET'S TALK!",
+          title: "Travel Adventures & Living Abroad",
+          subtitle: "Today you share travel experiences, ask for flight directions and describe past trips.",
+          goals: [
+            "Describe past trips using regular and irregular past verbs.",
+            "Ask questions at the airport, train station and hotel.",
+            "Talk about culture shock and adapting to foreign cities."
+          ],
+          goldenRule: "Golden rule: today the student talks more than the teacher.",
+          vocabulary: ["flight", "boarding pass", "luggage", "delayed", "gate", "customs", "explore", "souvenir", "sightseeing", "abroad", "lost", "currency"],
+          keyLanguage: [
+            "Where did you travel last summer?",
+            "I flew to ___ and stayed for two weeks.",
+            "Excuse me, which gate does the flight depart from?",
+            "The best part of my trip was visiting ___."
+          ],
+          dialogue: {
+            title: "At the Airport Terminal",
+            lines: [
+              { speaker: "Passenger", text: "Excuse me, where can I check in for Flight PM-202?" },
+              { speaker: "Attendant", text: "At counter 14, just past the baggage drop." },
+              { speaker: "Passenger", text: "Is the flight on schedule?" },
+              { speaker: "Attendant", text: "Yes, boarding starts in twenty minutes. Have a wonderful trip!" }
+            ]
+          },
+          pronunciation: "Sound focus: -ed endings in past verbs (/t/ booked, /d/ travelled, /ɪd/ visited, started).",
+          tongueTwisters: [
+            "Pack pink passports promptly prior to passing planes."
+          ],
+          homework: "Exit ticket: Record a 30-second audio about your most memorable journey."
+        }
+      },
+      {
+        session: 'Sesión 4',
+        unit: 'Unit 4 of 6',
+        date: 'Lunes 30 Nov',
+        time: '10:00 - 11:00 a. m.',
+        title: 'Technology and Me',
+        desc: 'Today you compare, give opinions and debate how technology changes our lives. Comparatives and superlatives.',
+        materials: {
+          tag: "ENGLISH A2 · UNIT 4 OF 6 · LET'S TALK!",
+          title: "Technology and Me",
+          subtitle: "Today you compare, give opinions and debate how technology changes our lives.",
+          goals: [
+            "Talk about tech: Describe the apps and devices you use.",
+            "Compare: Use newer than, more useful than and the most…",
+            "Give opinions: Say what you think, and agree or disagree."
+          ],
+          goldenRule: "Golden rule: today the student talks more than the teacher.",
+          vocabulary: ["app", "download", "update", "battery", "screen", "password", "online", "offline", "social media", "smartphone", "useful", "addicted"],
+          keyLanguage: [
+            "My phone is newer than yours.",
+            "This is the most useful app I have.",
+            "In my opinion, ___ / I think ___ / I agree / I disagree.",
+            "Short words: newer than, the newest | Long words: more useful than, the most useful"
+          ],
+          reading: {
+            title: "Tech in numbers",
+            content: "1992: The first text message ever sent said 'Merry Christmas'. 90+: Most people check their phones more than 90 times a day. Moon: Today's smartphones are more powerful than the computers that took astronauts to the moon."
+          },
+          dialogue: {
+            title: "My new phone (Read 3 times: slow, normal, fast!)",
+            lines: [
+              { speaker: "Dan", text: "Is that your new phone, Eva?" },
+              { speaker: "Eva", text: "Yes! It's newer and faster than my old one." },
+              { speaker: "Dan", text: "What's the most useful app on it?" },
+              { speaker: "Eva", text: "In my opinion, the translator app is the most useful." },
+              { speaker: "Dan", text: "I disagree. I think maps are more useful." },
+              { speaker: "Eva", text: "Maybe! But my battery is better than yours." },
+              { speaker: "Dan", text: "That's true. Mine is almost dead!" }
+            ]
+          },
+          readingPassage: {
+            title: "Life Without Wi-Fi",
+            content: "Yesterday, my internet stopped working. / At first, I felt nervous. / I couldn't check social media / or download my favorite songs. / So I read a book and called my friend. / We talked for an hour! / Maybe I'm a little addicted, / but offline life is relaxing."
+          },
+          pronunciation: "Sound focus: word stress (1st syllable: SMARTphone, PASSword, BATtery, USEful vs 2nd syllable: upDATE, onLINE, offLINE, downLOAD). Tip: stressed syllables are longer and louder.",
+          tongueTwisters: [
+            "1. Fast phones find free apps first.",
+            "2. My smartphone screen shows seven new messages."
+          ],
+          breakoutActivity: {
+            title: "Phone Detective (Breakout Pairs · 15 min)",
+            tasks: [
+              "1. Ask your partner 5 questions about apps and digital habits.",
+              "2. Note: Write down the answers.",
+              "3. Report: Tell the group your conclusion (e.g. Ana uses her phone more than...)."
+            ]
+          },
+          homework: "Exit ticket: Record a 30-second audio about how you use your phone."
+        }
+      },
+      {
+        session: 'Sesión 5',
+        unit: 'Unit 5 of 6',
+        date: 'Lunes 07 Dic',
+        time: '10:00 - 11:00 a. m.',
+        title: 'Work and Dream Jobs',
+        desc: 'Today you talk about jobs, skills and your plans for the future. Can/can’t pronunciation and job interview roleplay.',
+        materials: {
+          tag: "ENGLISH A2 · UNIT 5 OF 6 · LET'S TALK!",
+          title: "Work and Dream Jobs",
+          subtitle: "Today you talk about jobs, skills and your plans for the future.",
+          goals: [
+            "Talk about jobs: Say what you do and what you're good at.",
+            "Do an interview: Answer common job-interview questions.",
+            "Plan your future: Say what you want and what you're going to do."
+          ],
+          goldenRule: "Golden rule: today the student talks more than the teacher.",
+          vocabulary: ["job", "boss", "colleague", "meeting", "salary", "skill", "experience", "apply", "interview", "part-time", "full-time", "remote"],
+          keyLanguage: [
+            "I work as a ___. / I'm a ___.",
+            "I can speak English and Spanish.",
+            "I'm good at ___ / I'm not good at ___.",
+            "In the future, I'm going to ___.",
+            "can + verb: I can speak English | want to + verb: I want to learn | going to + verb: I'm going to apply"
+          ],
+          reading: {
+            title: "Work Fun Facts",
+            content: "1. Some people say the job 'Chief Happiness Officer' really exists. 2. Many companies now offer remote or hybrid international work."
+          },
+          dialogue: {
+            title: "A job interview & A quick interview",
+            lines: [
+              { speaker: "Interviewer", text: "Tell me about yourself." },
+              { speaker: "Candidate", text: "I'm Carlos. I'm 28 and I live in Lima. I work in customer service." },
+              { speaker: "Interviewer", text: "What are you good at?" },
+              { speaker: "Candidate", text: "I'm good at talking to people, and I can use Excel and speak a little English." },
+              { speaker: "Interviewer", text: "Why do you want this job?" },
+              { speaker: "Candidate", text: "Because I want to learn and grow in a big company." },
+              { speaker: "Interviewer", text: "Great. When can you start?" },
+              { speaker: "Candidate", text: "I can start next Monday." }
+            ]
+          },
+          readingPassage: {
+            title: "My Dream Job",
+            content: "My dream job is to be a travel guide. / I'm good at talking to people, / and I can speak three languages. / In the future, / I'm going to study tourism. / I want to work with visitors from all over the world. / I can't wait to start!"
+          },
+          pronunciation: "Sound focus: can and can't. can /kən/ (short and weak) vs can't /kænt/ (long and strong). Short answers: 'Can you start Monday? Yes, I can! / No, I can't.'",
+          tongueTwisters: [
+            "1. Can Carlos catch a cool career? Candidates can!",
+            "2. Good bosses give great goals to good colleagues."
+          ],
+          breakoutActivity: {
+            title: "Job Interview Speed Round (Breakout Rooms · 15 min)",
+            tasks: [
+              "1. Join: Go to a breakout room with a partner. 2-minute rounds.",
+              "2. Ask: Name, experience, skills, why this job?",
+              "3. Hire: Choose the best candidate and explain why."
+            ]
+          },
+          homework: "Exit ticket: Record a 30-second audio about your dream job."
+        }
+      },
+      {
+        session: 'Sesión 6',
+        unit: 'Unit 6 of 6',
+        date: 'Lunes 14 Dic',
+        time: '10:00 - 11:00 a. m.',
+        title: 'Culture, Celebrations and Dreams',
+        desc: 'Today you share traditions, invite your classmates and review the whole course. Final presentations and closing.',
+        materials: {
+          tag: "ENGLISH A2 · UNIT 6 OF 6 · LET'S TALK!",
+          title: "Culture, Celebrations and Dreams",
+          subtitle: "Today you share traditions, invite your classmates and review the whole course.",
+          goals: [
+            "Share traditions: Talk about festivals and special food.",
+            "Invite and reply: Ask 'Would you like to come?' and answer.",
+            "Review the course: Use everything you learned in one presentation."
+          ],
+          goldenRule: "Golden rule: today the student talks more than the teacher.",
+          vocabulary: ["festival", "tradition", "costume", "parade", "fireworks", "gift", "celebrate", "invite", "special", "family", "dance", "wish"],
+          keyLanguage: [
+            "We celebrate ___ in (month).",
+            "People wear / eat / dance ___.",
+            "Would you like to come? Yes, I'd love to! / Sorry, I can't.",
+            "Preposition rule: in + month: in June, in December."
+          ],
+          reading: {
+            title: "Celebrations Around the World",
+            content: "In Peru, people celebrate Inti Raymi in June to honor the sun. In Mexico, families remember loved ones on the Day of the Dead with flowers, music and food. In Spain, people throw tomatoes at La Tomatina! In India, Diwali is the Festival of Lights. People clean their houses, light small lamps and share sweets. Different countries celebrate in different ways, but every celebration has one thing in common: people come together."
+          },
+          dialogue: {
+            title: "Come to my party! (Read 3 times: slow, normal, fast!)",
+            lines: [
+              { speaker: "Lila", text: "Hi Tom! I'm having a party on Saturday." },
+              { speaker: "Tom", text: "Oh nice! What are you celebrating?" },
+              { speaker: "Lila", text: "My birthday! Would you like to come?" },
+              { speaker: "Tom", text: "Yes, I'd love to! What time?" },
+              { speaker: "Lila", text: "At seven. We're going to eat, dance and play music." },
+              { speaker: "Tom", text: "Great! Can I bring something?" },
+              { speaker: "Lila", text: "Just bring your smile!" }
+            ]
+          },
+          readingPassage: {
+            title: "Christmas With My Family",
+            content: "Every December, my family celebrates Christmas together. / We cook a special dinner / and we wear new clothes. / At midnight, we watch the fireworks / and hug everyone. / Then the children open their gifts, / and the adults dance until morning. / It's my favorite celebration!"
+          },
+          pronunciation: "Stress and intonation: 1st syllable (FESTival, COStume, CELebrate, FIREworks) vs 2nd syllable (paRADE, inVITE, traDItion). Intonation: invitations go up ↗, answers go down ↘.",
+          tongueTwisters: [
+            "1. Fireworks flash, families feast, festivals fill the streets.",
+            "2. Dancers dress in dazzling costumes for the daily parade."
+          ],
+          breakoutActivity: {
+            title: "My Perfect Party (Final Activity · 15 min)",
+            tasks: [
+              "1. Plan: Plan your ideal party: where, when, who.",
+              "2. Present: Present it in 2 minutes: food, music and activities.",
+              "3. Vote: The group asks two questions and votes in the chat."
+            ]
+          },
+          homework: "Exit ticket: Record a 30-second audio about your favorite celebration."
+        }
+      }
     ]
   },
   {

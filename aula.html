@@ -368,16 +368,25 @@
         <p class="text-xs text-slate-500 mt-1">Las grabaciones se suben automáticamente 24 horas después de cada clase en vivo.</p>
       </div>
 
-      <div class="space-y-3">
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div>
-            <h6 class="font-bold text-slate-900 text-sm">Carpeta Oficial en Drive</h6>
-            <span class="text-xs text-slate-500">Acceso libre en calidad 1080p HD</span>
-          </div>
-          <a href="https://drive.google.com" target="_blank" class="px-4 py-2 bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black rounded-xl text-xs transition">
-            Abrir Drive »
-          </a>
-        </div>
+      <div id="recordingsListContainer" class="space-y-3">
+        <!-- Inyectado dinámicamente según el curso seleccionado -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: VISOR DE MATERIALES & DIAPOSITIVAS INTERACTIVAS                    -->
+  <!-- ========================================================================= -->
+  <div id="materialDetailModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+    <div class="bg-white text-slate-900 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100 max-h-[90vh] flex flex-col">
+      
+      <button onclick="closeModal('materialDetailModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 text-2xl font-black z-10 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center">
+        ✕
+      </button>
+
+      <div id="materialModalContent" class="overflow-y-auto pr-1 space-y-6">
+        <!-- Inyectado dinámicamente con las diapositivas y contenidos de la sesión -->
       </div>
 
     </div>
@@ -552,8 +561,11 @@
       const flagSvg = getFlagSvg(currentAulaCourse.flag);
 
       container.innerHTML = syllabus.map((item, idx) => {
+        const hasRec = Boolean(item.recordingUrl);
+        const hasMat = Boolean(item.materials);
+
         return `
-          <div class="white-flyer-card p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div class="white-flyer-card p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 transition-all hover:border-blue-300">
             
             <!-- Izquierda: Flag y Detalle de la Clase -->
             <div class="flex items-start sm:items-center gap-4 flex-1">
@@ -563,11 +575,16 @@
                 ${flagSvg}
               </div>
 
-              <div class="space-y-1 flex-1">
+              <div class="space-y-1.5 flex-1">
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="inline-block px-3 py-0.5 rounded-full text-[11px] font-black tracking-wide bg-[#e8f1ff] text-[#144bd8]">
                     ${item.session}
                   </span>
+                  ${item.unit ? `
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">
+                      ${item.unit}
+                    </span>
+                  ` : ''}
                   <span class="text-xs font-bold text-slate-600 flex items-center gap-1">
                     📅 ${item.date}
                   </span>
@@ -584,24 +601,39 @@
                   ${item.desc}
                 </p>
 
-                <!-- Espacios Limpios de Materiales según fecha -->
+                <!-- Espacios de Materiales y Grabación según fecha -->
                 <div class="flex items-center gap-2 flex-wrap pt-2 text-xs">
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold border border-slate-200">
-                    <span>📄</span> Material PDF (Próximamente)
-                  </span>
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold border border-slate-200">
-                    <span>📹</span> Grabación Drive
-                  </span>
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold border border-slate-200">
-                    <span>📝</span> Guía Práctica
-                  </span>
+                  ${hasMat ? `
+                    <button onclick="openMaterialModal('${currentAulaCourse.id}', ${idx})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow-sm">
+                      <span>📖</span> Ver Diapositivas / Material »
+                    </button>
+                  ` : `
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200">
+                      <span>📄</span> Material PDF (Próximamente)
+                    </span>
+                  `}
+
+                  ${hasRec ? `
+                    <a href="${item.recordingUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black transition shadow-sm border border-amber-500/40">
+                      <span>📹</span> Ver Grabación Drive (${item.recordingDate || '09 Nov'}) »
+                    </a>
+                  ` : `
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200">
+                      <span>📹</span> Grabación (Post-clase)
+                    </span>
+                  `}
                 </div>
               </div>
 
             </div>
 
             <!-- Derecha: Acciones Claras de la Fecha -->
-            <div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-2.5 w-full md:w-auto border-t md:border-t-0 md:border-l border-slate-100 pt-3 md:pt-0 md:pl-5">
+            <div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-2 w-full md:w-auto border-t md:border-t-0 md:border-l border-slate-100 pt-3 md:pt-0 md:pl-5">
+              ${hasRec ? `
+                <a href="${item.recordingUrl}" target="_blank" rel="noopener noreferrer" class="w-full md:w-36 bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black py-2 px-3 rounded-xl text-xs text-center shadow transition-colors">
+                  📹 Grabación »
+                </a>
+              ` : ''}
               <button onclick="openGoogleFormAttendanceModal()" class="w-full md:w-36 bg-[#144bd8] hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-xl text-xs text-center shadow transition-colors">
                 Asistencia »
               </button>
@@ -628,7 +660,215 @@
     }
 
     function openRecordingsArchiveModal() {
+      const container = document.getElementById('recordingsListContainer');
+      if (container && currentAulaCourse) {
+        const recordedSessions = (currentAulaCourse.syllabus || []).filter(s => s.recordingUrl);
+        if (recordedSessions.length > 0) {
+          container.innerHTML = recordedSessions.map(s => `
+            <div class="p-4 bg-amber-50/80 rounded-2xl border border-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-black uppercase tracking-wider text-amber-900 bg-amber-200/80 px-2 py-0.5 rounded-md">${s.session}</span>
+                  <span class="text-xs text-slate-500 font-semibold">${s.date}</span>
+                </div>
+                <h6 class="font-black text-slate-900 text-sm mt-1">${s.title}</h6>
+                <span class="text-xs text-slate-600">Grabación oficial en Google Drive HD (9 Nov)</span>
+              </div>
+              <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black rounded-xl text-xs transition shadow-sm shrink-0 w-full sm:w-auto text-center">
+                ▶️ Abrir Grabación Drive »
+              </a>
+            </div>
+          `).join('');
+        } else {
+          container.innerHTML = `
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-center text-slate-600 text-sm">
+              Las grabaciones de este curso se irán publicando aquí 24 horas después de cada fecha en vivo.
+            </div>
+          `;
+        }
+      }
       openModal('recordingsModal');
+    }
+
+    function openMaterialModal(courseId, sessionIdx) {
+      const course = COURSES_DATA.find(c => c.id === courseId) || currentAulaCourse;
+      if (!course || !course.syllabus || !course.syllabus[sessionIdx]) return;
+      const s = course.syllabus[sessionIdx];
+      const m = s.materials;
+      if (!m) return;
+
+      const modalContent = document.getElementById('materialModalContent');
+      if (!modalContent) return;
+
+      modalContent.innerHTML = `
+        <!-- Encabezado de la Unidad -->
+        <div class="border-b border-slate-100 pb-5">
+          <div class="flex items-center gap-2 flex-wrap mb-2">
+            <span class="px-3 py-1 rounded-full text-xs font-black tracking-wide bg-[#e8f1ff] text-[#144bd8] uppercase">
+              ${m.tag || s.session}
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+              📅 ${s.date}
+            </span>
+            ${s.recordingUrl ? `
+              <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full text-xs font-black bg-amber-400 hover:bg-yellow-400 text-slate-950 transition flex items-center gap-1 shadow-sm">
+                <span>📹</span> Ver Grabación Drive (9 Nov) »
+              </a>
+            ` : ''}
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-[#0c2364]">
+            ${m.title}
+          </h2>
+          <p class="text-sm text-slate-600 mt-1 font-medium">
+            ${m.subtitle || s.desc}
+          </p>
+          ${m.goldenRule ? `
+            <div class="mt-3 px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-950 font-bold text-xs flex items-center gap-2">
+              <span>⭐</span>
+              <span>${m.goldenRule}</span>
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- 1. OBJETIVOS DE LA SESIÓN -->
+        ${m.goals ? `
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
+              🎯 By the end of class, you will…
+            </h4>
+            <div class="grid sm:grid-cols-3 gap-3">
+              ${m.goals.map(g => `
+                <div class="p-3 bg-white rounded-xl border border-slate-100 text-xs text-slate-700 font-semibold shadow-xs">
+                  ${g}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 2. 12 WORDS FOR TODAY (VOCABULARIO) -->
+        ${m.vocabulary ? `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-xs font-black uppercase tracking-wider text-slate-700">
+                🔤 12 Words for today
+              </h4>
+              <span class="text-[11px] text-slate-500 font-medium">Challenge: use 3 words in one sentence</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              ${m.vocabulary.map(w => `
+                <div class="p-2.5 bg-slate-50 hover:bg-blue-50 text-center rounded-xl border border-slate-200 text-slate-900 font-bold text-xs transition">
+                  ${w}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 3. SAY IT LIKE THIS (KEY LANGUAGE) -->
+        ${m.keyLanguage ? `
+          <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100">
+            <h4 class="text-xs font-black uppercase tracking-wider text-indigo-900 mb-2">
+              💬 Key Language: Say it like this
+            </h4>
+            <div class="space-y-1.5 text-xs text-slate-800 font-medium">
+              ${m.keyLanguage.map(k => `
+                <div class="flex items-start gap-2 bg-white/80 p-2.5 rounded-xl border border-indigo-100/60 font-mono text-[11px]">
+                  <span class="text-indigo-600 font-bold">›</span>
+                  <span>${k}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 4. READING & DIALOGUE -->
+        ${m.reading ? `
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
+              📖 ${m.reading.title}
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-slate-100">
+              ${m.reading.content}
+            </p>
+          </div>
+        ` : ''}
+
+        ${m.dialogue ? `
+          <div class="p-4 rounded-2xl bg-blue-50/60 border border-blue-100">
+            <h4 class="text-xs font-black uppercase tracking-wider text-blue-900 mb-2">
+              🗣️ ${m.dialogue.title}
+            </h4>
+            <div class="space-y-2">
+              ${m.dialogue.lines.map(line => `
+                <div class="text-xs flex gap-2">
+                  <span class="font-black text-blue-800 w-16 shrink-0">${line.speaker}:</span>
+                  <span class="text-slate-800 bg-white px-3 py-1.5 rounded-xl shadow-xs border border-blue-100 flex-1">${line.text}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        ${m.readingPassage ? `
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
+              🎙️ Passage: ${m.readingPassage.title}
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed font-mono bg-white p-3 rounded-xl border border-slate-100">
+              ${m.readingPassage.content}
+            </p>
+          </div>
+        ` : ''}
+
+        <!-- 5. PRONUNCIATION & TONGUE TWISTERS -->
+        ${m.pronunciation ? `
+          <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+            <h4 class="text-xs font-black uppercase tracking-wider text-emerald-900 mb-1">
+              🎧 Pronunciation Lab
+            </h4>
+            <p class="text-xs text-emerald-950 font-medium">
+              ${m.pronunciation}
+            </p>
+            ${m.tongueTwisters ? `
+              <div class="mt-3 space-y-1">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block">Say it fast:</span>
+                ${m.tongueTwisters.map(t => `
+                  <div class="p-2 bg-white rounded-lg border border-emerald-100 text-xs font-mono text-slate-800">
+                    ${t}
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        ` : ''}
+
+        <!-- 6. BREAKOUT ACTIVITY & HOMEWORK -->
+        ${m.breakoutActivity ? `
+          <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-100">
+            <h4 class="text-xs font-black uppercase tracking-wider text-purple-900 mb-2">
+              👥 ${m.breakoutActivity.title}
+            </h4>
+            <ul class="space-y-1 text-xs text-purple-950">
+              ${m.breakoutActivity.tasks.map(t => `
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-600 font-bold">✔</span>
+                  <span>${t}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${m.homework ? `
+          <div class="p-4 rounded-2xl bg-yellow-50 border border-yellow-200 text-yellow-950 font-bold text-xs flex items-center gap-2">
+            <span>🚀</span>
+            <span>${m.homework}</span>
+          </div>
+        ` : ''}
+      `;
+
+      openModal('materialDetailModal');
     }
 
     function showLockedExamDetails() {
