@@ -342,10 +342,6 @@ function renderCourses() {
                   ${course.statusBadge}
                 </span>
               ` : ''}
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                ${course.spotsLeft} cupos libres
-              </span>
             </div>
 
             <h3 class="text-2xl sm:text-3xl font-black text-[#0f2d8a] tracking-tight">
