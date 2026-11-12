@@ -35,16 +35,597 @@ const COURSES_DATA = [
     instructor: 'Coach Bilingüe Polyglot Map',
     perks: ['Clases en vivo', 'Material descargable PDF', 'Acceso a comunidad viajera', 'Certificado de asistencia'],
     syllabus: [
-      { session: 'Sesión 1', date: 'Miércoles 18 Nov', time: '7:00 - 8:00 p. m.', title: 'Despegue Lingüístico & Fonética Básica', desc: 'El alfabeto fonético internacional en inglés, vocales cortas/largas y sonidos esenciales para no trabarte.' },
-      { session: 'Sesión 2', date: 'Viernes 20 Nov', time: '7:00 - 8:00 p. m.', title: 'Check-in y Presentación Personal', desc: 'Greetings, personal introductions, países, ocupaciones y estructuras con el verbo To Be.' },
-      { session: 'Sesión 3', date: 'Miércoles 25 Nov', time: '7:00 - 8:00 p. m.', title: 'En el Aeropuerto & Control de Seguridad', desc: 'Preguntas típicas de oficiales de inmigración, lectura de pases de abordar y cómo pedir ayuda.' },
-      { session: 'Sesión 4', date: 'Viernes 27 Nov', time: '7:00 - 8:00 p. m.', title: 'Hospedaje, Hotel y Solicitudes', desc: 'Check-in en hoteles, vocabulario de habitaciones, resolver problemas de servicio y preguntas con Can/Could.' },
-      { session: 'Sesión 5', date: 'Miércoles 02 Dic', time: '7:00 - 8:00 p. m.', title: 'Restaurantes, Cafés y Ordenar Comida', desc: 'Food & drinks vocabulary, cómo pedir en restaurantes sin timidez, propinas y modales en la mesa.' },
-      { session: 'Sesión 6', date: 'Viernes 04 Dic', time: '7:00 - 8:00 p. m.', title: 'Compras, Precios y Transporte Urbano', desc: 'Preguntar precios (How much is this?), regatear educadamente, tomar trenes, metro y taxis en el extranjero.' },
-      { session: 'Sesión 7', date: 'Miércoles 09 Dic', time: '7:00 - 8:00 p. m.', title: 'Emergencias, Salud y Direcciones', desc: 'Asking for directions (turn left, go straight), farmacias, síntomas básicos y números de emergencia.' },
-      { session: 'Sesión 8', date: 'Viernes 11 Dic', time: '7:00 - 8:00 p. m.', title: 'Networking Internacional & Pasatiempos', desc: 'Cómo conectar con personas de otros países, hablar de tus hobbies y presentar tu background laboral.' },
-      { session: 'Sesión 9', date: 'Miércoles 16 Dic', time: '7:00 - 8:00 p. m.', title: 'Roleplay Inmersivo de Vuelo y Viaje', desc: 'Simulación completa en vivo por salas de grupos: desde el aeropuerto hasta el destino final 100% en inglés.' },
-      { session: 'Sesión 10', date: 'Viernes 18 Dic', time: '7:00 - 8:00 p. m.', title: 'Aterrizaje Final Future Ready & Clausura', desc: 'Repaso general, feedback de pronunciación personalizado, entrega de insignias y cierre del bootcamp.' }
+      {
+        session: 'Sesión 1',
+        unit: 'Class 1 of 10 · Greetings & Introductions',
+        date: 'Miércoles 18 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Hello! (Greetings & Introductions)',
+        desc: 'Today you say hello, say your name and ask how people are. The H sound phonetics and greetings.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 1 OF 10",
+          title: "Hello! (Greetings & Introductions)",
+          subtitle: "Today you say hello, say your name and ask how people are.",
+          goals: [
+            "Say hello and goodbye: Greet people in English.",
+            "Say your name: My name is… / I'm…",
+            "Ask how people are: How are you? — I'm fine, thanks."
+          ],
+          goldenRule: "Golden rule: speak more, worry less!",
+          vocabulary: [
+            "Hello (je-LOU)", "Hi (jai)", "Good morning (gud MOR-ning)", "Good afternoon (gud af-ter-NUN)", "Good evening (gud IV-ning)", "Good night (gud NAIT)",
+            "Nice to meet you (nais tu MIT iu)", "How are you? (jau ar iu)", "I'm fine, thanks (aim fain, thanks)", "My name is… (mai neim is)", "Goodbye (gud-BAI)", "See you later (si iu LEI-ter)"
+          ],
+          keyLanguage: [
+            "Hello! My name is ___.",
+            "I am ___. / I'm ___.",
+            "How are you? — I'm fine, thanks. And you?",
+            "Nice to meet you!",
+            "Remember: I am = I'm | My name is = My name's | Questions go up ↗, answers go down ↘"
+          ],
+          pronunciation: "The H sound: hello, hi, how. English H is soft air (like fogging a mirror). Spanish J is strong in the throat. I'm -> aim, hi -> jai, my -> mai. Tip: Put your hand near your mouth, feel the air!",
+          tongueTwisters: [
+            "Chant (H is air!): Hello, Hi, How are you? Happy, happy, how-do-you-do!"
+          ],
+          dialogue: {
+            title: "Nice to meet you (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Tom", text: "Hello! My name is Tom." },
+              { speaker: "Ana", text: "Hi Tom! I'm Ana." },
+              { speaker: "Tom", text: "Nice to meet you, Ana." },
+              { speaker: "Ana", text: "Nice to meet you, too." },
+              { speaker: "Tom", text: "How are you?" },
+              { speaker: "Ana", text: "I'm fine, thanks. And you?" },
+              { speaker: "Tom", text: "I'm fine, too. Goodbye!" }
+            ]
+          },
+          readingPassage: {
+            title: "Tom's first day (Read aloud)",
+            content: "Hello! My name is Tom. / I'm from Peru. / Today is my first day at school. / I'm happy! / My teacher says, 'Hi, Tom! How are you?' / I say, 'I'm fine, thanks!' / Goodbye for now!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Sentence Builder",
+            tasks: [
+              "1. Say hello to the teacher: Hello! / Good morning!",
+              "2. Say your name: My name is ___ / I'm ___.",
+              "3. Ask a classmate: How are you?",
+              "4. Say goodbye in a fun way: See you later! / Goodbye!"
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'Hello! My name is ___.'"
+        }
+      },
+      {
+        session: 'Sesión 2',
+        unit: 'Class 2 of 10 · The Alphabet & Numbers 0–20',
+        date: 'Viernes 20 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'ABC and Numbers (Alphabet & 0–20)',
+        desc: 'Today you spell your name and say phone numbers. Vowel names and TH pronunciation.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 2 OF 10",
+          title: "ABC and Numbers (The Alphabet & Numbers 0–20)",
+          subtitle: "Today you spell your name and say phone numbers.",
+          goals: [
+            "Say the alphabet: A to Z, one letter at a time.",
+            "Spell your name: How do you spell it?",
+            "Count 0 to 20: Say numbers and phone numbers."
+          ],
+          goldenRule: "Golden rule: say it slowly, then say it fast!",
+          vocabulary: [
+            "Alphabet (AL-fa-bet)", "Letter (LE-ter)", "Spell (spel)", "Number (NAM-ber)", "Phone number (foun NAM-ber)", "How do you spell it?",
+            "Zero (SI-rou)", "One (uan)", "Two (tu)", "Three (zri)", "Five (faiv)", "Ten (ten)"
+          ],
+          keyLanguage: [
+            "How do you spell your name? — M-I-A.",
+            "What's your phone number? — It's five-five-five, one-two-three.",
+            "My lucky number is thirteen.",
+            "Remember: -teen stress the END (thir-TEEN) vs -ty stress the START (THIR-ty). 18 eighteen, 19 nineteen, 20 twenty."
+          ],
+          pronunciation: "TH and the vowels: three, thirteen, thanks (tongue between teeth, blow air). Vowel letter names: A=ei, E=i, I=ai, O=ou, U=iu. -teen vs -ty stress.",
+          tongueTwisters: [
+            "Chant (TH time!): Three thin things, thanks a lot! Thirteen thumbs up, thirty friends!"
+          ],
+          dialogue: {
+            title: "How do you spell it? (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Ben", text: "Hi! What's your name?" },
+              { speaker: "Mia", text: "My name is Mia." },
+              { speaker: "Ben", text: "How do you spell Mia?" },
+              { speaker: "Mia", text: "M-I-A." },
+              { speaker: "Ben", text: "What's your phone number?" },
+              { speaker: "Mia", text: "It's five-five-five, one-two-three." },
+              { speaker: "Ben", text: "Thanks, Mia! Bye!" }
+            ]
+          },
+          readingPassage: {
+            title: "Mia's numbers (Read aloud)",
+            content: "Thanks for calling! My name is Mia. / M-I-A. / My phone number is / five, three, two, one, zero. / I have three phones and twenty friends. / My lucky number is thirteen!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Spelling Game",
+            tasks: [
+              "1. Say the alphabet from A to J.",
+              "2. Spell your name out loud in English.",
+              "3. Say your phone number slowly digit by digit.",
+              "4. Count from 11 to 20 with good pronunciation."
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: spell your name + count to 20!"
+        }
+      },
+      {
+        session: 'Sesión 3',
+        unit: 'Class 3 of 10 · Countries & Nationalities',
+        date: 'Miércoles 25 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Where are you from? (Countries & Nationalities)',
+        desc: 'Today you say where you are from and your nationality. B and V sounds distinction.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 3 OF 10",
+          title: "Where are you from? (Countries & Nationalities)",
+          subtitle: "Today you say where you are from and your nationality.",
+          goals: [
+            "Name countries: Peru, Mexico, Spain, Colombia, The USA, Brazil…",
+            "Say your nationality: I'm Peruvian / Mexican / Spanish…",
+            "Ask where people are from: Where are you from?"
+          ],
+          goldenRule: "Golden rule: countries and nationalities start with a CAPITAL letter!",
+          vocabulary: [
+            "Peru (pe-RU)", "Mexico (MEK-si-kou)", "Colombia (ko-LOM-bia)", "Spain (spein)", "The USA (iu-es-EI)", "Brazil (bra-SIL)",
+            "Peruvian (pe-RU-vian)", "Mexican (MEK-si-kan)", "Colombian (ko-LOM-bian)", "Spanish (SPA-nish)", "American (a-ME-ri-kan)", "Brazilian (bra-SI-lian)"
+          ],
+          keyLanguage: [
+            "Where are you from? — I'm from Peru. / I'm Peruvian.",
+            "Are you Mexican? — Yes, I am. / No, I'm not.",
+            "He's from Spain. She's from Brazil.",
+            "Remember: from + country | I'm + nationality | Capital letters: Peru, Peruvian"
+          ],
+          pronunciation: "B and V distinction: B (lips together: Brazil, Bogotá, be) vs V (top teeth touch bottom lip, bite and buzz: very, visit, Venezuela). Berry/very, boat/vote, ban/van.",
+          tongueTwisters: [
+            "Twister (B and V): Very big Brazilian vans. Victor visits Bolivia by bus."
+          ],
+          dialogue: {
+            title: "Meeting a new friend (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Lucas", text: "Hi! I'm Lucas. Where are you from?" },
+              { speaker: "Sofia", text: "I'm Sofia. I'm from Spain." },
+              { speaker: "Lucas", text: "Are you Spanish?" },
+              { speaker: "Sofia", text: "Yes, I am. Are you American?" },
+              { speaker: "Lucas", text: "No, I'm not. I'm Brazilian." },
+              { speaker: "Sofia", text: "Oh, very nice! Welcome!" },
+              { speaker: "Lucas", text: "Thanks, Sofia!" }
+            ]
+          },
+          readingPassage: {
+            title: "Welcome to Lima (Read aloud)",
+            content: "My name is Carlos. / I'm from Colombia. / I'm Colombian. / My friend Bruno is from Brazil. / He is Brazilian. / We are very happy. / We visit Peru today! / Where are you from?"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Passport Check",
+            tasks: [
+              "1. Ask the teacher: Where are you from?",
+              "2. Say: I'm from ___.",
+              "3. Ask a classmate: Are you ___?",
+              "4. Say your nationality with correct stress."
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'I'm from ___. I'm ___.'"
+        }
+      },
+      {
+        session: 'Sesión 4',
+        unit: 'Class 4 of 10 · Family Members',
+        date: 'Viernes 27 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'My Family (Close & Extended Family)',
+        desc: 'Today you talk about your family: who they are and how many. The voiced TH sound.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 4 OF 10",
+          title: "My Family (Family Members)",
+          subtitle: "Today you talk about your family: who they are and how many.",
+          goals: [
+            "Name family members: mother, father, sister, brother, grandparents…",
+            "Introduce people: This is my mother. Her name is Rosa.",
+            "Say how many: I have two brothers and one sister."
+          ],
+          goldenRule: "Golden rule: one family, many new words!",
+          vocabulary: [
+            "Mother (MA-der)", "Father (FA-der)", "Sister (SIS-ter)", "Brother (BRA-der)", "Grandmother (GRAN-ma-der)", "Grandfather (GRAN-fa-der)",
+            "Family (FA-mi-li)", "Parents (PE-rents)", "Baby (BEI-bi)", "Aunt (ant)", "Uncle (AN-kol)", "Cousin (KA-sin)"
+          ],
+          keyLanguage: [
+            "This is my mother. / This is my father.",
+            "He is my brother. / She is my sister.",
+            "I have two brothers and one sister.",
+            "My mother's name is Rosa.",
+            "Remember: He = a man · She = a woman · 's shows possession: my mother's name"
+          ],
+          pronunciation: "The voiced TH: mother, father, brother, this, that, they. Tongue between teeth + voice (feel the buzz in your throat). TH != D: other != odor, they != day. Put your tongue out!",
+          tongueTwisters: [
+            "Twister (voiced TH): My mother and my father love my brother, this and that."
+          ],
+          dialogue: {
+            title: "Meet my family (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Ana", text: "Look! This is my family." },
+              { speaker: "Leo", text: "Who is she?" },
+              { speaker: "Ana", text: "She is my mother. Her name is Rosa." },
+              { speaker: "Leo", text: "And who is he?" },
+              { speaker: "Ana", text: "He is my brother. His name is Pablo." },
+              { speaker: "Leo", text: "Do you have sisters?" },
+              { speaker: "Ana", text: "Yes, I have one sister." }
+            ]
+          },
+          readingPassage: {
+            title: "My big family (Read aloud)",
+            content: "I have a big family. / My mother is Rosa. / My father is Luis. / I have two brothers. / My sister is Eva. / My grandmother is Carmen. / This is my family. / We love each other!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Family Tree",
+            tasks: [
+              "1. Say who is in your family: 'This is my…'",
+              "2. Say: My mother's name is ___.",
+              "3. Ask a classmate: Do you have brothers or sisters?",
+              "4. Say how many brothers or sisters you have."
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'This is my family. I have ___.'"
+        }
+      },
+      {
+        session: 'Sesión 5',
+        unit: 'Class 5 of 10 · Colors & Everyday Things',
+        date: 'Miércoles 02 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Colors and Things (Objects & Colors)',
+        desc: 'Today you name colors and objects around you. Articles a/an and S + consonant phonetics.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 5 OF 10",
+          title: "Colors and Things (Colors & Everyday Things)",
+          subtitle: "Today you name colors and objects around you.",
+          goals: [
+            "Say colors: red, blue, green, yellow, black, white…",
+            "Name things: a book, a pen, a bag, a phone, a key, a chair…",
+            "Ask What is it? What color is it? — It's a blue pen."
+          ],
+          goldenRule: "Golden rule: a before consonants, an before vowels!",
+          vocabulary: [
+            "Red (red)", "Blue (blu)", "Green (grin)", "Yellow (IE-lou)", "Black (blak)", "White (uait)",
+            "Book (buk)", "Pen (pen)", "Phone (foun)", "Bag (bag)", "Key (ki)", "Chair (cher)"
+          ],
+          keyLanguage: [
+            "What is this? — It's a pen.",
+            "What color is it? — It's blue.",
+            "It's an orange bag. (an + vowel sound)",
+            "They are red keys.",
+            "Remember: a + consonant (a book) | an + vowel (an apple) | It's = It is | They are = plural"
+          ],
+          pronunciation: "S + consonant (sk- school, skirt, sky | st- student, stop, star | sp- Spanish, spell, speak). Tip: Do not add an E! Start with S: s-kool, not 'eschool'!",
+          tongueTwisters: [
+            "Twister (S + consonant): Six students speak Spanish at school. Stop, spell, speak!"
+          ],
+          dialogue: {
+            title: "What color is it? (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Eva", text: "What's this?" },
+              { speaker: "Max", text: "It's a bag." },
+              { speaker: "Eva", text: "What color is it?" },
+              { speaker: "Max", text: "It's red. And this is my pen." },
+              { speaker: "Eva", text: "Is it black?" },
+              { speaker: "Max", text: "No, it's blue. It's a blue pen." },
+              { speaker: "Eva", text: "I like your bag!" }
+            ]
+          },
+          readingPassage: {
+            title: "My room (Read aloud)",
+            content: "This is my room. / It's small but nice. / I have a blue school bag / and a red book. / My phone is black. / My student card is yellow. / I like my things!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Show & Tell",
+            tasks: [
+              "1. Show an object to your camera: 'It's a ___.'",
+              "2. Say the color of your shirt: 'My shirt is ___.'",
+              "3. Ask a classmate: What color is your pen / phone?",
+              "4. Describe your room in 3 simple sentences."
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'This is my ___. It's ___.'"
+        }
+      },
+      {
+        session: 'Sesión 6',
+        unit: 'Class 6 of 10 · Days, Months & Time',
+        date: 'Viernes 04 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Days, Months and Time (Calendar & Clocks)',
+        desc: 'Today you say the day, the month and the time. Prepositions on/in/at and silent letters.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 6 OF 10",
+          title: "Days, Months and Time",
+          subtitle: "Today you say the day, the month and the time.",
+          goals: [
+            "Say days and months: Monday, July, December…",
+            "Tell the time: It's three o'clock. / It's half past seven.",
+            "Say your birthday: My birthday is in May."
+          ],
+          goldenRule: "Golden rule: days and months start with a CAPITAL letter!",
+          vocabulary: [
+            "Monday (MAN-dei)", "Tuesday (TIUS-dei)", "Wednesday (UENZ-dei)", "Thursday (ZERS-dei)", "Friday (FRAI-dei)", "Weekend (UI-kend)",
+            "January (YAN-iu-e-ri)", "July (yu-LAI)", "December (di-SEM-ber)", "What time is it?", "o'clock (o-KLOK)", "half past (jaf past)"
+          ],
+          keyLanguage: [
+            "What day is it? — It's Monday.",
+            "What time is it? — It's three o'clock. / It's half past seven (7:30).",
+            "My birthday is in May.",
+            "Remember: on + day (on Monday) | in + month (in May) | at + time (at five o'clock)"
+          ],
+          pronunciation: "Tricky days: Wednesday (silent D: UENZ-dei, not Wed-nes-day!), Thursday (TH + ER: ZERS-dei), Tuesday (TIUS-dei), Friday (FRAI-dei).",
+          tongueTwisters: [
+            "Chant (the week): Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday: hooray!"
+          ],
+          dialogue: {
+            title: "What time is it? (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Dan", text: "Hi! What day is it today?" },
+              { speaker: "Zoe", text: "It's Friday!" },
+              { speaker: "Dan", text: "What time is it?" },
+              { speaker: "Zoe", text: "It's half past six." },
+              { speaker: "Dan", text: "When is your birthday?" },
+              { speaker: "Zoe", text: "It's in July. And yours?" },
+              { speaker: "Dan", text: "In December. See you on Monday!" }
+            ]
+          },
+          readingPassage: {
+            title: "A busy week (Read aloud)",
+            content: "On Monday I study English. / On Thursday I work. / On Friday I meet friends / at half past seven. / I love the weekend! / On Sunday I rest. / My birthday is in July!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Schedule Check",
+            tasks: [
+              "1. Say today's day and month: 'Today is ___.'",
+              "2. Tell the time on your clock: 'It's ___ o'clock.'",
+              "3. Ask a classmate: When is your birthday?",
+              "4. Say your favorite day of the week and why."
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'My birthday is in ___.'"
+        }
+      },
+      {
+        session: 'Sesión 7',
+        unit: 'Class 7 of 10 · Daily Routine',
+        date: 'Miércoles 09 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'My Day (Daily Actions & Times)',
+        desc: 'Today you talk about what you do every day. Third person -S rule and daily verbs.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 7 OF 10",
+          title: "My Day (Daily Routine)",
+          subtitle: "Today you talk about what you do every day.",
+          goals: [
+            "Say daily actions: wake up, eat breakfast, study, go to work…",
+            "Say the time of actions: I wake up at six. I eat at seven.",
+            "Talk about others: She goes to work at eight. He studies at night."
+          ],
+          goldenRule: "Golden rule: he / she / it + S!",
+          vocabulary: [
+            "Wake up (ueik ap)", "Get up (get ap)", "Take a shower (teik a SHAU-er)", "Eat breakfast (it BREK-fast)", "Go to work (gou tu uerk)", "Study (STA-di)",
+            "Have lunch (jav lanch)", "Come home (kam joum)", "Have dinner (jav DI-ner)", "Watch TV (uach ti-VI)", "Use my phone (ius mai foun)", "Go to bed (gou tu bed)"
+          ],
+          keyLanguage: [
+            "I wake up at six. / I eat breakfast at seven.",
+            "She goes to work at eight. / He studies at night.",
+            "Remember: I / you / we / they: wake up | he / she / it: wakes up | go → goes · study → studies | at + time: at six"
+          ],
+          pronunciation: "The -S ending: /s/ (after soft sound: works, eats, walks), /z/ (after voiced sound: goes, plays, studies), /iz/ (adds extra syllable: watches, washes, relaxes). Feel the buzz!",
+          tongueTwisters: [
+            "Chant (add the S): She wakes, she eats, she goes, she studies, she watches TV, she sleeps!"
+          ],
+          dialogue: {
+            title: "My daily routine (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Kim", text: "What time do you wake up?" },
+              { speaker: "Leo", text: "I wake up at six. And you?" },
+              { speaker: "Kim", text: "I wake up at seven." },
+              { speaker: "Leo", text: "What do you do after work?" },
+              { speaker: "Kim", text: "I study English." },
+              { speaker: "Leo", text: "Great! I watch TV." },
+              { speaker: "Kim", text: "Good night, Leo!" }
+            ]
+          },
+          readingPassage: {
+            title: "Rosa's day (Read aloud)",
+            content: "Rosa wakes up at six. / She gets up at seven. / She eats breakfast at eight. / She goes to work by bus. / At night she studies English. / She watches TV. / She goes to bed at ten."
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Routine Interview",
+            tasks: [
+              "1. Say what time you wake up: 'I wake up at ___.'",
+              "2. Say what you do at night: 'At night I ___.'",
+              "3. Ask a classmate: What time do you go to bed?",
+              "4. Tell what your friend does: 'He / She goes to…'"
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'In the morning, I ___.'"
+        }
+      },
+      {
+        session: 'Sesión 8',
+        unit: 'Class 8 of 10 · Food & Drinks',
+        date: 'Viernes 11 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Food and Drinks (Likes & Ordering Polite)',
+        desc: 'Today you say what you like and order food. EE vs I phonetics and café dialogues.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 8 OF 10",
+          title: "Food and Drinks",
+          subtitle: "Today you say what you like and order food.",
+          goals: [
+            "Name food and drinks: apple, bread, rice, chicken, coffee, pizza…",
+            "Say what you like: I like pizza. / I don't like fish.",
+            "Order politely: I'd like a coffee, please."
+          ],
+          goldenRule: "Golden rule: say please and thank you!",
+          vocabulary: [
+            "Apple (A-pol)", "Bread (bred)", "Rice (rais)", "Chicken (CHI-ken)", "Egg (eg)", "Cheese (chis)",
+            "Water (UO-ter)", "Coffee (KO-fi)", "Tea (ti)", "Juice (yus)", "Milk (milk)", "Pizza (PIT-sa)"
+          ],
+          keyLanguage: [
+            "I like pizza. / I don't like fish.",
+            "Do you like coffee? — Yes, I do. / Do you like milk? — No, I don't.",
+            "I'd like a tea, please.",
+            "Remember: like = enjoy · don't = do not · I'd like = I would like · Always say 'please'!"
+          ],
+          pronunciation: "EE vs I: EE (long sound, smile wide: cheese, tea, eat) vs I (short sound, quick: chicken, fish, milk). Sheep / ship · seat / sit · eat / it.",
+          tongueTwisters: [
+            "Twister (EE and I): Cheese, please! Tea for me. Chicken, fish and milk for three."
+          ],
+          dialogue: {
+            title: "At the café (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Waiter", text: "Hello! What would you like?" },
+              { speaker: "Mia", text: "I'd like a coffee, please." },
+              { speaker: "Waiter", text: "Anything to eat?" },
+              { speaker: "Mia", text: "Yes, a cheese sandwich, please." },
+              { speaker: "Waiter", text: "Do you like milk in your coffee?" },
+              { speaker: "Mia", text: "Yes, I do. Thank you!" },
+              { speaker: "Waiter", text: "You're welcome!" }
+            ]
+          },
+          readingPassage: {
+            title: "Lunch time (Read aloud)",
+            content: "I'm hungry! / I'd like chicken and rice, please. / My friend likes cheese pizza. / She drinks tea. / We don't like fish. / We love juice! / Thank you! / Goodbye!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Café Roleplay",
+            tasks: [
+              "1. Say what you eat for breakfast: 'I eat…'",
+              "2. Order a drink: 'I'd like ___, please.'",
+              "3. Ask a classmate: Do you like pizza?",
+              "4. Say one food you don't like: 'I don't like…'"
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'I like ___ and I don't like ___.'"
+        }
+      },
+      {
+        session: 'Sesión 9',
+        unit: 'Class 9 of 10 · Places in Town & Directions',
+        date: 'Miércoles 16 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Places in Town (Locations & Directions)',
+        desc: 'Today you name places and give simple directions. The English R sound and city prepositions.',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 9 OF 10",
+          title: "Places in Town & Directions",
+          subtitle: "Today you name places and give simple directions.",
+          goals: [
+            "Name places in town: bank, hospital, school, supermarket, library…",
+            "Ask where things are: Where is the bank?",
+            "Give directions: Turn left. Turn right. Go straight."
+          ],
+          goldenRule: "Golden rule: use your hands to show left and right!",
+          vocabulary: [
+            "Bank (bank)", "Hospital (JOS-pi-tal)", "School (s-KUL)", "Supermarket (SU-per-mar-ket)", "Pharmacy (FAR-ma-si)", "Park (park)",
+            "Restaurant (RES-te-rant)", "Bus stop (bas stop)", "Library (LAI-bre-ri)", "Post office (poust O-fis)", "Station (STEI-shon)", "Town (taun)"
+          ],
+          keyLanguage: [
+            "Where is the bank? — It's next to the park.",
+            "Turn left. / Turn right.",
+            "Go straight. / Stop!",
+            "It's in front of the school.",
+            "Remember: next to = beside · in front of = facing · behind = at the back · between = in the middle"
+          ],
+          pronunciation: "The English R: right, red, restaurant. Tongue curls back, do not roll it! English R is quiet and soft (not Spanish rolled perro). Stress: RES-te-rant, LAI-bre-ri, JOS-pi-tal.",
+          tongueTwisters: [
+            "Twister (the R): Right, right, the red restaurant. Turn right at the library!"
+          ],
+          dialogue: {
+            title: "Asking for directions (Read in turns, then swap roles!)",
+            lines: [
+              { speaker: "Tom", text: "Excuse me! Where is the bank?" },
+              { speaker: "Ana", text: "Go straight." },
+              { speaker: "Tom", text: "OK. Then?" },
+              { speaker: "Ana", text: "Turn right. It's next to the park." },
+              { speaker: "Tom", text: "Is it near?" },
+              { speaker: "Ana", text: "Yes, it's near. Two minutes." },
+              { speaker: "Tom", text: "Thank you very much!" }
+            ]
+          },
+          readingPassage: {
+            title: "Around my town (Read aloud)",
+            content: "My town is small. / There is a park near my house. / The restaurant is next to the library. / The bank is on the right. / To go to the hospital, / go straight and turn left. / I love my town!"
+          },
+          breakoutActivity: {
+            title: "Live Speaking: Mic Round & Town Navigator",
+            tasks: [
+              "1. Ask a classmate: Where is the bank / park?",
+              "2. Give directions: 'Go straight / Turn left.'",
+              "3. Tell us a place near your house: 'Near my house there is a…'",
+              "4. Say: 'It's next to the ___.'"
+            ]
+          },
+          homework: "Exit ticket: Send a voice note: 'Near my house there is a ___.'"
+        }
+      },
+      {
+        session: 'Sesión 10',
+        unit: 'Class 10 of 10 · Graduation & Final Speech',
+        date: 'Viernes 18 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'My English Passport (Final Review & Graduation)',
+        desc: 'Today you present yourself in English: your name, family, country, routine, favorites and directions. Future Ready Certificate!',
+        materials: {
+          tag: "ENGLISH FROM SCRATCH · CLASS 10 OF 10",
+          title: "My English Passport (Review & Graduation)",
+          subtitle: "Today you present yourself in English: your name, family, country, routine, favorites and directions.",
+          goals: [
+            "Integrate everything learned from Class 1 to 9.",
+            "Give your 2-minute personal speech in English with confidence.",
+            "Receive your official Future Ready certificate and digital badges."
+          ],
+          goldenRule: "Golden rule: you started from scratch, now you speak English!",
+          vocabulary: [
+            "Passport", "Traveler", "Fluency", "Future Ready", "Certificate", "Badge",
+            "Success", "Graduate", "Global", "Dream", "Journey", "Celebrate"
+          ],
+          keyLanguage: [
+            "Hello! My name is ___. I'm from ___. I'm ___.",
+            "This is my family: my mother is ___, my father is ___.",
+            "Every day, I wake up at ___ and I study English.",
+            "I like ___ and my favorite place in town is ___.",
+            "Thank you teacher and classmates, see you on the next flight!"
+          ],
+          pronunciation: "Master review: The H sound, voiced/unvoiced TH, third-person -S, vowel names and the soft English R.",
+          tongueTwisters: [
+            "Grand Finale: Hello, happy travelers! We speak English, we fly high!"
+          ],
+          dialogue: {
+            title: "Graduation speech (Roleplay)",
+            lines: [
+              { speaker: "Student", text: "Hello everyone! My name is Carlos. I'm from Peru. I'm 25." },
+              { speaker: "Teacher", text: "Wonderful Carlos! Tell us about your routine and favorites." },
+              { speaker: "Student", text: "I wake up at seven and study English. I like pizza and coffee. Thank you Polyglot Map!" },
+              { speaker: "Class", text: "Congratulations Carlos! Hooray!" }
+            ]
+          },
+          readingPassage: {
+            title: "The Polyglot Journey (Read aloud)",
+            content: "Ten classes ago, we said hello for the first time. / Today we can introduce ourselves, / talk about our families, / share our daily routines / and order food in English! / This is just the beginning of our journey. / Fly high, future polyglots!"
+          },
+          breakoutActivity: {
+            title: "Graduation Summit: 1-Minute Speech",
+            tasks: [
+              "1. Introduce yourself: Name, country, nationality.",
+              "2. Describe your family and your daily routine.",
+              "3. Share your favorite food and places in town.",
+              "4. Celebrate with your classmates and receive feedback!"
+            ]
+          },
+          homework: "Exit ticket: Digital graduation selfie & final voice note: 'I speak English with Polyglot Map!'"
+        }
+      }
     ]
   },
   {
