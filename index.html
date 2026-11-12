@@ -456,7 +456,7 @@
   <!-- MODAL 1: CHECK-IN / INICIO DE SESIÓN       -->
   <!-- ========================================== -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-    <div class="bg-gradient-to-br from-[#0a1a4a] to-[#050d26] text-white rounded-3xl max-w-sm w-full p-6 sm:p-7 border-2 border-white/20 shadow-2xl relative">
+    <div class="bg-gradient-to-br from-[#0a1a4a] to-[#050d26] text-white rounded-3xl max-w-md w-full p-6 sm:p-8 border-2 border-white/20 shadow-2xl relative">
       
       <button onclick="closeModal('loginModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-bold">
         ✕
@@ -467,45 +467,56 @@
           🔑
         </div>
         <span class="text-[11px] uppercase font-mono tracking-widest text-[#ffd200] font-bold">Terminal Polyglot Map</span>
-        <h3 class="text-2xl font-black text-white mt-0.5">Check-in Viajero</h3>
-        <p class="text-xs text-slate-300 mt-1">Ingresa la palabra clave del evento para desbloquear tu acceso</p>
+        <h3 class="text-2xl font-black text-white mt-0.5">Check-in de Estudiante</h3>
+        <p class="text-xs text-slate-300 mt-1">Ingresa con tus credenciales de participante registrado</p>
       </div>
 
       <form id="loginForm" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-center">
-            INGRESAR PALABRA CLAVE
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
+            USUARIO (Primer Nombre y Primer Apellido)
           </label>
-          <div class="relative">
-            <input 
-              type="text" 
-              id="loginPasscode" 
-              required 
-              placeholder="Escribe la palabra clave aquí" 
-              autocomplete="off"
-              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-center text-sm sm:text-base font-black tracking-wider uppercase transition shadow-inner"
-            />
-          </div>
-          <p id="passcodeError" class="hidden text-xs text-rose-400 font-bold text-center mt-1.5">
-            ⚠️ Palabra clave incorrecta. Intenta nuevamente.
-          </p>
+          <input 
+            type="text" 
+            id="loginUsername" 
+            required 
+            placeholder="Ej. Isabel Requena" 
+            autocomplete="username"
+            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none text-sm font-bold tracking-wide transition shadow-inner"
+          />
         </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
+            CONTRASEÑA (Lo mismo todo junto con minúscula)
+          </label>
+          <input 
+            type="password" 
+            id="loginPassword" 
+            required 
+            placeholder="Ej. isabelrequena" 
+            autocomplete="current-password"
+            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
+          />
+        </div>
+
+        <p id="passcodeError" class="hidden text-xs text-rose-300 bg-rose-950/40 border border-rose-500/40 p-2.5 rounded-xl font-semibold text-center">
+          ⚠️ Usuario o contraseña incorrectos. Verifica que tu usuario sea tu primer nombre y primer apellido, y la contraseña lo mismo en minúscula sin espacios.
+        </p>
 
         <button type="submit" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 rounded-xl text-sm shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 select-none">
           <span>Entrar al Panel de Clases »</span>
         </button>
       </form>
 
-      <!-- PALABRA CLAVE RECORDATORIO / 1-CLICK -->
+      <!-- AYUDA / FORMATO DE ACCESO -->
       <div class="mt-4 pt-3.5 border-t border-white/10 text-center">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-3">
-          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block mb-1">Palabra Clave Oficial:</span>
-          <code class="text-xs sm:text-sm font-black font-mono text-[#ffd200] tracking-widest bg-black/40 px-3 py-1 rounded-lg inline-block border border-yellow-400/30">
-            GRACIASPOLYGLOTMAP
-          </code>
-          <button type="button" onclick="autoFillPasscode()" class="mt-2 text-[11px] text-blue-200 hover:text-white underline block mx-auto font-semibold">
-            ⚡ Autocompletar palabra clave
-          </button>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-left">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-[#ffd200] font-black block mb-1">💡 Regla de Acceso Oficial:</span>
+          <p class="text-[11px] text-slate-300 leading-relaxed">
+            • <strong>Usuario:</strong> Tu primer nombre y primer apellido con el que te inscribiste (Ej. <code class="text-yellow-300">Isabel Requena</code>).<br/>
+            • <strong>Contraseña:</strong> Lo mismo todo junto en minúscula sin espacios (Ej. <code class="text-yellow-300 font-mono">isabelrequena</code>).
+          </p>
         </div>
       </div>
 
@@ -582,8 +593,9 @@
     </div>
   </div>
 
-  <!-- Lógica Principal -->
-  <script src="js/app.js?v=6"></script>
+  <!-- Base de datos de Estudiantes y Lógica Principal -->
+  <script src="js/students-data.js"></script>
+  <script src="js/app.js?v=7"></script>
   <script>
     function handleQuickBookingSubmit() {
       const name = document.getElementById('quickName').value.trim() || 'Viajero Políglota';

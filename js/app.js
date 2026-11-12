@@ -1721,33 +1721,28 @@ function shareTicket(courseTitle) {
   window.open(`https://wa.me/?text=${text}`, '_blank');
 }
 
-// Constante de Palabra Clave Oficial
-const OFFICIAL_PASSCODE = 'GRACIASPOLYGLOTMAP';
-
-// Autocompletar Palabra Clave
-function autoFillPasscode() {
-  const input = document.getElementById('loginPasscode');
-  if (input) {
-    input.value = OFFICIAL_PASSCODE;
-    input.focus();
-  }
-}
-
-// Manejar Envío de Formulario con PALABRA CLAVE
+// Autenticación de Participantes Registrados (Usuario y Contraseña)
 function handleLoginFormSubmit(e) {
   e.preventDefault();
-  const input = document.getElementById('loginPasscode');
+  const uInput = document.getElementById('loginUsername');
+  const pInput = document.getElementById('loginPassword');
   const errorMsg = document.getElementById('passcodeError');
-  const entered = (input ? input.value.trim().toUpperCase() : '');
 
-  // Validación de la palabra clave: GRACIASPOLYGLOTMAP (o si escribió con espacios)
-  const normalized = entered.replace(/\s+/g, '');
+  const usernameVal = uInput ? uInput.value.trim() : '';
+  const passwordVal = pInput ? pInput.value.trim() : '';
 
-  if (normalized !== OFFICIAL_PASSCODE) {
-    if (errorMsg) errorMsg.classList.remove('hidden');
-    if (input) {
-      input.classList.add('border-rose-500', 'bg-rose-950/20');
-      input.focus();
+  const auth = typeof authenticateParticipant === 'function'
+    ? authenticateParticipant(usernameVal, passwordVal)
+    : { success: false, message: 'El sistema de validación se está iniciando...' };
+
+  if (!auth.success) {
+    if (errorMsg) {
+      errorMsg.innerText = '⚠️ ' + auth.message;
+      errorMsg.classList.remove('hidden');
+    }
+    if (pInput) {
+      pInput.classList.add('border-rose-500', 'bg-rose-950/20');
+      pInput.focus();
     }
     return;
   }
@@ -1755,9 +1750,9 @@ function handleLoginFormSubmit(e) {
   if (errorMsg) errorMsg.classList.add('hidden');
 
   saveUser({
-    name: 'Viajero Políglota',
-    email: 'viajero@polyglotmap.com',
-    passportNo: 'PM-2026',
+    name: auth.student.name,
+    email: auth.student.email,
+    passportNo: auth.student.passportNo || 'PM-2026',
     miles: 2500,
     avatar: '👨‍✈️',
     bookedCourses: currentUser ? currentUser.bookedCourses : []
@@ -1765,7 +1760,7 @@ function handleLoginFormSubmit(e) {
 
   closeModal('loginModal');
   triggerConfetti();
-  alertNotification(`¡Palabra clave correcta! Acceso concedido al Panel de Clases.`);
+  alertNotification(`¡Bienvenido(a) ${auth.student.shortName || auth.student.name}! Acceso verificado.`);
   
   // Abrir inmediatamente el Panel de Clases
   setTimeout(() => {
@@ -1776,7 +1771,8 @@ function handleLoginFormSubmit(e) {
 
 // Checkin Rápido
 function handleQuickCheckin() {
-  autoFillPasscode();
+  const uInput = document.getElementById('loginUsername');
+  if (uInput) uInput.focus();
 }
 
 // Cerrar Sesión

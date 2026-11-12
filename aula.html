@@ -419,39 +419,50 @@
 
       <form id="aulaLoginForm" onsubmit="handleAulaLoginSubmit(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-center">
-            INGRESAR PALABRA CLAVE
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-left">
+            USUARIO (Primer Nombre y Primer Apellido)
           </label>
-          <div class="relative">
-            <input 
-              type="text" 
-              id="aulaLoginPasscode" 
-              required 
-              placeholder="Escribe la palabra clave aquí" 
-              autocomplete="off"
-              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-center text-sm sm:text-base font-black tracking-wider uppercase transition shadow-inner"
-            />
-          </div>
-          <p id="aulaPasscodeError" class="hidden text-xs text-rose-400 font-bold text-center mt-1.5">
-            ⚠️ Palabra clave incorrecta. Intenta nuevamente.
-          </p>
+          <input 
+            type="text" 
+            id="aulaLoginUsername" 
+            required 
+            placeholder="Ej. Isabel Requena" 
+            autocomplete="username"
+            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none text-sm font-bold tracking-wide transition shadow-inner"
+          />
         </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-left">
+            CONTRASEÑA (Lo mismo todo junto con minúscula)
+          </label>
+          <input 
+            type="password" 
+            id="aulaLoginPassword" 
+            required 
+            placeholder="Ej. isabelrequena" 
+            autocomplete="current-password"
+            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
+          />
+        </div>
+
+        <p id="aulaPasscodeError" class="hidden text-xs text-rose-300 bg-rose-950/40 border border-rose-500/40 p-2.5 rounded-xl font-semibold text-center">
+          ⚠️ Usuario o contraseña incorrectos. Verifica que tu usuario sea tu primer nombre y primer apellido, y la contraseña lo mismo en minúscula sin espacios.
+        </p>
 
         <button type="submit" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 rounded-xl text-sm shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 select-none">
           <span>Entrar al Panel de Clases »</span>
         </button>
       </form>
 
-      <!-- PALABRA CLAVE RECORDATORIO / 1-CLICK -->
-      <div class="mt-4 pt-3.5 border-t border-white/15 text-center">
+      <!-- AYUDA / FORMATO DE ACCESO -->
+      <div class="mt-4 pt-3.5 border-t border-white/15 text-left">
         <div class="bg-white/5 border border-white/10 rounded-2xl p-3">
-          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block mb-1">Palabra Clave Oficial:</span>
-          <code class="text-xs sm:text-sm font-black font-mono text-[#ffd200] tracking-widest bg-black/40 px-3 py-1 rounded-lg inline-block border border-yellow-400/30">
-            GRACIASPOLYGLOTMAP
-          </code>
-          <button type="button" onclick="autoFillAulaPasscode()" class="mt-2 text-[11px] text-blue-200 hover:text-white underline block mx-auto font-semibold">
-            ⚡ Autocompletar palabra clave
-          </button>
+          <span class="text-[10px] font-mono uppercase tracking-wider text-[#ffd200] font-black block mb-1">💡 Regla de Acceso Oficial:</span>
+          <p class="text-[11px] text-slate-300 leading-relaxed">
+            • <strong>Usuario:</strong> Tu primer nombre y primer apellido registrado (Ej. <code class="text-yellow-300">Isabel Requena</code>).<br/>
+            • <strong>Contraseña:</strong> Lo mismo todo junto en minúscula sin espacios (Ej. <code class="text-yellow-300 font-mono">isabelrequena</code>).
+          </p>
         </div>
       </div>
 
@@ -465,6 +476,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="js/students-data.js"></script>
   <script src="js/app.js"></script>
   <script>
     let currentAulaCourse = null;
@@ -494,43 +506,47 @@
       }
     });
 
-    function autoFillAulaPasscode() {
-      const input = document.getElementById('aulaLoginPasscode');
-      if (input) {
-        input.value = 'GRACIASPOLYGLOTMAP';
-        input.focus();
-      }
-    }
-
     function handleAulaLoginSubmit(e) {
       e.preventDefault();
-      const input = document.getElementById('aulaLoginPasscode');
+      const uInput = document.getElementById('aulaLoginUsername');
+      const pInput = document.getElementById('aulaLoginPassword');
       const errorMsg = document.getElementById('aulaPasscodeError');
-      const entered = (input ? input.value.trim().toUpperCase() : '').replace(/\s+/g, '');
-      
-      if (entered !== 'GRACIASPOLYGLOTMAP') {
-        if (errorMsg) errorMsg.classList.remove('hidden');
-        if (input) {
-          input.classList.add('border-rose-500', 'bg-rose-950/20');
-          input.focus();
+
+      const userVal = uInput ? uInput.value.trim() : '';
+      const passVal = pInput ? pInput.value.trim() : '';
+
+      const auth = typeof authenticateParticipant === 'function'
+        ? authenticateParticipant(userVal, passVal)
+        : { success: false, message: 'Sistema de autenticación cargando...' };
+
+      if (!auth.success) {
+        if (errorMsg) {
+          errorMsg.innerText = '⚠️ ' + auth.message;
+          errorMsg.classList.remove('hidden');
         }
+        if (pInput) pInput.focus();
         return;
       }
 
       if (errorMsg) errorMsg.classList.add('hidden');
 
       saveUser({
-        name: 'Viajero Políglota',
-        email: 'viajero@polyglotmap.com',
-        passportNo: 'PM-2026',
+        name: auth.student.name,
+        email: auth.student.email,
+        passportNo: auth.student.passportNo || 'PM-2026',
         miles: 2500,
         avatar: '👨‍✈️',
         bookedCourses: []
       });
 
+      const attNameInput = document.getElementById('attFullName');
+      if (attNameInput) attNameInput.value = auth.student.name;
+      const attEmailInput = document.getElementById('attEmail');
+      if (attEmailInput) attEmailInput.value = auth.student.email;
+
       closeModal('aulaAuthModal');
       triggerConfetti();
-      alertNotification(`¡Palabra clave correcta! Bienvenido al Panel de Clases.`);
+      alertNotification(`¡Bienvenido(a) ${auth.student.shortName || auth.student.name}! Acceso verificado.`);
       loadAulaForCourse(currentAulaCourse ? currentAulaCourse.id : 'bootcamp-ingles-cero');
     }
 
