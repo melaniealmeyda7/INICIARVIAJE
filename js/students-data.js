@@ -1923,11 +1923,38 @@ function authenticateParticipant(usernameInput, passwordInput) {
     return { success: false, message: 'Ingresa un usuario y contraseña válidos.' };
   }
 
+  // Accesos Especiales Oficiales y Provisionales
+  if (uClean === 'melaniealmeyda' && pClean === 'melaniealmeyda') {
+    return {
+      success: true,
+      student: {
+        name: 'Melanie Almeyda',
+        shortName: 'Melanie Almeyda',
+        email: 'melanie@polyglotmap.com',
+        role: 'Directora / Administradora Polyglot Map',
+        passportNo: 'PM-VIP-001'
+      }
+    };
+  }
+
+  if ((uClean === 'viajero2026' || uClean === 'viajero') && (pClean === 'viajero2026' || pClean === 'viajero')) {
+    return {
+      success: true,
+      student: {
+        name: 'Viajero Polyglot Map',
+        shortName: 'Viajero 2026',
+        email: 'viajero2026@polyglotmap.com',
+        role: 'Viajero Provisional',
+        passportNo: 'PM-2026'
+      }
+    };
+  }
+
   // Regla 1: La contraseña debe ser lo mismo que el usuario todo junto en minúscula
   if (uClean !== pClean) {
     return {
       success: false,
-      message: 'La contraseña debe ser tu usuario todo junto en minúscula (ej: usuario "Isabel Requena" -> contraseña "isabelrequena").'
+      message: 'La contraseña debe ser tu usuario todo junto en minúscula (ej: usuario "Lucía Mendoza" -> contraseña "luciamendoza").'
     };
   }
 

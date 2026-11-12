@@ -589,59 +589,64 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 10',
-        unit: 'Class 10 of 10 · Graduation & Final Speech',
+        unit: 'Class 10 of 10 · Review & Final Presentation',
         date: 'Viernes 18 Dic',
         time: '7:00 - 8:00 p. m.',
-        title: 'My English Passport (Final Review & Graduation)',
-        desc: 'Today you present yourself in English: your name, family, country, routine, favorites and directions. Future Ready Certificate!',
+        title: 'All About Me (Review & Final Presentation)',
+        pdfUrl: 'materials/ingles-cero-clase-10.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-10.pdf',
+        desc: 'Today you put everything together and present yourself: name, country, age, likes, favorites and pronunciation lab.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 10 OF 10",
-          title: "My English Passport (Review & Graduation)",
-          subtitle: "Today you present yourself in English: your name, family, country, routine, favorites and directions.",
+          tag: "ENGLISH FROM SCRATCH · CLASS 10 OF 10 · REVIEW & FINAL PRESENTATION",
+          title: "All About Me (Review & Final Presentation)",
+          subtitle: "Today you put everything together and present yourself.",
           goals: [
-            "Integrate everything learned from Class 1 to 9.",
-            "Give your 2-minute personal speech in English with confidence.",
-            "Receive your official Future Ready certificate and digital badges."
+            "Review the course: Greetings, family, food, places.",
+            "Present yourself: Name, country, age, likes.",
+            "Celebrate your progress: You can speak English!"
           ],
-          goldenRule: "Golden rule: you started from scratch, now you speak English!",
+          goldenRule: "Golden rule: you already know more than you think!",
           vocabulary: [
-            "Passport", "Traveler", "Fluency", "Future Ready", "Certificate", "Badge",
-            "Success", "Graduate", "Global", "Dream", "Journey", "Celebrate"
+            "My name is… (mai neim is)", "I'm from… (aim from)", "I'm … years old (aim … yirs ould)", "I live in… (ai liv in)", "I'm a student (aim a STIU-dent)", "I like… (ai laik)",
+            "Favorite color (FEI-vo-rit KA-ler)", "Favorite food (FEI-vo-rit fud)", "Favorite day (FEI-vo-rit dei)", "Favorite place (FEI-vo-rit pleis)", "Hobby (JO-bi)", "Music (MIU-sik)"
           ],
           keyLanguage: [
-            "Hello! My name is ___. I'm from ___. I'm ___.",
-            "This is my family: my mother is ___, my father is ___.",
-            "Every day, I wake up at ___ and I study English.",
-            "I like ___ and my favorite place in town is ___.",
-            "Thank you teacher and classmates, see you on the next flight!"
+            "Hello! My name is ___.",
+            "I'm from ___. I'm ___ years old.",
+            "I live in ___. I like ___.",
+            "My favorite color is ___. Thank you!",
+            "Remember: Speak slowly and clearly · Stress key words · Smile and make pauses · Look at the camera!"
           ],
-          pronunciation: "Master review: The H sound, voiced/unvoiced TH, third-person -S, vowel names and the soft English R.",
+          pronunciation: "Pronunciation Lab: Slow (Hel-lo! My name is… Thank you! Slow and clear is better than fast) · Stress (I LIVE in LI-ma. I LIKE MU-sic) · Pause (Hello! / I'm Ana. / I'm from Peru. Pause where you see /). Tip: Smile! Your voice sounds friendlier.",
           tongueTwisters: [
-            "Grand Finale: Hello, happy travelers! We speak English, we fly high!"
+            "Chant (slow and clear): Hello, I'm Ana. I like music. Thank you, thank you, thank you!"
           ],
           dialogue: {
-            title: "Graduation speech (Roleplay)",
+            title: "Getting to know you (Read in turns, then swap roles!)",
             lines: [
-              { speaker: "Student", text: "Hello everyone! My name is Carlos. I'm from Peru. I'm 25." },
-              { speaker: "Teacher", text: "Wonderful Carlos! Tell us about your routine and favorites." },
-              { speaker: "Student", text: "I wake up at seven and study English. I like pizza and coffee. Thank you Polyglot Map!" },
-              { speaker: "Class", text: "Congratulations Carlos! Hooray!" }
+              { speaker: "Sam", text: "Hi! What's your name?" },
+              { speaker: "Ana", text: "I'm Ana. Nice to meet you!" },
+              { speaker: "Sam", text: "Where are you from, Ana?" },
+              { speaker: "Ana", text: "I'm from Peru. I'm Peruvian." },
+              { speaker: "Sam", text: "What do you like?" },
+              { speaker: "Ana", text: "I like music and pizza." },
+              { speaker: "Sam", text: "Me too! Great to meet you!" }
             ]
           },
           readingPassage: {
-            title: "The Polyglot Journey (Read aloud)",
-            content: "Ten classes ago, we said hello for the first time. / Today we can introduce ourselves, / talk about our families, / share our daily routines / and order food in English! / This is just the beginning of our journey. / Fly high, future polyglots!"
+            title: "All about Ana & My new friend",
+            content: "Hello! / My name is Ana. / I'm from Peru. / I'm twenty years old. / I live in Lima. / I like music / and I love pizza! / Thank you!"
           },
           breakoutActivity: {
-            title: "Graduation Summit: 1-Minute Speech",
+            title: "Live Speaking: Mic Round & Final Presentation",
             tasks: [
-              "1. Introduce yourself: Name, country, nationality.",
-              "2. Describe your family and your daily routine.",
-              "3. Share your favorite food and places in town.",
-              "4. Celebrate with your classmates and receive feedback!"
+              "1. Say your name and country: Hello! My name is ___. I'm from ___.",
+              "2. Say your age and where you live: I'm ___ years old and I live in ___.",
+              "3. Say two things you like: I like ___ and my favorite is ___.",
+              "4. Give your 20-second final presentation to the group!"
             ]
           },
-          homework: "Exit ticket: Digital graduation selfie & final voice note: 'I speak English with Polyglot Map!'"
+          homework: "Exit ticket: Send a voice note: your full 30-second final presentation!"
         }
       }
     ]
@@ -1115,6 +1120,44 @@ const COURSES_DATA = [
       { session: 'Sesión 9', date: 'Martes 15 Dic', time: '7:00 - 8:30 p. m.', title: 'Apresentação de Projetos de Impacto', desc: 'Exposiciones orales de los estudiantes sobre proyectos o destinos de viaje con feedback docente.' },
       { session: 'Sesión 10', date: 'Jueves 17 Dic', time: '7:00 - 8:30 p. m.', title: 'Avaliação Final de Fluência & Certificação Future Ready', desc: 'Feedback individual de avance, desbloqueo de sellos de dominio y clausura del programa.' }
     ]
+  },
+  {
+    id: 'bootcamp-master-classes',
+    type: 'BOOTCAMP',
+    badgeText: 'BOOTCAMP ESPECIALIZADO',
+    badgeColor: 'bg-purple-100 text-purple-900 border-purple-300 font-black',
+    statusBadge: '🔒 BLOQUEADO',
+    statusBadgeColor: 'bg-rose-100 text-rose-700 border-rose-300 font-extrabold',
+    title: 'MASTER CLASSES',
+    country: 'Internacional',
+    flag: 'usa',
+    language: 'Inglés Avanzado',
+    scheduleDays: '30 NOV al 10 DIC · Sesiones Intensivas',
+    scheduleTime: 'Horario Especializado (Sesiones en Vivo)',
+    dateFrom: 'DEL',
+    dateMain: '30 NOV',
+    dateTo: 'AL 10 DIC',
+    flightCode: 'PM-MASTER-2026',
+    gate: 'Auditorio Magna VIP (Cupos Limitados)',
+    classLink: 'https://zoom.us',
+    streamLink: 'https://youtube.com/live',
+    registrationLink: 'https://forms.gle/SWoUAsxhEM1XbUDVA',
+    isLocked: true,
+    commitmentMessage: '🌟 <strong>¿Estás verdaderamente interesado y comprometido en asistir a todas las sesiones?</strong> Este Bootcamp Especializado de Master Classes es un programa exclusivo de alta exigencia para impulsar tu proyección internacional. Si asumes el compromiso total de asistencia:',
+    seatClass: 'Master Class Ejecutiva',
+    freeBadge: 'ACCESO POR SELECCIÓN',
+    spotsTotal: 25,
+    spotsLeft: 0,
+    description: 'Programa exclusivo de Master Classes en habilidades lingüísticas avanzadas, liderazgo profesional y networking global.',
+    instructor: 'Speakers Internacionales & Coaches Polyglot Map',
+    perks: ['Master Classes exclusivas', 'Networking global de alto nivel', 'Constancia de Especialización', 'Acceso restringido por postulación'],
+    syllabus: [
+      { session: 'Master Class 1', date: '30 Nov', time: 'En vivo', title: 'Global Leadership & Cross-Cultural Fluency', desc: 'Comunicación de alto impacto y liderazgo internacional.' },
+      { session: 'Master Class 2', date: '02 Dic', time: 'En vivo', title: 'High-Stakes Negotiations & Pitching', desc: 'Negociaciones estratégicas y presentaciones ejecutivas en inglés.' },
+      { session: 'Master Class 3', date: '04 Dic', time: 'En vivo', title: 'Global Networking & LinkedIn Authority', desc: 'Posicionamiento internacional y networking con ejecutivos.' },
+      { session: 'Master Class 4', date: '08 Dic', time: 'En vivo', title: 'Executive Fluency & Impromptu Speaking', desc: 'Oratoria persuasiva y fluidez bajo presión.' },
+      { session: 'Master Class 5', date: '10 Dic', time: 'En vivo', title: 'International Summit & Graduation', desc: 'Cumbre de clausura y graduación de Master Classes.' }
+    ]
   }
 ];
 
@@ -1314,28 +1357,50 @@ function renderCourses() {
               <span>📍 ${course.gate}</span>
             </div>
 
-            <!-- AVISO DE INSCRIPCIÓN Y CERTIFICACIÓN OFICIAL -->
-            <div class="mt-3.5 p-3 rounded-2xl bg-amber-50 border border-amber-200/80 text-left text-xs space-y-1.5" onclick="event.stopPropagation()">
-              <p class="text-amber-950 font-bold leading-snug">
-                ⚠️ <strong class="text-amber-900">¿Aún no estás inscrito?</strong> Solamente se dará constancia de participación / certificación a los que estén inscritos y cumplan con los requisitos del programa.
-              </p>
-              <div class="pt-0.5">
-                <a href="${course.registrationLink}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-black text-[#0f2d8a] hover:text-blue-700 hover:underline bg-white px-3 py-1.5 rounded-xl border border-amber-300 shadow-sm transition">
-                  <span>📝 Formulario de Inscripción Oficial aquí »</span>
-                </a>
+            <!-- AVISO DE INSCRIPCIÓN / COMPROMISO -->
+            ${course.isLocked ? `
+              <div class="mt-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-amber-50 border-2 border-indigo-200 text-left text-xs space-y-2" onclick="event.stopPropagation()">
+                <p class="text-indigo-950 font-bold leading-relaxed">
+                  🌟 <strong>¿Estás verdaderamente interesado y comprometido en asistir a todas las sesiones?</strong> Este Bootcamp Especializado de Master Classes es un programa exclusivo de alta exigencia. Si asumes el compromiso total de asistir a todas las clases:
+                </p>
+                <div class="pt-0.5">
+                  <a href="${course.registrationLink}" target="_blank" class="inline-flex items-center gap-2 text-xs font-black text-white bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 px-4 py-2 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                    <span>✍️ Inscríbete y Postula Aquí si estás comprometido »</span>
+                  </a>
+                </div>
               </div>
-            </div>
+            ` : `
+              <div class="mt-3.5 p-3 rounded-2xl bg-amber-50 border border-amber-200/80 text-left text-xs space-y-1.5" onclick="event.stopPropagation()">
+                <p class="text-amber-950 font-bold leading-snug">
+                  ⚠️ <strong class="text-amber-900">¿Aún no estás inscrito?</strong> Solamente se dará constancia de participación / certificación a los que estén inscritos y cumplan con los requisitos del programa.
+                </p>
+                <div class="pt-0.5">
+                  <a href="${course.registrationLink}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-black text-[#0f2d8a] hover:text-blue-700 hover:underline bg-white px-3 py-1.5 rounded-xl border border-amber-300 shadow-sm transition">
+                    <span>📝 Formulario de Inscripción Oficial aquí »</span>
+                  </a>
+                </div>
+              </div>
+            `}
 
           </div>
         </div>
 
-        <!-- Lado Derecho: Bloque Amarillo de Fecha del Flyer (Limpio, idéntico al flyer, sin botones) -->
+        <!-- Lado Derecho: Bloque de Fecha del Flyer -->
         <div class="flex items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-8">
-          <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform">
-            <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateFrom}</span>
-            <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1">${course.dateMain}</span>
-            <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateTo}</span>
-          </div>
+          ${course.isLocked ? `
+            <div class="bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-900 text-white font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-lg flex flex-col justify-center select-none border-2 border-yellow-400/40">
+              <span class="text-[10px] uppercase tracking-wider font-extrabold text-rose-300">🔒 BLOQUEADO</span>
+              <span class="text-xs uppercase tracking-wider font-black text-yellow-300 mt-1">${course.dateFrom}</span>
+              <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1 text-white">${course.dateMain}</span>
+              <span class="text-xs uppercase tracking-wider font-black text-yellow-300">${course.dateTo}</span>
+            </div>
+          ` : `
+            <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform">
+              <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateFrom}</span>
+              <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1">${course.dateMain}</span>
+              <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateTo}</span>
+            </div>
+          `}
         </div>
 
       </div>
@@ -1704,6 +1769,12 @@ function handleLockedExam() {
 
 // Click en toda la tarjeta del curso
 function handleCardClick(courseId) {
+  const course = COURSES_DATA.find(c => c.id === courseId);
+  if (course && course.isLocked) {
+    alert('🔒 BOOTCAMP ESPECIALIZADO BLOQUEADO\\n\\nEste programa exclusivo de Master Classes (30 Nov al 10 Dic) requiere compromiso total de asistencia. Si deseas participar, completa el formulario de postulación oficial.');
+    window.open(course.registrationLink, '_blank');
+    return;
+  }
   if (!currentUser) {
     handleStartJourneyClick(courseId);
   } else {
@@ -1824,7 +1895,7 @@ function openPassportModal() {
   if (passportContainer) {
     const booked = currentUser.bookedCourses || [];
     passportContainer.innerHTML = `
-      <div class="bg-gradient-to-br from-[#071330] via-[#0c2461] to-[#050e26] text-white p-6 sm:p-8 rounded-3xl border-2 border-[#ffd200]/40 shadow-2xl relative overflow-hidden">
+      <div class="bg-gradient-to-br from-[#0c2364] via-[#081b4f] to-[#040e2b] text-white p-6 sm:p-8 rounded-3xl border-2 border-[#ffd200]/50 shadow-2xl relative overflow-hidden">
         
         <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full border-8 border-yellow-400/10 flex items-center justify-center pointer-events-none text-9xl opacity-20">
           🌍
@@ -1832,9 +1903,9 @@ function openPassportModal() {
 
         <div class="flex items-center justify-between pb-6 border-b border-white/20">
           <div class="flex items-center gap-3">
-            <span class="text-3xl">🛂</span>
+            <img src="assets/polyglot-logo.png" alt="Polyglot Map" class="w-12 h-12 object-contain drop-shadow">
             <div>
-              <span class="text-xs font-mono tracking-widest text-[#ffd200] block">REPÚBLICA POLÍGLOTA • PASAPORTE DIGITAL</span>
+              <span class="text-xs font-mono tracking-widest text-[#ffd200] block font-bold">REPÚBLICA POLÍGLOTA • PASAPORTE DIGITAL</span>
               <h3 class="text-2xl font-black tracking-tight">PASAPORTE DE APRENDIZAJE</h3>
             </div>
           </div>
