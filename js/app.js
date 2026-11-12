@@ -1423,7 +1423,7 @@ const COURSES_DATA = [
     streamLink: 'https://youtube.com/live',
     registrationLink: 'https://forms.gle/SWoUAsxhEM1XbUDVA',
     isLocked: true,
-    commitmentMessage: '🌟 <strong>¿Estás verdaderamente interesado y comprometido en asistir a todas las sesiones?</strong> Este Bootcamp Especializado de Master Classes es un programa exclusivo de alta exigencia para impulsar tu proyección internacional. Si asumes el compromiso total de asistencia:',
+    commitmentMessage: 'ALTO COMPROMISO',
     seatClass: 'Master Class Ejecutiva',
     freeBadge: 'ACCESO POR SELECCIÓN',
     spotsTotal: 25,
@@ -1640,12 +1640,12 @@ function renderCourses() {
             <!-- AVISO DE INSCRIPCIÓN / COMPROMISO -->
             ${course.isLocked ? `
               <div class="mt-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-amber-50 border-2 border-indigo-200 text-left text-xs space-y-2" onclick="event.stopPropagation()">
-                <p class="text-indigo-950 font-bold leading-relaxed">
-                  🌟 <strong>¿Estás verdaderamente interesado y comprometido en asistir a todas las sesiones?</strong> Este Bootcamp Especializado de Master Classes es un programa exclusivo de alta exigencia. Si asumes el compromiso total de asistir a todas las clases:
+                <p class="text-indigo-950 font-black text-xs sm:text-sm tracking-wide uppercase flex items-center gap-1.5">
+                  <span>⭐</span> ALTO COMPROMISO
                 </p>
                 <div class="pt-0.5">
                   <a href="${course.registrationLink}" target="_blank" class="inline-flex items-center gap-2 text-xs font-black text-white bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 px-4 py-2 rounded-xl shadow-md transition transform hover:scale-[1.02]">
-                    <span>✍️ Inscríbete y Postula Aquí si estás comprometido »</span>
+                    <span>✍️ Inscríbete y Postula Aquí »</span>
                   </a>
                 </div>
               </div>
