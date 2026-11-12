@@ -484,14 +484,23 @@
           <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
             CONTRASEÑA (Lo mismo todo junto con minúscula)
           </label>
-          <input 
-            type="password" 
-            id="loginPassword" 
-            required 
-            placeholder="Ej. luciamendoza" 
-            autocomplete="current-password"
-            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
-          />
+          <div class="relative">
+            <input 
+              type="password" 
+              id="loginPassword" 
+              required 
+              placeholder="Ej. luciamendoza" 
+              autocomplete="current-password"
+              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 pr-11 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
+            />
+            <button 
+              type="button" 
+              onclick="togglePasswordVisibility('loginPassword', this)" 
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 text-slate-300 hover:text-yellow-300 transition-colors focus:outline-none text-base cursor-pointer"
+              title="Mostrar u ocultar contraseña">
+              👁️
+            </button>
+          </div>
         </div>
 
         <p id="passcodeError" class="hidden text-xs text-rose-300 bg-rose-950/40 border border-rose-500/40 p-2.5 rounded-xl font-semibold text-center">
@@ -589,7 +598,7 @@
 
   <!-- Base de datos de Estudiantes y Lógica Principal -->
   <script src="js/students-data.js"></script>
-  <script src="js/app.js?v=7"></script>
+  <script src="js/app.js?v=8"></script>
   <script>
     function handleQuickBookingSubmit() {
       const name = document.getElementById('quickName').value.trim() || 'Viajero Políglota';
@@ -597,6 +606,9 @@
       if (currentBookingCourse) {
         finalizeBooking(currentBookingCourse, name, contact);
       }
+    }
+  </script>
+
   <!-- BARRA FLOTANTE LATERAL DERECHA: REDES SOCIALES OFICIALES -->
   <aside aria-label="Redes Sociales Polyglot Map" class="fixed right-2 sm:right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2 bg-[#06143b]/95 backdrop-blur-md p-2 rounded-2xl border border-yellow-400/35 shadow-2xl">
     <span class="text-[9px] font-black uppercase text-[#ffd200] font-mono tracking-widest py-1 select-none [writing-mode:vertical-lr] rotate-180">

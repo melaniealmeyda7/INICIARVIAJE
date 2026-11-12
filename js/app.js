@@ -1068,16 +1068,156 @@ const COURSES_DATA = [
     instructor: 'Profesor Nativo de São Paulo',
     perks: ['Fonética brasileña guiada', 'Guía de expresiones cotidianas', 'Canciones y cultura carioca', 'Pasaporte con sello de Brasil'],
     syllabus: [
-      { session: 'Sesión 1', date: 'Martes 17 Nov', time: '7:00 - 8:00 p. m.', title: 'Fonética Brasileira: Sons Nasais e Alfabeto', desc: 'Diferencias fonéticas con el español, la tilde en ÃO, sonidos de la Ç, X y LH sin trabarse.' },
-      { session: 'Sesión 2', date: 'Jueves 19 Nov', time: '7:00 - 8:00 p. m.', title: 'Saudações, Apresentações e Nacionalidades', desc: 'Tudo bem? Tudo bom! Cumplidos brasileños, presentaciones y conjugación básica de verbos SER y ESTAR.' },
-      { session: 'Sesión 3', date: 'Martes 24 Nov', time: '7:00 - 8:00 p. m.', title: 'No Aeroporto de Guarulhos e Trânsito', desc: 'Vocabulario de aduana, pedir información, tomar Ubers y moverse por las grandes metrópolis de Brasil.' },
-      { session: 'Sesión 4', date: 'Jueves 26 Nov', time: '7:00 - 8:00 p. m.', title: 'Pousada, Hotel e Frases de Sobrevivência', desc: 'Hacer check-in en hoteles y posadas de playa, pedir cosas prestadas y cortesía brasileña.' },
-      { session: 'Sesión 5', date: 'Martes 01 Dic', time: '7:00 - 8:00 p. m.', title: 'Na Praia e no Restaurante Típico', desc: 'Pedir picanha, açaí, sucos naturais e pratos típicos. Diálogos reales en botecos y restaurantes.' },
-      { session: 'Sesión 6', date: 'Jueves 03 Dic', time: '7:00 - 8:00 p. m.', title: 'Compras, Dinheiro, Pagamentos e Números', desc: 'Cuánto cuesta (quanto custa?), cómo funciona el sistema PIX y comprar en ferias y shoppings.' },
-      { session: 'Sesión 7', date: 'Martes 08 Dic', time: '7:00 - 8:00 p. m.', title: 'Expressões Cotidianas e Gírias do Brasil', desc: 'Gírias populares: Legal, Beleza, Massa, Show de bola, Cara, Valeu y modismos regionales.' },
-      { session: 'Sesión 8', date: 'Jueves 10 Dic', time: '7:00 - 8:00 p. m.', title: 'Música, Cultura Carioca e Paulista', desc: 'Aprender vocabulario a través de la MPB, Bossa Nova y ritmos actuales para soltar el habla.' },
-      { session: 'Sesión 9', date: 'Martes 15 Dic', time: '7:00 - 8:00 p. m.', title: 'Simulação Real de Conversação e Viagem', desc: 'Práctica interactiva en vivo por parejas recreando situaciones reales de viaje en Brasil.' },
-      { session: 'Sesión 10', date: 'Jueves 17 Dic', time: '7:00 - 8:00 p. m.', title: 'Encerramento Future Ready & Conclusão', desc: 'Evaluación formativa, despedida con sellos para el pasaporte y consejos de continuidad.' }
+      {
+        session: 'Sesión 1',
+        date: 'Martes 17 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 1: Alfabeto, Fonética e Saudações',
+        desc: 'Hoje você conhece os sons do português e cumprimenta em português.',
+        pdfUrl: 'materials/portugues-cero-aula-01.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula01.pdf',
+        materials: {
+          tag: 'AULA 1 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 1: Alfabeto, Fonética e Saudações',
+          subtitle: 'Hoje você conhece os sons do português e cumprimenta em português.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 2',
+        date: 'Jueves 19 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 2: Apresentações: Ser, Estar, Nacionalidades e Profissões',
+        desc: 'Hoje você diz quem é, de onde é e o que faz.',
+        pdfUrl: 'materials/portugues-cero-aula-02.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula02.pdf',
+        materials: {
+          tag: 'AULA 2 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 2: Apresentações: Ser, Estar, Nacionalidades e Profissões',
+          subtitle: 'Hoje você diz quem é, de onde é e o que faz.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 3',
+        date: 'Martes 24 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 3: Informações Pessoais e Família: Ter, Possessivos e Descrições',
+        desc: 'Hoje você fala da sua família: quem são e quantos são.',
+        pdfUrl: 'materials/portugues-cero-aula-03.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula03.pdf',
+        materials: {
+          tag: 'AULA 3 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 3: Informações Pessoais e Família: Ter, Possessivos e Descrições',
+          subtitle: 'Hoje você fala da sua família: quem são e quantos são.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 4',
+        date: 'Jueves 26 Nov',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 4: Rotinas e Atividades: Presente do Indicativo e Frequência',
+        desc: 'Hoje você fala do que faz todos os dias.',
+        pdfUrl: 'materials/portugues-cero-aula-04.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula04.pdf',
+        materials: {
+          tag: 'AULA 4 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 4: Rotinas e Atividades: Presente do Indicativo e Frequência',
+          subtitle: 'Hoje você fala do que faz todos os dias.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 5',
+        date: 'Martes 01 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 5: Números, Datas e Horários',
+        desc: 'Hoje você conta, diz as datas e as horas.',
+        pdfUrl: 'materials/portugues-cero-aula-05.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula05.pdf',
+        materials: {
+          tag: 'AULA 5 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 5: Números, Datas e Horários',
+          subtitle: 'Hoje você conta, diz as datas e as horas.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 6',
+        date: 'Jueves 03 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 6: Alimentação e Preferências: Artigos, Gênero, Gostar e Preferir',
+        desc: 'Hoje você diz o que gosta e pede comida.',
+        pdfUrl: 'materials/portugues-cero-aula-06.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula06.pdf',
+        materials: {
+          tag: 'AULA 6 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 6: Alimentação e Preferências: Artigos, Gênero, Gostar e Preferir',
+          subtitle: 'Hoje você diz o que gosta e pede comida.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 7',
+        date: 'Martes 08 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 7: Minha Cidade: Lugares, Transportes, Preposições e Direções',
+        desc: 'Hoje você nomeia lugares e dá direções simples.',
+        pdfUrl: 'materials/portugues-cero-aula-07.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula07.pdf',
+        materials: {
+          tag: 'AULA 7 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 7: Minha Cidade: Lugares, Transportes, Preposições e Direções',
+          subtitle: 'Hoje você nomeia lugares e dá direções simples.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 8',
+        date: 'Jueves 10 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 8: Compras: Roupas, Cores, Preços e Expressões',
+        desc: 'Hoje você fala de roupas, cores e preços.',
+        pdfUrl: 'materials/portugues-cero-aula-08.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula08.pdf',
+        materials: {
+          tag: 'AULA 8 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 8: Compras: Roupas, Cores, Preços e Expressões',
+          subtitle: 'Hoje você fala de roupas, cores e preços.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 9',
+        date: 'Martes 15 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 9: Tempo Livre: Passatempos, Esportes, Gostos e Ir + Infinitivo',
+        desc: 'Hoje você fala dos seus passatempos e dos seus planos.',
+        pdfUrl: 'materials/portugues-cero-aula-09.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula09.pdf',
+        materials: {
+          tag: 'AULA 9 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 9: Tempo Livre: Passatempos, Esportes, Gostos e Ir + Infinitivo',
+          subtitle: 'Hoje você fala dos seus passatempos e dos seus planos.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 10',
+        date: 'Jueves 17 Dic',
+        time: '7:00 - 8:00 p. m.',
+        title: 'Aula 10: Descrição de Pessoas, Objetos e Lugares',
+        desc: 'Hoje você descreve pessoas, coisas e lugares.',
+        pdfUrl: 'materials/portugues-cero-aula-10.pdf',
+        pdfName: 'PolyglotMap-Portugues-do-Zero-Aula10.pdf',
+        materials: {
+          tag: 'AULA 10 DE 10 · PORTUGUÊS DO ZERO',
+          title: 'Aula 10: Descrição de Pessoas, Objetos e Lugares',
+          subtitle: 'Hoje você descreve pessoas, cosas e lugares.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      }
     ]
   },
   {
@@ -1109,16 +1249,156 @@ const COURSES_DATA = [
     instructor: 'Especialista en Lingüística Portuguesa',
     perks: ['Conversación y gramática aplicada', 'Casos prácticos de viaje y negocios', 'Módulo de 1.5 hrs intensivas', 'Sello Oficial de Inmigración Básico 2'],
     syllabus: [
-      { session: 'Sesión 1', date: 'Martes 17 Nov', time: '7:00 - 8:30 p. m.', title: 'Revisão e Diagnóstico: Pretérito Perfeito vs Imperfeito', desc: 'Dominio de los tiempos pasados en portugués, contraste con el portuñol y narración fluida.' },
-      { session: 'Sesión 2', date: 'Jueves 19 Nov', time: '7:00 - 8:30 p. m.', title: 'Storytelling: Vivências e Trajetórias', desc: 'Cómo contar tu historia personal y profesional en portugués con naturalidad y corrección gramatical.' },
-      { session: 'Sesión 3', date: 'Martes 24 Nov', time: '7:00 - 8:30 p. m.', title: 'Futuro do Presente e Planos de Carreira', desc: 'Proyecciones a futuro, vocabulario corporativo y metas personales en el mercado de Brasil.' },
-      { session: 'Sesión 4', date: 'Jueves 26 Nov', time: '7:00 - 8:30 p. m.', title: 'Comunicação Profissional e E-mails Corporativos', desc: 'Redacción de correos formales, vocabulario de LinkedIn en portugués y entrevistas laborales.' },
-      { session: 'Sesión 5', date: 'Martes 01 Dic', time: '7:00 - 8:30 p. m.', title: 'Expressando Opiniões e Debates Temáticos', desc: 'Conectores lógicos: porém, contudo, todavia, além disso. Debates sobre sociedad y cultura.' },
-      { session: 'Sesión 6', date: 'Jueves 03 Dic', time: '7:00 - 8:30 p. m.', title: 'Diversidade Linguística: Sotaques e Regionalismos', desc: 'Comprensión auditiva de sotaques del Nordeste, Minas Gerais, Rio y São Paulo.' },
-      { session: 'Sesión 7', date: 'Martes 08 Dic', time: '7:00 - 8:30 p. m.', title: 'Casos de Negócios e Networking Internacional', desc: 'Cultura empresarial brasileña, cómo cerrar tratos, reuniones virtuales y etiqueta comercial.' },
-      { session: 'Sesión 8', date: 'Jueves 10 Dic', time: '7:00 - 8:30 p. m.', title: 'Articulação Oral Rápida e Redução de Sotaque', desc: 'Ejercicios de articulación veloz, fluidez bajo presión y entonación nativa brasileña.' },
-      { session: 'Sesión 9', date: 'Martes 15 Dic', time: '7:00 - 8:30 p. m.', title: 'Apresentação de Projetos de Impacto', desc: 'Exposiciones orales de los estudiantes sobre proyectos o destinos de viaje con feedback docente.' },
-      { session: 'Sesión 10', date: 'Jueves 17 Dic', time: '7:00 - 8:30 p. m.', title: 'Avaliação Final de Fluência & Certificação Future Ready', desc: 'Feedback individual de avance, desbloqueo de sellos de dominio y clausura del programa.' }
+      {
+        session: 'Sesión 1',
+        date: 'Martes 17 Nov',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência',
+        desc: 'Meu dia a dia: Hoje você conta sua rotina com frases completas.',
+        pdfUrl: 'materials/portugues-basico2-aula-01.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula01.pdf',
+        materials: {
+          tag: 'AULA 1 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência',
+          subtitle: 'Meu dia a dia: Hoje você conta sua rotina com frases completas.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 2',
+        date: 'Jueves 19 Nov',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 2: Minhas Experiências Passadas: Ontem, Fim de Semana e Férias',
+        desc: 'O que eu fiz: Hoje você conta o que fez ontem e nas férias.',
+        pdfUrl: 'materials/portugues-basico2-aula-02.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula02.pdf',
+        materials: {
+          tag: 'AULA 2 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 2: Minhas Experiências Passadas: Ontem, Fim de Semana e Férias',
+          subtitle: 'O que eu fiz: Hoje você conta o que fez ontem e nas férias.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 3',
+        date: 'Martes 24 Nov',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 3: Minha Infância e Lembranças: Hábitos e Experiências do Passado',
+        desc: 'Minha infância: Hoje você conta como era sua infância.',
+        pdfUrl: 'materials/portugues-basico2-aula-03.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula03.pdf',
+        materials: {
+          tag: 'AULA 3 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 3: Minha Infância e Lembranças: Hábitos e Experiências do Passado',
+          subtitle: 'Minha infância: Hoje você conta como era sua infância.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 4',
+        date: 'Jueves 26 Nov',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 4: Meus Planos e Projetos: Desejos e Intenções para o Futuro',
+        desc: 'Meus planos: Hoje você fala dos seus planos e dos seus sonhos.',
+        pdfUrl: 'materials/portugues-basico2-aula-04.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula04.pdf',
+        materials: {
+          tag: 'AULA 4 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 4: Meus Planos e Projetos: Desejos e Intenções para o Futuro',
+          subtitle: 'Meus planos: Hoje você fala dos seus planos e dos seus sonhos.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 5',
+        date: 'Martes 01 Dic',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 5: Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares',
+        desc: 'Viagens e turismo: Hoje você planeja uma viagem e reserva um hotel.',
+        pdfUrl: 'materials/portugues-basico2-aula-05.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula05.pdf',
+        materials: {
+          tag: 'AULA 5 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 5: Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares',
+          subtitle: 'Viagens e turismo: Hoje você planeja uma viagem e reserva um hotel.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 6',
+        date: 'Jueves 03 Dic',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 6: No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências',
+        desc: 'No restaurante: Hoje você lê o cardápio, pede comida e pede a conta.',
+        pdfUrl: 'materials/portugues-basico2-aula-06.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula06.pdf',
+        materials: {
+          tag: 'AULA 6 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 6: No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências',
+          subtitle: 'No restaurante: Hoje você lê o cardápio, pede comida e pede a conta.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 7',
+        date: 'Martes 08 Dic',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 7: Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações',
+        desc: 'Saúde e bem-estar: Hoje você fala do corpo, de sintomas e de conselhos.',
+        pdfUrl: 'materials/portugues-basico2-aula-07.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula07.pdf',
+        materials: {
+          tag: 'AULA 7 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 7: Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações',
+          subtitle: 'Saúde e bem-estar: Hoje você fala do corpo, de sintomas e de conselhos.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 8',
+        date: 'Jueves 10 Dic',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 8: Trabalho e Profissões: Ocupações, Atividades e Experiências',
+        desc: 'Trabalho e profissões: Hoje você fala do seu trabalho e da sua experiência.',
+        pdfUrl: 'materials/portugues-basico2-aula-08.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula08.pdf',
+        materials: {
+          tag: 'AULA 8 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 8: Trabalho e Profissões: Ocupações, Atividades e Experiências',
+          subtitle: 'Trabalho e profissões: Hoje você fala do seu trabalho e da sua experiência.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 9',
+        date: 'Martes 15 Dic',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 9: Opiniões e Preferências: Gostos, Opiniões e Comparações',
+        desc: 'Minha opinião: Hoje você dá sua opinião e compara opções.',
+        pdfUrl: 'materials/portugues-basico2-aula-09.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula09.pdf',
+        materials: {
+          tag: 'AULA 9 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 9: Opiniões e Preferências: Gostos, Opiniões e Comparações',
+          subtitle: 'Minha opinião: Hoje você dá sua opinião e compara opções.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      },
+      {
+        session: 'Sesión 10',
+        date: 'Jueves 17 Dic',
+        time: '7:00 - 8:30 p. m.',
+        title: 'Aula 10: Situações da Vida Diária: Convites, Telefonemas e Pedidos',
+        desc: 'Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda.',
+        pdfUrl: 'materials/portugues-basico2-aula-10.pdf',
+        pdfName: 'PolyglotMap-Portugues-Basico2-Aula10.pdf',
+        materials: {
+          tag: 'AULA 10 DE 10 · PORTUGUÊS BÁSICO 2',
+          title: 'Aula 10: Situações da Vida Diária: Convites, Telefonemas e Pedidos',
+          subtitle: 'Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda.',
+          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+        }
+      }
     ]
   },
   {
@@ -2252,5 +2532,19 @@ function closeModal(id) {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
     document.body.style.overflow = 'auto';
+  }
+}
+
+
+// Función utilitaria para alternar la visibilidad de la contraseña en los formularios
+function togglePasswordVisibility(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  if (input.type === 'password') {
+    input.type = 'text';
+    if (btn) btn.innerHTML = '🙈';
+  } else {
+    input.type = 'password';
+    if (btn) btn.innerHTML = '👁️';
   }
 }

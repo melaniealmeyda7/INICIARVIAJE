@@ -102,7 +102,6 @@
             <option value="club-ingles-a2">🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)</option>
             <option value="bootcamp-portugues-cero">🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC)</option>
             <option value="bootcamp-portugues-basico2">🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC)</option>
-            <option value="bootcamp-master-classes">🔒 Master Classes Especializadas (DEL 30 NOV AL 10 DIC)</option>
           </select>
         </div>
 
@@ -178,15 +177,15 @@
         </div>
 
         <div class="space-y-2 pt-1">
-          <!-- Botón Principal: Entrar a la Clase -->
-          <a id="btnLiveClass" href="https://zoom.us" target="_blank" class="w-full bg-[#0c2364] hover:bg-[#144bd8] text-white font-bold py-2.5 px-3 rounded-xl text-xs text-center shadow transition-colors flex items-center justify-center gap-1.5">
-            <span>🔴 Entrar a la Clase »</span>
-          </a>
+          <!-- Botón Principal: Entrar a la Clase (Bloqueado Temporalmente) -->
+          <button id="btnLiveClass" onclick="showLockedClassMessage()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>🔒</span> Entrar a la Clase (Zoom)
+          </button>
 
-          <!-- Botón de Transmisión si se llena la sala -->
-          <a id="btnLiveStream" href="https://youtube.com/live" target="_blank" class="w-full bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold py-2 px-2.5 rounded-xl text-[11px] text-center border border-rose-200/80 transition-colors flex items-center justify-center gap-1.5 leading-tight">
-            <span>📺 ¿No pudiste ingresar porque se llenó la sala? Mira la transmisión en vivo »</span>
-          </a>
+          <!-- Botón de Transmisión si se llena la sala (Bloqueado Temporalmente) -->
+          <button id="btnLiveStream" onclick="showLockedClassMessage()" class="w-full bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold py-2 px-2.5 rounded-xl text-[11px] text-center border border-slate-200 transition-colors flex items-center justify-center gap-1.5 leading-tight cursor-pointer">
+            <span>🔒</span> Transmisión en Vivo (YouTube)
+          </button>
         </div>
       </div>
 
@@ -386,7 +385,7 @@
   <!-- MODAL: VISOR DE MATERIALES & DIAPOSITIVAS INTERACTIVAS                    -->
   <!-- ========================================================================= -->
   <div id="materialDetailModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="bg-white text-slate-900 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100 max-h-[90vh] flex flex-col">
+    <div class="bg-white text-slate-900 rounded-3xl max-w-5xl w-full p-5 sm:p-7 shadow-2xl relative my-6 border border-slate-100 max-h-[92vh] flex flex-col">
       
       <button onclick="closeModal('materialDetailModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 text-2xl font-black z-10 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center">
         ✕
@@ -443,14 +442,23 @@
           <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5 text-left">
             CONTRASEÑA (Lo mismo todo junto con minúscula)
           </label>
-          <input 
-            type="password" 
-            id="aulaLoginPassword" 
-            required 
-            placeholder="Ej. luciamendoza" 
-            autocomplete="current-password"
-            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
-          />
+          <div class="relative">
+            <input 
+              type="password" 
+              id="aulaLoginPassword" 
+              required 
+              placeholder="Ej. luciamendoza" 
+              autocomplete="current-password"
+              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 pr-11 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
+            />
+            <button 
+              type="button" 
+              onclick="togglePasswordVisibility('aulaLoginPassword', this)" 
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 text-slate-300 hover:text-yellow-300 transition-colors focus:outline-none text-base cursor-pointer"
+              title="Mostrar u ocultar contraseña">
+              👁️
+            </button>
+          </div>
         </div>
 
         <p id="aulaPasscodeError" class="hidden text-xs text-rose-300 bg-rose-950/40 border border-rose-500/40 p-2.5 rounded-xl font-semibold text-center">
@@ -484,7 +492,7 @@
 
   <!-- Scripts -->
   <script src="js/students-data.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=8"></script>
   <script>
     let currentAulaCourse = null;
 
@@ -557,7 +565,46 @@
       loadAulaForCourse(currentAulaCourse ? currentAulaCourse.id : 'bootcamp-ingles-cero');
     }
 
+    function updateCourseSelectOptions() {
+      const select = document.getElementById('courseSwitchSelect');
+      if (!select) return;
+      const isMelanie = currentUser && (
+        (currentUser.name && currentUser.name.toLowerCase().includes('melanie')) ||
+        (currentUser.email && currentUser.email.toLowerCase().includes('melaniealmeyda'))
+      );
+
+      const existingMaster = select.querySelector('option[value="bootcamp-master-classes"]');
+      if (isMelanie) {
+        if (!existingMaster) {
+          const opt = document.createElement('option');
+          opt.value = 'bootcamp-master-classes';
+          opt.textContent = '🔒 Master Classes Especializadas (DEL 30 NOV AL 10 DIC)';
+          select.appendChild(opt);
+        }
+      } else {
+        if (existingMaster) {
+          existingMaster.remove();
+        }
+      }
+    }
+
     function loadAulaForCourse(courseId) {
+      updateCourseSelectOptions();
+
+      // Restricción estricta de Master Classes: solo para Melanie Almeyda
+      if (courseId === 'bootcamp-master-classes') {
+        const isMelanie = currentUser && (
+          (currentUser.name && currentUser.name.toLowerCase().includes('melanie')) ||
+          (currentUser.email && currentUser.email.toLowerCase().includes('melaniealmeyda'))
+        );
+        if (!isMelanie) {
+          alert('🔒 Acceso Exclusivo y Restringido\n\nEl programa de Master Classes Especializadas cuenta con cupos reservados. Puedes postular desde el portal principal en el formulario oficial.');
+          courseId = 'bootcamp-ingles-cero';
+          const select = document.getElementById('courseSwitchSelect');
+          if (select) select.value = courseId;
+        }
+      }
+
       currentAulaCourse = COURSES_DATA.find(c => c.id === courseId) || COURSES_DATA[0];
       
       document.getElementById('dashCourseTitle').innerText = currentAulaCourse.title;
@@ -566,11 +613,6 @@
       document.getElementById('dashCourseSchedule').innerHTML = `
         📅 ${currentAulaCourse.scheduleDays} • 🕒 ${currentAulaCourse.scheduleTime} (Hora Peruana)
       `;
-      document.getElementById('btnLiveClass').href = currentAulaCourse.classLink || 'https://zoom.us';
-      const streamBtn = document.getElementById('btnLiveStream');
-      if (streamBtn) {
-        streamBtn.href = currentAulaCourse.streamLink || 'https://youtube.com/live';
-      }
 
       renderCleanFlyerSessions();
     }
@@ -656,14 +698,18 @@
               <button onclick="showLockedAttendanceMessage()" class="w-full md:w-36 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer">
                 <span>🔒</span> Asistencia
               </button>
-              <a href="${currentAulaCourse.classLink || 'https://zoom.us'}" target="_blank" class="w-full md:w-36 bg-slate-900 hover:bg-[#0c2364] text-[#ffd200] font-black py-2 px-3 rounded-xl text-xs text-center shadow transition-colors">
-                Entrar a Clase »
-              </a>
+              <button onclick="showLockedClassMessage()" class="w-full md:w-36 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer">
+                <span>🔒</span> Entrar a Clase
+              </button>
             </div>
 
           </div>
         `;
       }).join('');
+    }
+
+    function showLockedClassMessage() {
+      alert('🔒 Enlace a Clase en Vivo Temporalmente Bloqueado\n\nLa sala oficial de clase se habilitará automáticamente unos minutos antes del inicio programado de la sesión.');
     }
 
     function showLockedAttendanceMessage() {
@@ -721,15 +767,18 @@
       const course = COURSES_DATA.find(c => c.id === courseId) || currentAulaCourse;
       if (!course || !course.syllabus || !course.syllabus[sessionIdx]) return;
       const s = course.syllabus[sessionIdx];
-      const m = s.materials;
-      if (!m) return;
+      const m = s.materials || {
+        tag: s.session,
+        title: s.title,
+        subtitle: s.desc
+      };
 
       const modalContent = document.getElementById('materialModalContent');
       if (!modalContent) return;
 
       modalContent.innerHTML = `
         <!-- Encabezado de la Unidad -->
-        <div class="border-b border-slate-100 pb-5">
+        <div class="border-b border-slate-100 pb-4">
           <div class="flex items-center gap-2 flex-wrap mb-2">
             <span class="px-3 py-1 rounded-full text-xs font-black tracking-wide bg-[#e8f1ff] text-[#144bd8] uppercase">
               ${m.tag || s.session}
@@ -737,27 +786,56 @@
             <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
               📅 ${s.date}
             </span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-slate-100 text-slate-700">
+              🕒 ${s.time}
+            </span>
             ${s.recordingUrl ? `
               <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full text-xs font-black bg-amber-400 hover:bg-yellow-400 text-slate-950 transition flex items-center gap-1 shadow-sm">
-                <span>📹</span> Ver Grabación Drive (9 Nov) »
+                <span>📹</span> Ver Grabación Drive »
               </a>
             ` : ''}
           </div>
           <h2 class="text-2xl sm:text-3xl font-black text-[#0c2364]">
-            ${m.title}
+            ${m.title || s.title}
           </h2>
           <p class="text-sm text-slate-600 mt-1 font-medium">
             ${m.subtitle || s.desc}
           </p>
-          ${m.goldenRule ? `
-            <div class="mt-3 px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-950 font-bold text-xs flex items-center gap-2">
-              <span>⭐</span>
-              <span>${m.goldenRule}</span>
-            </div>
-          ` : ''}
         </div>
 
-        <!-- BANNER OFICIAL DE DESCARGA Y PROTECCIÓN LEGAL -->
+        <!-- VISOR OFICIAL DE PREVISUALIZACIÓN EN PDF (FORMATO PDF, NO TEXTO) -->
+        <div class="w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700/60 my-3">
+          <div class="bg-slate-950 px-4 py-2.5 flex items-center justify-between border-b border-white/10 flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+              <span class="text-xs font-mono text-slate-200 ml-2 font-bold flex items-center gap-1.5">
+                <span>📄 Visor Oficial de Diapositivas (Formato PDF)</span>
+              </span>
+            </div>
+            <span class="text-[11px] font-mono text-yellow-300 font-bold bg-yellow-400/10 border border-yellow-400/30 px-2.5 py-0.5 rounded-full">
+              ${s.pdfName || 'Material-Oficial.pdf'}
+            </span>
+          </div>
+          ${s.pdfUrl ? `
+            <div class="relative w-full bg-slate-800">
+              <iframe 
+                src="${s.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1" 
+                class="w-full h-[65vh] sm:h-[72vh] border-0 bg-slate-900" 
+                title="Previsualización de Material PDF">
+              </iframe>
+            </div>
+          ` : `
+            <div class="h-72 flex flex-col items-center justify-center text-slate-400 p-6 text-center">
+              <span class="text-4xl mb-3">📑</span>
+              <p class="text-base font-bold text-white">Previsualización de PDF en Preparación</p>
+              <p class="text-xs text-slate-300 mt-1 max-w-md">El documento oficial en PDF para esta fecha se activará antes del inicio de la sesión.</p>
+            </div>
+          `}
+        </div>
+
+        <!-- BANNER OFICIAL DE DESCARGA Y PROTECCIÓN LEGAL (ARTÍCULO 217 CÓDIGO PENAL) -->
         <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0c2364] to-[#07133b] text-white border-2 border-yellow-400/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="space-y-1.5 text-center sm:text-left flex-1">
             <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
@@ -770,7 +848,7 @@
             </p>
           </div>
           ${s.pdfUrl ? `
-            <a href="${s.pdfUrl}" download="${s.pdfName || 'Material-PolyglotMap.pdf'}" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black text-xs sm:text-sm shadow-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shrink-0 select-none">
+            <a href="${s.pdfUrl}" download="${s.pdfName || 'Material-PolyglotMap.pdf'}" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black text-xs sm:text-sm shadow-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shrink-0 select-none cursor-pointer">
               <span>📥</span> Descargar PDF Oficial
             </a>
           ` : `
@@ -780,145 +858,8 @@
           `}
         </div>
 
-        <!-- 1. OBJETIVOS DE LA SESIÓN -->
-        ${m.goals ? `
-          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
-              🎯 By the end of class, you will…
-            </h4>
-            <div class="grid sm:grid-cols-3 gap-3">
-              ${m.goals.map(g => `
-                <div class="p-3 bg-white rounded-xl border border-slate-100 text-xs text-slate-700 font-semibold shadow-xs">
-                  ${g}
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- 2. 12 WORDS FOR TODAY (VOCABULARIO) -->
-        ${m.vocabulary ? `
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <h4 class="text-xs font-black uppercase tracking-wider text-slate-700">
-                🔤 12 Words for today
-              </h4>
-              <span class="text-[11px] text-slate-500 font-medium">Challenge: use 3 words in one sentence</span>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              ${m.vocabulary.map(w => `
-                <div class="p-2.5 bg-slate-50 hover:bg-blue-50 text-center rounded-xl border border-slate-200 text-slate-900 font-bold text-xs transition">
-                  ${w}
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- 3. SAY IT LIKE THIS (KEY LANGUAGE) -->
-        ${m.keyLanguage ? `
-          <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100">
-            <h4 class="text-xs font-black uppercase tracking-wider text-indigo-900 mb-2">
-              💬 Key Language: Say it like this
-            </h4>
-            <div class="space-y-1.5 text-xs text-slate-800 font-medium">
-              ${m.keyLanguage.map(k => `
-                <div class="flex items-start gap-2 bg-white/80 p-2.5 rounded-xl border border-indigo-100/60 font-mono text-[11px]">
-                  <span class="text-indigo-600 font-bold">›</span>
-                  <span>${k}</span>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- 4. READING & DIALOGUE -->
-        ${m.reading ? `
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
-              📖 ${m.reading.title}
-            </h4>
-            <p class="text-xs text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-slate-100">
-              ${m.reading.content}
-            </p>
-          </div>
-        ` : ''}
-
-        ${m.dialogue ? `
-          <div class="p-4 rounded-2xl bg-blue-50/60 border border-blue-100">
-            <h4 class="text-xs font-black uppercase tracking-wider text-blue-900 mb-2">
-              🗣️ ${m.dialogue.title}
-            </h4>
-            <div class="space-y-2">
-              ${m.dialogue.lines.map(line => `
-                <div class="text-xs flex gap-2">
-                  <span class="font-black text-blue-800 w-16 shrink-0">${line.speaker}:</span>
-                  <span class="text-slate-800 bg-white px-3 py-1.5 rounded-xl shadow-xs border border-blue-100 flex-1">${line.text}</span>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        ${m.readingPassage ? `
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
-              🎙️ Passage: ${m.readingPassage.title}
-            </h4>
-            <p class="text-xs text-slate-700 leading-relaxed font-mono bg-white p-3 rounded-xl border border-slate-100">
-              ${m.readingPassage.content}
-            </p>
-          </div>
-        ` : ''}
-
-        <!-- 5. PRONUNCIATION & TONGUE TWISTERS -->
-        ${m.pronunciation ? `
-          <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100">
-            <h4 class="text-xs font-black uppercase tracking-wider text-emerald-900 mb-1">
-              🎧 Pronunciation Lab
-            </h4>
-            <p class="text-xs text-emerald-950 font-medium">
-              ${m.pronunciation}
-            </p>
-            ${m.tongueTwisters ? `
-              <div class="mt-3 space-y-1">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block">Say it fast:</span>
-                ${m.tongueTwisters.map(t => `
-                  <div class="p-2 bg-white rounded-lg border border-emerald-100 text-xs font-mono text-slate-800">
-                    ${t}
-                  </div>
-                `).join('')}
-              </div>
-            ` : ''}
-          </div>
-        ` : ''}
-
-        <!-- 6. BREAKOUT ACTIVITY & HOMEWORK -->
-        ${m.breakoutActivity ? `
-          <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-100">
-            <h4 class="text-xs font-black uppercase tracking-wider text-purple-900 mb-2">
-              👥 ${m.breakoutActivity.title}
-            </h4>
-            <ul class="space-y-1 text-xs text-purple-950">
-              ${m.breakoutActivity.tasks.map(t => `
-                <li class="flex items-start gap-2">
-                  <span class="text-purple-600 font-bold">✔</span>
-                  <span>${t}</span>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-        ` : ''}
-
-        ${m.homework ? `
-          <div class="p-4 rounded-2xl bg-yellow-50 border border-yellow-200 text-yellow-950 font-bold text-xs flex items-center gap-2">
-            <span>🚀</span>
-            <span>${m.homework}</span>
-          </div>
-        ` : ''}
-
         <!-- AVISO LEGAL Y DERECHOS DE AUTOR AL CIERRE -->
-        <div class="mt-4 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-center">
+        <div class="mt-2 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-center">
           <p class="text-xs text-amber-950 font-semibold leading-relaxed">
             ⚖️ <strong>Propiedad Intelectual Polyglot Map:</strong> Todos los derechos reservados. Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.
           </p>
@@ -932,6 +873,33 @@
       alert('🔒 Examen Final de Certificación BLOQUEADO\n\nEste examen se desbloqueará oficialmente en la semana final del bootcamp para los estudiantes que cuenten con el 80% o más de asistencia registrada en los formularios de Google oficiales.');
     }
   </script>
+
+    <!-- BARRA FLOTANTE LATERAL DERECHA: REDES SOCIALES OFICIALES -->
+  <aside aria-label="Redes Sociales Polyglot Map" class="fixed right-2 sm:right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2 bg-[#06143b]/95 backdrop-blur-md p-2 rounded-2xl border border-yellow-400/35 shadow-2xl">
+    <span class="text-[9px] font-black uppercase text-[#ffd200] font-mono tracking-widest py-1 select-none [writing-mode:vertical-lr] rotate-180">
+      SÍGUENOS
+    </span>
+    
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/polyglot_map/" target="_blank" rel="noopener noreferrer" title="Síguenos en Instagram @polyglot_map" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center text-lg shadow-md hover:scale-115 hover:rotate-6 transition-all duration-200">
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@polyglot_map?_t=zm-8swpmp3uer0&_r=1" target="_blank" rel="noopener noreferrer" title="Síguenos en TikTok @polyglot_map" class="w-9 h-9 rounded-xl bg-black text-white flex items-center justify-center text-lg shadow-md hover:scale-115 hover:-rotate-6 transition-all duration-200 border border-white/20">
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.85.12V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.49 6.27 6.27 0 0 0 1.87-4.49V8.58a8.28 8.28 0 0 0 4.9 1.57V6.69h-1z"/></svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@polyglot_map" target="_blank" rel="noopener noreferrer" title="Suscríbete en YouTube @polyglot_map" class="w-9 h-9 rounded-xl bg-[#ff0000] text-white flex items-center justify-center text-lg shadow-md hover:scale-115 hover:rotate-6 transition-all duration-200">
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/PolyglotMap8/" target="_blank" rel="noopener noreferrer" title="Síguenos en Facebook Polyglot Map" class="w-9 h-9 rounded-xl bg-[#1877f2] text-white flex items-center justify-center text-lg shadow-md hover:scale-115 hover:-rotate-6 transition-all duration-200">
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </aside>
 
   <!-- BOTÓN FLOTANTE INFERIOR DERECHO: SOPORTE TÉCNICO -->
   <div class="fixed bottom-5 right-5 z-40">
