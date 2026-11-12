@@ -274,6 +274,14 @@
         </div>
       </div>
 
+      <!-- AVISO LEGAL Y DERECHOS DE AUTOR -->
+      <div class="p-3.5 bg-blue-950/70 border border-yellow-400/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-100 shadow-sm">
+        <div class="flex items-center gap-2.5">
+          <span class="text-xl">⚖️</span>
+          <span><strong>Material Exclusivo Polyglot Map:</strong> Guías y diapositivas oficiales en PDF para estudiantes registrados. <strong>Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.</strong></span>
+        </div>
+      </div>
+
       <!-- CONTENEDOR DE TARJETAS DE SESIONES -->
       <div id="sessionsCardsContainer" class="space-y-4">
         <!-- Inyectado dinámicamente con estética limpia idéntica al flyer -->
@@ -629,6 +637,12 @@
                     </span>
                   `}
 
+                  ${item.pdfUrl ? `
+                    <a href="${item.pdfUrl}" download="${item.pdfName || 'Material-PolyglotMap.pdf'}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-black transition shadow-sm hover:scale-[1.02]">
+                      <span>📥</span> Descargar PDF »
+                    </a>
+                  ` : ''}
+
                   ${hasRec ? `
                     <a href="${item.recordingUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black transition shadow-sm border border-amber-500/40">
                       <span>📹</span> Ver Grabación Drive (${item.recordingDate || '09 Nov'}) »
@@ -639,6 +653,12 @@
                     </span>
                   `}
                 </div>
+
+                ${item.pdfUrl ? `
+                  <p class="text-[10px] text-slate-400 font-medium pt-1">
+                    ⚖️ Material protegido: Prohibida su distribución parcial o completa por derechos de Autor - Art. 217 Código Penal.
+                  </p>
+                ` : ''}
               </div>
 
             </div>
@@ -744,6 +764,29 @@
               <span>${m.goldenRule}</span>
             </div>
           ` : ''}
+        </div>
+
+        <!-- BANNER OFICIAL DE DESCARGA Y PROTECCIÓN LEGAL -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0c2364] to-[#07133b] text-white border-2 border-yellow-400/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="space-y-1.5 text-center sm:text-left flex-1">
+            <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+              <span class="text-xs font-mono font-black text-yellow-300 uppercase tracking-widest">Guía Oficial en PDF</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-600 text-white uppercase tracking-wider">Uso Personal Exclusivo</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-black text-white">Descarga el Material Original en Formato PDF</h3>
+            <p class="text-xs text-amber-200/95 font-semibold leading-relaxed">
+              ⚖️ <strong>Aviso Legal de Derechos de Autor:</strong> Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.
+            </p>
+          </div>
+          ${s.pdfUrl ? `
+            <a href="${s.pdfUrl}" download="${s.pdfName || 'Material-PolyglotMap.pdf'}" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black text-xs sm:text-sm shadow-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shrink-0 select-none">
+              <span>📥</span> Descargar PDF Oficial
+            </a>
+          ` : `
+            <span class="px-4 py-2 rounded-xl bg-white/10 text-slate-300 text-xs font-semibold border border-white/10 text-center">
+              📄 PDF en preparación
+            </span>
+          `}
         </div>
 
         <!-- 1. OBJETIVOS DE LA SESIÓN -->
@@ -882,6 +925,13 @@
             <span>${m.homework}</span>
           </div>
         ` : ''}
+
+        <!-- AVISO LEGAL Y DERECHOS DE AUTOR AL CIERRE -->
+        <div class="mt-4 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-center">
+          <p class="text-xs text-amber-950 font-semibold leading-relaxed">
+            ⚖️ <strong>Propiedad Intelectual Polyglot Map:</strong> Todos los derechos reservados. Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.
+          </p>
+        </div>
       `;
 
       openModal('materialDetailModal');

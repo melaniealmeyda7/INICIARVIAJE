@@ -41,6 +41,8 @@ const COURSES_DATA = [
         date: 'Miércoles 18 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'Hello! (Greetings & Introductions)',
+        pdfUrl: 'materials/ingles-cero-clase-01.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-01.pdf',
         desc: 'Today you say hello, say your name and ask how people are. The H sound phonetics and greetings.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 1 OF 10",
@@ -101,6 +103,8 @@ const COURSES_DATA = [
         date: 'Viernes 20 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'ABC and Numbers (Alphabet & 0–20)',
+        pdfUrl: 'materials/ingles-cero-clase-02.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-02.pdf',
         desc: 'Today you spell your name and say phone numbers. Vowel names and TH pronunciation.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 2 OF 10",
@@ -160,6 +164,8 @@ const COURSES_DATA = [
         date: 'Miércoles 25 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'Where are you from? (Countries & Nationalities)',
+        pdfUrl: 'materials/ingles-cero-clase-03.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-03.pdf',
         desc: 'Today you say where you are from and your nationality. B and V sounds distinction.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 3 OF 10",
@@ -219,6 +225,8 @@ const COURSES_DATA = [
         date: 'Viernes 27 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'My Family (Close & Extended Family)',
+        pdfUrl: 'materials/ingles-cero-clase-04.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-04.pdf',
         desc: 'Today you talk about your family: who they are and how many. The voiced TH sound.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 4 OF 10",
@@ -279,6 +287,8 @@ const COURSES_DATA = [
         date: 'Miércoles 02 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Colors and Things (Objects & Colors)',
+        pdfUrl: 'materials/ingles-cero-clase-05.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-05.pdf',
         desc: 'Today you name colors and objects around you. Articles a/an and S + consonant phonetics.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 5 OF 10",
@@ -339,6 +349,8 @@ const COURSES_DATA = [
         date: 'Viernes 04 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Days, Months and Time (Calendar & Clocks)',
+        pdfUrl: 'materials/ingles-cero-clase-06.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-06.pdf',
         desc: 'Today you say the day, the month and the time. Prepositions on/in/at and silent letters.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 6 OF 10",
@@ -398,6 +410,8 @@ const COURSES_DATA = [
         date: 'Miércoles 09 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'My Day (Daily Actions & Times)',
+        pdfUrl: 'materials/ingles-cero-clase-07.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-07.pdf',
         desc: 'Today you talk about what you do every day. Third person -S rule and daily verbs.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 7 OF 10",
@@ -456,6 +470,8 @@ const COURSES_DATA = [
         date: 'Viernes 11 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Food and Drinks (Likes & Ordering Polite)',
+        pdfUrl: 'materials/ingles-cero-clase-08.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-08.pdf',
         desc: 'Today you say what you like and order food. EE vs I phonetics and café dialogues.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 8 OF 10",
@@ -515,6 +531,8 @@ const COURSES_DATA = [
         date: 'Miércoles 16 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Places in Town (Locations & Directions)',
+        pdfUrl: 'materials/ingles-cero-clase-09.pdf',
+        pdfName: 'PolyglotMap-Ingles-Cero-Clase-09.pdf',
         desc: 'Today you name places and give simple directions. The English R sound and city prepositions.',
         materials: {
           tag: "ENGLISH FROM SCRATCH · CLASS 9 OF 10",
@@ -664,6 +682,8 @@ const COURSES_DATA = [
         date: 'Lunes 09 Nov',
         time: '10:00 - 11:00 a. m.',
         title: 'Amazing Daily Routines',
+        pdfUrl: 'materials/ingles-conversacional-unidad-01.pdf',
+        pdfName: 'PolyglotMap-Ingles-Conversacional-Unit-01.pdf',
         desc: 'Today you talk about your habits and discover your classmates’ routines. Adverbs of frequency (always, usually, sometimes, rarely, never) and -s endings.',
         recordingUrl: 'https://drive.google.com/file/d/18OG0Sd3kQ9txIXLkjfR-_cwxOBG2uowF/view?usp=sharing',
         recordingDate: '09 Noviembre 2026',
@@ -728,6 +748,8 @@ const COURSES_DATA = [
         date: 'Lunes 16 Nov',
         time: '10:00 - 11:00 a. m.',
         title: 'Food Around the World',
+        pdfUrl: 'materials/ingles-conversacional-unidad-02.pdf',
+        pdfName: 'PolyglotMap-Ingles-Conversacional-Unit-02.pdf',
         desc: 'Today you order, share your tastes and talk about food from your country. Asking for the bill and quantifiers.',
         materials: {
           tag: "ENGLISH A2 · UNIT 2 OF 6 · LET'S TALK!",
@@ -828,6 +850,8 @@ const COURSES_DATA = [
         date: 'Lunes 30 Nov',
         time: '10:00 - 11:00 a. m.',
         title: 'Technology and Me',
+        pdfUrl: 'materials/ingles-conversacional-unidad-04.pdf',
+        pdfName: 'PolyglotMap-Ingles-Conversacional-Unit-04.pdf',
         desc: 'Today you compare, give opinions and debate how technology changes our lives. Comparatives and superlatives.',
         materials: {
           tag: "ENGLISH A2 · UNIT 4 OF 6 · LET'S TALK!",
@@ -888,6 +912,8 @@ const COURSES_DATA = [
         date: 'Lunes 07 Dic',
         time: '10:00 - 11:00 a. m.',
         title: 'Work and Dream Jobs',
+        pdfUrl: 'materials/ingles-conversacional-unidad-05.pdf',
+        pdfName: 'PolyglotMap-Ingles-Conversacional-Unit-05.pdf',
         desc: 'Today you talk about jobs, skills and your plans for the future. Can/can’t pronunciation and job interview roleplay.',
         materials: {
           tag: "ENGLISH A2 · UNIT 5 OF 6 · LET'S TALK!",
@@ -950,6 +976,8 @@ const COURSES_DATA = [
         date: 'Lunes 14 Dic',
         time: '10:00 - 11:00 a. m.',
         title: 'Culture, Celebrations and Dreams',
+        pdfUrl: 'materials/ingles-conversacional-unidad-06.pdf',
+        pdfName: 'PolyglotMap-Ingles-Conversacional-Unit-06.pdf',
         desc: 'Today you share traditions, invite your classmates and review the whole course. Final presentations and closing.',
         materials: {
           tag: "ENGLISH A2 · UNIT 6 OF 6 · LET'S TALK!",
