@@ -2047,17 +2047,76 @@ function handleLockedExam() {
   alert('🔒 Examen Final Bloqueado: Este examen se habilitará oficialmente en la sesión 10 (última semana de clases) para los estudiantes que cuenten con el 100% de asistencia registrada.');
 }
 
+// Funciones de Control de Acceso Oficial
+function isMelanieUser(user) {
+  if (!user) return false;
+  const n = (user.name || '').toLowerCase();
+  const e = (user.email || '').toLowerCase();
+  return n.includes('melanie') || e.includes('melaniealmeyda');
+}
+
+function getEffectiveAllowedCourses(user) {
+  if (!user) return null;
+  if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
+    return user.allowedCourses;
+  }
+  if (isMelanieUser(user)) {
+    return [
+      'bootcamp-portugues-cero',
+      'bootcamp-portugues-basico2',
+      'bootcamp-ingles-cero',
+      'club-ingles-a2',
+      'bootcamp-master-classes'
+    ];
+  }
+  const n = (user.name || '').toLowerCase();
+  const e = (user.email || '').toLowerCase();
+  if (n.includes('viajero') || e.includes('viajero2026')) {
+    return [
+      'bootcamp-portugues-cero',
+      'bootcamp-portugues-basico2',
+      'bootcamp-ingles-cero',
+      'club-ingles-a2'
+    ];
+  }
+  // Todos los demás estudiantes registrados en la base de datos oficial aplican exclusivamente a Portugués
+  return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+}
+
+function userCanAccessCourse(courseId, user) {
+  if (courseId === 'bootcamp-master-classes') {
+    return isMelanieUser(user);
+  }
+  if (!user) {
+    return courseId !== 'bootcamp-master-classes';
+  }
+  const allowed = getEffectiveAllowedCourses(user);
+  return allowed ? allowed.includes(courseId) : true;
+}
+
 // Click en toda la tarjeta del curso
 function handleCardClick(courseId) {
   const course = COURSES_DATA.find(c => c.id === courseId);
-  if (course && course.isLocked) {
-    alert('🔒 BOOTCAMP ESPECIALIZADO BLOQUEADO\\n\\nEste programa exclusivo de Master Classes (30 Nov al 10 Dic) requiere compromiso total de asistencia. Si deseas participar, completa el formulario de postulación oficial.');
-    window.open(course.registrationLink, '_blank');
+  
+  if (course && course.isLocked && !isMelanieUser(currentUser)) {
+    alert('🔒 BOOTCAMP ESPECIALIZADO BLOQUEADO\n\nEste programa exclusivo de Master Classes (30 Nov al 10 Dic) requiere compromiso total de asistencia. Si deseas participar, completa el formulario de postulación oficial.');
+    if (course.registrationLink) {
+      window.open(course.registrationLink, '_blank');
+    }
     return;
   }
+
   if (!currentUser) {
     handleStartJourneyClick(courseId);
   } else {
+    // Validar si el estudiante está inscrito en este curso o si es exclusivo de portugués
+    if (!userCanAccessCourse(courseId, currentUser)) {
+      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu registro oficial en nuestra lista aplica únicamente a los Bootcamps de Portugués (Desde Cero y Básico 2).\n\nNo estás registrado(a) en el programa de ${course ? course.title : 'este curso'}. Si deseas participar, completa el formulario de inscripción correspondiente.`);
+      if (course && course.registrationLink) {
+        window.open(course.registrationLink, '_blank');
+      }
+      return;
+    }
     goToClassPanel(courseId);
   }
 }
@@ -2077,7 +2136,11 @@ function goToClassPanel(courseId) {
     handleStartJourneyClick(courseId);
     return;
   }
-  const targetId = courseId || (currentBookingCourse ? currentBookingCourse.id : 'bootcamp-ingles-cero');
+  let targetId = courseId;
+  const allowed = getEffectiveAllowedCourses(currentUser);
+  if (!targetId || !userCanAccessCourse(targetId, currentUser)) {
+    targetId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
+  }
   window.open(`aula.html?course=${targetId}`, '_blank');
 }
 
@@ -2128,23 +2191,47 @@ function handleLoginFormSubmit(e) {
 
   if (errorMsg) errorMsg.classList.add('hidden');
 
+  const allowed = auth.student.allowedCourses || getEffectiveAllowedCourses(auth.student) || ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+
+  // Generar pases de abordar únicamente para los cursos permitidos del estudiante
+  const defaultBooked = allowed.map(cid => {
+    const c = COURSES_DATA.find(x => x.id === cid);
+    if (!c) return null;
+    return {
+      courseId: c.id,
+      title: c.title,
+      flightCode: c.flightCode,
+      gate: c.gate,
+      seat: '07A',
+      dateText: `${c.dateMain} (${c.scheduleDays})`,
+      timeText: c.scheduleTime,
+      bookedAt: new Date().toLocaleDateString('es-PE'),
+      qrCodeData: `POLYGLOTMAP|${c.flightCode}|07A|${auth.student.passportNo || 'PM-2026'}`
+    };
+  }).filter(Boolean);
+
   saveUser({
     name: auth.student.name,
     email: auth.student.email,
     passportNo: auth.student.passportNo || 'PM-2026',
+    role: auth.student.role || 'Estudiante Inscrito · Portugués',
     miles: 2500,
     avatar: '👨‍✈️',
-    bookedCourses: currentUser ? currentUser.bookedCourses : []
+    allowedCourses: allowed,
+    bookedCourses: defaultBooked
   });
 
   closeModal('loginModal');
   triggerConfetti();
   alertNotification(`¡Bienvenido(a) ${auth.student.shortName || auth.student.name}! Acceso verificado.`);
   
-  // Abrir inmediatamente el Panel de Clases
+  // Abrir inmediatamente el Panel de Clases en su curso asignado
   setTimeout(() => {
-    const courseId = currentBookingCourse ? currentBookingCourse.id : 'bootcamp-ingles-cero';
-    window.open(`aula.html?course=${courseId}`, '_blank');
+    let targetCourseId = currentBookingCourse ? currentBookingCourse.id : null;
+    if (!targetCourseId || !allowed.includes(targetCourseId)) {
+      targetCourseId = allowed[0] || 'bootcamp-portugues-cero';
+    }
+    window.open(`aula.html?course=${targetCourseId}`, '_blank');
   }, 600);
 }
 
@@ -2299,10 +2386,35 @@ function setupCredentialGenerator() {
 
 function updateCredentialFromUser() {
   const nameInput = document.getElementById('credNameInput');
+  const courseSelect = document.getElementById('credCourseSelect');
+
   if (nameInput && currentUser && !nameInput.value) {
     nameInput.value = currentUser.name;
-    updateCredentialPreview();
   }
+
+  if (courseSelect && currentUser) {
+    const allowed = getEffectiveAllowedCourses(currentUser);
+    if (allowed && allowed.length > 0) {
+      if (!isMelanieUser(currentUser) && !allowed.includes('bootcamp-ingles-cero')) {
+        Array.from(courseSelect.options).forEach(opt => {
+          if (!allowed.includes(opt.value)) {
+            opt.disabled = true;
+            if (!opt.textContent.includes('🔒')) {
+              opt.textContent = '🔒 ' + opt.textContent + ' (No asignado)';
+            }
+          } else {
+            opt.disabled = false;
+            opt.textContent = opt.textContent.replace('🔒 ', '').replace(' (No asignado)', '');
+          }
+        });
+        if (!allowed.includes(courseSelect.value)) {
+          courseSelect.value = allowed[0];
+        }
+      }
+    }
+  }
+
+  updateCredentialPreview();
 }
 
 function handleCredentialPhotoUpload(e) {

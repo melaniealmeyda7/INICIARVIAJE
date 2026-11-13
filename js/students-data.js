@@ -1932,7 +1932,14 @@ function authenticateParticipant(usernameInput, passwordInput) {
         shortName: 'Melanie Almeyda',
         email: 'melanie@polyglotmap.com',
         role: 'Directora / Administradora Polyglot Map',
-        passportNo: 'PM-VIP-001'
+        passportNo: 'PM-VIP-001',
+        allowedCourses: [
+          'bootcamp-portugues-cero',
+          'bootcamp-portugues-basico2',
+          'bootcamp-ingles-cero',
+          'club-ingles-a2',
+          'bootcamp-master-classes'
+        ]
       }
     };
   }
@@ -1945,7 +1952,13 @@ function authenticateParticipant(usernameInput, passwordInput) {
         shortName: 'Viajero 2026',
         email: 'viajero2026@polyglotmap.com',
         role: 'Viajero Provisional',
-        passportNo: 'PM-2026'
+        passportNo: 'PM-2026',
+        allowedCourses: [
+          'bootcamp-portugues-cero',
+          'bootcamp-portugues-basico2',
+          'bootcamp-ingles-cero',
+          'club-ingles-a2'
+        ]
       }
     };
   }
@@ -1958,7 +1971,7 @@ function authenticateParticipant(usernameInput, passwordInput) {
     };
   }
 
-  // Buscar en la base de datos de estudiantes registrados
+  // Buscar en la base de datos de estudiantes registrados (Inscritos exclusivamente a Portugués)
   const match = STUDENTS_DATABASE.find(st => {
     if (st.p === pClean) return true;
     if (st.k && st.k.includes(pClean)) return true;
@@ -1975,8 +1988,12 @@ function authenticateParticipant(usernameInput, passwordInput) {
         name: match.n,
         shortName: match.u,
         email: match.e,
-        role: 'Viajero Registrado',
-        passportNo: 'PM-' + Math.abs(match.n.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0) % 9000 + 1000)
+        role: 'Estudiante Inscrito · Portugués',
+        passportNo: 'PM-' + Math.abs(match.n.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0) % 9000 + 1000),
+        allowedCourses: [
+          'bootcamp-portugues-cero',
+          'bootcamp-portugues-basico2'
+        ]
       }
     };
   }
@@ -1991,8 +2008,12 @@ function authenticateParticipant(usernameInput, passwordInput) {
         name: capitalized,
         shortName: words.slice(0, 2).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' '),
         email: uClean + '@polyglotmap.com',
-        role: 'Viajero Registrado',
-        passportNo: 'PM-' + Math.floor(1000 + Math.random() * 9000)
+        role: 'Estudiante Inscrito · Portugués',
+        passportNo: 'PM-' + Math.floor(1000 + Math.random() * 9000),
+        allowedCourses: [
+          'bootcamp-portugues-cero',
+          'bootcamp-portugues-basico2'
+        ]
       }
     };
   }

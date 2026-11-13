@@ -498,7 +498,24 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const courseId = urlParams.get('course') || 'bootcamp-ingles-cero';
+      let courseId = urlParams.get('course');
+
+      // Si el usuario está identificado, verificar sus cursos permitidos
+      if (currentUser) {
+        const allowed = getEffectiveAllowedCourses(currentUser);
+        if (allowed && allowed.length > 0) {
+          if (!courseId || !allowed.includes(courseId)) {
+            if (courseId && !allowed.includes(courseId)) {
+              alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial en nuestra lista aplica únicamente a los Bootcamps de Portugués (Desde Cero y Básico 2).\n\nNo estás registrado(a) en el programa de Inglés ni Master Classes.');
+            }
+            courseId = allowed[0];
+          }
+        }
+      } else {
+        courseId = courseId || 'bootcamp-portugues-cero';
+      }
+
+      updateCourseSelectOptions();
 
       const select = document.getElementById('courseSwitchSelect');
       if (select) {
@@ -545,13 +562,33 @@
 
       if (errorMsg) errorMsg.classList.add('hidden');
 
+      const allowed = auth.student.allowedCourses || getEffectiveAllowedCourses(auth.student) || ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+
+      const defaultBooked = allowed.map(cid => {
+        const c = COURSES_DATA.find(x => x.id === cid);
+        if (!c) return null;
+        return {
+          courseId: c.id,
+          title: c.title,
+          flightCode: c.flightCode,
+          gate: c.gate,
+          seat: '07A',
+          dateText: `${c.dateMain} (${c.scheduleDays})`,
+          timeText: c.scheduleTime,
+          bookedAt: new Date().toLocaleDateString('es-PE'),
+          qrCodeData: `POLYGLOTMAP|${c.flightCode}|07A|${auth.student.passportNo || 'PM-2026'}`
+        };
+      }).filter(Boolean);
+
       saveUser({
         name: auth.student.name,
         email: auth.student.email,
         passportNo: auth.student.passportNo || 'PM-2026',
+        role: auth.student.role || 'Estudiante Inscrito · Portugués',
         miles: 2500,
         avatar: '👨‍✈️',
-        bookedCourses: []
+        allowedCourses: allowed,
+        bookedCourses: defaultBooked
       });
 
       const attNameInput = document.getElementById('attFullName');
@@ -562,48 +599,64 @@
       closeModal('aulaAuthModal');
       triggerConfetti();
       alertNotification(`¡Bienvenido(a) ${auth.student.shortName || auth.student.name}! Acceso verificado.`);
-      loadAulaForCourse(currentAulaCourse ? currentAulaCourse.id : 'bootcamp-ingles-cero');
+
+      updateCourseSelectOptions();
+
+      let targetCourse = currentAulaCourse ? currentAulaCourse.id : null;
+      if (!targetCourse || !allowed.includes(targetCourse)) {
+        targetCourse = allowed[0] || 'bootcamp-portugues-cero';
+      }
+      loadAulaForCourse(targetCourse);
     }
 
     function updateCourseSelectOptions() {
       const select = document.getElementById('courseSwitchSelect');
       if (!select) return;
-      const isMelanie = currentUser && (
-        (currentUser.name && currentUser.name.toLowerCase().includes('melanie')) ||
-        (currentUser.email && currentUser.email.toLowerCase().includes('melaniealmeyda'))
-      );
 
-      const existingMaster = select.querySelector('option[value="bootcamp-master-classes"]');
-      if (isMelanie) {
-        if (!existingMaster) {
-          const opt = document.createElement('option');
-          opt.value = 'bootcamp-master-classes';
-          opt.textContent = '🔒 Master Classes Especializadas (DEL 30 NOV AL 10 DIC)';
-          select.appendChild(opt);
-        }
+      const ALL_OPTIONS = [
+        { id: 'bootcamp-portugues-cero', label: '🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC)' },
+        { id: 'bootcamp-portugues-basico2', label: '🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC)' },
+        { id: 'bootcamp-ingles-cero', label: '🇺🇸 Inglés desde cero (DEL 18 NOV AL 18 DIC)' },
+        { id: 'club-ingles-a2', label: '🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)' },
+        { id: 'bootcamp-master-classes', label: '🔒 Master Classes Especializadas (DEL 30 NOV AL 10 DIC)' }
+      ];
+
+      const allowed = currentUser ? getEffectiveAllowedCourses(currentUser) : null;
+      let visibleOptions;
+
+      if (currentUser && allowed) {
+        visibleOptions = ALL_OPTIONS.filter(opt => allowed.includes(opt.id));
       } else {
-        if (existingMaster) {
-          existingMaster.remove();
-        }
+        visibleOptions = ALL_OPTIONS.filter(opt => opt.id !== 'bootcamp-master-classes');
+      }
+
+      const currentVal = select.value;
+      select.innerHTML = visibleOptions.map(opt => `<option value="${opt.id}">${opt.label}</option>`).join('');
+
+      if (visibleOptions.some(opt => opt.id === currentVal)) {
+        select.value = currentVal;
+      } else if (visibleOptions.length > 0) {
+        select.value = visibleOptions[0].id;
       }
     }
 
     function loadAulaForCourse(courseId) {
-      updateCourseSelectOptions();
+      if (currentUser && !userCanAccessCourse(courseId, currentUser)) {
+        alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial aplica únicamente a los Bootcamps de Portugués (Desde Cero y Básico 2).\n\nNo estás inscrito(a) en el programa de Inglés ni Master Classes.');
+        const allowed = getEffectiveAllowedCourses(currentUser);
+        courseId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
+      }
 
       // Restricción estricta de Master Classes: solo para Melanie Almeyda
-      if (courseId === 'bootcamp-master-classes') {
-        const isMelanie = currentUser && (
-          (currentUser.name && currentUser.name.toLowerCase().includes('melanie')) ||
-          (currentUser.email && currentUser.email.toLowerCase().includes('melaniealmeyda'))
-        );
-        if (!isMelanie) {
-          alert('🔒 Acceso Exclusivo y Restringido\n\nEl programa de Master Classes Especializadas cuenta con cupos reservados. Puedes postular desde el portal principal en el formulario oficial.');
-          courseId = 'bootcamp-ingles-cero';
-          const select = document.getElementById('courseSwitchSelect');
-          if (select) select.value = courseId;
-        }
+      if (courseId === 'bootcamp-master-classes' && !isMelanieUser(currentUser)) {
+        alert('🔒 Acceso Exclusivo y Restringido\n\nEl programa de Master Classes Especializadas cuenta con cupos reservados. Puedes postular desde el portal principal en el formulario oficial.');
+        const allowed = getEffectiveAllowedCourses(currentUser);
+        courseId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
       }
+
+      updateCourseSelectOptions();
+      const select = document.getElementById('courseSwitchSelect');
+      if (select) select.value = courseId;
 
       currentAulaCourse = COURSES_DATA.find(c => c.id === courseId) || COURSES_DATA[0];
       
