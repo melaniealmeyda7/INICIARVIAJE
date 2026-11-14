@@ -506,7 +506,7 @@
         if (allowed && allowed.length > 0) {
           if (!courseId || !allowed.includes(courseId)) {
             if (courseId && !allowed.includes(courseId)) {
-              alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial en nuestra lista aplica únicamente a los Bootcamps de Portugués (Desde Cero y Básico 2).\n\nNo estás registrado(a) en el programa de Inglés ni Master Classes.');
+              alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial en nuestra lista aplica únicamente al Bootcamp de Portugués: Desde Cero.\n\nNo estás registrado(a) en este curso.');
             }
             courseId = allowed[0];
           }
@@ -562,7 +562,7 @@
 
       if (errorMsg) errorMsg.classList.add('hidden');
 
-      const allowed = auth.student.allowedCourses || getEffectiveAllowedCourses(auth.student) || ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+      const allowed = auth.student.allowedCourses || getEffectiveAllowedCourses(auth.student) || ['bootcamp-portugues-cero'];
 
       const defaultBooked = allowed.map(cid => {
         const c = COURSES_DATA.find(x => x.id === cid);
@@ -584,7 +584,7 @@
         name: auth.student.name,
         email: auth.student.email,
         passportNo: auth.student.passportNo || 'PM-2026',
-        role: auth.student.role || 'Estudiante Inscrito · Portugués',
+        role: auth.student.role || 'Estudiante Inscrito · Portugués Desde Cero',
         miles: 2500,
         avatar: '👨‍✈️',
         allowedCourses: allowed,
@@ -642,13 +642,13 @@
 
     function loadAulaForCourse(courseId) {
       if (currentUser && !userCanAccessCourse(courseId, currentUser)) {
-        alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial aplica únicamente a los Bootcamps de Portugués (Desde Cero y Básico 2).\n\nNo estás inscrito(a) en el programa de Inglés ni Master Classes.');
+        alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial aplica únicamente al Bootcamp de Portugués: Desde Cero.\n\nNo estás inscrito(a) en este curso.');
         const allowed = getEffectiveAllowedCourses(currentUser);
         courseId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
       }
 
-      // Restricción estricta de Master Classes: solo para Melanie Almeyda
-      if (courseId === 'bootcamp-master-classes' && !isMelanieUser(currentUser)) {
+      // Restricción estricta de Master Classes
+      if (courseId === 'bootcamp-master-classes' && !isSpecialAdminUser(currentUser)) {
         alert('🔒 Acceso Exclusivo y Restringido\n\nEl programa de Master Classes Especializadas cuenta con cupos reservados. Puedes postular desde el portal principal en el formulario oficial.');
         const allowed = getEffectiveAllowedCourses(currentUser);
         courseId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
@@ -888,27 +888,24 @@
           `}
         </div>
 
-        <!-- BANNER OFICIAL DE DESCARGA Y PROTECCIÓN LEGAL (ARTÍCULO 217 CÓDIGO PENAL) -->
+        <!-- BANNER OFICIAL DE SOLO VISUALIZACIÓN Y PROTECCIÓN LEGAL (ARTÍCULO 217 CÓDIGO PENAL) -->
         <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0c2364] to-[#07133b] text-white border-2 border-yellow-400/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="space-y-1.5 text-center sm:text-left flex-1">
             <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
               <span class="text-xs font-mono font-black text-yellow-300 uppercase tracking-widest">Guía Oficial en PDF</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-600 text-white uppercase tracking-wider">Uso Personal Exclusivo</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-600 text-white uppercase tracking-wider">👁️ Solo Visualización</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-600 text-white uppercase tracking-wider">Descarga No Habilitada</span>
             </div>
-            <h3 class="text-base sm:text-lg font-black text-white">Descarga el Material Original en Formato PDF</h3>
+            <h3 class="text-base sm:text-lg font-black text-white">Visor Protegido de Diapositivas Oficiales</h3>
             <p class="text-xs text-amber-200/95 font-semibold leading-relaxed">
-              ⚖️ <strong>Aviso Legal de Derechos de Autor:</strong> Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.
+              ⚖️ <strong>Aviso Legal de Derechos de Autor:</strong> Este material es de visualización exclusiva para los participantes del programa. Prohibida su descarga, copia o distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.
             </p>
           </div>
-          ${s.pdfUrl ? `
-            <a href="${s.pdfUrl}" download="${s.pdfName || 'Material-PolyglotMap.pdf'}" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black text-xs sm:text-sm shadow-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shrink-0 select-none cursor-pointer">
-              <span>📥</span> Descargar PDF Oficial
-            </a>
-          ` : `
-            <span class="px-4 py-2 rounded-xl bg-white/10 text-slate-300 text-xs font-semibold border border-white/10 text-center">
-              📄 PDF en preparación
+          <div class="shrink-0">
+            <span class="px-4 py-2.5 rounded-xl bg-white/10 text-yellow-300 text-xs font-bold border border-yellow-400/30 flex items-center gap-2 shadow-inner select-none">
+              <span>🔒</span> Modo Solo Visualización
             </span>
-          `}
+          </div>
         </div>
 
         <!-- AVISO LEGAL Y DERECHOS DE AUTOR AL CIERRE -->

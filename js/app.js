@@ -33,7 +33,7 @@ const COURSES_DATA = [
     spotsLeft: 7,
     description: 'Aprende los fundamentos del idioma inglés con metodología inmersiva natural de viaje: presentaciones, aeropuerto, hospedaje y conversaciones cotidianas.',
     instructor: 'Coach Bilingüe Polyglot Map',
-    perks: ['Clases en vivo', 'Material descargable PDF', 'Acceso a comunidad viajera', 'Certificado de asistencia'],
+    perks: ['Clases en vivo', 'Material de estudio en PDF (Visor oficial)', 'Acceso a comunidad viajera', 'Certificado de asistencia'],
     syllabus: [
       {
         session: 'Sesión 1',
@@ -2048,19 +2048,22 @@ function handleLockedExam() {
 }
 
 // Funciones de Control de Acceso Oficial
-function isMelanieUser(user) {
+function isSpecialAdminUser(user) {
   if (!user) return false;
   const n = (user.name || '').toLowerCase();
   const e = (user.email || '').toLowerCase();
-  return n.includes('melanie') || e.includes('melaniealmeyda');
+  return n.includes('melanie') || e.includes('melaniealmeyda') ||
+         n.includes('valeria') || e.includes('valeriavalenzuela') ||
+         n.includes('viajero') || e.includes('viajero2026') || e.includes('viajero');
+}
+
+function isMelanieUser(user) {
+  return isSpecialAdminUser(user);
 }
 
 function getEffectiveAllowedCourses(user) {
   if (!user) return null;
-  if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
-    return user.allowedCourses;
-  }
-  if (isMelanieUser(user)) {
+  if (isSpecialAdminUser(user)) {
     return [
       'bootcamp-portugues-cero',
       'bootcamp-portugues-basico2',
@@ -2069,36 +2072,32 @@ function getEffectiveAllowedCourses(user) {
       'bootcamp-master-classes'
     ];
   }
-  const n = (user.name || '').toLowerCase();
-  const e = (user.email || '').toLowerCase();
-  if (n.includes('viajero') || e.includes('viajero2026')) {
-    return [
-      'bootcamp-portugues-cero',
-      'bootcamp-portugues-basico2',
-      'bootcamp-ingles-cero',
-      'club-ingles-a2'
-    ];
+  if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
+    return user.allowedCourses;
   }
-  // Todos los demás estudiantes registrados en la base de datos oficial aplican exclusivamente a Portugués
-  return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+  // Todos los demás estudiantes registrados en la base de datos oficial aplican exclusivamente a Portugués Desde Cero
+  return ['bootcamp-portugues-cero'];
 }
 
 function userCanAccessCourse(courseId, user) {
+  if (isSpecialAdminUser(user)) {
+    return true;
+  }
   if (courseId === 'bootcamp-master-classes') {
-    return isMelanieUser(user);
+    return false;
   }
   if (!user) {
     return courseId !== 'bootcamp-master-classes';
   }
   const allowed = getEffectiveAllowedCourses(user);
-  return allowed ? allowed.includes(courseId) : true;
+  return allowed ? allowed.includes(courseId) : (courseId === 'bootcamp-portugues-cero');
 }
 
 // Click en toda la tarjeta del curso
 function handleCardClick(courseId) {
   const course = COURSES_DATA.find(c => c.id === courseId);
   
-  if (course && course.isLocked && !isMelanieUser(currentUser)) {
+  if (course && course.isLocked && !isSpecialAdminUser(currentUser)) {
     alert('🔒 BOOTCAMP ESPECIALIZADO BLOQUEADO\n\nEste programa exclusivo de Master Classes (30 Nov al 10 Dic) requiere compromiso total de asistencia. Si deseas participar, completa el formulario de postulación oficial.');
     if (course.registrationLink) {
       window.open(course.registrationLink, '_blank');
@@ -2109,9 +2108,9 @@ function handleCardClick(courseId) {
   if (!currentUser) {
     handleStartJourneyClick(courseId);
   } else {
-    // Validar si el estudiante está inscrito en este curso o si es exclusivo de portugués
+    // Validar si el estudiante está inscrito en este curso o si es exclusivo de Portugués Desde Cero
     if (!userCanAccessCourse(courseId, currentUser)) {
-      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu registro oficial en nuestra lista aplica únicamente a los Bootcamps de Portugués (Desde Cero y Básico 2).\n\nNo estás registrado(a) en el programa de ${course ? course.title : 'este curso'}. Si deseas participar, completa el formulario de inscripción correspondiente.`);
+      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu registro oficial en nuestra lista aplica únicamente al Bootcamp de Portugués: Desde Cero.\n\nNo estás registrado(a) en el programa de ${course ? course.title : 'este curso'}. Si deseas participar, completa el formulario oficial de inscripción.`);
       if (course && course.registrationLink) {
         window.open(course.registrationLink, '_blank');
       }
@@ -2191,7 +2190,7 @@ function handleLoginFormSubmit(e) {
 
   if (errorMsg) errorMsg.classList.add('hidden');
 
-  const allowed = auth.student.allowedCourses || getEffectiveAllowedCourses(auth.student) || ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+  const allowed = auth.student.allowedCourses || getEffectiveAllowedCourses(auth.student) || ['bootcamp-portugues-cero'];
 
   // Generar pases de abordar únicamente para los cursos permitidos del estudiante
   const defaultBooked = allowed.map(cid => {
@@ -2214,7 +2213,7 @@ function handleLoginFormSubmit(e) {
     name: auth.student.name,
     email: auth.student.email,
     passportNo: auth.student.passportNo || 'PM-2026',
-    role: auth.student.role || 'Estudiante Inscrito · Portugués',
+    role: auth.student.role || 'Estudiante Inscrito · Portugués Desde Cero',
     miles: 2500,
     avatar: '👨‍✈️',
     allowedCourses: allowed,

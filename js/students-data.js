@@ -1923,7 +1923,7 @@ function authenticateParticipant(usernameInput, passwordInput) {
     return { success: false, message: 'Ingresa un usuario y contraseña válidos.' };
   }
 
-  // Accesos Especiales Oficiales y Provisionales
+  // Accesos Especiales Oficiales y Provisionales (Acceso Total a Todos los Bootcamps)
   if (uClean === 'melaniealmeyda' && pClean === 'melaniealmeyda') {
     return {
       success: true,
@@ -1933,6 +1933,26 @@ function authenticateParticipant(usernameInput, passwordInput) {
         email: 'melanie@polyglotmap.com',
         role: 'Directora / Administradora Polyglot Map',
         passportNo: 'PM-VIP-001',
+        allowedCourses: [
+          'bootcamp-portugues-cero',
+          'bootcamp-portugues-basico2',
+          'bootcamp-ingles-cero',
+          'club-ingles-a2',
+          'bootcamp-master-classes'
+        ]
+      }
+    };
+  }
+
+  if (uClean === 'valeriavalenzuela' && pClean === 'valeriavalenzuela') {
+    return {
+      success: true,
+      student: {
+        name: 'Valeria Valenzuela',
+        shortName: 'Valeria Valenzuela',
+        email: 'valeria@polyglotmap.com',
+        role: 'Coordinadora / Administradora Polyglot Map',
+        passportNo: 'PM-VIP-002',
         allowedCourses: [
           'bootcamp-portugues-cero',
           'bootcamp-portugues-basico2',
@@ -1957,7 +1977,8 @@ function authenticateParticipant(usernameInput, passwordInput) {
           'bootcamp-portugues-cero',
           'bootcamp-portugues-basico2',
           'bootcamp-ingles-cero',
-          'club-ingles-a2'
+          'club-ingles-a2',
+          'bootcamp-master-classes'
         ]
       }
     };
@@ -1971,7 +1992,7 @@ function authenticateParticipant(usernameInput, passwordInput) {
     };
   }
 
-  // Buscar en la base de datos de estudiantes registrados (Inscritos exclusivamente a Portugués)
+  // Buscar en la base de datos de estudiantes registrados (Inscritos exclusivamente a Portugués Desde Cero)
   const match = STUDENTS_DATABASE.find(st => {
     if (st.p === pClean) return true;
     if (st.k && st.k.includes(pClean)) return true;
@@ -1988,11 +2009,10 @@ function authenticateParticipant(usernameInput, passwordInput) {
         name: match.n,
         shortName: match.u,
         email: match.e,
-        role: 'Estudiante Inscrito · Portugués',
+        role: 'Estudiante Inscrito · Portugués Desde Cero',
         passportNo: 'PM-' + Math.abs(match.n.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0) % 9000 + 1000),
         allowedCourses: [
-          'bootcamp-portugues-cero',
-          'bootcamp-portugues-basico2'
+          'bootcamp-portugues-cero'
         ]
       }
     };
@@ -2008,11 +2028,10 @@ function authenticateParticipant(usernameInput, passwordInput) {
         name: capitalized,
         shortName: words.slice(0, 2).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' '),
         email: uClean + '@polyglotmap.com',
-        role: 'Estudiante Inscrito · Portugués',
+        role: 'Estudiante Inscrito · Portugués Desde Cero',
         passportNo: 'PM-' + Math.floor(1000 + Math.random() * 9000),
         allowedCourses: [
-          'bootcamp-portugues-cero',
-          'bootcamp-portugues-basico2'
+          'bootcamp-portugues-cero'
         ]
       }
     };
