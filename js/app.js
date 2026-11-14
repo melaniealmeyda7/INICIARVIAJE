@@ -2093,6 +2093,15 @@ function userCanAccessCourse(courseId, user) {
   return allowed ? allowed.includes(courseId) : (courseId === 'bootcamp-portugues-cero');
 }
 
+function getCourseNamesList(courseIds) {
+  if (!courseIds || courseIds.length === 0) return 'tus cursos asignados';
+  const titles = courseIds.map(id => {
+    const c = COURSES_DATA.find(x => x.id === id);
+    return c ? c.title : id;
+  });
+  return titles.join(', ');
+}
+
 // Click en toda la tarjeta del curso
 function handleCardClick(courseId) {
   const course = COURSES_DATA.find(c => c.id === courseId);
@@ -2108,9 +2117,11 @@ function handleCardClick(courseId) {
   if (!currentUser) {
     handleStartJourneyClick(courseId);
   } else {
-    // Validar si el estudiante está inscrito en este curso o si es exclusivo de Portugués Desde Cero
+    // Validar si el estudiante está inscrito en este curso
     if (!userCanAccessCourse(courseId, currentUser)) {
-      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu registro oficial en nuestra lista aplica únicamente al Bootcamp de Portugués: Desde Cero.\n\nNo estás registrado(a) en el programa de ${course ? course.title : 'este curso'}. Si deseas participar, completa el formulario oficial de inscripción.`);
+      const allowed = getEffectiveAllowedCourses(currentUser) || [];
+      const myCourses = getCourseNamesList(allowed);
+      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu registro oficial en nuestra lista aplica a: ${myCourses}.\n\nNo estás registrado(a) en el programa de "${course ? course.title : 'este curso'}". Si deseas participar, completa el formulario oficial de inscripción.`);
       if (course && course.registrationLink) {
         window.open(course.registrationLink, '_blank');
       }
@@ -2394,7 +2405,7 @@ function updateCredentialFromUser() {
   if (courseSelect && currentUser) {
     const allowed = getEffectiveAllowedCourses(currentUser);
     if (allowed && allowed.length > 0) {
-      if (!isMelanieUser(currentUser) && !allowed.includes('bootcamp-ingles-cero')) {
+      if (!isSpecialAdminUser(currentUser)) {
         Array.from(courseSelect.options).forEach(opt => {
           if (!allowed.includes(opt.value)) {
             opt.disabled = true;

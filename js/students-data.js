@@ -4,6 +4,34 @@
  */
 
 const STUDENTS_DATABASE = [
+  // =========================================================================
+  // ESTUDIANTES OFICIALES INSCRITOS - PROGRAMA DE INGLÉS (NOVIEMBRE - DICIEMBRE 2026)
+  // =========================================================================
+  { n: "Harumy Regina Avendaño Cubas", u: "Harumy Avendaño", p: "harumyavendano", e: "harumyavendanocubas@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["harumyavendano", "harumyregina", "harumycubas", "reginaavendano", "reginacubas"] },
+  { n: "Janira Quispe C.", u: "Janira Quispe", p: "janiraquispe", e: "janira.qc.2702@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["janira", "janiraqc", "janiraquispe", "janiraq"] },
+  { n: "Melany Brigitt Ramirez Obregon", u: "Melany Ramirez", p: "melanyramirez", e: "melany.ramirez.o07@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["melanyramirez", "melanybrigitt", "melanyobregon", "brigittramirez", "brigittobregon"] },
+  { n: "Carlina Salazar Merchan", u: "Carlina Salazar", p: "carlinasalazar", e: "carolinasalazar2909@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["carlinasalazar", "carolinasalazar", "carlinamerchan", "carolinamerchan", "salazarmerchan"] },
+  { n: "Deisy Jasmin Apaza Puma", u: "Deisy Apaza", p: "deisyapaza", e: "deisy.apaza.puma@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["deisyapaza", "deisyjasmin", "deisypuma", "jasminapaza", "jasminpuma"] },
+  { n: "Stephany Méndez", u: "Stephany Méndez", p: "stephanymendez", e: "stephanymendez3101@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["stephanymendez", "stephanymendez3101"] },
+  { n: "GILLIAN YESSICA BALTAZAR SEMINARIO", u: "Gillian Baltazar", p: "gillianbaltazar", e: "gillianbs30@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["gillianbaltazar", "gillianyessica", "gillianseminario", "yessicabaltazar", "yessicaseminario"] },
+  { n: "CATHIA NATHALY HUARIPATA MINCHÁN", u: "Cathia Huaripata", p: "cathiahuaripata", e: "chuaripatam20_2@unc.edu.pe", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["cathiahuaripata", "cathianathaly", "cathiaminchan", "nathalyhuaripata", "nathalyminchan"] },
+  { n: "Michell Karolay Arroyo Julca", u: "Michell Arroyo", p: "michellarroyo", e: "mishell.agro1@gmail.com", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["michellarroyo", "mishellarroyo", "michellkarolay", "michelljulca", "karolayarroyo", "karolayjulca"] },
+  { n: "Xavier Fidel Dueñas Sixto", u: "Xavier Dueñas", p: "xavierduenas", e: "xavier.duenas.s2025@gmail.com", dni: "74064699", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["xavierduenas", "xavierfidel", "xaviersixto", "fidelduenas", "fidelsixto", "74064699"] },
+  { n: "José Carlos Rondán Rodríguez", u: "José Rondán", p: "joserondan", e: "jose22rondan@gmail.com", dni: "74719288", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["joserondan", "josecarlos", "joserodriguez", "carlosrondan", "carlosrodriguez", "74719288"] },
+  { n: "Jade Sevilla Vasquez", u: "Jade Sevilla", p: "jadesevilla", e: "sevillajade2610@gmail.com", dni: "72541344", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["jadesevilla", "jadevasquez", "sevillavasquez", "72541344"] },
+  { n: "Carlos Daniel Huaman Saguma", u: "Carlos Huaman", p: "carloshuaman", e: "carlos.huamans@unmsm.edu.pe", dni: "60426463", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["carloshuaman", "carlosdaniel", "carlossaguma", "danielhuaman", "danielsaguma", "60426463"] },
+  { n: "Santa Dimas Zapata", u: "Santa Dimas", p: "santadimas", e: "santazapata.29@gmail.com", dni: "75487188", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["santadimas", "santazapata", "dimaszapata", "75487188"] },
+  { n: "Kiara Mirella Ramos Huera", u: "Kiara Ramos", p: "kiararamos", e: "kiara.ramos@unmsm.edu.pe", dni: "77030285", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["kiararamos", "kiaramirella", "kiarahuera", "mirellaramos", "mirellahuera", "77030285"] },
+  { n: "NATALI ERIKA PAQUIYAURI LLALLAHUI", u: "Natali Paquiyauri", p: "natalipaquiyauri", e: "08enatali08@gmail.com", dni: "70231817", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["natalipaquiyauri", "natalierika", "natalillallahui", "erikapaquiyauri", "erikallallahui", "70231817"] },
+  { n: "PAULETTE FAUSTINA ROJAS LOPEZ", u: "Paulette Rojas", p: "pauletterojas", e: "62426628@continental.edu.pe", dni: "62426628", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["pauletterojas", "paulettefaustina", "paulettelopez", "faustinarojas", "faustinalopez", "62426628"] },
+  { n: "Celeste Guadalupe Gutierrez Urapari", u: "Celeste Gutierrez", p: "celestegutierrez", e: "celestegutierrez1612@gmail.com", dni: "72883841", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["celestegutierrez", "celesteguadalupe", "celesteurapari", "guadalupegutierrez", "guadalupeurapari", "72883841"] },
+  { n: "Nikole Esthefany Gomez Basilio", u: "Nikole Gomez", p: "nikolegomez", e: "nikolegomez.negb@gmail.com", dni: "70510075", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["nikolegomez", "nikoleesthefany", "nikolebasilio", "esthefanygomez", "esthefanybasilio", "70510075"] },
+  { n: "María Fernanda Romero Povis", u: "María Romero", p: "mariaromero", e: "fernandaromerokae@gmail.com", dni: "61938787", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["mariaromero", "mariafernanda", "mariapovis", "fernandaromero", "fernandapovis", "61938787"] },
+  { n: "Katy Rosa Huamani Mamani", u: "Katy Huamani", p: "katyhuamani", e: "huamanikaty3001@gmail.com", dni: "61759659", lang: "ingles", courses: ["bootcamp-ingles-cero", "club-ingles-a2"], role: "Estudiante Inscrito · Inglés", k: ["katyhuamani", "katyrosa", "katymamani", "rosahuamani", "rosamamani", "61759659"] },
+
+  // =========================================================================
+  // ESTUDIANTES OFICIALES INSCRITOS - PROGRAMA DE PORTUGUÉS
+  // =========================================================================
   { n: "Isabel Kiomi Requena Chino", u: "Isabel Requena", p: "isabelrequena", e: "isakiomy09@gmail.com", k: ["isabelrequena", "isabelkiomi", "isabelchino", "kiomirequena"] },
   { n: "NALDO AUBER PEÑA MANOSALVA", u: "NALDO PEÑA", p: "naldopena", e: "naldo.pema@gmail.com", k: ["naldopena", "naldoauber", "naldomanosalva", "auberpena"] },
   { n: "Maria de los Angeles Avendaño Trujillo", u: "Maria Avendaño", p: "mariaavendano", e: "angelesavendanotr@gmail.com", k: ["mariaavendano", "mariatrujillo"] },
@@ -2003,17 +2031,19 @@ function authenticateParticipant(usernameInput, passwordInput) {
   });
 
   if (match) {
+    const isEnglish = match.lang === 'ingles';
+    const studentCourses = match.courses || (isEnglish ? ['bootcamp-ingles-cero', 'club-ingles-a2'] : ['bootcamp-portugues-cero']);
+    const studentRole = match.role || (isEnglish ? 'Estudiante Inscrito · Inglés' : 'Estudiante Inscrito · Portugués Desde Cero');
+
     return {
       success: true,
       student: {
         name: match.n,
         shortName: match.u,
         email: match.e,
-        role: 'Estudiante Inscrito · Portugués Desde Cero',
+        role: studentRole,
         passportNo: 'PM-' + Math.abs(match.n.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0) % 9000 + 1000),
-        allowedCourses: [
-          'bootcamp-portugues-cero'
-        ]
+        allowedCourses: studentCourses
       }
     };
   }

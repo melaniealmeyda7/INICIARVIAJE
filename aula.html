@@ -506,13 +506,14 @@
         if (allowed && allowed.length > 0) {
           if (!courseId || !allowed.includes(courseId)) {
             if (courseId && !allowed.includes(courseId)) {
-              alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial en nuestra lista aplica únicamente al Bootcamp de Portugués: Desde Cero.\n\nNo estás registrado(a) en este curso.');
+              const myCourses = typeof getCourseNamesList === 'function' ? getCourseNamesList(allowed) : 'tus cursos asignados';
+              alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial en nuestra lista aplica a: ' + myCourses + '.\n\nNo estás registrado(a) en este curso.');
             }
             courseId = allowed[0];
           }
         }
       } else {
-        courseId = courseId || 'bootcamp-portugues-cero';
+        courseId = courseId || 'bootcamp-ingles-cero';
       }
 
       updateCourseSelectOptions();
@@ -642,9 +643,10 @@
 
     function loadAulaForCourse(courseId) {
       if (currentUser && !userCanAccessCourse(courseId, currentUser)) {
-        alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial aplica únicamente al Bootcamp de Portugués: Desde Cero.\n\nNo estás inscrito(a) en este curso.');
         const allowed = getEffectiveAllowedCourses(currentUser);
-        courseId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
+        const myCourses = typeof getCourseNamesList === 'function' ? getCourseNamesList(allowed) : 'tus cursos asignados';
+        alert('🔒 Curso No Asignado\n\nHola ' + currentUser.name + ': Tu registro oficial aplica a: ' + myCourses + '.\n\nNo estás inscrito(a) en este curso.');
+        courseId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-ingles-cero';
       }
 
       // Restricción estricta de Master Classes
