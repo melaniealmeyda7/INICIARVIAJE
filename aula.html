@@ -506,6 +506,12 @@
       const urlParams = new URLSearchParams(window.location.search);
       let courseId = urlParams.get('course');
 
+      // Si el usuario es la Docente Patricia, redirigir a su Dashboard Exclusivo
+      if (currentUser && typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
+        window.location.replace('docente.html');
+        return;
+      }
+
       // Si el usuario está identificado, verificar sus cursos permitidos
       if (currentUser) {
         const allowed = getEffectiveAllowedCourses(currentUser);
@@ -729,28 +735,15 @@
 
                 <!-- Espacios de Materiales y Grabación según fecha -->
                 <div class="flex items-center gap-2 flex-wrap pt-2 text-xs">
-                  ${(() => {
-                    const canView = typeof canUserViewMaterials === 'function' ? canUserViewMaterials(currentUser) : false;
-                    if (hasMat && canView) {
-                      return `
-                        <button onclick="openMaterialModal('${currentAulaCourse.id}', ${idx})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow-sm hover:scale-[1.02] cursor-pointer">
-                          <span>📖</span> Previsualizar Material / Diapositivas »
-                        </button>
-                      `;
-                    } else if (hasMat) {
-                      return `
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-500 font-semibold border border-slate-200" title="Las diapositivas oficiales se activarán durante la sesión de clase en vivo">
-                          <span>🔒</span> Diapositivas Oficiales (Activación en Clase)
-                        </span>
-                      `;
-                    } else {
-                      return `
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200">
-                          <span>📄</span> Material en Preparación
-                        </span>
-                      `;
-                    }
-                  })()}
+                  ${hasMat ? `
+                    <button onclick="openMaterialModal('${currentAulaCourse.id}', ${idx})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow-sm hover:scale-[1.02] cursor-pointer">
+                      <span>📖</span> Previsualizar Material / Diapositivas »
+                    </button>
+                  ` : `
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200">
+                      <span>📄</span> Material en Preparación
+                    </span>
+                  `}
 
                   <button onclick="showLockedRecordingMessage()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200 hover:bg-slate-200 transition">
                     <span>🔒</span> Grabación (Bloqueada)
@@ -872,11 +865,6 @@
     }
 
     function openMaterialModal(courseId, sessionIdx) {
-      if (typeof canUserViewMaterials === 'function' && !canUserViewMaterials(currentUser)) {
-        alert('🔒 Material en Preparación\n\nLas diapositivas y materiales oficiales se habilitarán para los alumnos durante la sesión de clase en vivo.');
-        return;
-      }
-
       const course = COURSES_DATA.find(c => c.id === courseId) || currentAulaCourse;
       if (!course || !course.syllabus || !course.syllabus[sessionIdx]) return;
       const s = course.syllabus[sessionIdx];

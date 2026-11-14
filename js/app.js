@@ -1550,6 +1550,19 @@ function updateUIForUser() {
     if (aulaNavBtn) {
       aulaNavBtn.classList.remove('hidden');
       aulaNavBtn.classList.add('inline-flex');
+      if (typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
+        aulaNavBtn.href = 'docente.html';
+        aulaNavBtn.innerHTML = `
+          <span>💼</span>
+          <span>Panel Docente</span>
+        `;
+      } else {
+        aulaNavBtn.href = 'aula.html';
+        aulaNavBtn.innerHTML = `
+          <span>🎒</span>
+          <span>Mi Aula Virtual</span>
+        `;
+      }
     }
 
     authBtn.innerHTML = `
@@ -2160,10 +2173,14 @@ function handleStartJourneyClick(courseId) {
   openModal('loginModal');
 }
 
-// Ir al Panel de Clases (aula.html) en pestaña completa
+// Ir al Panel de Clases (aula.html para alumnos / docente.html para docentes) en pestaña completa
 function goToClassPanel(courseId) {
   if (!currentUser) {
     handleStartJourneyClick(courseId);
+    return;
+  }
+  if (typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
+    window.open('docente.html', '_blank');
     return;
   }
   let targetId = courseId;
@@ -2255,8 +2272,12 @@ function handleLoginFormSubmit(e) {
   triggerConfetti();
   alertNotification(`¡Bienvenido(a) ${auth.student.shortName || auth.student.name}! Acceso verificado.`);
   
-  // Abrir inmediatamente el Panel de Clases en su curso asignado
+  // Abrir inmediatamente el Panel correspondiente (docente.html para docente Patricia / aula.html para estudiantes)
   setTimeout(() => {
+    if (typeof isDocentePatricia === 'function' && isDocentePatricia(auth.student)) {
+      window.open('docente.html', '_blank');
+      return;
+    }
     let targetCourseId = currentBookingCourse ? currentBookingCourse.id : null;
     if (!targetCourseId || !allowed.includes(targetCourseId)) {
       targetCourseId = allowed[0] || 'bootcamp-portugues-cero';
