@@ -1951,7 +1951,25 @@ function authenticateParticipant(usernameInput, passwordInput) {
     return { success: false, message: 'Ingresa un usuario y contraseña válidos.' };
   }
 
-  // Accesos Especiales Oficiales y Provisionales (Acceso Total a Todos los Bootcamps)
+  // Docente Patricia (Acceso Exclusivo a Portugués Desde Cero)
+  if ((uClean === 'patricia' || uClean === 'docentepatricia' || uClean === 'profesorapatricia') &&
+      (pClean === 'patricia' || pClean === 'docentepatricia' || pClean === 'profesorapatricia')) {
+    return {
+      success: true,
+      student: {
+        name: 'Docente Patricia',
+        shortName: 'Docente Patricia',
+        email: 'patricia@polyglotmap.com',
+        role: 'Docente · Portugués Desde Cero',
+        passportNo: 'PM-DOC-001',
+        allowedCourses: [
+          'bootcamp-portugues-cero'
+        ]
+      }
+    };
+  }
+
+  // Melanie Almeyda (Acceso Exclusivo a Portugués Desde Cero)
   if (uClean === 'melaniealmeyda' && pClean === 'melaniealmeyda') {
     return {
       success: true,
@@ -1962,11 +1980,7 @@ function authenticateParticipant(usernameInput, passwordInput) {
         role: 'Directora / Administradora Polyglot Map',
         passportNo: 'PM-VIP-001',
         allowedCourses: [
-          'bootcamp-portugues-cero',
-          'bootcamp-portugues-basico2',
-          'bootcamp-ingles-cero',
-          'club-ingles-a2',
-          'bootcamp-master-classes'
+          'bootcamp-portugues-cero'
         ]
       }
     };

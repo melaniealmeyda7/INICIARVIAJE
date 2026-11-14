@@ -2052,8 +2052,7 @@ function isSpecialAdminUser(user) {
   if (!user) return false;
   const n = (user.name || '').toLowerCase();
   const e = (user.email || '').toLowerCase();
-  return n.includes('melanie') || e.includes('melaniealmeyda') ||
-         n.includes('valeria') || e.includes('valeriavalenzuela') ||
+  return n.includes('valeria') || e.includes('valeriavalenzuela') ||
          n.includes('viajero') || e.includes('viajero2026') || e.includes('viajero');
 }
 
@@ -2071,6 +2070,11 @@ function getEffectiveAllowedCourses(user) {
       'club-ingles-a2',
       'bootcamp-master-classes'
     ];
+  }
+  const n = (user.name || '').toLowerCase();
+  const e = (user.email || '').toLowerCase();
+  if (n.includes('melanie') || e.includes('melaniealmeyda') || n.includes('patricia') || e.includes('patricia')) {
+    return ['bootcamp-portugues-cero'];
   }
   if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
     return user.allowedCourses;
