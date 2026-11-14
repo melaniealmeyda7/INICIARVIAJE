@@ -1969,8 +1969,9 @@ function authenticateParticipant(usernameInput, passwordInput) {
     };
   }
 
-  // Melanie Almeyda (Acceso Exclusivo a Portugués Desde Cero)
-  if (uClean === 'melaniealmeyda' && pClean === 'melaniealmeyda') {
+  // Melanie Almeyda (Acceso Total a todos los Bootcamps y Master Classes)
+  if ((uClean === 'melaniealmeyda' || uClean === 'melanie') &&
+      (pClean === 'melaniealmeyda' || pClean === 'melanie2026' || pClean === 'melanie')) {
     return {
       success: true,
       student: {
@@ -1980,7 +1981,11 @@ function authenticateParticipant(usernameInput, passwordInput) {
         role: 'Directora / Administradora Polyglot Map',
         passportNo: 'PM-VIP-001',
         allowedCourses: [
-          'bootcamp-portugues-cero'
+          'bootcamp-portugues-cero',
+          'bootcamp-portugues-basico2',
+          'bootcamp-ingles-cero',
+          'club-ingles-a2',
+          'bootcamp-master-classes'
         ]
       }
     };

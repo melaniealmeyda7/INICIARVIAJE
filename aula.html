@@ -385,13 +385,19 @@
   <!-- MODAL: VISOR DE MATERIALES & DIAPOSITIVAS INTERACTIVAS                    -->
   <!-- ========================================================================= -->
   <div id="materialDetailModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="bg-white text-slate-900 rounded-3xl max-w-5xl w-full p-5 sm:p-7 shadow-2xl relative my-6 border border-slate-100 max-h-[92vh] flex flex-col">
+    <div id="materialModalDialog" class="bg-white text-slate-900 rounded-3xl max-w-5xl w-full p-5 sm:p-7 shadow-2xl relative my-6 border border-slate-100 max-h-[92vh] flex flex-col transition-all duration-300">
       
-      <button onclick="closeModal('materialDetailModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 text-2xl font-black z-10 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center">
-        ✕
-      </button>
+      <div class="absolute top-4 right-4 sm:top-5 sm:right-5 flex items-center gap-2 z-20">
+        <button id="btnMaximizeMaterial" onclick="toggleMaximizeMaterialModal()" title="Maximizar / Pantalla Completa" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs sm:text-sm border border-blue-200 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer">
+          <span id="maximizeIcon" class="text-base">⛶</span>
+          <span id="maximizeText" class="hidden sm:inline">Maximizar</span>
+        </button>
+        <button onclick="closeModal('materialDetailModal')" title="Cerrar" class="text-slate-400 hover:text-slate-900 text-2xl font-black w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition cursor-pointer">
+          ✕
+        </button>
+      </div>
 
-      <div id="materialModalContent" class="overflow-y-auto pr-1 space-y-6">
+      <div id="materialModalContent" class="overflow-y-auto pr-1 space-y-4 flex-1">
         <!-- Inyectado dinámicamente con las diapositivas y contenidos de la sesión -->
       </div>
 
@@ -723,15 +729,28 @@
 
                 <!-- Espacios de Materiales y Grabación según fecha -->
                 <div class="flex items-center gap-2 flex-wrap pt-2 text-xs">
-                  ${hasMat ? `
-                    <button onclick="openMaterialModal('${currentAulaCourse.id}', ${idx})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow-sm hover:scale-[1.02]">
-                      <span>📖</span> Previsualizar Material / Diapositivas »
-                    </button>
-                  ` : `
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200">
-                      <span>📄</span> Material en Preparación
-                    </span>
-                  `}
+                  ${(() => {
+                    const canView = typeof canUserViewMaterials === 'function' ? canUserViewMaterials(currentUser) : false;
+                    if (hasMat && canView) {
+                      return `
+                        <button onclick="openMaterialModal('${currentAulaCourse.id}', ${idx})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow-sm hover:scale-[1.02] cursor-pointer">
+                          <span>📖</span> Previsualizar Material / Diapositivas »
+                        </button>
+                      `;
+                    } else if (hasMat) {
+                      return `
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-500 font-semibold border border-slate-200" title="Las diapositivas oficiales se activarán durante la sesión de clase en vivo">
+                          <span>🔒</span> Diapositivas Oficiales (Activación en Clase)
+                        </span>
+                      `;
+                    } else {
+                      return `
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200">
+                          <span>📄</span> Material en Preparación
+                        </span>
+                      `;
+                    }
+                  })()}
 
                   <button onclick="showLockedRecordingMessage()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 font-semibold border border-slate-200 hover:bg-slate-200 transition">
                     <span>🔒</span> Grabación (Bloqueada)
@@ -818,7 +837,46 @@
       openModal('recordingsModal');
     }
 
+    let isMaterialModalMaximized = false;
+
+    function toggleMaximizeMaterialModal() {
+      const dialog = document.getElementById('materialModalDialog');
+      const icon = document.getElementById('maximizeIcon');
+      const text = document.getElementById('maximizeText');
+      const modal = document.getElementById('materialDetailModal');
+      const iframe = document.getElementById('pdfPreviewIframe');
+
+      isMaterialModalMaximized = !isMaterialModalMaximized;
+
+      if (isMaterialModalMaximized) {
+        dialog.classList.remove('max-w-5xl', 'my-6', 'rounded-3xl', 'max-h-[92vh]');
+        dialog.classList.add('fixed', 'inset-0', 'w-full', 'h-full', 'max-w-none', 'max-h-none', 'rounded-none', 'my-0', 'p-4', 'sm:p-6', 'z-50');
+        modal.classList.remove('p-4');
+        modal.classList.add('p-0');
+        if (icon) icon.textContent = '🗗';
+        if (text) text.textContent = 'Restaurar';
+        if (iframe) {
+          iframe.style.height = 'calc(100vh - 195px)';
+        }
+      } else {
+        dialog.classList.add('max-w-5xl', 'my-6', 'rounded-3xl', 'max-h-[92vh]');
+        dialog.classList.remove('fixed', 'inset-0', 'w-full', 'h-full', 'max-w-none', 'max-h-none', 'rounded-none', 'my-0', 'p-4', 'sm:p-6', 'z-50');
+        modal.classList.add('p-4');
+        modal.classList.remove('p-0');
+        if (icon) icon.textContent = '⛶';
+        if (text) text.textContent = 'Maximizar';
+        if (iframe) {
+          iframe.style.height = '';
+        }
+      }
+    }
+
     function openMaterialModal(courseId, sessionIdx) {
+      if (typeof canUserViewMaterials === 'function' && !canUserViewMaterials(currentUser)) {
+        alert('🔒 Material en Preparación\n\nLas diapositivas y materiales oficiales se habilitarán para los alumnos durante la sesión de clase en vivo.');
+        return;
+      }
+
       const course = COURSES_DATA.find(c => c.id === courseId) || currentAulaCourse;
       if (!course || !course.syllabus || !course.syllabus[sessionIdx]) return;
       const s = course.syllabus[sessionIdx];
@@ -833,52 +891,57 @@
 
       modalContent.innerHTML = `
         <!-- Encabezado de la Unidad -->
-        <div class="border-b border-slate-100 pb-4">
-          <div class="flex items-center gap-2 flex-wrap mb-2">
-            <span class="px-3 py-1 rounded-full text-xs font-black tracking-wide bg-[#e8f1ff] text-[#144bd8] uppercase">
+        <div class="border-b border-slate-100 pb-3 pr-28">
+          <div class="flex items-center gap-2 flex-wrap mb-1.5">
+            <span class="px-3 py-0.5 rounded-full text-xs font-black tracking-wide bg-[#e8f1ff] text-[#144bd8] uppercase">
               ${m.tag || s.session}
             </span>
-            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+            <span class="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
               📅 ${s.date}
             </span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-slate-100 text-slate-700">
+            <span class="px-3 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-100 text-slate-700">
               🕒 ${s.time}
             </span>
-            ${s.recordingUrl ? `
-              <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full text-xs font-black bg-amber-400 hover:bg-yellow-400 text-slate-950 transition flex items-center gap-1 shadow-sm">
-                <span>📹</span> Ver Grabación Drive »
-              </a>
-            ` : ''}
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
+              <span>👁️</span> Solo Visualización
+            </span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-[#0c2364]">
+          <h2 class="text-xl sm:text-2xl font-black text-[#0c2364]">
             ${m.title || s.title}
           </h2>
-          <p class="text-sm text-slate-600 mt-1 font-medium">
+          <p class="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
             ${m.subtitle || s.desc}
           </p>
         </div>
 
-        <!-- VISOR OFICIAL DE PREVISUALIZACIÓN EN PDF (FORMATO PDF, NO TEXTO) -->
-        <div class="w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700/60 my-3">
-          <div class="bg-slate-950 px-4 py-2.5 flex items-center justify-between border-b border-white/10 flex-wrap gap-2">
+        <!-- VISOR OFICIAL DE PREVISUALIZACIÓN EN PDF (FORMATO PDF, SIN DESCARGA) -->
+        <div class="w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700/60 my-2">
+          <div class="bg-slate-950 px-4 py-2 flex items-center justify-between border-b border-white/10 flex-wrap gap-2">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
               <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
               <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
               <span class="text-xs font-mono text-slate-200 ml-2 font-bold flex items-center gap-1.5">
-                <span>📄 Visor Oficial de Diapositivas (Formato PDF)</span>
+                <span>📄 Visor Exclusivo de Diapositivas</span>
               </span>
             </div>
-            <span class="text-[11px] font-mono text-yellow-300 font-bold bg-yellow-400/10 border border-yellow-400/30 px-2.5 py-0.5 rounded-full">
-              ${s.pdfName || 'Material-Oficial.pdf'}
-            </span>
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-mono text-amber-300 font-bold bg-amber-400/10 border border-amber-400/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span>🚫</span> Descarga No Habilitada
+              </span>
+              <span class="text-[11px] font-mono text-yellow-300 font-bold bg-yellow-400/10 border border-yellow-400/30 px-2.5 py-0.5 rounded-full">
+                ${s.pdfName || 'Material-Oficial.pdf'}
+              </span>
+            </div>
           </div>
           ${s.pdfUrl ? `
-            <div class="relative w-full bg-slate-800">
+            <div class="relative w-full bg-slate-900 select-none" oncontextmenu="return false;">
               <iframe 
+                id="pdfPreviewIframe"
                 src="${s.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1" 
-                class="w-full h-[65vh] sm:h-[72vh] border-0 bg-slate-900" 
-                title="Previsualización de Material PDF">
+                class="pdf-preview-iframe w-full h-[65vh] sm:h-[72vh] border-0 bg-slate-900 transition-all" 
+                title="Previsualización de Material PDF"
+                loading="lazy">
               </iframe>
             </div>
           ` : `
@@ -891,9 +954,9 @@
         </div>
 
         <!-- AVISO DE DERECHOS DE AUTOR AL CIERRE -->
-        <div class="mt-3 p-3 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-center">
+        <div class="mt-2 p-2.5 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-center">
           <p class="text-xs text-amber-950 font-medium leading-relaxed">
-            ⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.
+            ⚖️ Prohibida su descarga, copia o distribución por derechos de Autor - Artículo 217 Código Penal.
           </p>
         </div>
       `;

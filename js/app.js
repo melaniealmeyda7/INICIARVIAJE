@@ -2052,8 +2052,26 @@ function isSpecialAdminUser(user) {
   if (!user) return false;
   const n = (user.name || '').toLowerCase();
   const e = (user.email || '').toLowerCase();
-  return n.includes('valeria') || e.includes('valeriavalenzuela') ||
+  const pass = (user.passportNo || '');
+  return pass === 'PM-VIP-001' || pass === 'PM-VIP-002' || pass === 'PM-VIP-003' ||
+         n.includes('melanie almeyda') || (n === 'melanie') || e.includes('melaniealmeyda') || e.includes('melanie@polyglotmap.com') ||
+         n.includes('valeria') || e.includes('valeriavalenzuela') ||
          n.includes('viajero') || e.includes('viajero2026') || e.includes('viajero');
+}
+
+function isDocentePatricia(user) {
+  if (!user) return false;
+  const n = (user.name || '').toLowerCase();
+  const e = (user.email || '').toLowerCase();
+  const pass = (user.passportNo || '');
+  return pass === 'PM-DOC-001' || n.includes('patricia') || e.includes('patricia');
+}
+
+function canUserViewMaterials(user) {
+  if (!user) return false;
+  if (isSpecialAdminUser(user)) return true;
+  if (isDocentePatricia(user)) return true;
+  return false;
 }
 
 function isMelanieUser(user) {
@@ -2071,9 +2089,7 @@ function getEffectiveAllowedCourses(user) {
       'bootcamp-master-classes'
     ];
   }
-  const n = (user.name || '').toLowerCase();
-  const e = (user.email || '').toLowerCase();
-  if (n.includes('melanie') || e.includes('melaniealmeyda') || n.includes('patricia') || e.includes('patricia')) {
+  if (isDocentePatricia(user)) {
     return ['bootcamp-portugues-cero'];
   }
   if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
@@ -2653,6 +2669,11 @@ function openModal(id) {
 }
 
 function closeModal(id) {
+  if (id === 'materialDetailModal' && typeof isMaterialModalMaximized !== 'undefined' && isMaterialModalMaximized) {
+    if (typeof toggleMaximizeMaterialModal === 'function') {
+      toggleMaximizeMaterialModal();
+    }
+  }
   const modal = document.getElementById(id);
   if (modal) {
     modal.classList.add('hidden');
