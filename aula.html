@@ -98,7 +98,7 @@
         <!-- Selector de Curso con estética limpia -->
         <div class="relative">
           <select id="courseSwitchSelect" class="bg-white text-[#0e34a0] font-black text-xs rounded-full px-4 py-2 shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer">
-            <option value="bootcamp-ingles-cero">🇺🇸 Inglés desde cero (DEL 18 NOV AL 18 DIC)</option>
+            <option value="bootcamp-ingles-cero">🇺🇸 Inglés desde cero (DEL 20 NOV AL 18 DIC · ACTUALIZACIÓN)</option>
             <option value="club-ingles-a2">🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)</option>
             <option value="bootcamp-portugues-cero">🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC)</option>
             <option value="bootcamp-portugues-basico2">🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC)</option>
@@ -147,9 +147,10 @@
 
         <!-- Bloque de Fecha Oficial Amarillo idéntico al Flyer -->
         <div class="bg-[#ffd200] text-slate-950 rounded-2xl w-36 sm:w-44 py-3 px-3 text-center shadow-lg flex flex-col justify-center select-none flex-shrink-0">
-          <span class="text-xs uppercase tracking-wider font-extrabold text-slate-900/90">DEL</span>
-          <span id="dashCourseDates" class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-0.5">18 NOV</span>
-          <span class="text-xs uppercase tracking-wider font-extrabold text-slate-900/90">AL 18 DIC</span>
+          <span id="dashCourseDateBadge" class="hidden mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">ACTUALIZACIÓN</span>
+          <span id="dashCourseDateFrom" class="text-xs uppercase tracking-wider font-extrabold text-slate-900/90">DEL</span>
+          <span id="dashCourseDates" class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-0.5">20 NOV</span>
+          <span id="dashCourseDateTo" class="text-xs uppercase tracking-wider font-extrabold text-slate-900/90">AL 18 DIC</span>
         </div>
       </div>
     </div>
@@ -272,13 +273,6 @@
         </div>
       </div>
 
-      <!-- AVISO LEGAL Y DERECHOS DE AUTOR -->
-      <div class="p-3.5 bg-blue-950/70 border border-yellow-400/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-100 shadow-sm">
-        <div class="flex items-center gap-2.5">
-          <span class="text-xl">⚖️</span>
-          <span><strong>Material Exclusivo Polyglot Map:</strong> Guías y diapositivas oficiales en PDF para estudiantes registrados. <strong>Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.</strong></span>
-        </div>
-      </div>
 
       <!-- CONTENEDOR DE TARJETAS DE SESIONES -->
       <div id="sessionsCardsContainer" class="space-y-4">
@@ -629,7 +623,7 @@
       const ALL_OPTIONS = [
         { id: 'bootcamp-portugues-cero', label: '🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC)' },
         { id: 'bootcamp-portugues-basico2', label: '🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC)' },
-        { id: 'bootcamp-ingles-cero', label: '🇺🇸 Inglés desde cero (DEL 18 NOV AL 18 DIC)' },
+        { id: 'bootcamp-ingles-cero', label: '🇺🇸 Inglés desde cero (DEL 20 NOV AL 18 DIC · ACTUALIZACIÓN)' },
         { id: 'club-ingles-a2', label: '🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)' },
         { id: 'bootcamp-master-classes', label: '🔒 Master Classes Especializadas (DEL 30 NOV AL 10 DIC)' }
       ];
@@ -677,6 +671,19 @@
       document.getElementById('dashCourseTitle').innerText = currentAulaCourse.title;
       document.getElementById('dashCourseBadge').innerText = currentAulaCourse.badgeText;
       document.getElementById('dashCourseDates').innerText = currentAulaCourse.dateMain;
+      const dateBadgeEl = document.getElementById('dashCourseDateBadge');
+      if (dateBadgeEl) {
+        if (currentAulaCourse.dateBadge) {
+          dateBadgeEl.innerText = currentAulaCourse.dateBadge;
+          dateBadgeEl.classList.remove('hidden');
+        } else {
+          dateBadgeEl.classList.add('hidden');
+        }
+      }
+      const dateFromEl = document.getElementById('dashCourseDateFrom');
+      if (dateFromEl) dateFromEl.innerText = currentAulaCourse.dateFrom || 'DEL';
+      const dateToEl = document.getElementById('dashCourseDateTo');
+      if (dateToEl) dateToEl.innerText = currentAulaCourse.dateTo || 'AL 18 DIC';
       document.getElementById('dashCourseSchedule').innerHTML = `
         📅 ${currentAulaCourse.scheduleDays} • 🕒 ${currentAulaCourse.scheduleTime} (Hora Peruana)
       `;
@@ -890,9 +897,6 @@
             <span class="px-3 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-100 text-slate-700">
               🕒 ${s.time}
             </span>
-            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
-              <span>👁️</span> Solo Visualización
-            </span>
           </div>
           <h2 class="text-xl sm:text-2xl font-black text-[#0c2364]">
             ${m.title || s.title}
@@ -914,9 +918,6 @@
               </span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-[11px] font-mono text-amber-300 font-bold bg-amber-400/10 border border-amber-400/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                <span>🚫</span> Descarga No Habilitada
-              </span>
               <span class="text-[11px] font-mono text-yellow-300 font-bold bg-yellow-400/10 border border-yellow-400/30 px-2.5 py-0.5 rounded-full">
                 ${s.pdfName || 'Material-Oficial.pdf'}
               </span>
@@ -941,12 +942,6 @@
           `}
         </div>
 
-        <!-- AVISO DE DERECHOS DE AUTOR AL CIERRE -->
-        <div class="mt-2 p-2.5 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-center">
-          <p class="text-xs text-amber-950 font-medium leading-relaxed">
-            ⚖️ Prohibida su descarga, copia o distribución por derechos de Autor - Artículo 217 Código Penal.
-          </p>
-        </div>
       `;
 
       openModal('materialDetailModal');

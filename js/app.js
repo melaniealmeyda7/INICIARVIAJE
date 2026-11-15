@@ -11,6 +11,7 @@ const COURSES_DATA = [
     type: 'BOOTCAMP',
     badgeText: 'BOOTCAMP · INGLÉS',
     badgeColor: 'bg-blue-100 text-blue-700 border-blue-200',
+    dateBadge: 'ACTUALIZACIÓN',
     statusBadge: '✨ NUEVO',
     statusBadgeColor: 'bg-purple-100 text-purple-700 border-purple-200',
     title: 'Inglés desde cero',
@@ -20,7 +21,7 @@ const COURSES_DATA = [
     scheduleDays: 'Miércoles y viernes',
     scheduleTime: '7:00 a 8:00 p. m.',
     dateFrom: 'DEL',
-    dateMain: '18 NOV',
+    dateMain: '20 NOV',
     dateTo: 'AL 18 DIC',
     flightCode: 'PM-ENG01',
     gate: 'Puerta V-01 (Auditorio Virtual)',
@@ -37,15 +38,15 @@ const COURSES_DATA = [
     syllabus: [
       {
         session: 'Sesión 1',
-        unit: 'Class 1 of 10 · Greetings & Introductions',
-        date: 'Miércoles 18 Nov',
+        unit: 'Class 1 of 9 · Greetings & Introductions',
+        date: 'Viernes 20 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'Hello! (Greetings & Introductions)',
         pdfUrl: 'materials/ingles-cero-clase-01.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-01.pdf',
         desc: 'Today you say hello, say your name and ask how people are. The H sound phonetics and greetings.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 1 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 1 OF 9",
           title: "Hello! (Greetings & Introductions)",
           subtitle: "Today you say hello, say your name and ask how people are.",
           goals: [
@@ -99,15 +100,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 2',
-        unit: 'Class 2 of 10 · The Alphabet & Numbers 0–20',
-        date: 'Viernes 20 Nov',
+        unit: 'Class 2 of 9 · The Alphabet & Numbers 0–20',
+        date: 'Miércoles 25 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'ABC and Numbers (Alphabet & 0–20)',
         pdfUrl: 'materials/ingles-cero-clase-02.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-02.pdf',
         desc: 'Today you spell your name and say phone numbers. Vowel names and TH pronunciation.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 2 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 2 OF 9",
           title: "ABC and Numbers (The Alphabet & Numbers 0–20)",
           subtitle: "Today you spell your name and say phone numbers.",
           goals: [
@@ -160,15 +161,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 3',
-        unit: 'Class 3 of 10 · Countries & Nationalities',
-        date: 'Miércoles 25 Nov',
+        unit: 'Class 3 of 9 · Countries & Nationalities',
+        date: 'Viernes 27 Nov',
         time: '7:00 - 8:00 p. m.',
         title: 'Where are you from? (Countries & Nationalities)',
         pdfUrl: 'materials/ingles-cero-clase-03.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-03.pdf',
         desc: 'Today you say where you are from and your nationality. B and V sounds distinction.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 3 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 3 OF 9",
           title: "Where are you from? (Countries & Nationalities)",
           subtitle: "Today you say where you are from and your nationality.",
           goals: [
@@ -221,15 +222,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 4',
-        unit: 'Class 4 of 10 · Family Members',
-        date: 'Viernes 27 Nov',
+        unit: 'Class 4 of 9 · Family Members',
+        date: 'Miércoles 02 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'My Family (Close & Extended Family)',
         pdfUrl: 'materials/ingles-cero-clase-04.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-04.pdf',
         desc: 'Today you talk about your family: who they are and how many. The voiced TH sound.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 4 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 4 OF 9",
           title: "My Family (Family Members)",
           subtitle: "Today you talk about your family: who they are and how many.",
           goals: [
@@ -283,15 +284,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 5',
-        unit: 'Class 5 of 10 · Colors & Everyday Things',
-        date: 'Miércoles 02 Dic',
+        unit: 'Class 5 of 9 · Colors & Everyday Things',
+        date: 'Viernes 04 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Colors and Things (Objects & Colors)',
         pdfUrl: 'materials/ingles-cero-clase-05.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-05.pdf',
         desc: 'Today you name colors and objects around you. Articles a/an and S + consonant phonetics.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 5 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 5 OF 9",
           title: "Colors and Things (Colors & Everyday Things)",
           subtitle: "Today you name colors and objects around you.",
           goals: [
@@ -345,15 +346,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 6',
-        unit: 'Class 6 of 10 · Days, Months & Time',
-        date: 'Viernes 04 Dic',
+        unit: 'Class 6 of 9 · Days, Months & Time',
+        date: 'Miércoles 09 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Days, Months and Time (Calendar & Clocks)',
         pdfUrl: 'materials/ingles-cero-clase-06.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-06.pdf',
         desc: 'Today you say the day, the month and the time. Prepositions on/in/at and silent letters.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 6 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 6 OF 9",
           title: "Days, Months and Time",
           subtitle: "Today you say the day, the month and the time.",
           goals: [
@@ -406,15 +407,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 7',
-        unit: 'Class 7 of 10 · Daily Routine',
-        date: 'Miércoles 09 Dic',
+        unit: 'Class 7 of 9 · Daily Routine',
+        date: 'Viernes 11 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'My Day (Daily Actions & Times)',
         pdfUrl: 'materials/ingles-cero-clase-07.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-07.pdf',
         desc: 'Today you talk about what you do every day. Third person -S rule and daily verbs.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 7 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 7 OF 9",
           title: "My Day (Daily Routine)",
           subtitle: "Today you talk about what you do every day.",
           goals: [
@@ -466,15 +467,15 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 8',
-        unit: 'Class 8 of 10 · Food & Drinks',
-        date: 'Viernes 11 Dic',
+        unit: 'Class 8 of 9 · Food & Drinks',
+        date: 'Miércoles 16 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'Food and Drinks (Likes & Ordering Polite)',
         pdfUrl: 'materials/ingles-cero-clase-08.pdf',
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-08.pdf',
         desc: 'Today you say what you like and order food. EE vs I phonetics and café dialogues.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 8 OF 10",
+          tag: "ENGLISH FROM SCRATCH · CLASS 8 OF 9",
           title: "Food and Drinks",
           subtitle: "Today you say what you like and order food.",
           goals: [
@@ -527,69 +528,7 @@ const COURSES_DATA = [
       },
       {
         session: 'Sesión 9',
-        unit: 'Class 9 of 10 · Places in Town & Directions',
-        date: 'Miércoles 16 Dic',
-        time: '7:00 - 8:00 p. m.',
-        title: 'Places in Town (Locations & Directions)',
-        pdfUrl: 'materials/ingles-cero-clase-09.pdf',
-        pdfName: 'PolyglotMap-Ingles-Cero-Clase-09.pdf',
-        desc: 'Today you name places and give simple directions. The English R sound and city prepositions.',
-        materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 9 OF 10",
-          title: "Places in Town & Directions",
-          subtitle: "Today you name places and give simple directions.",
-          goals: [
-            "Name places in town: bank, hospital, school, supermarket, library…",
-            "Ask where things are: Where is the bank?",
-            "Give directions: Turn left. Turn right. Go straight."
-          ],
-          goldenRule: "Golden rule: use your hands to show left and right!",
-          vocabulary: [
-            "Bank (bank)", "Hospital (JOS-pi-tal)", "School (s-KUL)", "Supermarket (SU-per-mar-ket)", "Pharmacy (FAR-ma-si)", "Park (park)",
-            "Restaurant (RES-te-rant)", "Bus stop (bas stop)", "Library (LAI-bre-ri)", "Post office (poust O-fis)", "Station (STEI-shon)", "Town (taun)"
-          ],
-          keyLanguage: [
-            "Where is the bank? — It's next to the park.",
-            "Turn left. / Turn right.",
-            "Go straight. / Stop!",
-            "It's in front of the school.",
-            "Remember: next to = beside · in front of = facing · behind = at the back · between = in the middle"
-          ],
-          pronunciation: "The English R: right, red, restaurant. Tongue curls back, do not roll it! English R is quiet and soft (not Spanish rolled perro). Stress: RES-te-rant, LAI-bre-ri, JOS-pi-tal.",
-          tongueTwisters: [
-            "Twister (the R): Right, right, the red restaurant. Turn right at the library!"
-          ],
-          dialogue: {
-            title: "Asking for directions (Read in turns, then swap roles!)",
-            lines: [
-              { speaker: "Tom", text: "Excuse me! Where is the bank?" },
-              { speaker: "Ana", text: "Go straight." },
-              { speaker: "Tom", text: "OK. Then?" },
-              { speaker: "Ana", text: "Turn right. It's next to the park." },
-              { speaker: "Tom", text: "Is it near?" },
-              { speaker: "Ana", text: "Yes, it's near. Two minutes." },
-              { speaker: "Tom", text: "Thank you very much!" }
-            ]
-          },
-          readingPassage: {
-            title: "Around my town (Read aloud)",
-            content: "My town is small. / There is a park near my house. / The restaurant is next to the library. / The bank is on the right. / To go to the hospital, / go straight and turn left. / I love my town!"
-          },
-          breakoutActivity: {
-            title: "Live Speaking: Mic Round & Town Navigator",
-            tasks: [
-              "1. Ask a classmate: Where is the bank / park?",
-              "2. Give directions: 'Go straight / Turn left.'",
-              "3. Tell us a place near your house: 'Near my house there is a…'",
-              "4. Say: 'It's next to the ___.'"
-            ]
-          },
-          homework: "Exit ticket: Send a voice note: 'Near my house there is a ___.'"
-        }
-      },
-      {
-        session: 'Sesión 10',
-        unit: 'Class 10 of 10 · Review & Final Presentation',
+        unit: 'Class 9 of 9 · Review & Final Presentation',
         date: 'Viernes 18 Dic',
         time: '7:00 - 8:00 p. m.',
         title: 'All About Me (Review & Final Presentation)',
@@ -597,7 +536,7 @@ const COURSES_DATA = [
         pdfName: 'PolyglotMap-Ingles-Cero-Clase-10.pdf',
         desc: 'Today you put everything together and present yourself: name, country, age, likes, favorites and pronunciation lab.',
         materials: {
-          tag: "ENGLISH FROM SCRATCH · CLASS 10 OF 10 · REVIEW & FINAL PRESENTATION",
+          tag: "ENGLISH FROM SCRATCH · CLASS 9 OF 9 · REVIEW & FINAL PRESENTATION",
           title: "All About Me (Review & Final Presentation)",
           subtitle: "Today you put everything together and present yourself.",
           goals: [
@@ -1080,7 +1019,7 @@ const COURSES_DATA = [
           tag: 'AULA 1 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 1: Alfabeto, Fonética e Saudações',
           subtitle: 'Hoje você conhece os sons do português e cumprimenta em português.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1095,7 +1034,7 @@ const COURSES_DATA = [
           tag: 'AULA 2 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 2: Apresentações: Ser, Estar, Nacionalidades e Profissões',
           subtitle: 'Hoje você diz quem é, de onde é e o que faz.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1110,7 +1049,7 @@ const COURSES_DATA = [
           tag: 'AULA 3 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 3: Informações Pessoais e Família: Ter, Possessivos e Descrições',
           subtitle: 'Hoje você fala da sua família: quem são e quantos são.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1125,7 +1064,7 @@ const COURSES_DATA = [
           tag: 'AULA 4 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 4: Rotinas e Atividades: Presente do Indicativo e Frequência',
           subtitle: 'Hoje você fala do que faz todos os dias.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1140,7 +1079,7 @@ const COURSES_DATA = [
           tag: 'AULA 5 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 5: Números, Datas e Horários',
           subtitle: 'Hoje você conta, diz as datas e as horas.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1155,7 +1094,7 @@ const COURSES_DATA = [
           tag: 'AULA 6 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 6: Alimentação e Preferências: Artigos, Gênero, Gostar e Preferir',
           subtitle: 'Hoje você diz o que gosta e pede comida.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1170,7 +1109,7 @@ const COURSES_DATA = [
           tag: 'AULA 7 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 7: Minha Cidade: Lugares, Transportes, Preposições e Direções',
           subtitle: 'Hoje você nomeia lugares e dá direções simples.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1185,7 +1124,7 @@ const COURSES_DATA = [
           tag: 'AULA 8 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 8: Compras: Roupas, Cores, Preços e Expressões',
           subtitle: 'Hoje você fala de roupas, cores e preços.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1200,7 +1139,7 @@ const COURSES_DATA = [
           tag: 'AULA 9 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 9: Tempo Livre: Passatempos, Esportes, Gostos e Ir + Infinitivo',
           subtitle: 'Hoje você fala dos seus passatempos e dos seus planos.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1215,7 +1154,7 @@ const COURSES_DATA = [
           tag: 'AULA 10 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 10: Descrição de Pessoas, Objetos e Lugares',
           subtitle: 'Hoje você descreve pessoas, cosas e lugares.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       }
     ]
@@ -1261,7 +1200,7 @@ const COURSES_DATA = [
           tag: 'AULA 1 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência',
           subtitle: 'Meu dia a dia: Hoje você conta sua rotina com frases completas.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1276,7 +1215,7 @@ const COURSES_DATA = [
           tag: 'AULA 2 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 2: Minhas Experiências Passadas: Ontem, Fim de Semana e Férias',
           subtitle: 'O que eu fiz: Hoje você conta o que fez ontem e nas férias.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1291,7 +1230,7 @@ const COURSES_DATA = [
           tag: 'AULA 3 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 3: Minha Infância e Lembranças: Hábitos e Experiências do Passado',
           subtitle: 'Minha infância: Hoje você conta como era sua infância.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1306,7 +1245,7 @@ const COURSES_DATA = [
           tag: 'AULA 4 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 4: Meus Planos e Projetos: Desejos e Intenções para o Futuro',
           subtitle: 'Meus planos: Hoje você fala dos seus planos e dos seus sonhos.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1321,7 +1260,7 @@ const COURSES_DATA = [
           tag: 'AULA 5 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 5: Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares',
           subtitle: 'Viagens e turismo: Hoje você planeja uma viagem e reserva um hotel.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1336,7 +1275,7 @@ const COURSES_DATA = [
           tag: 'AULA 6 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 6: No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências',
           subtitle: 'No restaurante: Hoje você lê o cardápio, pede comida e pede a conta.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1351,7 +1290,7 @@ const COURSES_DATA = [
           tag: 'AULA 7 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 7: Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações',
           subtitle: 'Saúde e bem-estar: Hoje você fala do corpo, de sintomas e de conselhos.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1366,7 +1305,7 @@ const COURSES_DATA = [
           tag: 'AULA 8 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 8: Trabalho e Profissões: Ocupações, Atividades e Experiências',
           subtitle: 'Trabalho e profissões: Hoje você fala do seu trabalho e da sua experiência.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1381,7 +1320,7 @@ const COURSES_DATA = [
           tag: 'AULA 9 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 9: Opiniões e Preferências: Gostos, Opiniões e Comparações',
           subtitle: 'Minha opinião: Hoje você dá sua opinião e compara opções.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       },
       {
@@ -1396,7 +1335,7 @@ const COURSES_DATA = [
           tag: 'AULA 10 DE 10 · PORTUGUÊS BÁSICO 2',
           title: 'Aula 10: Situações da Vida Diária: Convites, Telefonemas e Pedidos',
           subtitle: 'Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda.',
-          goldenRule: '⚖️ Prohibida su distribución parcial o completa por derechos de Autor - Artículo 217 Código Penal.'
+          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
         }
       }
     ]
@@ -1688,7 +1627,12 @@ function renderCourses() {
               <span class="text-xs uppercase tracking-wider font-black text-yellow-300">${course.dateTo}</span>
             </div>
           ` : `
-            <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform">
+            <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform relative">
+              ${course.dateBadge ? `
+                <span class="inline-block mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
+                  ${course.dateBadge}
+                </span>
+              ` : ''}
               <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateFrom}</span>
               <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1">${course.dateMain}</span>
               <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateTo}</span>
@@ -1877,7 +1821,13 @@ function showBoardingPass(course) {
               <p class="text-xs text-slate-600 mt-0.5 font-medium">📅 ${course.scheduleDays} | 🕒 ${course.scheduleTime}</p>
             </div>
             <div class="bg-[#ffd200] text-slate-950 px-4 py-2 rounded-xl text-center flex-shrink-0 font-black shadow-sm">
-              <span class="text-[10px] block leading-tight">PERÍODO OFICIAL</span>
+              ${course.dateBadge ? `
+                <span class="inline-block px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white mb-1 shadow-xs">
+                  ${course.dateBadge}
+                </span>
+              ` : `
+                <span class="text-[10px] block leading-tight">PERÍODO OFICIAL</span>
+              `}
               <span class="text-base font-black">${course.dateMain}</span>
               <span class="text-[10px] block text-slate-800">${course.dateTo}</span>
             </div>
