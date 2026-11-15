@@ -110,7 +110,7 @@
         </a>
 
         <!-- Botón de Cerrar Sesión -->
-        <button onclick="handleLogout()" class="bg-rose-500/80 hover:bg-rose-600 text-white font-bold text-xs px-3.5 py-2 rounded-full border border-rose-400/40 shadow transition-all flex items-center gap-1.5 cursor-pointer">
+        <button onclick="handleTeacherLogout()" class="bg-rose-500/80 hover:bg-rose-600 text-white font-bold text-xs px-3.5 py-2 rounded-full border border-rose-400/40 shadow transition-all flex items-center gap-1.5 cursor-pointer">
           <span>🚪 Cerrar Sesión</span>
         </button>
 
@@ -294,16 +294,9 @@
           badgeName.innerText = currentUser.name || 'Docente Patricia';
         }
       } else {
-        // Si no hay sesión iniciada, asignar datos de sesión para Docente Patricia
-        currentUser = {
-          name: 'Docente Patricia',
-          shortName: 'Docente Patricia',
-          email: 'patricia@polyglotmap.com',
-          role: 'Docente · Portugués Desde Cero',
-          passportNo: 'PM-DOC-001',
-          allowedCourses: ['bootcamp-portugues-cero']
-        };
-        saveUser(currentUser);
+        // Si no hay sesión iniciada, redirigir al portal principal
+        window.location.replace('index.html');
+        return;
       }
 
       currentTeacherCourse = COURSES_DATA.find(c => c.id === TEACHER_COURSE_ID);
@@ -511,6 +504,12 @@
 
     function showLockedRecordingMessage() {
       alert('📹 Grabación de Clase\n\nLas grabaciones oficiales se procesan y publican en este espacio al finalizar cada fecha de dictado.');
+    }
+
+    function handleTeacherLogout() {
+      localStorage.removeItem('polyglot_user');
+      currentUser = null;
+      window.location.href = 'index.html';
     }
   </script>
 

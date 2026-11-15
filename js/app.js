@@ -1477,7 +1477,9 @@ function updateUIForUser() {
     `;
     userGreeting.classList.remove('hidden');
 
-    userPassportBadge.classList.remove('hidden');
+    if (userPassportBadge) {
+      userPassportBadge.classList.add('hidden');
+    }
     userMilesBadge.classList.remove('hidden');
     userMilesBadge.innerHTML = `🌟 ${currentUser.miles || 1200} Millas`;
 
@@ -1512,8 +1514,8 @@ function updateUIForUser() {
     authBtn.onclick = handleLogout;
   } else {
     userGreeting.classList.add('hidden');
-    userPassportBadge.classList.add('hidden');
-    userMilesBadge.classList.add('hidden');
+    if (userPassportBadge) userPassportBadge.classList.add('hidden');
+    if (userMilesBadge) userMilesBadge.classList.add('hidden');
     boardingPassesNavBtn.classList.add('hidden');
 
     if (aulaNavBtn) {
@@ -2244,9 +2246,19 @@ function handleQuickCheckin() {
 
 // Cerrar Sesión
 function handleLogout() {
+  if (window.location.pathname.includes('docente.html')) {
+    localStorage.removeItem('polyglot_user');
+    currentUser = null;
+    window.location.href = 'index.html';
+    return;
+  }
   if (confirm('¿Deseas cerrar tu sesión de viajero? Tus pases guardados seguirán disponibles al reingresar.')) {
     localStorage.removeItem('polyglot_user');
     currentUser = null;
+    if (window.location.pathname.includes('aula.html')) {
+      window.location.href = 'index.html';
+      return;
+    }
     updateUIForUser();
     renderCourses();
   }

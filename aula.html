@@ -607,6 +607,11 @@
       triggerConfetti();
       alertNotification(`¡Bienvenido(a) ${auth.student.shortName || auth.student.name}! Acceso verificado.`);
 
+      if (typeof isDocentePatricia === 'function' && isDocentePatricia(auth.student)) {
+        window.location.replace('docente.html');
+        return;
+      }
+
       updateCourseSelectOptions();
 
       let targetCourse = currentAulaCourse ? currentAulaCourse.id : null;
