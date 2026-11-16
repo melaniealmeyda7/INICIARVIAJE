@@ -115,24 +115,26 @@
   <!-- ========================================== -->
   <main class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex-1">
     
-    <!-- TÍTULO PRINCIPAL (IDÉNTICO AL FLYER) -->
-    <div class="mb-8 text-left">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-white/10 text-yellow-300 border border-yellow-400/20 mb-3">
-        <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
-        TERMINAL DE SALIDAS • VUELOS LINGÜÍSTICOS 2026
+    <!-- TÍTULO PRINCIPAL (IDÉNTICO AL FLYER) CON BOTÓN SUPERIOR DERECHO -->
+    <div class="mb-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="text-left max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-white/10 text-yellow-300 border border-yellow-400/20 mb-3">
+          <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+          TERMINAL DE SALIDAS • VUELOS LINGÜÍSTICOS 2026
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-white">
+          Bootcamps y clubes <br/>
+          <span class="text-[#ffd200]">de idiomas</span>
+        </h1>
+        <p class="text-blue-100 text-sm sm:text-base mt-2 font-medium">
+          Embarca en tu viaje hacia la fluidez internacional. Clases 100% en vivo, metodología inmersiva y comunidad de viajeros políglotas.
+        </p>
       </div>
 
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-white">
-        Bootcamps y clubes <br/>
-        <span class="text-[#ffd200]">de idiomas</span>
-      </h1>
-      <p class="text-blue-100 text-sm sm:text-base mt-2 max-w-2xl font-medium">
-        Embarca en tu viaje hacia la fluidez internacional. Clases 100% en vivo, metodología inmersiva y comunidad de viajeros políglotas.
-      </p>
-
-      <!-- BOTÓN DESTACADO GRANDE: UNIRSE AL CANAL OFICIAL POLYGLOT MAP -->
-      <div class="mt-6 flex flex-wrap items-center gap-3">
-        <a href="https://whatsapp.com/channel/0029VbCjjWvJuyA8FUXUxW2t" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba59] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl sm:rounded-full font-black text-sm sm:text-base shadow-[0_0_25px_rgba(37,211,102,0.45)] hover:shadow-[0_0_35px_rgba(37,211,102,0.7)] hover:scale-105 active:scale-95 transition-all duration-200 border-2 border-white/30 cursor-pointer select-none">
+      <!-- BOTÓN SUPERIOR DERECHO: UNIRSE AL CANAL OFICIAL POLYGLOT MAP -->
+      <div class="flex-shrink-0 self-start lg:self-center">
+        <a href="https://whatsapp.com/channel/0029VbCjjWvJuyA8FUXUxW2t" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba59] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl sm:rounded-full font-black text-sm sm:text-base shadow-[0_0_25px_rgba(37,211,102,0.45)] hover:shadow-[0_0_35px_rgba(37,211,102,0.7)] hover:scale-105 active:scale-95 transition-all duration-200 border-2 border-white/30 cursor-pointer select-none" title="Unirse al Canal Oficial POLYGLOT MAP">
           <span class="w-8 h-8 rounded-full bg-white text-[#25D366] flex items-center justify-center text-lg shadow group-hover:rotate-12 transition-transform">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
           </span>
@@ -141,7 +143,6 @@
         </a>
       </div>
     </div>
-
     <!-- BARRA DE FILTROS TEMÁTICA DE VUELOS -->
     <div class="flex items-center justify-between flex-wrap gap-3 mb-6 bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/15">
       <div class="flex items-center gap-1.5 flex-wrap">
@@ -637,10 +638,7 @@
       <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
 
-    <!-- WhatsApp Canal -->
-    <a href="https://whatsapp.com/channel/0029VbCjjWvJuyA8FUXUxW2t" target="_blank" rel="noopener noreferrer" title="Canal Oficial WhatsApp Polyglot Map" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#25D366] text-white flex items-center justify-center text-xl shadow-lg hover:scale-115 hover:rotate-6 transition-all duration-200 border border-white/20">
-      <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-    </a>
+
   </aside>
 
   <!-- BOTÓN FLOTANTE INFERIOR DERECHO: SOPORTE TÉCNICO -->
