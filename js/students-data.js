@@ -55813,8 +55813,8 @@ const STUDENTS_DATABASE = [
     "e": "melany.medinao@unmsm.edu.pe"
   },
   {
-    "n": "Mejor fluides y desempeño del idioma",
-    "u": "Mejor idioma",
+    "n": "Aritza Azzara Carrion Gutierrez",
+    "u": "Aritza Carrion",
     "p": "73994361",
     "role": "Estudiante Inscrito · Inglés Desde Cero",
     "courses": [
@@ -55822,12 +55822,19 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "73994361",
+      "aritza",
+      "aritza azzara",
+      "aritza azzara carrion gutierrez",
+      "aritza carrion",
+      "aritza gutierrez",
+      "aritzaazzara",
+      "aritzacarrion",
       "aritzacg1505",
+      "aritzacg1505@gmail.com",
       "aritzacg1505gmailcom",
-      "mejor fluides y desempeno del idioma",
-      "mejorfluides",
-      "mejorfluidesydesempenodelidioma",
-      "mejoridioma"
+      "aritzagutierrez",
+      "carrion",
+      "gutierrez"
     ],
     "dni": "73994361",
     "e": "aritzacg1505@gmail.com",
