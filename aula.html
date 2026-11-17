@@ -121,6 +121,25 @@
           <span>🎫 Mi Credencial</span>
         </a>
 
+        <!-- Nombre del Usuario en la Esquina Superior Derecha -->
+        <div id="aulaUserGreeting" class="hidden items-center gap-2.5 bg-slate-900/95 text-white pl-2 pr-3 py-1.5 rounded-full border-2 border-yellow-400 shadow-[0_0_15px_rgba(250,204,21,0.35)] backdrop-blur-md transition-all select-none">
+          <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#ffd200] to-amber-300 text-slate-950 flex items-center justify-center font-black text-xs shadow-inner">
+            🎓
+          </div>
+          <div class="text-left leading-tight">
+            <span class="text-[9px] uppercase font-mono text-amber-300 font-extrabold tracking-wider block">Estudiante</span>
+            <span id="aulaUserName" class="text-xs sm:text-sm font-black text-white tracking-wide"></span>
+          </div>
+          <button onclick="handleAulaLogout()" class="text-slate-400 hover:text-rose-400 transition-colors ml-1 p-1 hover:bg-white/10 rounded-full" title="Cerrar Sesión">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+          </button>
+        </div>
+
+        <!-- Botón Identificarse si no ha iniciado sesión -->
+        <button id="aulaLoginBtn" onclick="openModal('aulaAuthModal')" class="hidden px-4 py-2 rounded-full text-xs font-black bg-[#ffd200] hover:bg-yellow-400 text-slate-950 shadow-md hover:scale-105 transition-all items-center gap-1.5 select-none">
+          <span>✈️ Iniciar Mi Viaje</span>
+        </button>
+
       </div>
 
     </div>
@@ -561,6 +580,7 @@
         const attEmailInput = document.getElementById('attEmail');
         if (attEmailInput) attEmailInput.value = currentUser.email;
       }
+      updateAulaUserUI();
     });
 
     function handleAulaLoginSubmit(e) {
@@ -616,6 +636,9 @@
         bookedCourses: defaultBooked
       });
 
+      currentUser = loadUser();
+      updateAulaUserUI();
+
       const attNameInput = document.getElementById('attFullName');
       if (attNameInput) attNameInput.value = auth.student.name;
       const attEmailInput = document.getElementById('attEmail');
@@ -637,6 +660,43 @@
         targetCourse = allowed[0] || 'bootcamp-portugues-cero';
       }
       loadAulaForCourse(targetCourse);
+    }
+
+    function updateAulaUserUI() {
+      const greeting = document.getElementById('aulaUserGreeting');
+      const nameEl = document.getElementById('aulaUserName');
+      const loginBtn = document.getElementById('aulaLoginBtn');
+
+      if (currentUser && currentUser.name) {
+        if (nameEl) nameEl.textContent = currentUser.name;
+        if (greeting) {
+          greeting.classList.remove('hidden');
+          greeting.classList.add('inline-flex');
+        }
+        if (loginBtn) {
+          loginBtn.classList.add('hidden');
+          loginBtn.classList.remove('inline-flex');
+        }
+      } else {
+        if (greeting) {
+          greeting.classList.add('hidden');
+          greeting.classList.remove('inline-flex');
+        }
+        if (loginBtn) {
+          loginBtn.classList.remove('hidden');
+          loginBtn.classList.add('inline-flex');
+        }
+      }
+    }
+
+    function handleAulaLogout() {
+      if (confirm('¿Deseas cerrar tu sesión del panel de clases?')) {
+        localStorage.removeItem('polyglot_current_user');
+        localStorage.removeItem('polyglot_user');
+        sessionStorage.removeItem('polyglot_current_user');
+        sessionStorage.removeItem('polyglot_user');
+        window.location.href = 'index.html';
+      }
     }
 
     function updateCourseSelectOptions() {
