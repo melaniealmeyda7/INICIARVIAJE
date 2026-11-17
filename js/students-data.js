@@ -45568,7 +45568,7 @@ const STUDENTS_DATABASE = [
   },
   {
     "n": "Leydi Milagros Quispe Ramos",
-    "u": "Leydi Ramos",
+    "u": "Leydi Quispe",
     "p": "72631054",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -45576,10 +45576,17 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "72631054",
+      "leydi",
       "leydi milagros quispe ramos",
+      "leydi quispe",
+      "leydi ramos",
       "leydimilagros",
       "leydimilagrosquisperamos",
+      "leydiquispe",
       "leydiramos",
+      "quispe",
+      "ramos",
+      "soyleydi.qr@gmail.com",
       "soyleydiqr",
       "soyleydiqrgmailcom"
     ],
