@@ -199,7 +199,7 @@
           <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-black border border-emerald-200">
             🔴
           </span>
-          <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+          <span id="liveClassBadge" class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
             Enlace Activo
           </span>
@@ -771,6 +771,40 @@
         📅 ${currentAulaCourse.scheduleDays} • 🕒 ${currentAulaCourse.scheduleTime} (Hora Peruana)
       `;
 
+      // Activar enlace a sala de reunión según el curso
+      const liveBtn = document.getElementById('btnLiveClass');
+      const liveStreamBtn = document.getElementById('btnLiveStream');
+      const liveBadge = document.getElementById('liveClassBadge');
+
+      if (liveBtn) {
+        if (currentAulaCourse.classLink) {
+          liveBtn.onclick = () => window.open(currentAulaCourse.classLink, '_blank');
+          liveBtn.className = "w-full bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold py-2.5 px-3 rounded-xl text-xs text-center shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer";
+          const platform = currentAulaCourse.classLink.includes('meet.google.com') ? 'Google Meet' : (currentAulaCourse.classLink.includes('zoom.us') ? 'Zoom' : 'Sala Virtual');
+          liveBtn.innerHTML = `<span>🚀</span> Entrar a la Sala (${platform})`;
+          if (liveBadge) {
+            liveBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Sala Abierta`;
+            liveBadge.className = "inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200";
+          }
+        } else {
+          liveBtn.onclick = showLockedClassMessage;
+          liveBtn.className = "w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer";
+          liveBtn.innerHTML = `<span>🔒</span> Entrar a la Clase`;
+          if (liveBadge) {
+            liveBadge.innerText = 'Próximamente';
+            liveBadge.className = "inline-flex items-center gap-1 text-[11px] font-bold text-slate-600 bg-slate-50 px-2.5 py-0.5 rounded-full border border-slate-200";
+          }
+        }
+      }
+
+      if (liveStreamBtn) {
+        if (currentAulaCourse.streamLink) {
+          liveStreamBtn.onclick = () => window.open(currentAulaCourse.streamLink, '_blank');
+        } else {
+          liveStreamBtn.onclick = showLockedClassMessage;
+        }
+      }
+
       renderCleanFlyerSessions();
     }
 
@@ -855,9 +889,15 @@
               <button onclick="showLockedAttendanceMessage()" class="w-full md:w-36 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer">
                 <span>🔒</span> Asistencia
               </button>
-              <button onclick="showLockedClassMessage()" class="w-full md:w-36 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer">
-                <span>🔒</span> Entrar a Clase
-              </button>
+              ${currentAulaCourse.classLink ? `
+                <a href="${currentAulaCourse.classLink}" target="_blank" class="w-full md:w-36 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-black py-2 px-3 rounded-xl text-xs text-center shadow-xs transition-all flex items-center justify-center gap-1 cursor-pointer">
+                  <span>🚀</span> Entrar a Clase
+                </a>
+              ` : `
+                <button onclick="showLockedClassMessage()" class="w-full md:w-36 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-3 rounded-xl text-xs text-center border border-slate-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer">
+                  <span>🔒</span> Entrar a Clase
+                </button>
+              `}
             </div>
 
           </div>
