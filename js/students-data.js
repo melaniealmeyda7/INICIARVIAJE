@@ -51,6 +51,29 @@ const STUDENTS_DATABASE = [
     "e": "valeriavalenzuela@polyglotmap.com"
   },
   {
+    "n": "Docente Patricia",
+    "u": "Docente Patricia",
+    "p": "docentepatricia",
+    "role": "Docente Oficial · Portugués Desde Cero",
+    "courses": [
+      "bootcamp-portugues-cero",
+      "bootcamp-portugues-basico2"
+    ],
+    "k": [
+      "docente patricia",
+      "docentepatricia",
+      "docente",
+      "docente oficial",
+      "profesora patricia",
+      "profesorapatricia",
+      "patricia docente",
+      "patriciadocente",
+      "docentepatricia@polyglotmap.com"
+    ],
+    "passportNo": "PM-DOC-001",
+    "e": "docentepatricia@polyglotmap.com"
+  },
+  {
     "n": "Aaron Alfredo Lozada Lazo",
     "u": "Aaron Lazo",
     "p": "72174318",
@@ -63686,15 +63709,13 @@ const STUDENTS_DATABASE = [
     "n": "Patricia Elizabeth Morales Zapana",
     "u": "Patricia Zapana",
     "p": "45449339",
-    "role": "Docente Oficial · Portugués Desde Cero & Portugués Básico 2",
+    "role": "Estudiante Inscrito · Portugués Básico 2",
     "courses": [
-      "bootcamp-portugues-cero",
       "bootcamp-portugues-basico2"
     ],
     "k": [
       "45449339",
       "morales",
-      "patricia",
       "patricia elizabeth morales zapana",
       "patricia morales",
       "patricia zapana",
@@ -79447,7 +79468,15 @@ function isDocentePatricia(student) {
   const name = (student.n || student.name || '').toLowerCase();
   const username = (student.u || student.shortName || '').toLowerCase();
   const email = (student.e || student.email || '').toLowerCase();
-  return name.includes('patricia') && (name.includes('morales') || name.includes('zapana') || username.includes('patricia') || email.includes('patricia'));
+  const role = (student.role || '').toLowerCase();
+  const pass = (student.passportNo || '');
+
+  if (pass === 'PM-DOC-001' || pass === 'PM-DOCENTE-PATRICIA') return true;
+  if (role.includes('docente oficial') || role.includes('profesora oficial')) return true;
+  if (name === 'docente patricia' || username === 'docente patricia' || name === 'docentepatricia' || username === 'docentepatricia') return true;
+  if (email.includes('docentepatricia')) return true;
+
+  return false;
 }
 
 function authenticateParticipant(usernameInput, passwordInput) {
@@ -79521,7 +79550,7 @@ function authenticateParticipant(usernameInput, passwordInput) {
         name: match.n,
         shortName: match.u,
         email: match.e || `${cleanStr(match.u)}@estudiante.polyglotmap.com`,
-        passportNo: match.dni ? `DNI-${match.dni}` : `PM-${cleanStr(match.u).slice(0, 8).toUpperCase()}`,
+        passportNo: match.passportNo || (match.dni ? `DNI-${match.dni}` : `PM-${cleanStr(match.u).slice(0, 8).toUpperCase()}`),
         role: studentRole,
         allowedCourses: studentCourses,
         courses: studentCourses,

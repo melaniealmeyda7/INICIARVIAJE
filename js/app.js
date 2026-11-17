@@ -25,8 +25,8 @@ const COURSES_DATA = [
     dateTo: 'AL 18 DIC',
     flightCode: 'PM-ENG01',
     gate: 'Puerta V-01 (Auditorio Virtual)',
-    classLink: 'https://zoom.us/join?pwd=polyglotmap-future-ready',
-    streamLink: 'https://youtube.com/live',
+    classLink: '',
+    streamLink: '',
     registrationLink: 'https://forms.gle/8ANqwWUxt8tfi6RC6?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafE60rN24MB4wGMEHubz6r5r_UrKPuaQhTrbIlcMs1hSweeR208EGV_SzzOsQ_aem_-2YkylOyhS6WLHyH8GU31w',
     seatClass: 'Clase Ejecutiva Lingüística',
     freeBadge: '100% GRATUITO',
@@ -608,8 +608,8 @@ const COURSES_DATA = [
     dateTo: 'AL 14 DIC',
     flightCode: 'PM-ENG-A2',
     gate: 'Puerta V-04 (Auditorio Virtual)',
-    classLink: 'https://meet.google.com/new?polyglotmap-club-a2',
-    streamLink: 'https://youtube.com/live',
+    classLink: '',
+    streamLink: '',
     registrationLink: 'https://docs.google.com/forms/d/e/1FAIpQLSe6Dg2_HyfgnjEXD0Y51eK8UM0koZxayF5WfQ7q2nNBGZ1y2Q/viewform',
     seatClass: 'Club de Oradores',
     freeBadge: '100% GRATUITO',
@@ -2113,10 +2113,18 @@ function isSpecialAdminUser(user) {
 
 function isDocentePatricia(user) {
   if (!user) return false;
-  const n = (user.name || '').toLowerCase();
-  const e = (user.email || '').toLowerCase();
+  const n = (user.name || user.n || '').toLowerCase();
+  const u = (user.shortName || user.u || '').toLowerCase();
+  const e = (user.email || user.e || '').toLowerCase();
+  const role = (user.role || '').toLowerCase();
   const pass = (user.passportNo || '');
-  return pass === 'PM-DOC-001' || n.includes('patricia') || e.includes('patricia');
+
+  if (pass === 'PM-DOC-001' || pass === 'PM-DOCENTE-PATRICIA') return true;
+  if (role.includes('docente oficial') || role.includes('profesora oficial')) return true;
+  if (n === 'docente patricia' || u === 'docente patricia' || n === 'docentepatricia' || u === 'docentepatricia') return true;
+  if (e.includes('docentepatricia')) return true;
+
+  return false;
 }
 
 function canUserViewMaterials(user) {
