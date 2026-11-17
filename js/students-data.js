@@ -4668,21 +4668,29 @@ const STUDENTS_DATABASE = [
     "e": "hannaflores1234@gmail.com"
   },
   {
-    "n": "ANA LUCIA LOZANO RAMIREZ",
-    "u": "ANA RAMIREZ",
-    "p": "anaramirez",
+    "n": "Ana Lucia Lozano Ramirez",
+    "u": "Ana Lozano",
+    "p": "analozano",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "ana",
+      "ana lozano",
+      "ana lucia",
       "ana lucia lozano ramirez",
+      "ana ramirez",
+      "analozano",
+      "analozanopolyglotmapcom",
       "analucia",
       "analucialozanoramirez",
       "anaramirez",
-      "anaramirezpolyglotmapcom"
+      "anaramirezpolyglotmapcom",
+      "lozano",
+      "ramirez"
     ],
-    "e": "anaramirez@polyglotmap.com"
+    "e": "analozano@polyglotmap.com"
   },
   {
     "n": "Ana lucia sebastian cueto",
