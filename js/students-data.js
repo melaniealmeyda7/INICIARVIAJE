@@ -9949,8 +9949,8 @@ const STUDENTS_DATABASE = [
     "ts": "11/17/2026 6:11:36"
   },
   {
-    "n": "Asistente de Sostenibilidad y GI",
-    "u": "Asistente GI",
+    "n": "Yohany Maricruz Granda Portocarrero",
+    "u": "Yohany Granda",
     "p": "75182986",
     "role": "Estudiante Inscrito · Inglés Desde Cero",
     "courses": [
@@ -9958,12 +9958,18 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "75182986",
-      "asistente de sostenibilidad y gi",
-      "asistentede",
-      "asistentedesostenibilidadygi",
-      "asistentegi",
+      "granda",
+      "maricruz granda",
+      "maricruzgranda",
       "maricruzgrandaportocarrero",
-      "maricruzgrandaportocarrerogmailcom"
+      "maricruzgrandaportocarrerogmailcom",
+      "portocarrero",
+      "yohany",
+      "yohany granda",
+      "yohany maricruz granda portocarrero",
+      "yohanygranda",
+      "yohanymaricruz",
+      "yohanymaricruzgrandaportocarrero"
     ],
     "dni": "75182986",
     "e": "maricruzgrandaportocarrero@gmail.com",
