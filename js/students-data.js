@@ -26631,20 +26631,30 @@ const STUDENTS_DATABASE = [
   },
   {
     "n": "Fiorella Janina Alcedo Portal",
-    "u": "Fiorella Portal",
-    "p": "fiorellaportal",
-    "role": "Estudiante Inscrito · Portugués Desde Cero",
+    "u": "Fiorella Alcedo",
+    "p": "72226291",
+    "role": "Estudiante Inscrito · Portugués Básico 2",
     "courses": [
+      "bootcamp-portugues-basico2",
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "72226291",
+      "alcedo",
       "alcedofiorella32",
+      "alcedofiorella32@gmail.com",
       "alcedofiorella32gmailcom",
+      "fiorella",
+      "fiorella alcedo",
       "fiorella janina alcedo portal",
+      "fiorella portal",
+      "fiorellaalcedo",
       "fiorellajanina",
       "fiorellajaninaalcedoportal",
-      "fiorellaportal"
+      "fiorellaportal",
+      "portal"
     ],
+    "dni": "72226291",
     "e": "alcedofiorella32@gmail.com"
   },
   {
@@ -31283,7 +31293,7 @@ const STUDENTS_DATABASE = [
   },
   {
     "n": "Hayro Jerry Vilca Condori",
-    "u": "Hayro Condori",
+    "u": "Hayro Vilca",
     "p": "73005883",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -31291,12 +31301,19 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "220745",
+      "220745@unsaac.edu.pe",
       "220745unsaacedupe",
       "73005883",
+      "condori",
+      "hayro",
+      "hayro condori",
       "hayro jerry vilca condori",
+      "hayro vilca",
       "hayrocondori",
       "hayrojerry",
-      "hayrojerryvilcacondori"
+      "hayrojerryvilcacondori",
+      "hayrovilca",
+      "vilca"
     ],
     "dni": "73005883",
     "e": "220745@unsaac.edu.pe"
@@ -68378,21 +68395,32 @@ const STUDENTS_DATABASE = [
     "e": "salvadorgamero2010@gmail.com"
   },
   {
-    "n": "SALVADOR JOSÉ SÁNCHEZ MELENA",
-    "u": "SALVADOR MELENA",
-    "p": "salvadormelena",
+    "n": "Salvador José Sánchez Melena",
+    "u": "Salvador Sánchez",
+    "p": "72529737",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "72529737",
+      "josesmelena",
+      "josesmelena@gmail.com",
+      "josesmelenagmailcom",
+      "melena",
+      "salvador",
       "salvador jose sanchez melena",
+      "salvador melena",
+      "salvador sanchez",
       "salvadorjose",
       "salvadorjosesanchezmelena",
       "salvadormelena",
-      "salvadormelenapolyglotmapcom"
+      "salvadormelenapolyglotmapcom",
+      "salvadorsanchez",
+      "sanchez"
     ],
-    "e": "salvadormelena@polyglotmap.com"
+    "dni": "72529737",
+    "e": "josesmelena@gmail.com"
   },
   {
     "n": "Salvatore Eugenio Padovani Barrientos",
