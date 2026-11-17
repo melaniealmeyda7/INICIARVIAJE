@@ -43022,20 +43022,28 @@ const STUDENTS_DATABASE = [
   },
   {
     "n": "Kerrily Fiorell Fernández Castilla",
-    "u": "Kerrily Castilla",
-    "p": "kerrilycastilla",
+    "u": "Kerrily Fernandez",
+    "p": "kerrilyfernandez",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "castilla",
+      "fernandez",
+      "kerrily",
+      "kerrily castilla",
+      "kerrily fernandez",
+      "kerrily fiorell",
       "kerrily fiorell fernandez castilla",
       "kerrilycastilla",
       "kerrilycastillapolyglotmapcom",
+      "kerrilyfernandez",
+      "kerrilyfernandezpolyglotmapcom",
       "kerrilyfiorell",
       "kerrilyfiorellfernandezcastilla"
     ],
-    "e": "kerrilycastilla@polyglotmap.com"
+    "e": "kerrilyfernandez@polyglotmap.com"
   },
   {
     "n": "KETTY DANAE MOYA MEDRANO",
