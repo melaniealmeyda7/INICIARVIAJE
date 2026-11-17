@@ -589,12 +589,19 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "75063692",
+      "adela",
+      "adela montalvo",
       "adela viviana yncio montalvo",
+      "adela yncio",
       "adelamontalvo",
       "adelaviviana",
       "adelavivianaynciomontalvo",
+      "adelayncio",
       "adelaynmon",
-      "adelaynmongmailcom"
+      "adelaynmon@gmail.com",
+      "adelaynmongmailcom",
+      "montalvo",
+      "yncio"
     ],
     "dni": "75063692",
     "e": "adelaynmon@gmail.com",
@@ -1476,20 +1483,30 @@ const STUDENTS_DATABASE = [
   {
     "n": "Aixa Antonella Villafuerte Rubio",
     "u": "Aixa Rubio",
-    "p": "aixarubio",
-    "role": "Estudiante Inscrito · Portugués Desde Cero",
+    "p": "75416994",
+    "role": "Estudiante Multidisciplinario · Portugués Desde Cero & Básico 2",
     "courses": [
-      "bootcamp-portugues-cero"
+      "bootcamp-portugues-cero",
+      "bootcamp-portugues-basico2"
     ],
     "k": [
+      "75416994",
+      "aixa",
       "aixa antonella villafuerte rubio",
+      "aixa rubio",
+      "aixa villafuerte",
       "aixaantonella",
       "aixaantonellavillafuerterubio",
       "aixarubio",
+      "aixavillafuerte",
       "antonellavillafuerte4",
-      "antonellavillafuerte4gmailcom"
+      "antonellavillafuerte4@gmail.com",
+      "antonellavillafuerte4gmailcom",
+      "rubio",
+      "villafuerte"
     ],
-    "e": "antonellavillafuerte4@gmail.com"
+    "e": "antonellavillafuerte4@gmail.com",
+    "dni": "75416994"
   },
   {
     "n": "Aixa Tamara Sirlopu Ochoa",
@@ -15655,11 +15672,18 @@ const STUDENTS_DATABASE = [
     "k": [
       "70301504",
       "claudf24",
+      "claudf24@gmail.com",
       "claudf24gmailcom",
+      "claudia",
+      "claudia diaz",
+      "claudia fernandez",
       "claudia giovana diaz fernandez",
+      "claudiadiaz",
       "claudiafernandez",
       "claudiagiovana",
-      "claudiagiovanadiazfernandez"
+      "claudiagiovanadiazfernandez",
+      "diaz",
+      "fernandez"
     ],
     "dni": "70301504",
     "e": "claudf24@gmail.com"
@@ -19347,18 +19371,27 @@ const STUDENTS_DATABASE = [
     "n": "Deisy Jasmin Apaza Puma",
     "u": "Deisy Puma",
     "p": "deisypuma",
-    "role": "Estudiante Inscrito · Inglés Desde Cero",
+    "role": "Estudiante Multidisciplinario · Portugués Desde Cero & Inglés Desde Cero",
     "courses": [
-      "bootcamp-ingles-cero"
+      "bootcamp-ingles-cero",
+      "bootcamp-portugues-cero"
     ],
     "k": [
+      "apaza",
+      "deisy",
+      "deisy apaza",
       "deisy jasmin apaza puma",
+      "deisy puma",
+      "deisyapaza",
+      "deisyapaza@polyglotmap.com",
+      "deisyapazapolyglotmapcom",
       "deisyjasmin",
       "deisyjasminapazapuma",
       "deisypuma",
-      "deisypumapolyglotmapcom"
+      "deisypumapolyglotmapcom",
+      "puma"
     ],
-    "e": "deisypuma@polyglotmap.com",
+    "e": "deisyapaza@polyglotmap.com",
     "ts": "11/10/2026 14:06:16"
   },
   {
@@ -20056,12 +20089,20 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "74138706",
+      "calle",
+      "diana",
+      "diana calle",
       "diana carolina villacorta calle",
+      "diana villacorta",
+      "diana.vc272",
+      "diana.vc272@gmail.com",
       "dianacalle",
       "dianacarolina",
       "dianacarolinavillacortacalle",
       "dianavc272",
-      "dianavc272gmailcom"
+      "dianavc272gmailcom",
+      "dianavillacorta",
+      "villacorta"
     ],
     "dni": "74138706",
     "e": "diana.vc272@gmail.com",
@@ -23901,19 +23942,31 @@ const STUDENTS_DATABASE = [
   {
     "n": "Erika Mariluz Chara Pinto",
     "u": "Erika Pinto",
-    "p": "erikapinto",
+    "p": "77163786",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "77163786",
+      "chara",
+      "emcharap.espg",
+      "emcharap.espg@unjbg.edu.pe",
+      "emcharapespg",
+      "emcharapespgunjbgedupe",
+      "erika",
+      "erika chara",
       "erika mariluz chara pinto",
+      "erika pinto",
+      "erikachara",
       "erikamariluz",
       "erikamariluzcharapinto",
       "erikapinto",
-      "erikapintopolyglotmapcom"
+      "erikapintopolyglotmapcom",
+      "pinto"
     ],
-    "e": "erikapinto@polyglotmap.com"
+    "e": "emcharap.espg@unjbg.edu.pe",
+    "dni": "77163786"
   },
   {
     "n": "ERIKA VANESSA GONZALEZ RAMOS",
@@ -26796,21 +26849,32 @@ const STUDENTS_DATABASE = [
     "e": "fiorellavillegasb@gmail.com"
   },
   {
-    "n": "FIORELLA XIMENA VELASQUEZ QUISPE",
-    "u": "FIORELLA QUISPE",
-    "p": "fiorellaquispe",
+    "n": "Fiorella Ximena Velasquez Quispe",
+    "u": "Fiorella Quispe",
+    "p": "71864192",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "71864192",
+      "fiorella",
+      "fiorella quispe",
+      "fiorella velasquez",
       "fiorella ximena velasquez quispe",
       "fiorellaquispe",
       "fiorellaquispepolyglotmapcom",
+      "fiorellavelasquez",
       "fiorellaximena",
-      "fiorellaximenavelasquezquispe"
+      "fiorellaximenavelasquezquispe",
+      "fvelasquezq",
+      "fvelasquezq@unsa.edu.pe.com",
+      "fvelasquezqunsaedupecom",
+      "quispe",
+      "velasquez"
     ],
-    "e": "fiorellaquispe@polyglotmap.com"
+    "e": "fvelasquezq@unsa.edu.pe.com",
+    "dni": "71864192"
   },
   {
     "n": "Fiorella Xiomara Gago Tello",
@@ -28355,21 +28419,32 @@ const STUDENTS_DATABASE = [
     "e": "grs172000@gmail.com"
   },
   {
-    "n": "GABRIELA NICOLE VALVERDE DELGADILLO",
-    "u": "GABRIELA DELGADILLO",
-    "p": "gabrieladelgadillo",
+    "n": "Gabriela Nicole Valverde Delgadillo",
+    "u": "Gabriela Delgadillo",
+    "p": "74733419",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "74733419",
+      "delgadillo",
+      "gabriela",
+      "gabriela delgadillo",
       "gabriela nicole valverde delgadillo",
+      "gabriela valverde",
       "gabrieladelgadillo",
       "gabrieladelgadillopolyglotmapcom",
       "gabrielanicole",
-      "gabrielanicolevalverdedelgadillo"
+      "gabrielanicolevalverdedelgadillo",
+      "gabrielavalverde",
+      "gabrielavd1401",
+      "gabrielavd1401@gmail.com",
+      "gabrielavd1401gmailcom",
+      "valverde"
     ],
-    "e": "gabrieladelgadillo@polyglotmap.com"
+    "e": "gabrielavd1401@gmail.com",
+    "dni": "74733419"
   },
   {
     "n": "Gabriela Olenka Granada Cruz",
@@ -37705,21 +37780,33 @@ const STUDENTS_DATABASE = [
     "e": "gonzalezjorge9292@gmail.com"
   },
   {
-    "n": "JORGE LUIS YANARICO CUTIPA",
-    "u": "JORGE CUTIPA",
-    "p": "jorgecutipa",
-    "role": "Estudiante Inscrito · Portugués Desde Cero",
+    "n": "Jorge Luis Yanarico Cutipa",
+    "u": "Jorge Cutipa",
+    "p": "74541276",
+    "role": "Estudiante Multidisciplinario · Portugués Desde Cero & Básico 2",
     "courses": [
-      "bootcamp-portugues-cero"
+      "bootcamp-portugues-cero",
+      "bootcamp-portugues-basico2"
     ],
     "k": [
+      "74541276",
+      "cutipa",
+      "jlyanaricoc",
+      "jlyanaricoc@gmail.com",
+      "jlyanaricocgmailcom",
+      "jorge",
+      "jorge cutipa",
       "jorge luis yanarico cutipa",
+      "jorge yanarico",
       "jorgecutipa",
       "jorgecutipapolyglotmapcom",
       "jorgeluis",
-      "jorgeluisyanaricocutipa"
+      "jorgeluisyanaricocutipa",
+      "jorgeyanarico",
+      "yanarico"
     ],
-    "e": "jorgecutipa@polyglotmap.com"
+    "e": "jlyanaricoc@gmail.com",
+    "dni": "74541276"
   },
   {
     "n": "Jorge Martínez Marín",
@@ -50948,24 +51035,37 @@ const STUDENTS_DATABASE = [
     "e": "mguadasullca@gmail.com"
   },
   {
-    "n": "María de los angeles",
-    "u": "María angeles",
-    "p": "76249460",
+    "n": "Maria de los Angeles Camero Alosilla",
+    "u": "Maria Alosilla",
+    "p": "73667262",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "21104035",
+      "21104035@uniq.edu.pe",
+      "21104035uniqedupe",
       "26mariadelosangeles",
       "26mariadelosangelesgmailcom",
+      "73667262",
       "76249460",
+      "alosilla",
+      "camero",
+      "maria",
+      "maria alosilla",
+      "maria camero",
       "maria de los angeles",
+      "maria de los angeles camero alosilla",
+      "mariaalosilla",
       "mariaangeles",
+      "mariacamero",
       "mariade",
-      "mariadelosangeles"
+      "mariadelosangeles",
+      "mariadelosangelescameroalosilla"
     ],
-    "dni": "76249460",
-    "e": "26mariadelosangeles@gmail.com"
+    "dni": "73667262",
+    "e": "21104035@uniq.edu.pe"
   },
   {
     "n": "María de los Angeles Alfaro Farfan",
@@ -59191,19 +59291,33 @@ const STUDENTS_DATABASE = [
     "ts": "11/16/2026 11:00:10"
   },
   {
-    "n": "NADIA ISABEL",
-    "u": "NADIA ISABEL",
-    "p": "nadiaisabel",
+    "n": "Nadia Isabel Julca Copello",
+    "u": "Nadia Copello",
+    "p": "73416673",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "73416673",
+      "copello",
+      "julca",
+      "nadia",
+      "nadia copello",
       "nadia isabel",
+      "nadia isabel julca copello",
+      "nadia julca",
+      "nadiacopello",
       "nadiaisabel",
-      "nadiaisabelpolyglotmapcom"
+      "nadiaisabeljulcacopello",
+      "nadiaisabelpolyglotmapcom",
+      "nadiajulca",
+      "nadiajulcacopello",
+      "nadiajulcacopello@gmail.com",
+      "nadiajulcacopellogmailcom"
     ],
-    "e": "nadiaisabel@polyglotmap.com"
+    "e": "nadiajulcacopello@gmail.com",
+    "dni": "73416673"
   },
   {
     "n": "Nadia Paola Neira Paniura",
@@ -61568,8 +61682,8 @@ const STUDENTS_DATABASE = [
     "e": "nicolesispas@gmail.com"
   },
   {
-    "n": "Nicole Zereceda",
-    "u": "Nicole Zereceda",
+    "n": "Nicole Zereceda Ayquipa",
+    "u": "Nicole Ayquipa",
     "p": "76941034",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -61577,10 +61691,18 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "220357",
+      "220357@unsaac.edu.pe",
       "220357unsaacedupe",
       "76941034",
+      "ayquipa",
+      "nicole",
+      "nicole ayquipa",
       "nicole zereceda",
-      "nicolezereceda"
+      "nicole zereceda ayquipa",
+      "nicoleayquipa",
+      "nicolezereceda",
+      "nicolezerecedaayquipa",
+      "zereceda"
     ],
     "dni": "76941034",
     "e": "220357@unsaac.edu.pe"
@@ -74570,8 +74692,8 @@ const STUDENTS_DATABASE = [
     "e": "viancatejada@polyglotmap.com"
   },
   {
-    "n": "vianeth gianelly aguilar sumire",
-    "u": "vianeth sumire",
+    "n": "Vianeth Gianelly Aguilar Sumire",
+    "u": "Vianeth Sumire",
     "p": "73779024",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -74579,9 +74701,16 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "73779024",
+      "aguilar",
+      "sumire",
+      "vianeth",
+      "vianeth aguilar",
       "vianeth gianelly aguilar sumire",
+      "vianeth sumire",
       "vianeth0909",
+      "vianeth0909@gmail.com",
       "vianeth0909gmailcom",
+      "vianethaguilar",
       "vianethgianelly",
       "vianethgianellyaguilarsumire",
       "vianethsumire"
@@ -79246,19 +79375,30 @@ const STUDENTS_DATABASE = [
   {
     "n": "Zonahely Eliane Hurtado Rios",
     "u": "Zonahely Rios",
-    "p": "zonahelyrios",
+    "p": "75455789",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "75455789",
+      "eleane0208",
+      "eleane0208@gmail.com",
+      "eleane0208gmailcom",
+      "hurtado",
+      "rios",
+      "zonahely",
       "zonahely eliane hurtado rios",
+      "zonahely hurtado",
+      "zonahely rios",
       "zonahelyeliane",
       "zonahelyelianehurtadorios",
+      "zonahelyhurtado",
       "zonahelyrios",
       "zonahelyriospolyglotmapcom"
     ],
-    "e": "zonahelyrios@polyglotmap.com"
+    "e": "eleane0208@gmail.com",
+    "dni": "75455789"
   },
   {
     "n": "Zoraida Nayeli Silva Paredes",
@@ -79430,6 +79570,35 @@ const STUDENTS_DATABASE = [
       "zuraybetzaydaroqueapena"
     ],
     "e": "zurayapena@polyglotmap.com"
+  },
+  {
+    "n": "Juan Carlos Villantoy Cc.",
+    "u": "Juan Villantoy",
+    "p": "43201034",
+    "role": "Estudiante Multidisciplinario · Portugués Desde Cero & Inglés Desde Cero",
+    "courses": [
+      "bootcamp-portugues-cero",
+      "bootcamp-ingles-cero"
+    ],
+    "k": [
+      "43201034",
+      "cc",
+      "cc.",
+      "jc.villantoy",
+      "jc.villantoy@gmail.com",
+      "jcvillantoy",
+      "jcvillantoygmailcom",
+      "juan",
+      "juan carlos villantoy cc.",
+      "juan cc.",
+      "juan villantoy",
+      "juancarlosvillantoycc",
+      "juancc",
+      "juanvillantoy",
+      "villantoy"
+    ],
+    "e": "jc.villantoy@gmail.com",
+    "dni": "43201034"
   }
 ];
 
