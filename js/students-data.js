@@ -71753,8 +71753,8 @@ const STUDENTS_DATABASE = [
     "e": "stefanoespinoza@polyglotmap.com"
   },
   {
-    "n": "Stefany Catherine",
-    "u": "Stefany Catherine",
+    "n": "Stefany Catherine Zevallos Espinoza",
+    "u": "Stefany Zevallos",
     "p": "71024421",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -71762,10 +71762,20 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "71024421",
+      "espinoza",
+      "stefany",
       "stefany catherine",
+      "stefany catherine zevallos espinoza",
+      "stefany espinoza",
+      "stefany zevallos",
       "stefanycatherine",
       "stefanycatherine05",
-      "stefanycatherine05gmailcom"
+      "stefanycatherine05@gmail.com",
+      "stefanycatherine05gmailcom",
+      "stefanycatherinezevallosespinoza",
+      "stefanyespinoza",
+      "stefanyzevallos",
+      "zevallos"
     ],
     "dni": "71024421",
     "e": "stefanycatherine05@gmail.com"
