@@ -3214,22 +3214,33 @@ const STUDENTS_DATABASE = [
     "e": "alexisserruto@gmail.com"
   },
   {
-    "n": "Alexis Eduardo Santa cruz Carrión",
-    "u": "Alexis Carrión",
-    "p": "alexiscarrion",
+    "n": "Alexis Eduardo Santa Cruz Carrión",
+    "u": "Alexis Santa Cruz",
+    "p": "73207821",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "73207821",
+      "ale.santa.cruz.ca",
+      "ale.santa.cruz.ca@gmail.com",
       "aleiscarrion",
       "aleiscarrionpolyglotmapcom",
+      "alesantacruzca",
+      "alesantacruzcagmailcom",
+      "alexis",
+      "alexis carrion",
       "alexis eduardo santa cruz carrion",
+      "alexis eduardo santa cruz carrión",
+      "alexis santa cruz",
       "alexiscarrion",
       "alexiseduardo",
-      "alexiseduardosantacruzcarrion"
+      "alexiseduardosantacruzcarrion",
+      "alexissantacruz"
     ],
-    "e": "aleiscarrion@polyglotmap.com"
+    "e": "ale.santa.cruz.ca@gmail.com",
+    "dni": "73207821"
   },
   {
     "n": "Alexis erazo Huamaliano",
@@ -19269,21 +19280,30 @@ const STUDENTS_DATABASE = [
     "e": "daysyquispe@polyglotmap.com"
   },
   {
-    "n": "Debbie Evian Myranda Gutiérrez De La Roca",
-    "u": "Debbie Roca",
-    "p": "debbieroca",
+    "n": "Debbie Evian Myranda Gutierrez De La Roca",
+    "u": "Debbie Gutierrez",
+    "p": "78862336",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "78862336",
+      "debbie",
       "debbie evian myranda gutierrez de la roca",
+      "debbie gutierrez",
+      "debbie roca",
+      "debbiedlroca",
+      "debbiedlroca@gmail.com",
+      "debbiedlrocagmailcom",
       "debbieevian",
       "debbieevianmyrandagutierrezdelaroca",
+      "debbiegutierrez",
       "debbieroca",
       "debbierocapolyglotmapcom"
     ],
-    "e": "debbieroca@polyglotmap.com"
+    "e": "debbiedlroca@gmail.com",
+    "dni": "78862336"
   },
   {
     "n": "DEBORA ALEJANDRA CALLE ROJAS",
@@ -31102,12 +31122,13 @@ const STUDENTS_DATABASE = [
     "e": "hashirafeli@polyglotmap.com"
   },
   {
-    "n": "Hasta que me salga bien",
-    "u": "Hasta bien",
+    "n": "Yngrid Jazmin Zarahi Corbera Mori",
+    "u": "Yngrid Corbera",
     "p": "75436100",
-    "role": "Estudiante Inscrito · Inglés Desde Cero",
+    "role": "Estudiante Multidisciplinario · Portugués Desde Cero & Inglés Desde Cero",
     "courses": [
-      "bootcamp-ingles-cero"
+      "bootcamp-ingles-cero",
+      "bootcamp-portugues-cero"
     ],
     "k": [
       "75436100",
@@ -31115,8 +31136,20 @@ const STUDENTS_DATABASE = [
       "hastabien",
       "hastaque",
       "hastaquemesalgabien",
+      "jazmin corbera",
+      "jazmin mori",
       "jazmincm0409",
-      "jazmincm0409gmailcom"
+      "jazmincm0409@gmail.com",
+      "jazmincm0409gmailcom",
+      "jazmincorbera",
+      "jazminmori",
+      "yngrid",
+      "yngrid corbera",
+      "yngrid jazmin zarahi corbera mori",
+      "yngrid mori",
+      "yngridcorbera",
+      "yngridjazminzarahicorberamori",
+      "yngridmori"
     ],
     "dni": "75436100",
     "e": "jazmincm0409@gmail.com",
@@ -54233,21 +54266,31 @@ const STUDENTS_DATABASE = [
     "ts": "11/16/2026 10:10:17"
   },
   {
-    "n": "Marlene de Fátima Miranda Franco",
-    "u": "Marlene Franco",
-    "p": "marlenefranco",
+    "n": "Marlene De Fátima Miranda Franco",
+    "u": "Marlene Miranda",
+    "p": "72398747",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "72398747",
+      "marlene",
       "marlene de fatima miranda franco",
+      "marlene de fátima miranda franco",
+      "marlene franco",
+      "marlene miranda",
       "marlenede",
       "marlenedefatimamirandafranco",
       "marlenefranco",
-      "marlenefrancopolyglotmapcom"
+      "marlenefrancopolyglotmapcom",
+      "marlenemiranda",
+      "mm46602",
+      "mm46602@gmail.com",
+      "mm46602gmailcom"
     ],
-    "e": "marlenefranco@polyglotmap.com"
+    "e": "mm46602@gmail.com",
+    "dni": "72398747"
   },
   {
     "n": "Marleni Beatriz Alderete Malpartida",
@@ -63556,21 +63599,29 @@ const STUDENTS_DATABASE = [
   },
   {
     "n": "Paola Giovanna Rossi Rojas",
-    "u": "Paola Rojas",
-    "p": "paolarojas",
+    "u": "Paola Rossi",
+    "p": "72191712",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "72191712",
+      "paola",
       "paola giovanna rossi rojas",
+      "paola rojas",
+      "paola rossi",
+      "paola.29.rossi.rojas",
+      "paola.29.rossi.rojas@gmail.com",
       "paola29rossirojas",
       "paola29rossirojasgmailcom",
       "paolagiovanna",
       "paolagiovannarossirojas",
-      "paolarojas"
+      "paolarojas",
+      "paolarossi"
     ],
-    "e": "paola.29.rossi.rojas@gmail.com"
+    "e": "paola.29.rossi.rojas@gmail.com",
+    "dni": "72191712"
   },
   {
     "n": "Paola Isabel vera chanduvi",
@@ -63785,7 +63836,7 @@ const STUDENTS_DATABASE = [
   },
   {
     "n": "Patricia Alexandra Otiniano Jiménez",
-    "u": "Patricia Jiménez",
+    "u": "Patricia Otiniano",
     "p": "72153133",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -63794,11 +63845,17 @@ const STUDENTS_DATABASE = [
     "k": [
       "72153133",
       "otinianojimenezp",
+      "otinianojimenezp@gmail.com",
       "otinianojimenezpgmailcom",
+      "patricia",
       "patricia alexandra otiniano jimenez",
+      "patricia alexandra otiniano jiménez",
+      "patricia jimenez",
+      "patricia otiniano",
       "patriciaalexandra",
       "patriciaalexandraotinianojimenez",
-      "patriciajimenez"
+      "patriciajimenez",
+      "patriciaotiniano"
     ],
     "dni": "72153133",
     "e": "otinianojimenezp@gmail.com"
@@ -68548,22 +68605,30 @@ const STUDENTS_DATABASE = [
     "e": "sandraeyzaguirre@polyglotmap.com"
   },
   {
-    "n": "Sandra Cristely, Correa Arteaga",
-    "u": "Sandra Arteaga",
-    "p": "sandraarteaga",
+    "n": "Sandra Cristely Correa Arteaga",
+    "u": "Sandra Correa",
+    "p": "75765444",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
       "bootcamp-portugues-cero"
     ],
     "k": [
+      "75765444",
+      "sandra",
+      "sandra arteaga",
+      "sandra correa",
       "sandra cristely correa arteaga",
       "sandraarteaga",
       "sandracorrea",
       "sandracorreatecsupedupe",
       "sandracristely",
+      "sandracristelycorrea123456789",
+      "sandracristelycorrea123456789@gmail.com",
+      "sandracristelycorrea123456789gmailcom",
       "sandracristelycorreaarteaga"
     ],
-    "e": "sandra.correa@tecsup.edu.pe"
+    "e": "sandracristelycorrea123456789@gmail.com",
+    "dni": "75765444"
   },
   {
     "n": "Sandra del Carmen Pintado Sernaque",
@@ -73694,8 +73759,8 @@ const STUDENTS_DATABASE = [
     "e": "valeriajimenez@polyglotmap.com"
   },
   {
-    "n": "Valeria Antuanne",
-    "u": "Valeria Antuanne",
+    "n": "Valeria Antuanne Ortiz Ramos",
+    "u": "Valeria Ortiz",
     "p": "72443624",
     "role": "Estudiante Inscrito · Portugués Desde Cero",
     "courses": [
@@ -73703,10 +73768,20 @@ const STUDENTS_DATABASE = [
     ],
     "k": [
       "72443624",
+      "antuanne ortiz",
+      "antuanneortiz",
       "antuanneortiz2",
+      "antuanneortiz2@gmail.com",
       "antuanneortiz2gmailcom",
+      "valeria",
       "valeria antuanne",
-      "valeriaantuanne"
+      "valeria antuanne ortiz ramos",
+      "valeria ortiz",
+      "valeria ramos",
+      "valeriaantuanne",
+      "valeriaantuanneortizramos",
+      "valeriaortiz",
+      "valeriaramos"
     ],
     "dni": "72443624",
     "e": "antuanneortiz2@gmail.com"
@@ -79622,6 +79697,31 @@ const STUDENTS_DATABASE = [
     ],
     "e": "jc.villantoy@gmail.com",
     "dni": "43201034"
+  },
+  {
+    "n": "Stephany Christel Mendez Ortega",
+    "u": "Stephany Mendez",
+    "p": "81032650",
+    "role": "Estudiante Inscrito · Inglés Desde Cero",
+    "courses": [
+      "bootcamp-ingles-cero"
+    ],
+    "k": [
+      "8-1032-650",
+      "81032650",
+      "stephany",
+      "stephany christel mendez ortega",
+      "stephany mendez",
+      "stephany ortega",
+      "stephanychristelmendezortega",
+      "stephanymendez",
+      "stephanymendez3101",
+      "stephanymendez3101@gmail.com",
+      "stephanymendez3101gmailcom",
+      "stephanyortega"
+    ],
+    "e": "stephanymendez3101@gmail.com",
+    "dni": "8-1032-650"
   }
 ];
 
