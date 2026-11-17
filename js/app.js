@@ -983,8 +983,10 @@ const COURSES_DATA = [
     type: 'BOOTCAMP',
     badgeText: 'BOOTCAMP · PORTUGUÉS',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    statusBadge: '🔥 Más de 1800 inscritos',
-    statusBadgeColor: 'bg-amber-100 text-amber-800 border-amber-300 font-extrabold',
+    dateBadge: 'INSCRIPCIONES CERRADAS',
+    statusBadge: '🔴 Inscripciones Cerradas',
+    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
+    isClosed: true,
     title: 'Portugués (Desde cero)',
     country: 'Brasil',
     flag: 'brazil',
@@ -1164,8 +1166,10 @@ const COURSES_DATA = [
     type: 'BOOTCAMP',
     badgeText: 'BOOTCAMP · PORTUGUÉS',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    statusBadge: '🔥 Más de 1800 inscritos',
-    statusBadgeColor: 'bg-amber-100 text-amber-800 border-amber-300 font-extrabold',
+    dateBadge: 'INSCRIPCIONES CERRADAS',
+    statusBadge: '🔴 Inscripciones Cerradas',
+    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
+    isClosed: true,
     title: 'Portugués (Básico 2)',
     country: 'Brasil',
     flag: 'brazil',
@@ -1592,7 +1596,16 @@ function renderCourses() {
             </div>
 
             <!-- AVISO DE INSCRIPCIÓN / COMPROMISO -->
-            ${course.isLocked ? `
+            ${course.isClosed ? `
+              <div class="mt-3.5 p-3.5 rounded-2xl bg-rose-50 border-2 border-rose-300 text-left text-xs space-y-1.5" onclick="event.stopPropagation()">
+                <p class="text-rose-950 font-black text-xs sm:text-sm tracking-wide flex items-center gap-1.5">
+                  <span>⛔</span> INSCRIPCIONES CERRADAS
+                </p>
+                <p class="text-rose-800 text-xs font-medium">
+                  El cupo para este bootcamp se encuentra completo. El acceso al aula virtual está reservado exclusivamente para los estudiantes registrados.
+                </p>
+              </div>
+            ` : course.isLocked ? `
               <div class="mt-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-amber-50 border-2 border-indigo-200 text-left text-xs space-y-2" onclick="event.stopPropagation()">
                 <p class="text-indigo-950 font-black text-xs sm:text-sm tracking-wide uppercase flex items-center gap-1.5">
                   <span>⭐</span> ALTO COMPROMISO
