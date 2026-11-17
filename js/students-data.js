@@ -8,6 +8,49 @@
 
 const STUDENTS_DATABASE = [
   {
+    "n": "Melanie Almeyda",
+    "u": "Melanie Almeyda",
+    "p": "melaniealmeyda",
+    "role": "Directora Académica & Coordinación General · Acceso Total",
+    "courses": [
+      "bootcamp-portugues-cero",
+      "bootcamp-portugues-basico2",
+      "bootcamp-ingles-cero",
+      "club-ingles-a2",
+      "bootcamp-master-classes"
+    ],
+    "k": [
+      "almeyda",
+      "melanie",
+      "melanie almeyda",
+      "melaniealmeyda",
+      "melaniealmeyda7",
+      "melaniealmeyda7gmailcom"
+    ],
+    "e": "melaniealmeyda7@gmail.com"
+  },
+  {
+    "n": "Valeria Valenzuela",
+    "u": "Valeria Valenzuela",
+    "p": "valeriavalenzuela",
+    "role": "Coordinación Académica & Admisión · Acceso Total",
+    "courses": [
+      "bootcamp-portugues-cero",
+      "bootcamp-portugues-basico2",
+      "bootcamp-ingles-cero",
+      "club-ingles-a2",
+      "bootcamp-master-classes"
+    ],
+    "k": [
+      "valenzuela",
+      "valeria",
+      "valeria valenzuela",
+      "valeriavalenzuela",
+      "valeriavalenzuelapolyglotmapcom"
+    ],
+    "e": "valeriavalenzuela@polyglotmap.com"
+  },
+  {
     "n": "Aaron Alfredo Lozada Lazo",
     "u": "Aaron Lazo",
     "p": "72174318",
@@ -63643,17 +63686,24 @@ const STUDENTS_DATABASE = [
     "n": "Patricia Elizabeth Morales Zapana",
     "u": "Patricia Zapana",
     "p": "45449339",
-    "role": "Estudiante Inscrito · Portugués Básico 2",
+    "role": "Docente Oficial · Portugués Desde Cero & Portugués Básico 2",
     "courses": [
+      "bootcamp-portugues-cero",
       "bootcamp-portugues-basico2"
     ],
     "k": [
       "45449339",
+      "morales",
+      "patricia",
       "patricia elizabeth morales zapana",
+      "patricia morales",
+      "patricia zapana",
       "patriciaelizabeth",
       "patriciaelizabethmoraleszapana",
+      "patriciamorales",
       "patriciazapana",
-      "patriciazapanapolyglotmapcom"
+      "patriciazapanapolyglotmapcom",
+      "zapana"
     ],
     "dni": "45449339",
     "e": "patriciazapana@polyglotmap.com",
@@ -79369,6 +79419,20 @@ function cleanStr(str) {
 
 function getEffectiveAllowedCourses(student) {
   if (!student) return ['bootcamp-portugues-cero'];
+  const n = (student.name || student.n || '').toLowerCase();
+  const u = (student.shortName || student.u || '').toLowerCase();
+  if (n.includes('melanie almeyda') || u.includes('melanie almeyda') || (n.includes('valeria') && n.includes('valenzuela')) || (u.includes('valeria') && u.includes('valenzuela'))) {
+    return [
+      'bootcamp-portugues-cero',
+      'bootcamp-portugues-basico2',
+      'bootcamp-ingles-cero',
+      'club-ingles-a2',
+      'bootcamp-master-classes'
+    ];
+  }
+  if (isDocentePatricia(student)) {
+    return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+  }
   if (Array.isArray(student.courses) && student.courses.length > 0) {
     return student.courses;
   }
@@ -79382,7 +79446,8 @@ function isDocentePatricia(student) {
   if (!student) return false;
   const name = (student.n || student.name || '').toLowerCase();
   const username = (student.u || student.shortName || '').toLowerCase();
-  return name.includes('patricia') && (name.includes('morales') || name.includes('zapana') || username.includes('patricia'));
+  const email = (student.e || student.email || '').toLowerCase();
+  return name.includes('patricia') && (name.includes('morales') || name.includes('zapana') || username.includes('patricia') || email.includes('patricia'));
 }
 
 function authenticateParticipant(usernameInput, passwordInput) {

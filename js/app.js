@@ -2142,7 +2142,7 @@ function getEffectiveAllowedCourses(user) {
     ];
   }
   if (isDocentePatricia(user)) {
-    return ['bootcamp-portugues-cero'];
+    return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
   }
   if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
     return user.allowedCourses;
