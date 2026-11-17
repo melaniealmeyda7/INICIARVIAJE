@@ -217,6 +217,9 @@
               placeholder="Ej. Camila Morales" 
               class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-base font-bold transition"
             />
+            <p class="text-xs text-amber-300 font-semibold mt-2 flex items-center gap-1.5 bg-amber-400/10 p-2 rounded-lg border border-amber-400/20">
+              <span>ℹ️</span> <span>Si te inscribiste a partir del 11 de noviembre tu contraseña es el DNI.</span>
+            </p>
           </div>
 
           <!-- Selección de Bootcamp -->
@@ -485,14 +488,14 @@
 
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
-            CONTRASEÑA (Lo mismo todo junto con minúscula)
+            CONTRASEÑA (Tu DNI o tu nombre todo junto)
           </label>
           <div class="relative">
             <input 
               type="password" 
               id="loginPassword" 
               required 
-              placeholder="Ej. luciamendoza" 
+              placeholder="Ej. 70865490 o luciamendoza" 
               autocomplete="current-password"
               class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-2.5 pr-11 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
             />
@@ -504,10 +507,13 @@
               👁️
             </button>
           </div>
+          <p class="text-[11px] text-amber-300 font-semibold mt-1.5 flex items-center gap-1.5">
+            <span>ℹ️</span> <span>Si te inscribiste a partir del 11 de noviembre tu contraseña es el DNI.</span>
+          </p>
         </div>
 
         <p id="passcodeError" class="hidden text-xs text-rose-300 bg-rose-950/40 border border-rose-500/40 p-2.5 rounded-xl font-semibold text-center">
-          ⚠️ Usuario o contraseña incorrectos. Verifica que tu usuario sea tu primer nombre y primer apellido, y la contraseña lo mismo en minúscula sin espacios.
+          ⚠️ Usuario o contraseña incorrectos. Si te inscribiste desde el 11 de noviembre tu contraseña es tu DNI.
         </p>
 
         <button type="submit" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 rounded-xl text-sm shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 select-none">
@@ -517,11 +523,13 @@
 
       <!-- AYUDA / FORMATO DE ACCESO -->
       <div class="mt-4 pt-3.5 border-t border-white/10 text-center">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-left">
-          <span class="text-[10px] font-mono uppercase tracking-wider text-[#ffd200] font-black block mb-1">💡 Regla de Acceso Oficial:</span>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-left space-y-1.5">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-[#ffd200] font-black block">💡 Regla de Acceso Oficial:</span>
           <p class="text-[11px] text-slate-300 leading-relaxed">
-            • <strong>Usuario:</strong> Tu primer nombre y primer apellido registrado (Ej. <code class="text-yellow-300">Lucía Mendoza</code>).<br/>
-            • <strong>Contraseña:</strong> Lo mismo todo junto en minúscula sin espacios (Ej. <code class="text-yellow-300 font-mono">luciamendoza</code>).
+            • <strong>Usuario:</strong> Tu primer nombre y primer apellido registrado (Ej. <code class="text-yellow-300">Lucía Mendoza</code> o tu número de DNI).<br/>
+            • <strong>Contraseña (desde 11 nov):</strong> Tu número de <strong>DNI</strong>.<br/>
+            • <strong>Contraseña (antes del 11 nov):</strong> Tu nombre todo junto en minúscula sin espacios (Ej. <code class="text-yellow-300 font-mono">luciamendoza</code>).<br/>
+            • <strong>Multicursos:</strong> Si te inscribiste en 2, 3 o 4 bootcamps, todos tus cursos se activan automáticamente.
           </p>
         </div>
       </div>
