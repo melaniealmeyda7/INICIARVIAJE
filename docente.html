@@ -104,6 +104,12 @@
           <span class="font-mono text-yellow-300 font-bold">PM-DOC-001</span>
         </div>
 
+        <!-- Botón Ver Aula de Alumnos -->
+        <a href="aula.html?view=student&course=bootcamp-portugues-cero" class="bg-blue-600/80 hover:bg-blue-500 text-white font-bold text-xs px-3.5 py-2 rounded-full border border-blue-400/30 transition-all flex items-center gap-1.5 shadow-sm">
+          <span>🎓</span>
+          <span>Aula de Alumnos</span>
+        </a>
+
         <!-- Botón Volver al Portal -->
         <a href="index.html" class="bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-3.5 py-2 rounded-full border border-white/20 transition-all flex items-center gap-1.5">
           <span>← Portal de Inicio</span>
@@ -133,43 +139,63 @@
       <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         
         <div class="space-y-3 max-w-2xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black bg-yellow-400 text-slate-950 uppercase tracking-wider shadow-sm">
-            <span>🇧🇷 PROGRAMA ASIGNADO OFICIAL</span>
-            <span>•</span>
-            <span>PORTUGUÉS DESDE CERO</span>
+          <div class="flex items-center gap-2 flex-wrap">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black bg-yellow-400 text-slate-950 uppercase tracking-wider shadow-sm">
+              <span>🇧🇷 PROGRAMA ASIGNADO</span>
+              <span>•</span>
+              <span id="teacherCourseBadge">PORTUGUÉS DESDE CERO</span>
+            </div>
+            <!-- Pestañas de Cambio de Curso para Docente -->
+            <div class="flex items-center gap-1.5">
+              <button id="btnTabCero" onclick="switchTeacherCourse('bootcamp-portugues-cero')" class="px-3 py-1 rounded-full text-xs font-black transition-all shadow-sm bg-yellow-400 text-slate-950 border-2 border-yellow-300 cursor-pointer">
+                🇧🇷 Desde Cero
+              </button>
+              <button id="btnTabBasico2" onclick="switchTeacherCourse('bootcamp-portugues-basico2')" class="px-3 py-1 rounded-full text-xs font-black transition-all shadow-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 cursor-pointer">
+                🇧🇷 Básico 2
+              </button>
+            </div>
           </div>
 
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             Panel de Clases & Proyección <br/>
-            <span class="text-[#ffd200]">Bootcamp Portugués Desde Cero</span>
+            <span id="teacherCourseTitle" class="text-[#ffd200]">Bootcamp Portugués Desde Cero</span>
           </h1>
 
           <p class="text-sm sm:text-base text-blue-100 font-medium">
-            Bienvenida <strong>Docente Patricia</strong>. Desde este panel exclusivo puedes acceder a tu sala de dictado y proyectar las diapositivas oficiales en pantalla completa para tus alumnos en las 10 sesiones.
+            Bienvenida <strong>Docente Patricia</strong>. Desde este panel exclusivo puedes acceder directamente a tu sala de dictado en vivo y proyectar las diapositivas oficiales en pantalla completa para tus alumnos.
           </p>
 
-          <div class="flex items-center gap-4 text-xs font-mono text-yellow-300 pt-1 flex-wrap">
+          <div id="teacherCourseSchedule" class="flex items-center gap-4 text-xs font-mono text-yellow-300 pt-1 flex-wrap">
             <span class="flex items-center gap-1.5">
-              📅 <strong>Fechas:</strong> Del 17 Nov al 17 Dic
+              📅 <strong>Fechas:</strong> 17 NOV (Martes y jueves)
             </span>
             <span class="text-white/30">•</span>
             <span class="flex items-center gap-1.5">
-              🕒 <strong>Horario:</strong> Martes y Jueves 07:00 PM a 08:00 PM (Hora Perú 🇵🇪)
+              🕒 <strong>Horario:</strong> 7:00 a 8:30 p. m. (Hora Perú 🇵🇪)
             </span>
           </div>
         </div>
 
         <!-- Tarjetas de Acciones Rápidas para el Docente -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 w-full lg:w-72 flex-shrink-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 w-full lg:w-80 flex-shrink-0">
           
-          <button onclick="handleTeacherZoomLaunch()" class="w-full bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-3 px-4 rounded-2xl shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer text-sm">
-            <span class="text-lg">🎥</span>
-            <span>Entrar a la Clase</span>
+          <!-- Botón Principal: Entrar a la Sala (Google Meet) -->
+          <button id="btnTeacherLive" onclick="handleTeacherZoomLaunch()" class="w-full bg-gradient-to-r from-emerald-500 via-teal-600 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black py-3.5 px-4 rounded-2xl shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer text-sm border-2 border-emerald-300/50 animate-pulse">
+            <span class="text-xl">🚀</span>
+            <span id="btnTeacherLiveText">Entrar a la Sala (Google Meet)</span>
           </button>
 
-          <div class="p-3 bg-white/5 border border-white/10 rounded-2xl text-center text-xs text-blue-200">
-            <span class="text-yellow-300 font-black font-mono text-sm block">1,894 Inscritos</span>
-            <span class="text-[11px] text-slate-300">Base oficial de participantes</span>
+          <!-- Enlace directo visible y botón de copia -->
+          <div class="p-3 bg-white/10 border border-white/15 rounded-2xl text-xs text-blue-100 flex items-center justify-between gap-2 shadow-sm">
+            <div class="truncate">
+              <span class="text-[10px] text-yellow-300 block font-bold uppercase tracking-wider">Enlace Oficial de Sala:</span>
+              <a id="teacherLinkHref" href="https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186" target="_blank" class="text-white hover:text-yellow-300 underline font-mono text-[11px] truncate block" title="Abrir sala en Google Meet">
+                https://meet.google.com/znu-nkhj-mni
+              </a>
+            </div>
+            <button onclick="copyTeacherLink()" class="px-2.5 py-1.5 bg-white/20 hover:bg-white/30 text-white rounded-lg text-[11px] font-bold flex-shrink-0 cursor-pointer transition" title="Copiar enlace">
+              📋 Copiar
+            </button>
           </div>
 
         </div>
@@ -375,8 +401,8 @@
               <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
                 ● Sesión Programada
               </span>
-              <button onclick="handleTeacherZoomLaunch()" class="w-full md:w-36 bg-[#ffd200] hover:bg-yellow-400 text-slate-950 font-black py-2 px-3 rounded-xl text-xs text-center shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer">
-                <span>🎥</span> Entrar a Clase
+              <button onclick="handleTeacherZoomLaunch()" class="w-full md:w-36 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-black py-2 px-3 rounded-xl text-xs text-center shadow-xs transition-all flex items-center justify-center gap-1 cursor-pointer">
+                <span>🚀</span> Entrar a Clase
               </button>
             </div>
 
@@ -499,7 +525,67 @@
     }
 
     function handleTeacherZoomLaunch() {
-      alert('🎥 Sala de Dictado de Clase Docente\n\nDocente Patricia: La sala Zoom para impartir tu clase en vivo se habilita automáticamente unos minutos antes del horario programado (Martes y Jueves 07:00 PM a 08:00 PM Hora Perú).');
+      const link = (currentTeacherCourse && currentTeacherCourse.classLink)
+        ? currentTeacherCourse.classLink
+        : (TEACHER_COURSE_ID === 'bootcamp-portugues-basico2'
+            ? 'https://meet.google.com/wcy-padp-ufi?authuser=0'
+            : 'https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186');
+      window.open(link, '_blank');
+    }
+
+    function copyTeacherLink() {
+      const link = (currentTeacherCourse && currentTeacherCourse.classLink)
+        ? currentTeacherCourse.classLink
+        : (TEACHER_COURSE_ID === 'bootcamp-portugues-basico2'
+            ? 'https://meet.google.com/wcy-padp-ufi?authuser=0'
+            : 'https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186');
+      navigator.clipboard.writeText(link).then(() => {
+        alert('¡Enlace de Google Meet copiado al portapapeles!\n\n' + link);
+      }).catch(() => {
+        prompt('Copia tu enlace oficial de clase:', link);
+      });
+    }
+
+    function switchTeacherCourse(courseId) {
+      TEACHER_COURSE_ID = courseId;
+      currentTeacherCourse = COURSES_DATA.find(c => c.id === courseId) || COURSES_DATA[0];
+      
+      const badgeEl = document.getElementById('teacherCourseBadge');
+      if (badgeEl) badgeEl.innerText = currentTeacherCourse.title.toUpperCase();
+
+      const titleEl = document.getElementById('teacherCourseTitle');
+      if (titleEl) titleEl.innerText = currentTeacherCourse.title;
+
+      const scheduleEl = document.getElementById('teacherCourseSchedule');
+      if (scheduleEl) {
+        scheduleEl.innerHTML = `
+          <span class="flex items-center gap-1.5">
+            📅 <strong>Fechas:</strong> ${currentTeacherCourse.dateMain} (${currentTeacherCourse.scheduleDays})
+          </span>
+          <span class="text-white/30">•</span>
+          <span class="flex items-center gap-1.5">
+            🕒 <strong>Horario:</strong> ${currentTeacherCourse.scheduleTime} (Hora Perú 🇵🇪)
+          </span>
+        `;
+      }
+
+      const linkHref = document.getElementById('teacherLinkHref');
+      if (linkHref && currentTeacherCourse.classLink) {
+        linkHref.href = currentTeacherCourse.classLink;
+        linkHref.innerText = currentTeacherCourse.classLink;
+      }
+
+      const btnCero = document.getElementById('btnTabCero');
+      const btnBasico2 = document.getElementById('btnTabBasico2');
+      if (courseId === 'bootcamp-portugues-cero') {
+        if (btnCero) btnCero.className = "px-3 py-1 rounded-full text-xs font-black transition-all shadow-sm bg-yellow-400 text-slate-950 border-2 border-yellow-300 cursor-pointer";
+        if (btnBasico2) btnBasico2.className = "px-3 py-1 rounded-full text-xs font-black transition-all shadow-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 cursor-pointer";
+      } else {
+        if (btnCero) btnCero.className = "px-3 py-1 rounded-full text-xs font-black transition-all shadow-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 cursor-pointer";
+        if (btnBasico2) btnBasico2.className = "px-3 py-1 rounded-full text-xs font-black transition-all shadow-sm bg-yellow-400 text-slate-950 border-2 border-yellow-300 cursor-pointer";
+      }
+
+      renderTeacherFlyerSessions();
     }
 
     function showLockedRecordingMessage() {

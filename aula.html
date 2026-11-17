@@ -537,10 +537,12 @@
       const urlParams = new URLSearchParams(window.location.search);
       let courseId = urlParams.get('course');
 
-      // Si el usuario es la Docente Patricia, redirigir a su Dashboard Exclusivo
+      // Si el usuario es la Docente Patricia, redirigir a su Dashboard Exclusivo (a menos que esté en modo vista alumno)
       if (currentUser && typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
-        window.location.replace('docente.html');
-        return;
+        if (urlParams.get('view') !== 'student') {
+          window.location.replace('docente.html');
+          return;
+        }
       }
 
       // Si el usuario está identificado, verificar sus cursos permitidos
