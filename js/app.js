@@ -1473,8 +1473,12 @@ function updateUIForUser() {
   const authBtn = document.getElementById('authBtn');
   const boardingPassesNavBtn = document.getElementById('boardingPassesNavBtn');
   const aulaNavBtn = document.getElementById('aulaNavBtn');
+  const headerCredencialBtn = document.getElementById('headerCredencialBtn');
 
   if (currentUser) {
+    const allowed = getEffectiveAllowedCourses(currentUser) || [];
+    const isDocente = typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser);
+
     userGreeting.innerHTML = `
       <span class="text-xs text-sky-200">¡Bienvenido a bordo!</span>
       <span class="font-bold text-white flex items-center gap-1.5">${currentUser.name} ✈️</span>
@@ -1484,28 +1488,68 @@ function updateUIForUser() {
     if (userPassportBadge) {
       userPassportBadge.classList.add('hidden');
     }
-    userMilesBadge.classList.remove('hidden');
-    userMilesBadge.innerHTML = `🌟 ${currentUser.miles || 1200} Millas`;
 
-    // boardingPassesNavBtn permanece oculto por diseño
     if (boardingPassesNavBtn) {
       boardingPassesNavBtn.classList.add('hidden');
+    }
+
+    if (headerCredencialBtn) {
+      if (allowed.includes('bootcamp-portugues-basico2')) {
+        headerCredencialBtn.classList.add('hidden');
+      } else {
+        headerCredencialBtn.classList.remove('hidden');
+      }
+    }
+
+    if (userMilesBadge) {
+      if (allowed.includes('bootcamp-portugues-basico2')) {
+        userMilesBadge.classList.add('hidden');
+      } else {
+        userMilesBadge.classList.remove('hidden');
+        userMilesBadge.innerHTML = `🌟 ${currentUser.miles || 1200} Millas`;
+      }
     }
 
     if (aulaNavBtn) {
       aulaNavBtn.classList.remove('hidden');
       aulaNavBtn.classList.add('inline-flex');
-      if (typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
+
+      if (isDocente) {
         aulaNavBtn.href = 'docente.html';
+        aulaNavBtn.className = "px-4 py-2 rounded-2xl text-xs font-black bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-600 hover:to-indigo-600 text-white shadow-lg hover:scale-105 transition-all flex items-center gap-1.5 select-none border border-white/20";
         aulaNavBtn.innerHTML = `
           <span>💼</span>
-          <span>Panel Docente</span>
+          <span>Panel Docente »</span>
+        `;
+      } else if (allowed.includes('bootcamp-portugues-basico2')) {
+        aulaNavBtn.href = 'aula.html?course=bootcamp-portugues-basico2';
+        aulaNavBtn.className = "px-4 py-2 rounded-2xl text-xs font-black bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-xl hover:scale-105 transition-all flex flex-col items-end leading-tight border-2 border-emerald-300/60 select-none animate-pulse";
+        aulaNavBtn.innerHTML = `
+          <span class="flex items-center gap-1.5 font-black text-yellow-300 text-xs sm:text-sm">
+            <span>🇧🇷</span> PORTUGUÉS BÁSICO 2 »
+          </span>
+          <span class="text-[10px] sm:text-[11px] text-emerald-100 font-medium">Martes y jueves · 7:00 a 8:30 p. m.</span>
+        `;
+      } else if (allowed.includes('bootcamp-portugues-cero')) {
+        aulaNavBtn.href = 'aula.html?course=bootcamp-portugues-cero';
+        aulaNavBtn.className = "px-4 py-2 rounded-2xl text-xs font-black bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-xl hover:scale-105 transition-all flex flex-col items-end leading-tight border-2 border-emerald-300/60 select-none";
+        aulaNavBtn.innerHTML = `
+          <span class="flex items-center gap-1.5 font-black text-yellow-300 text-xs sm:text-sm">
+            <span>🇧🇷</span> PORTUGUÉS DESDE CERO »
+          </span>
+          <span class="text-[10px] sm:text-[11px] text-emerald-100 font-medium">Martes y jueves · 7:00 a 8:00 p. m.</span>
         `;
       } else {
-        aulaNavBtn.href = 'aula.html';
+        const firstCourse = allowed[0] ? COURSES_DATA.find(c => c.id === allowed[0]) : null;
+        const cTitle = firstCourse ? firstCourse.title : 'Mi Aula Virtual';
+        const cSchedule = firstCourse ? `${firstCourse.scheduleDays} · ${firstCourse.scheduleTime}` : 'Ingresar al Aula';
+        aulaNavBtn.href = `aula.html${firstCourse ? '?course=' + firstCourse.id : ''}`;
+        aulaNavBtn.className = "px-4 py-2 rounded-2xl text-xs font-black bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white shadow-lg hover:scale-105 transition-all flex flex-col items-end leading-tight border border-white/20 select-none";
         aulaNavBtn.innerHTML = `
-          <span>🎒</span>
-          <span>Mi Aula Virtual</span>
+          <span class="flex items-center gap-1.5 font-black text-yellow-300 text-xs">
+            <span>🎒</span> ${cTitle} »
+          </span>
+          <span class="text-[10px] text-blue-100 font-medium">${cSchedule}</span>
         `;
       }
     }
@@ -1520,6 +1564,7 @@ function updateUIForUser() {
     userGreeting.classList.add('hidden');
     if (userPassportBadge) userPassportBadge.classList.add('hidden');
     if (userMilesBadge) userMilesBadge.classList.add('hidden');
+    if (headerCredencialBtn) headerCredencialBtn.classList.remove('hidden');
     boardingPassesNavBtn.classList.add('hidden');
 
     if (aulaNavBtn) {
@@ -1534,6 +1579,9 @@ function updateUIForUser() {
     authBtn.className = "px-6 py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:via-amber-400 hover:to-yellow-500 text-slate-950 shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:shadow-[0_0_35px_rgba(250,204,21,0.9)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-yellow-200 cursor-pointer select-none";
     authBtn.onclick = () => openModal('loginModal');
   }
+
+  // Refrescar tarjetas de cursos para reflejar el estado del alumno autenticado
+  renderCourses();
 }
 
 // Renderizar Cursos con fidelidad al Flyer
@@ -1632,27 +1680,53 @@ function renderCourses() {
           </div>
         </div>
 
-        <!-- Lado Derecho: Bloque de Fecha del Flyer -->
+        <!-- Lado Derecho: Bloque de Fecha del Flyer o Botón Exclusivo de Acceso -->
         <div class="flex items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-8">
-          ${course.isLocked ? `
-            <div class="bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-900 text-white font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-lg flex flex-col justify-center select-none border-2 border-yellow-400/40">
-              <span class="text-[10px] uppercase tracking-wider font-extrabold text-rose-300">🔒 BLOQUEADO</span>
-              <span class="text-xs uppercase tracking-wider font-black text-yellow-300 mt-1">${course.dateFrom}</span>
-              <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1 text-white">${course.dateMain}</span>
-              <span class="text-xs uppercase tracking-wider font-black text-yellow-300">${course.dateTo}</span>
-            </div>
-          ` : `
-            <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform relative">
-              ${course.dateBadge ? `
-                <span class="inline-block mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
-                  ${course.dateBadge}
+          ${currentUser ? (
+            userCanAccessCourse(course.id, currentUser) ? `
+              <div class="flex flex-col items-center gap-1.5 text-center select-none" onclick="event.stopPropagation()">
+                <a href="aula.html?course=${course.id}" target="_blank" class="w-40 sm:w-48 py-3.5 px-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-xl hover:scale-105 transition-all flex flex-col items-center justify-center border-2 border-emerald-300/60">
+                  <span class="text-[9px] font-extrabold uppercase tracking-wider text-emerald-200">✅ ACCESO AUTORIZADO</span>
+                  <span class="text-xs sm:text-sm font-black text-yellow-300 flex items-center gap-1 mt-0.5">
+                    <span>${course.flag === 'brazil' ? '🇧🇷' : '🇺🇸'}</span> ${course.title.toUpperCase()}
+                  </span>
+                  <span class="text-[10px] sm:text-[11px] font-medium text-emerald-100 mt-1">${course.scheduleDays}</span>
+                  <span class="text-[10px] sm:text-[11px] font-bold text-white">${course.scheduleTime}</span>
+                  <span class="mt-2 text-xs font-black bg-yellow-400 hover:bg-yellow-300 text-slate-950 px-3.5 py-1 rounded-full shadow-md">
+                    Entrar a Clase »
+                  </span>
+                </a>
+              </div>
+            ` : `
+              <div class="bg-slate-100 text-slate-600 font-bold rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-inner flex flex-col justify-center select-none border border-slate-200">
+                <span class="inline-block mx-auto mb-1 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
+                  ${course.isClosed ? 'INSCRIPCIONES CERRADAS' : 'NO ASIGNADO'}
                 </span>
-              ` : ''}
-              <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateFrom}</span>
-              <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1">${course.dateMain}</span>
-              <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateTo}</span>
-            </div>
-          `}
+                <span class="text-[11px] text-slate-500 font-medium">Acceso no habilitado</span>
+                <span class="text-xs font-black text-slate-700 mt-1">🔒 Solo Inscritos</span>
+              </div>
+            `
+          ) : (
+            course.isLocked ? `
+              <div class="bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-900 text-white font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-lg flex flex-col justify-center select-none border-2 border-yellow-400/40">
+                <span class="text-[10px] uppercase tracking-wider font-extrabold text-rose-300">🔒 BLOQUEADO</span>
+                <span class="text-xs uppercase tracking-wider font-black text-yellow-300 mt-1">${course.dateFrom}</span>
+                <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1 text-white">${course.dateMain}</span>
+                <span class="text-xs uppercase tracking-wider font-black text-yellow-300">${course.dateTo}</span>
+              </div>
+            ` : `
+              <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform relative">
+                ${course.dateBadge ? `
+                  <span class="inline-block mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
+                    ${course.dateBadge}
+                  </span>
+                ` : ''}
+                <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateFrom}</span>
+                <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1">${course.dateMain}</span>
+                <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateTo}</span>
+              </div>
+            `
+          )}
         </div>
 
       </div>
