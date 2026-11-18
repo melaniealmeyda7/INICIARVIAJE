@@ -160,6 +160,19 @@
           <p class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
             ¿Sala llena? Mira en <strong class="underline font-black">Facebook transmisión en vivo</strong> o luego en <strong class="underline font-black">YouTube grabación</strong>. ¡Síguenos en nuestras redes oficiales!
           </p>
+          
+          <!-- MODO COMUNICADO -->
+          <div class="mt-2.5 p-3 sm:p-3.5 rounded-2xl bg-slate-950 text-white border-2 border-yellow-400 shadow-xl flex items-start gap-2.5 text-left">
+            <span class="text-xl shrink-0">📢</span>
+            <div class="space-y-0.5">
+              <span class="inline-block px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-yellow-400 text-slate-950 font-mono">
+                COMUNICADO
+              </span>
+              <p class="text-xs sm:text-sm font-black text-yellow-300 leading-snug">
+                No habrá asistencia, el 18 de dic se activa el examen y estará por una semana.
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Botones de Redes y Transmisión -->
@@ -303,7 +316,7 @@
 
         <div>
           <h4 class="text-base font-black text-[#0c2364] leading-tight">Examen Final</h4>
-          <p class="text-xs text-slate-500 mt-0.5">Evaluación 100% por Examen Final</p>
+          <p class="text-xs text-amber-600 font-bold mt-0.5">Activa el 18 de dic · Por 1 semana (Sin asistencia)</p>
         </div>
 
         <button onclick="showLockedExamDetails()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-xs text-center border border-slate-300 shadow-sm transition-colors flex items-center justify-center gap-1 cursor-pointer">
@@ -1001,7 +1014,7 @@
     }
 
     function showLockedExamDetails() {
-      alert('📝 Examen Final de Certificación BLOQUEADO\n\nDebido a la alta cantidad de participantes, la evaluación se realizará únicamente mediante el Examen Final al término del bootcamp para todos los estudiantes inscritos.');
+      alert('📢 COMUNICADO OFICIAL · EXAMEN FINAL\n\nNo habrá asistencia. El 18 de diciembre se activa el examen final y estará disponible por una semana para todos los participantes.');
     }
   </script>
 
