@@ -998,7 +998,7 @@ const COURSES_DATA = [
     dateTo: 'AL 17 DIC',
     flightCode: 'PM-BRA01',
     gate: 'Puerta V-08 (Auditorio Virtual A)',
-    classLink: 'https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186',
+    classLink: 'https://us06web.zoom.us/j/82024030728?pwd=lhORcAC0JVNwqR8ibQzjtZgBMTg0eb.1',
     streamLink: 'https://youtube.com/live',
     registrationLink: 'https://forms.gle/wsipVZ9EkpzA9uXu6',
     seatClass: 'Inmersión Samba Principiante',

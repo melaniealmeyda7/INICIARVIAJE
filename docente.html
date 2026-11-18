@@ -182,15 +182,15 @@
           <!-- Botón Principal: Entrar a la Sala (Google Meet) -->
           <button id="btnTeacherLive" onclick="handleTeacherZoomLaunch()" class="w-full bg-gradient-to-r from-emerald-500 via-teal-600 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black py-3.5 px-4 rounded-2xl shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer text-sm border-2 border-emerald-300/50 animate-pulse">
             <span class="text-xl">🚀</span>
-            <span id="btnTeacherLiveText">Entrar a la Sala (Google Meet)</span>
+            <span id="btnTeacherLiveText">Entrar a la Sala (Zoom)</span>
           </button>
 
           <!-- Enlace directo visible y botón de copia -->
           <div class="p-3 bg-white/10 border border-white/15 rounded-2xl text-xs text-blue-100 flex items-center justify-between gap-2 shadow-sm">
             <div class="truncate">
               <span class="text-[10px] text-yellow-300 block font-bold uppercase tracking-wider">Enlace Oficial de Sala:</span>
-              <a id="teacherLinkHref" href="https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186" target="_blank" class="text-white hover:text-yellow-300 underline font-mono text-[11px] truncate block" title="Abrir sala en Google Meet">
-                https://meet.google.com/znu-nkhj-mni
+              <a id="teacherLinkHref" href="https://us06web.zoom.us/j/82024030728?pwd=lhORcAC0JVNwqR8ibQzjtZgBMTg0eb.1" target="_blank" class="text-white hover:text-yellow-300 underline font-mono text-[11px] truncate block" title="Abrir sala en Zoom">
+                https://us06web.zoom.us/j/82024030728
               </a>
             </div>
             <button onclick="copyTeacherLink()" class="px-2.5 py-1.5 bg-white/20 hover:bg-white/30 text-white rounded-lg text-[11px] font-bold flex-shrink-0 cursor-pointer transition" title="Copiar enlace">
@@ -529,7 +529,7 @@
         ? currentTeacherCourse.classLink
         : (TEACHER_COURSE_ID === 'bootcamp-portugues-basico2'
             ? 'https://meet.google.com/wcy-padp-ufi?authuser=0'
-            : 'https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186');
+            : 'https://us06web.zoom.us/j/82024030728?pwd=lhORcAC0JVNwqR8ibQzjtZgBMTg0eb.1');
       window.open(link, '_blank');
     }
 
@@ -538,9 +538,10 @@
         ? currentTeacherCourse.classLink
         : (TEACHER_COURSE_ID === 'bootcamp-portugues-basico2'
             ? 'https://meet.google.com/wcy-padp-ufi?authuser=0'
-            : 'https://meet.google.com/znu-nkhj-mni?authuser=0&hs=186');
+            : 'https://us06web.zoom.us/j/82024030728?pwd=lhORcAC0JVNwqR8ibQzjtZgBMTg0eb.1');
+      const platformName = link.includes('zoom.us') ? 'Zoom' : 'Google Meet';
       navigator.clipboard.writeText(link).then(() => {
-        alert('¡Enlace de Google Meet copiado al portapapeles!\n\n' + link);
+        alert(`¡Enlace de ${platformName} copiado al portapapeles!\n\n` + link);
       }).catch(() => {
         prompt('Copia tu enlace oficial de clase:', link);
       });
@@ -573,6 +574,13 @@
       if (linkHref && currentTeacherCourse.classLink) {
         linkHref.href = currentTeacherCourse.classLink;
         linkHref.innerText = currentTeacherCourse.classLink;
+      }
+
+      const liveBtnText = document.getElementById('btnTeacherLiveText');
+      if (liveBtnText) {
+        liveBtnText.innerText = (currentTeacherCourse.classLink && currentTeacherCourse.classLink.includes('zoom.us'))
+          ? 'Entrar a la Sala (Zoom)'
+          : 'Entrar a la Sala (Google Meet)';
       }
 
       const btnCero = document.getElementById('btnTabCero');
