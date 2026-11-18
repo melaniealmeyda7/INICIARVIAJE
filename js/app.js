@@ -1441,11 +1441,13 @@ function updateUIForUser() {
     const allowed = getEffectiveAllowedCourses(currentUser) || [];
     const isDocente = typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser);
 
-    userGreeting.innerHTML = `
-      <span class="text-xs text-sky-200">¡Bienvenido a bordo!</span>
-      <span class="font-bold text-white flex items-center gap-1.5">${currentUser.name} ✈️</span>
-    `;
-    userGreeting.classList.remove('hidden');
+    if (userGreeting) {
+      userGreeting.innerHTML = `
+        <span class="text-xs text-sky-200">¡Bienvenido a bordo!</span>
+        <span class="font-bold text-white flex items-center gap-1.5">${currentUser.name} ✈️</span>
+      `;
+      userGreeting.classList.remove('hidden');
+    }
 
     if (userPassportBadge) {
       userPassportBadge.classList.add('hidden');
@@ -1516,30 +1518,34 @@ function updateUIForUser() {
       }
     }
 
-    authBtn.innerHTML = `
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-      Cerrar Sesión
-    `;
-    authBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/20 hover:bg-white/30 text-white border border-white/25 transition-all flex items-center gap-1.5";
-    authBtn.onclick = handleLogout;
+    if (authBtn) {
+      authBtn.innerHTML = `
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+        Cerrar Sesión
+      `;
+      authBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/20 hover:bg-white/30 text-white border border-white/25 transition-all flex items-center gap-1.5";
+      authBtn.onclick = handleLogout;
+    }
   } else {
-    userGreeting.classList.add('hidden');
+    if (userGreeting) userGreeting.classList.add('hidden');
     if (userPassportBadge) userPassportBadge.classList.add('hidden');
     if (userMilesBadge) userMilesBadge.classList.add('hidden');
     if (headerCredencialBtn) headerCredencialBtn.classList.remove('hidden');
-    boardingPassesNavBtn.classList.add('hidden');
+    if (boardingPassesNavBtn) boardingPassesNavBtn.classList.add('hidden');
 
     if (aulaNavBtn) {
       aulaNavBtn.classList.add('hidden');
       aulaNavBtn.classList.remove('inline-flex');
     }
 
-    authBtn.innerHTML = `
-      <span class="w-2.5 h-2.5 rounded-full bg-slate-950 animate-ping"></span>
-      <span class="tracking-wide">✈️ INICIAR MI VIAJE / USUARIO</span>
-    `;
-    authBtn.className = "px-6 py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:via-amber-400 hover:to-yellow-500 text-slate-950 shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:shadow-[0_0_35px_rgba(250,204,21,0.9)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-yellow-200 cursor-pointer select-none";
-    authBtn.onclick = () => openModal('loginModal');
+    if (authBtn) {
+      authBtn.innerHTML = `
+        <span class="w-2.5 h-2.5 rounded-full bg-slate-950 animate-ping"></span>
+        <span class="tracking-wide">✈️ INICIAR MI VIAJE / USUARIO</span>
+      `;
+      authBtn.className = "px-6 py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:via-amber-400 hover:to-yellow-500 text-slate-950 shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:shadow-[0_0_35px_rgba(250,204,21,0.9)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-yellow-200 cursor-pointer select-none";
+      authBtn.onclick = () => openModal('loginModal');
+    }
   }
 
   // Refrescar tarjetas de cursos para reflejar el estado del alumno autenticado
@@ -2088,7 +2094,7 @@ function isMelanieUser(user) {
   return isSpecialAdminUser(user);
 }
 
-const ALL_BOOTCAMPS_LIST = [
+const ALL_AVAILABLE_BOOTCAMPS = [
   'bootcamp-portugues-cero',
   'bootcamp-portugues-basico2',
   'bootcamp-ingles-cero',
@@ -2096,12 +2102,12 @@ const ALL_BOOTCAMPS_LIST = [
 ];
 
 function getEffectiveAllowedCourses(user) {
-  if (!user) return ALL_BOOTCAMPS_LIST;
+  if (!user) return ALL_AVAILABLE_BOOTCAMPS;
   if (isDocentePatricia(user)) {
     return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
   }
   // Todos los estudiantes inscritos tienen acceso completo a todos los bootcamps
-  return ALL_BOOTCAMPS_LIST;
+  return ALL_AVAILABLE_BOOTCAMPS;
 }
 
 function userCanAccessCourse(courseId, user) {
@@ -2109,12 +2115,12 @@ function userCanAccessCourse(courseId, user) {
     return false;
   }
   if (!user) {
-    return ALL_BOOTCAMPS_LIST.includes(courseId);
+    return ALL_AVAILABLE_BOOTCAMPS.includes(courseId);
   }
   if (isDocentePatricia(user)) {
     return courseId === 'bootcamp-portugues-cero' || courseId === 'bootcamp-portugues-basico2';
   }
-  return ALL_BOOTCAMPS_LIST.includes(courseId);
+  return ALL_AVAILABLE_BOOTCAMPS.includes(courseId);
 }
 
 function getCourseNamesList(courseIds) {
