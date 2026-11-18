@@ -1669,12 +1669,12 @@ function renderCourses() {
 
                 <!-- Botones si la sala está llena -->
                 <div class="pt-1 border-t border-emerald-200/80 flex items-center gap-2 flex-wrap text-[11px]">
-                  <span class="font-bold text-slate-700">¿Sala llena?</span>
+                  <span class="font-bold text-slate-700">¿Sala llena / Grabación?</span>
                   <a href="https://www.facebook.com/PolyglotMap8/" target="_blank" class="px-3 py-1 rounded-lg bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold transition flex items-center gap-1">
                     <span>🔴</span> Facebook En Vivo
                   </a>
                   <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="px-3 py-1 rounded-lg bg-[#ff0000] hover:bg-red-700 text-white font-bold transition flex items-center gap-1">
-                    <span>📹</span> YouTube Grabación
+                    <span>📹</span> Ver Grabación en FB y YouTube
                   </a>
                 </div>
               </div>
