@@ -11,9 +11,11 @@ const COURSES_DATA = [
     type: 'BOOTCAMP',
     badgeText: 'BOOTCAMP · INGLÉS',
     badgeColor: 'bg-blue-100 text-blue-700 border-blue-200',
-    dateBadge: 'ACTUALIZACIÓN',
-    statusBadge: '✨ NUEVO',
-    statusBadgeColor: 'bg-purple-100 text-purple-700 border-purple-200',
+    dateBadge: 'DEL 20 NOV AL 18 DIC',
+    statusBadge: '🔒 BLOQUEADO TEMPORALMENTE',
+    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
+    isLocked: true,
+    isClosed: false,
     title: 'Inglés desde cero',
     country: 'Estados Unidos / Global',
     flag: 'usa',
@@ -26,7 +28,8 @@ const COURSES_DATA = [
     flightCode: 'PM-ENG01',
     gate: 'Puerta V-01 (Auditorio Virtual)',
     classLink: '',
-    streamLink: '',
+    streamLink: 'https://www.facebook.com/PolyglotMap8/',
+    youtubeLink: 'https://www.youtube.com/@polyglot_map',
     registrationLink: 'https://forms.gle/8ANqwWUxt8tfi6RC6?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafE60rN24MB4wGMEHubz6r5r_UrKPuaQhTrbIlcMs1hSweeR208EGV_SzzOsQ_aem_-2YkylOyhS6WLHyH8GU31w',
     seatClass: 'Clase Ejecutiva Lingüística',
     freeBadge: '100% GRATUITO',
@@ -595,8 +598,11 @@ const COURSES_DATA = [
     type: 'CLUB',
     badgeText: 'CLUB DE INGLÉS CONVERSACIONAL',
     badgeColor: 'bg-sky-100 text-sky-800 border-sky-200',
-    statusBadge: '✨ NUEVO',
-    statusBadgeColor: 'bg-purple-100 text-purple-700 border-purple-200',
+    dateBadge: 'DEL 9 NOV AL 14 DIC',
+    statusBadge: '🔒 BLOQUEADO TEMPORALMENTE',
+    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
+    isLocked: true,
+    isClosed: false,
     title: 'Nivel A2',
     country: 'Internacional',
     flag: 'usa',
@@ -609,7 +615,8 @@ const COURSES_DATA = [
     flightCode: 'PM-ENG-A2',
     gate: 'Puerta V-04 (Auditorio Virtual)',
     classLink: '',
-    streamLink: '',
+    streamLink: 'https://www.facebook.com/PolyglotMap8/',
+    youtubeLink: 'https://www.youtube.com/@polyglot_map',
     registrationLink: 'https://docs.google.com/forms/d/e/1FAIpQLSe6Dg2_HyfgnjEXD0Y51eK8UM0koZxayF5WfQ7q2nNBGZ1y2Q/viewform',
     seatClass: 'Club de Oradores',
     freeBadge: '100% GRATUITO',
@@ -983,10 +990,11 @@ const COURSES_DATA = [
     type: 'BOOTCAMP',
     badgeText: 'BOOTCAMP · PORTUGUÉS',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    dateBadge: 'INSCRIPCIONES CERRADAS',
-    statusBadge: '🔴 Inscripciones Cerradas',
-    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
-    isClosed: true,
+    dateBadge: 'DEL 17 NOV AL 17 DIC',
+    statusBadge: '🟢 ACCESO LIBRE · SALA ZOOM',
+    statusBadgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300 font-extrabold',
+    isClosed: false,
+    isLocked: false,
     title: 'Portugués (Desde cero)',
     country: 'Brasil',
     flag: 'brazil',
@@ -999,7 +1007,8 @@ const COURSES_DATA = [
     flightCode: 'PM-BRA01',
     gate: 'Puerta V-08 (Auditorio Virtual A)',
     classLink: 'https://us06web.zoom.us/j/82024030728?pwd=lhORcAC0JVNwqR8ibQzjtZgBMTg0eb.1',
-    streamLink: 'https://youtube.com/live',
+    streamLink: 'https://www.facebook.com/PolyglotMap8/',
+    youtubeLink: 'https://www.youtube.com/@polyglot_map',
     registrationLink: 'https://forms.gle/wsipVZ9EkpzA9uXu6',
     seatClass: 'Inmersión Samba Principiante',
     freeBadge: '100% GRATUITO',
@@ -1166,10 +1175,11 @@ const COURSES_DATA = [
     type: 'BOOTCAMP',
     badgeText: 'BOOTCAMP · PORTUGUÉS',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    dateBadge: 'INSCRIPCIONES CERRADAS',
-    statusBadge: '🔴 Inscripciones Cerradas',
-    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
-    isClosed: true,
+    dateBadge: 'DEL 17 NOV AL 17 DIC',
+    statusBadge: '🟢 ACCESO LIBRE · SALA MEET',
+    statusBadgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300 font-extrabold',
+    isClosed: false,
+    isLocked: false,
     title: 'Portugués (Básico 2)',
     country: 'Brasil',
     flag: 'brazil',
@@ -1182,7 +1192,8 @@ const COURSES_DATA = [
     flightCode: 'PM-BRA02',
     gate: 'Puerta V-09 (Auditorio Virtual B)',
     classLink: 'https://meet.google.com/wcy-padp-ufi?authuser=0',
-    streamLink: 'https://youtube.com/live',
+    streamLink: 'https://www.facebook.com/PolyglotMap8/',
+    youtubeLink: 'https://www.youtube.com/@polyglot_map',
     registrationLink: 'https://forms.gle/wsipVZ9EkpzA9uXu6',
     seatClass: 'Fluidez y Estructura Básico 2',
     freeBadge: '100% GRATUITO',
@@ -1564,6 +1575,10 @@ function renderCourses() {
     if (activeFilter === 'bootcamp') return c.type === 'BOOTCAMP';
     if (activeFilter === 'club') return c.type === 'CLUB';
     return true;
+  }).sort((a, b) => {
+    // Los cursos activos (Portugués) van primero, los bloqueados (Inglés) después
+    if (Boolean(a.isLocked) === Boolean(b.isLocked)) return 0;
+    return a.isLocked ? 1 : -1;
   });
 
   container.innerHTML = filtered.map(course => {
@@ -1611,35 +1626,55 @@ function renderCourses() {
               <span>📍 ${course.gate}</span>
             </div>
 
-            <!-- AVISO DE INSCRIPCIÓN / COMPROMISO -->
-            ${course.isClosed ? `
-              <div class="mt-3.5 p-3.5 rounded-2xl bg-rose-50 border-2 border-rose-300 text-left text-xs space-y-1.5" onclick="event.stopPropagation()">
+            <!-- ACCIONES Y ENLACES DEL BOOTCAMP -->
+            ${course.isLocked ? `
+              <div class="mt-3.5 p-3.5 rounded-2xl bg-rose-50 border-2 border-rose-200 text-left text-xs space-y-2" onclick="event.stopPropagation()">
                 <p class="text-rose-950 font-black text-xs sm:text-sm tracking-wide flex items-center gap-1.5">
-                  <span>⛔</span> INSCRIPCIONES CERRADAS
+                  <span>🔒</span> BOOTCAMP DE INGLÉS BLOQUEADO TEMPORALMENTE
                 </p>
                 <p class="text-rose-800 text-xs font-medium">
-                  El cupo para este bootcamp se encuentra completo. El acceso al aula virtual está reservado exclusivamente para los estudiantes registrados.
+                  El acceso a las clases en vivo de inglés se habilitará próximamente. Puedes revisar el temario completo de las clases en el aula virtual.
                 </p>
-              </div>
-            ` : course.isLocked ? `
-              <div class="mt-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-amber-50 border-2 border-indigo-200 text-left text-xs space-y-2" onclick="event.stopPropagation()">
-                <p class="text-indigo-950 font-black text-xs sm:text-sm tracking-wide uppercase flex items-center gap-1.5">
-                  <span>⭐</span> ALTO COMPROMISO
-                </p>
-                <div class="pt-0.5">
-                  <a href="${course.registrationLink}" target="_blank" class="inline-flex items-center gap-2 text-xs font-black text-white bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 px-4 py-2 rounded-xl shadow-md transition transform hover:scale-[1.02]">
-                    <span>✍️ Inscríbete y Postula Aquí »</span>
+                <div class="flex items-center gap-2 pt-1 flex-wrap">
+                  <button onclick="alert('🔒 Acceso a Clase en Vivo Bloqueado\\n\\nEl acceso en vivo a este bootcamp de inglés está temporalmente bloqueado. ¡Próximamente disponible! Puedes consultar las unidades y temarios.');" class="px-3.5 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 flex items-center gap-1.5 cursor-pointer">
+                    <span>🔒</span> Sala en Vivo Bloqueada
+                  </button>
+                  <a href="aula.html?course=${course.id}" target="_blank" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5">
+                    <span>📖</span> Ver Temario y Unidades »
                   </a>
                 </div>
               </div>
             ` : `
-              <div class="mt-3.5 p-3 rounded-2xl bg-amber-50 border border-amber-200/80 text-left text-xs space-y-1.5" onclick="event.stopPropagation()">
-                <p class="text-amber-950 font-bold leading-snug">
-                  ⚠️ <strong class="text-amber-900">¿Aún no estás inscrito?</strong> Solamente se dará constancia de participación / certificación a los que estén inscritos y cumplan con los requisitos del programa.
-                </p>
-                <div class="pt-0.5">
-                  <a href="${course.registrationLink}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-black text-[#0f2d8a] hover:text-blue-700 hover:underline bg-white px-3 py-1.5 rounded-xl border border-amber-300 shadow-sm transition">
-                    <span>📝 Formulario de Inscripción Oficial aquí »</span>
+              <div class="mt-3.5 p-3.5 rounded-2xl bg-emerald-50 border-2 border-emerald-200 text-left text-xs space-y-2.5" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                  <p class="text-emerald-950 font-black text-xs sm:text-sm tracking-wide flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span>🟢 DISPONIBLE CON MATERIAL Y ACCESO EN VIVO</span>
+                  </p>
+                  <span class="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
+                    Acceso Libre sin Credenciales
+                  </span>
+                </div>
+                
+                <div class="flex items-center gap-2 flex-wrap pt-0.5">
+                  <!-- Botón Unirse a Clase -->
+                  <a href="${course.classLink}" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer">
+                    <span>🚀</span> Unirse a Clase en Vivo (${course.classLink.includes('zoom.us') ? 'Zoom' : 'Google Meet'})
+                  </a>
+                  <!-- Botón Ver Materiales -->
+                  <a href="aula.html?course=${course.id}" target="_blank" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+                    <span>📖</span> Ver Materiales (10 Aulas) »
+                  </a>
+                </div>
+
+                <!-- Botones si la sala está llena -->
+                <div class="pt-1 border-t border-emerald-200/80 flex items-center gap-2 flex-wrap text-[11px]">
+                  <span class="font-bold text-slate-700">¿Sala llena?</span>
+                  <a href="https://www.facebook.com/PolyglotMap8/" target="_blank" class="px-3 py-1 rounded-lg bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold transition flex items-center gap-1">
+                    <span>🔴</span> Facebook En Vivo
+                  </a>
+                  <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="px-3 py-1 rounded-lg bg-[#ff0000] hover:bg-red-700 text-white font-bold transition flex items-center gap-1">
+                    <span>📹</span> YouTube Grabación
                   </a>
                 </div>
               </div>
@@ -1648,53 +1683,36 @@ function renderCourses() {
           </div>
         </div>
 
-        <!-- Lado Derecho: Bloque de Fecha del Flyer o Botón Exclusivo de Acceso -->
+        <!-- Lado Derecho: Botón Exclusivo de Entrada al Aula -->
         <div class="flex items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-8">
-          ${currentUser ? (
-            userCanAccessCourse(course.id, currentUser) ? `
-              <div class="flex flex-col items-center gap-1.5 text-center select-none" onclick="event.stopPropagation()">
-                <a href="aula.html?course=${course.id}" target="_blank" class="w-40 sm:w-48 py-3.5 px-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-xl hover:scale-105 transition-all flex flex-col items-center justify-center border-2 border-emerald-300/60">
-                  <span class="text-[9px] font-extrabold uppercase tracking-wider text-emerald-200">✅ ACCESO AUTORIZADO</span>
-                  <span class="text-xs sm:text-sm font-black text-yellow-300 flex items-center gap-1 mt-0.5">
-                    <span>${course.flag === 'brazil' ? '🇧🇷' : '🇺🇸'}</span> ${course.title.toUpperCase()}
-                  </span>
-                  <span class="text-[10px] sm:text-[11px] font-medium text-emerald-100 mt-1">${course.scheduleDays}</span>
-                  <span class="text-[10px] sm:text-[11px] font-bold text-white">${course.scheduleTime}</span>
-                  <span class="mt-2 text-xs font-black bg-yellow-400 hover:bg-yellow-300 text-slate-950 px-3.5 py-1 rounded-full shadow-md">
-                    Entrar a Clase »
-                  </span>
-                </a>
-              </div>
-            ` : `
-              <div class="bg-slate-100 text-slate-600 font-bold rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-inner flex flex-col justify-center select-none border border-slate-200">
-                <span class="inline-block mx-auto mb-1 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
-                  ${course.isClosed ? 'INSCRIPCIONES CERRADAS' : 'NO ASIGNADO'}
+          ${course.isLocked ? `
+            <div class="flex flex-col items-center gap-2 text-center select-none" onclick="event.stopPropagation()">
+              <div class="bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 font-bold rounded-2xl w-40 sm:w-48 py-4 px-3 text-center shadow-inner flex flex-col justify-center border border-slate-300">
+                <span class="inline-block mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
+                  BLOQUEADO
                 </span>
-                <span class="text-[11px] text-slate-500 font-medium">Acceso no habilitado</span>
-                <span class="text-xs font-black text-slate-700 mt-1">🔒 Solo Inscritos</span>
+                <span class="text-xs uppercase tracking-wider font-extrabold text-slate-800">PRÓXIMAMENTE</span>
+                <span class="text-[11px] text-slate-500 mt-1">${course.dateMain}</span>
               </div>
-            `
-          ) : (
-            course.isLocked ? `
-              <div class="bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-900 text-white font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-lg flex flex-col justify-center select-none border-2 border-yellow-400/40">
-                <span class="text-[10px] uppercase tracking-wider font-extrabold text-rose-300">🔒 BLOQUEADO</span>
-                <span class="text-xs uppercase tracking-wider font-black text-yellow-300 mt-1">${course.dateFrom}</span>
-                <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1 text-white">${course.dateMain}</span>
-                <span class="text-xs uppercase tracking-wider font-black text-yellow-300">${course.dateTo}</span>
-              </div>
-            ` : `
-              <div class="bg-[#ffd200] text-slate-950 font-black rounded-2xl w-36 sm:w-44 py-4 px-3 text-center shadow-md flex flex-col justify-center select-none transform hover:scale-105 transition-transform relative">
-                ${course.dateBadge ? `
-                  <span class="inline-block mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
-                    ${course.dateBadge}
-                  </span>
-                ` : ''}
-                <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateFrom}</span>
-                <span class="text-2xl sm:text-3xl font-black tracking-tight leading-none my-1">${course.dateMain}</span>
-                <span class="text-xs uppercase tracking-wider font-black text-slate-900/90">${course.dateTo}</span>
-              </div>
-            `
-          )}
+              <a href="aula.html?course=${course.id}" target="_blank" class="text-xs font-bold text-slate-600 hover:text-slate-900 underline flex items-center gap-1">
+                <span>📖</span> Ver Temario »
+              </a>
+            </div>
+          ` : `
+            <div class="flex flex-col items-center gap-2 text-center select-none" onclick="event.stopPropagation()">
+              <a href="${course.classLink}" target="_blank" class="w-44 sm:w-52 py-3 px-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-xl hover:scale-105 active:scale-95 transition-all flex flex-col items-center justify-center border-2 border-emerald-300/60">
+                <span class="text-[9px] font-extrabold uppercase tracking-wider text-emerald-200">🟢 ACCESO LIBRE</span>
+                <span class="text-xs sm:text-sm font-black text-yellow-300 flex items-center gap-1 mt-0.5">
+                  ${course.classLink.includes('zoom.us') ? '🚀 ENTRAR A ZOOM »' : '🚀 ENTRAR A MEET »'}
+                </span>
+                <span class="text-[10px] text-emerald-100 mt-1">${course.scheduleDays}</span>
+                <span class="text-[10px] font-bold text-white">${course.scheduleTime}</span>
+              </a>
+              <a href="aula.html?course=${course.id}" target="_blank" class="text-xs font-bold text-blue-700 hover:text-blue-900 underline flex items-center gap-1">
+                <span>📖</span> Ver Materiales (10 Aulas) »
+              </a>
+            </div>
+          `}
         </div>
 
       </div>
@@ -2137,44 +2155,28 @@ function handleCardClick(courseId) {
   const course = COURSES_DATA.find(c => c.id === courseId);
   if (!course) return;
 
-  if (!currentUser) {
-    handleStartJourneyClick(courseId);
-  } else {
-    // Validar si el estudiante está inscrito en este curso
-    if (!userCanAccessCourse(courseId, currentUser)) {
-      const allowed = getEffectiveAllowedCourses(currentUser) || [];
-      const myCourses = getCourseNamesList(allowed);
-      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu acceso aplica a: ${myCourses}.\n\nNo tienes asignado "${course ? course.title : 'este curso'}".`);
-      return;
-    }
-    goToClassPanel(courseId);
+  if (course.isLocked || course.language === 'Inglés') {
+    alert('🔒 Bootcamp de Inglés Bloqueado Temporalmente\n\nEl acceso a las clases en vivo de inglés está bloqueado por el momento. ¡Próximamente disponible!\n\nPuedes consultar el temario y las unidades en el aula virtual.');
+    window.open(`aula.html?course=${courseId}`, '_blank');
+    return;
   }
+
+  // Portugués: Acceso libre directo al aula virtual con temarios y links
+  window.open(`aula.html?course=${courseId}`, '_blank');
 }
 
-// Click en INICIAR MI VIAJE / USUARIO
+// Click en INICIAR MI VIAJE / USUARIO (Acceso Libre)
 function handleStartJourneyClick(courseId) {
-  const course = COURSES_DATA.find(c => c.id === courseId);
-  if (course) {
-    currentBookingCourse = course;
-  }
-  openModal('loginModal');
+  window.open(`aula.html?course=${courseId || 'bootcamp-portugues-cero'}`, '_blank');
 }
 
 // Ir al Panel de Clases (aula.html para alumnos / docente.html para docentes) en pestaña completa
 function goToClassPanel(courseId) {
-  if (!currentUser) {
-    handleStartJourneyClick(courseId);
-    return;
-  }
-  if (typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
+  if (currentUser && typeof isDocentePatricia === 'function' && isDocentePatricia(currentUser)) {
     window.open('docente.html', '_blank');
     return;
   }
-  let targetId = courseId;
-  const allowed = getEffectiveAllowedCourses(currentUser);
-  if (!targetId || !userCanAccessCourse(targetId, currentUser)) {
-    targetId = (allowed && allowed[0]) ? allowed[0] : 'bootcamp-portugues-cero';
-  }
+  const targetId = courseId || 'bootcamp-portugues-cero';
   window.open(`aula.html?course=${targetId}`, '_blank');
 }
 
