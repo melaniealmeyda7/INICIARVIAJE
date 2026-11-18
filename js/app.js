@@ -34,7 +34,7 @@ const COURSES_DATA = [
     spotsLeft: 7,
     description: 'Aprende los fundamentos del idioma inglés con metodología inmersiva natural de viaje: presentaciones, aeropuerto, hospedaje y conversaciones cotidianas.',
     instructor: 'Coach Bilingüe Polyglot Map',
-    perks: ['Clases en vivo', 'Material de estudio en PDF (Visor oficial)', 'Acceso a comunidad viajera', 'Certificado de asistencia'],
+    perks: ['Clases en vivo', 'Material de estudio en PDF (Visor oficial)', 'Acceso a comunidad viajera', 'Certificado con examen final'],
     syllabus: [
       {
         session: 'Sesión 1',
@@ -1343,44 +1343,6 @@ const COURSES_DATA = [
         }
       }
     ]
-  },
-  {
-    id: 'bootcamp-master-classes',
-    type: 'BOOTCAMP',
-    badgeText: 'BOOTCAMP ESPECIALIZADO',
-    badgeColor: 'bg-purple-100 text-purple-900 border-purple-300 font-black',
-    statusBadge: '🔒 BLOQUEADO',
-    statusBadgeColor: 'bg-rose-100 text-rose-700 border-rose-300 font-extrabold',
-    title: 'MASTER CLASSES',
-    country: 'Internacional',
-    flag: 'usa',
-    language: 'Inglés Avanzado',
-    scheduleDays: '30 NOV al 10 DIC · Sesiones Intensivas',
-    scheduleTime: 'Horario Especializado (Sesiones en Vivo)',
-    dateFrom: 'DEL',
-    dateMain: '30 NOV',
-    dateTo: 'AL 10 DIC',
-    flightCode: 'PM-MASTER-2026',
-    gate: 'Auditorio Magna VIP (Cupos Limitados)',
-    classLink: 'https://zoom.us',
-    streamLink: 'https://youtube.com/live',
-    registrationLink: 'https://forms.gle/SWoUAsxhEM1XbUDVA',
-    isLocked: true,
-    commitmentMessage: 'ALTO COMPROMISO',
-    seatClass: 'Master Class Ejecutiva',
-    freeBadge: 'ACCESO POR SELECCIÓN',
-    spotsTotal: 25,
-    spotsLeft: 0,
-    description: 'Programa exclusivo de Master Classes en habilidades lingüísticas avanzadas, liderazgo profesional y networking global.',
-    instructor: 'Speakers Internacionales & Coaches Polyglot Map',
-    perks: ['Master Classes exclusivas', 'Networking global de alto nivel', 'Constancia de Especialización', 'Acceso restringido por postulación'],
-    syllabus: [
-      { session: 'Master Class 1', date: '30 Nov', time: 'En vivo', title: 'Global Leadership & Cross-Cultural Fluency', desc: 'Comunicación de alto impacto y liderazgo internacional.' },
-      { session: 'Master Class 2', date: '02 Dic', time: 'En vivo', title: 'High-Stakes Negotiations & Pitching', desc: 'Negociaciones estratégicas y presentaciones ejecutivas en inglés.' },
-      { session: 'Master Class 3', date: '04 Dic', time: 'En vivo', title: 'Global Networking & LinkedIn Authority', desc: 'Posicionamiento internacional y networking con ejecutivos.' },
-      { session: 'Master Class 4', date: '08 Dic', time: 'En vivo', title: 'Executive Fluency & Impromptu Speaking', desc: 'Oratoria persuasiva y fluidez bajo presión.' },
-      { session: 'Master Class 5', date: '10 Dic', time: 'En vivo', title: 'International Summit & Graduation', desc: 'Cumbre de clausura y graduación de Master Classes.' }
-    ]
   }
 ];
 
@@ -1932,7 +1894,7 @@ function showBoardingPass(course) {
                 Aula Virtual & Dashboard Completo
               </h5>
               <p class="text-xs text-slate-800 mt-0.5">
-                Abre la pantalla completa con reproductor de grabaciones, links de reunión, asistencia en Google Forms y temario detallado.
+                Abre la pantalla completa con reproductor de grabaciones, links de reunión, materiales oficiales y temario detallado.
               </p>
             </div>
             <button onclick="openAulaTab('${course.id}')" class="w-full sm:w-auto bg-slate-950 hover:bg-[#0e34a0] text-yellow-300 font-black px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-xl transition-all transform hover:scale-105 active:scale-95 flex-shrink-0 select-none">
@@ -1949,12 +1911,12 @@ function showBoardingPass(course) {
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 ACCESO DIRECTO A LA SALA DE VUELO
               </span>
-              <span class="text-xs font-mono text-slate-300">
-                Asistencia: <strong class="text-yellow-300">${attendanceCount}/${totalSessions}</strong> sesiones
+              <span class="text-xs font-mono text-emerald-400 font-bold">
+                📝 Evaluación: Examen Final
               </span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               
               <!-- 1. Botón ENTRAR A LA CLASE -->
               <a href="${course.classLink || 'https://zoom.us'}" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-black py-3 px-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2 text-center group">
@@ -1962,23 +1924,17 @@ function showBoardingPass(course) {
                 <span>Entrar a la Clase</span>
               </a>
 
-              <!-- 2. Botón REGISTRAR ASISTENCIA -->
-              <button onclick="recordAttendance('${course.id}')" class="bg-[#ffd200] hover:bg-yellow-400 active:scale-95 text-slate-950 font-black py-3 px-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2 text-center">
-                <span>📋</span>
-                <span>Registrar Asistencia</span>
-              </button>
-
-              <!-- 3. Botón EXAMEN FINAL (BLOQUEADO) -->
-              <button onclick="handleLockedExam()" class="bg-slate-800 text-slate-400 font-bold py-3 px-4 rounded-xl text-sm border border-slate-700 cursor-not-allowed opacity-80 flex items-center justify-center gap-2 text-center relative group">
-                <span class="text-base">🔒</span>
+              <!-- 2. Botón EXAMEN FINAL (BLOQUEADO) -->
+              <button onclick="handleLockedExam()" class="bg-slate-800 text-slate-300 hover:text-white font-bold py-3 px-4 rounded-xl text-sm border border-slate-700 opacity-90 flex items-center justify-center gap-2 text-center relative group cursor-pointer">
+                <span class="text-base">📝</span>
                 <span>Examen Final</span>
-                <span class="text-[10px] bg-red-500/80 text-white font-bold px-1.5 py-0.5 rounded ml-1 uppercase">Bloqueado</span>
+                <span class="text-[10px] bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 rounded ml-1 uppercase">Próximamente</span>
               </button>
 
             </div>
 
             <p class="text-[11px] text-slate-400 font-medium text-center pt-1">
-              🔒 El examen final se desbloqueará automáticamente en la última sesión para quienes cumplan con la asistencia requerida.
+              ℹ️ Debido a la gran cantidad de participantes, la evaluación se realizará únicamente mediante el Examen Final en la última sesión.
             </p>
           </div>
 
@@ -2016,15 +1972,9 @@ function showBoardingPass(course) {
                           🕒 ${item.time}
                         </span>
                       </div>
-                      ${isAttended ? `
-                        <span class="inline-flex items-center gap-1 text-[11px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                          ✅ Asistencia Confirmada
-                        </span>
-                      ` : `
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                          Programada
-                        </span>
-                      `}
+                      <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        Programada
+                      </span>
                     </div>
                     <h6 class="font-bold text-slate-900 text-sm mt-1.5">${item.title}</h6>
                     <p class="text-xs text-slate-600 mt-0.5">${item.desc}</p>
@@ -2096,7 +2046,7 @@ function recordAttendance(courseId) {
 
 // Aviso de Examen Final Bloqueado
 function handleLockedExam() {
-  alert('🔒 Examen Final Bloqueado: Este examen se habilitará oficialmente en la sesión 10 (última semana de clases) para los estudiantes que cuenten con el 100% de asistencia registrada.');
+  alert('📝 Examen Final Bloqueado\n\nDebido a la alta cantidad de participantes, la evaluación se realizará únicamente mediante el Examen Final al término del bootcamp para todos los estudiantes inscritos.');
 }
 
 // Funciones de Control de Acceso Oficial
@@ -2138,39 +2088,33 @@ function isMelanieUser(user) {
   return isSpecialAdminUser(user);
 }
 
+const ALL_BOOTCAMPS_LIST = [
+  'bootcamp-portugues-cero',
+  'bootcamp-portugues-basico2',
+  'bootcamp-ingles-cero',
+  'club-ingles-a2'
+];
+
 function getEffectiveAllowedCourses(user) {
-  if (!user) return null;
-  if (isSpecialAdminUser(user)) {
-    return [
-      'bootcamp-portugues-cero',
-      'bootcamp-portugues-basico2',
-      'bootcamp-ingles-cero',
-      'club-ingles-a2',
-      'bootcamp-master-classes'
-    ];
-  }
+  if (!user) return ALL_BOOTCAMPS_LIST;
   if (isDocentePatricia(user)) {
     return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
   }
-  if (user.allowedCourses && Array.isArray(user.allowedCourses) && user.allowedCourses.length > 0) {
-    return user.allowedCourses;
-  }
-  // Todos los demás estudiantes registrados en la base de datos oficial aplican exclusivamente a Portugués Desde Cero
-  return ['bootcamp-portugues-cero'];
+  // Todos los estudiantes inscritos tienen acceso completo a todos los bootcamps
+  return ALL_BOOTCAMPS_LIST;
 }
 
 function userCanAccessCourse(courseId, user) {
-  if (isSpecialAdminUser(user)) {
-    return true;
-  }
   if (courseId === 'bootcamp-master-classes') {
     return false;
   }
   if (!user) {
-    return courseId !== 'bootcamp-master-classes';
+    return ALL_BOOTCAMPS_LIST.includes(courseId);
   }
-  const allowed = getEffectiveAllowedCourses(user);
-  return allowed ? allowed.includes(courseId) : (courseId === 'bootcamp-portugues-cero');
+  if (isDocentePatricia(user)) {
+    return courseId === 'bootcamp-portugues-cero' || courseId === 'bootcamp-portugues-basico2';
+  }
+  return ALL_BOOTCAMPS_LIST.includes(courseId);
 }
 
 function getCourseNamesList(courseIds) {
@@ -2185,14 +2129,7 @@ function getCourseNamesList(courseIds) {
 // Click en toda la tarjeta del curso
 function handleCardClick(courseId) {
   const course = COURSES_DATA.find(c => c.id === courseId);
-  
-  if (course && course.isLocked && !isSpecialAdminUser(currentUser)) {
-    alert('🔒 BOOTCAMP ESPECIALIZADO BLOQUEADO\n\nEste programa exclusivo de Master Classes (30 Nov al 10 Dic) requiere compromiso total de asistencia. Si deseas participar, completa el formulario de postulación oficial.');
-    if (course.registrationLink) {
-      window.open(course.registrationLink, '_blank');
-    }
-    return;
-  }
+  if (!course) return;
 
   if (!currentUser) {
     handleStartJourneyClick(courseId);
@@ -2201,10 +2138,7 @@ function handleCardClick(courseId) {
     if (!userCanAccessCourse(courseId, currentUser)) {
       const allowed = getEffectiveAllowedCourses(currentUser) || [];
       const myCourses = getCourseNamesList(allowed);
-      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu registro oficial en nuestra lista aplica a: ${myCourses}.\n\nNo estás registrado(a) en el programa de "${course ? course.title : 'este curso'}". Si deseas participar, completa el formulario oficial de inscripción.`);
-      if (course && course.registrationLink) {
-        window.open(course.registrationLink, '_blank');
-      }
+      alert(`🔒 Curso No Asignado\n\nHola ${currentUser.name}: Tu acceso aplica a: ${myCourses}.\n\nNo tienes asignado "${course ? course.title : 'este curso'}".`);
       return;
     }
     goToClassPanel(courseId);
