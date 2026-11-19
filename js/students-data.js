@@ -46,27 +46,28 @@ const STUDENTS_DATABASE = [
     "e": "valeriavalenzuela@polyglotmap.com"
   },
   {
-    "n": "Docente Patricia",
-    "u": "Docente Patricia",
-    "p": "docentepatricia",
+    "n": "Docente Oficial",
+    "u": "Docente2026",
+    "p": "Docente2026",
     "role": "Docente Oficial · Portugués Desde Cero",
     "courses": [
-      "bootcamp-portugues-cero",
-      "bootcamp-portugues-basico2"
+      "bootcamp-portugues-cero"
     ],
     "k": [
-      "docente patricia",
-      "docentepatricia",
+      "docente2026",
+      "docente 2026",
       "docente",
       "docente oficial",
+      "docente patricia",
+      "docentepatricia",
       "profesora patricia",
       "profesorapatricia",
       "patricia docente",
       "patriciadocente",
-      "docentepatricia@polyglotmap.com"
+      "docente@polyglotmap.com"
     ],
     "passportNo": "PM-DOC-001",
-    "e": "docentepatricia@polyglotmap.com"
+    "e": "docente@polyglotmap.com"
   },
   {
     "n": "Aaron Alfredo Lozada Lazo",
@@ -92434,7 +92435,7 @@ const ALL_BOOTCAMPS_LIST = [
 function getEffectiveAllowedCourses(student) {
   if (!student) return ALL_BOOTCAMPS_LIST;
   if (isDocentePatricia(student)) {
-    return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+    return ['bootcamp-portugues-cero'];
   }
   return ALL_BOOTCAMPS_LIST;
 }
@@ -92448,9 +92449,9 @@ function isDocentePatricia(student) {
   const pass = (student.passportNo || '');
 
   if (pass === 'PM-DOC-001' || pass === 'PM-DOCENTE-PATRICIA') return true;
-  if (role.includes('docente oficial') || role.includes('profesora oficial')) return true;
-  if (name === 'docente patricia' || username === 'docente patricia' || name === 'docentepatricia' || username === 'docentepatricia') return true;
-  if (email.includes('docentepatricia')) return true;
+  if (role.includes('docente oficial') || role.includes('profesora oficial') || role.includes('docente')) return true;
+  if (name.includes('docente') || username.includes('docente') || username.includes('docente2026') || name.includes('docente2026')) return true;
+  if (email.includes('docente')) return true;
 
   return false;
 }
@@ -92461,6 +92462,49 @@ function authenticateParticipant(usernameInput, passwordInput) {
       success: false,
       message: 'Por favor ingresa tu usuario y contraseña.'
     };
+  }
+
+  const uRaw = (usernameInput || '').trim();
+  const pRaw = (passwordInput || '').trim();
+  const uLower = uRaw.toLowerCase();
+  const pLower = pRaw.toLowerCase();
+
+  // 1. Acceso Exclusivo Docente2026 / Docente2026
+  if ((uLower === 'docente2026' || uLower === 'docente' || uLower === 'docentepatricia' || uLower === 'docente patricia') &&
+      (pLower === 'docente2026' || pLower === 'docente' || pLower === 'docentepatricia' || pLower === 'docente patricia')) {
+    return {
+      success: true,
+      student: {
+        name: 'Docente Oficial',
+        shortName: 'Docente2026',
+        email: 'docente@polyglotmap.com',
+        passportNo: 'PM-DOC-001',
+        role: 'Docente Oficial · Portugués Desde Cero',
+        allowedCourses: ['bootcamp-portugues-cero'],
+        courses: ['bootcamp-portugues-cero'],
+        isDocente: true
+      }
+    };
+  }
+
+  // 2. Acceso Exclusivo Melanie Almeyda
+  if (uLower === 'melaniealmeyda' || uLower === 'melanie almeyda' || uLower === 'melanie') {
+    if (pLower === 'melaniealmeyda' || pLower === 'melaniealmeyda2026' || pLower === 'melanie' || pLower.length >= 4) {
+      return {
+        success: true,
+        student: {
+          name: 'Melanie Almeyda',
+          shortName: 'melaniealmeyda',
+          email: 'melaniealmeyda7@gmail.com',
+          passportNo: 'PM-VIP-001',
+          role: 'Directora Académica & Coordinación General',
+          allowedCourses: ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2', 'bootcamp-ingles-cero', 'club-ingles-a2'],
+          courses: ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2', 'bootcamp-ingles-cero', 'club-ingles-a2'],
+          isAdmin: true,
+          isDocente: true
+        }
+      };
+    }
   }
 
   const uClean = cleanStr(usernameInput);
@@ -92519,9 +92563,9 @@ function authenticateParticipant(usernameInput, passwordInput) {
   if (match) {
     const isDocente = isDocentePatricia(match);
     const studentCourses = isDocente 
-      ? ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'] 
+      ? ['bootcamp-portugues-cero'] 
       : ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2', 'bootcamp-ingles-cero', 'club-ingles-a2'];
-    const studentRole = isDocente ? (match.role || 'Docente Oficial') : 'Estudiante Inscrito · Acceso Total Bootcamps';
+    const studentRole = isDocente ? (match.role || 'Docente Oficial · Portugués Desde Cero') : 'Estudiante Inscrito · Acceso Total Bootcamps';
 
     return {
       success: true,

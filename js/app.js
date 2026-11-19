@@ -2097,9 +2097,9 @@ function isDocentePatricia(user) {
   const pass = (user.passportNo || '');
 
   if (pass === 'PM-DOC-001' || pass === 'PM-DOCENTE-PATRICIA') return true;
-  if (role.includes('docente oficial') || role.includes('profesora oficial')) return true;
-  if (n === 'docente patricia' || u === 'docente patricia' || n === 'docentepatricia' || u === 'docentepatricia') return true;
-  if (e.includes('docentepatricia')) return true;
+  if (role.includes('docente oficial') || role.includes('profesora oficial') || role.includes('docente')) return true;
+  if (n.includes('docente') || u.includes('docente') || u.includes('docente2026') || n.includes('docente2026')) return true;
+  if (e.includes('docente')) return true;
 
   return false;
 }
@@ -2125,7 +2125,7 @@ const ALL_AVAILABLE_BOOTCAMPS = [
 function getEffectiveAllowedCourses(user) {
   if (!user) return ALL_AVAILABLE_BOOTCAMPS;
   if (isDocentePatricia(user)) {
-    return ['bootcamp-portugues-cero', 'bootcamp-portugues-basico2'];
+    return ['bootcamp-portugues-cero'];
   }
   // Todos los estudiantes inscritos tienen acceso completo a todos los bootcamps
   return ALL_AVAILABLE_BOOTCAMPS;
