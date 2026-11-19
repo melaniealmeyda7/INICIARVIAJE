@@ -100,6 +100,12 @@
           🌟 1,500 Millas
         </div>
 
+        <!-- Botón: ACCESO DOCENTE -->
+        <button onclick="openModal('teacherIndexModal')" class="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-purple-700 via-indigo-600 to-purple-800 hover:from-purple-600 hover:to-indigo-500 text-white shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border border-purple-300/40 select-none" title="Ingreso exclusivo para profesores">
+          <span>💼</span>
+          <span class="tracking-wide">DOCENTE</span>
+        </button>
+
         <!-- Botón Principal: VER MATERIALES -->
         <a id="authBtn" href="aula.html?course=bootcamp-portugues-cero" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:via-amber-400 hover:to-yellow-500 text-slate-950 shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:shadow-[0_0_35px_rgba(250,204,21,0.9)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-yellow-200 cursor-pointer select-none">
           <span class="text-base">📖</span>
@@ -627,10 +633,150 @@
     </div>
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- MODAL: ACCESO EXCLUSIVO DOCENTE                                            -->
+  <!-- ========================================================================= -->
+  <div id="teacherIndexModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="bg-gradient-to-br from-[#0e2a6d] via-[#091b48] to-[#050e26] text-white rounded-3xl max-w-md w-full p-6 sm:p-8 border-2 border-yellow-400/50 shadow-2xl relative">
+      
+      <button onclick="closeModal('teacherIndexModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-bold cursor-pointer">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center text-3xl shadow-inner mb-3">
+          💼
+        </div>
+        <span class="text-[11px] uppercase font-mono tracking-widest text-[#ffd200] font-bold">Polyglot Map • Portal Docente</span>
+        <h3 class="text-2xl font-black text-white mt-1">Acceso Docente</h3>
+        <p class="text-xs text-blue-200 mt-1">Ingresa con tus credenciales de profesor para ver tu panel de clases y proyección</p>
+      </div>
+
+      <form id="teacherIndexForm" onsubmit="handleTeacherIndexSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
+            Usuario Docente
+          </label>
+          <input 
+            type="text" 
+            id="teacherIndexUser" 
+            required 
+            placeholder="Ej: Docente2026" 
+            autocomplete="username"
+            class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-sm font-bold tracking-wide transition shadow-inner"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1.5">
+            Contraseña
+          </label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="teacherIndexPass" 
+              required 
+              placeholder="••••••••" 
+              autocomplete="current-password"
+              class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 pr-11 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
+            />
+            <button 
+              type="button" 
+              onclick="togglePasswordVisibility('teacherIndexPass', this)" 
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 text-slate-300 hover:text-yellow-300 transition-colors focus:outline-none text-base cursor-pointer"
+              title="Mostrar u ocultar contraseña">
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <p id="teacherIndexError" class="hidden text-xs text-rose-300 bg-rose-950/60 border border-rose-500/40 p-2.5 rounded-xl font-semibold text-center">
+          ⚠️ Usuario o contraseña docente incorrectos.
+        </p>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-black py-3.5 rounded-xl text-sm shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer select-none">
+          <span>Ingresar al Portal Docente »</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
   <!-- Base de datos de Estudiantes y Lógica Principal -->
   <script src="js/students-data.js?v=10"></script>
   <script src="js/app.js?v=10"></script>
   <script>
+    function handleTeacherIndexSubmit(e) {
+      if (e) e.preventDefault();
+      const u = (document.getElementById('teacherIndexUser').value || '').trim();
+      const p = (document.getElementById('teacherIndexPass').value || '').trim();
+      const errEl = document.getElementById('teacherIndexError');
+
+      const uLower = u.toLowerCase();
+      const pLower = p.toLowerCase();
+
+      // 1. Acceso Exclusivo Docente2026 / Docente2026
+      if (uLower === 'docente2026' && (p === 'Docente2026' || pLower === 'docente2026')) {
+        const teacherUser = {
+          id: 'DOCENTE-2026',
+          username: 'Docente2026',
+          shortName: 'Docente2026',
+          name: 'Docente Oficial',
+          role: 'Docente Oficial · Portugués Desde Cero',
+          courses: ['bootcamp-portugues-cero'],
+          allowedCourses: ['bootcamp-portugues-cero'],
+          passportNo: 'PM-DOC-001',
+          isDocente: true
+        };
+        localStorage.setItem('polyglot_user', JSON.stringify(teacherUser));
+        sessionStorage.setItem('polyglot_user', JSON.stringify(teacherUser));
+        if (errEl) errEl.classList.add('hidden');
+        window.location.href = 'docente.html';
+        return;
+      }
+
+      // 2. Acceso Exclusivo Melanie Almeyda
+      if (uLower === 'melaniealmeyda' && (pLower === 'melaniealmeyda' || pLower === 'melaniealmeyda2026' || pLower === 'melanie' || p.length >= 4)) {
+        const adminUser = {
+          id: 'ADMIN-MELANIE',
+          username: 'melaniealmeyda',
+          shortName: 'melaniealmeyda',
+          name: 'Melanie Almeyda',
+          role: 'Directora Académica & Coordinación General',
+          courses: ['bootcamp-portugues-cero'],
+          allowedCourses: ['bootcamp-portugues-cero'],
+          passportNo: 'PM-VIP-001',
+          isAdmin: true,
+          isDocente: true
+        };
+        localStorage.setItem('polyglot_user', JSON.stringify(adminUser));
+        sessionStorage.setItem('polyglot_user', JSON.stringify(adminUser));
+        if (errEl) errEl.classList.add('hidden');
+        window.location.href = 'docente.html';
+        return;
+      }
+
+      // 3. Verificación con base de datos
+      if (typeof authenticateParticipant === 'function') {
+        const res = authenticateParticipant(u, p);
+        if (res && res.success && res.student) {
+          const st = res.student;
+          if ((typeof isDocentePatricia === 'function' && isDocentePatricia(st)) || st.isDocente || (typeof isSpecialAdminUser === 'function' && isSpecialAdminUser(st))) {
+            localStorage.setItem('polyglot_user', JSON.stringify(st));
+            sessionStorage.setItem('polyglot_user', JSON.stringify(st));
+            if (errEl) errEl.classList.add('hidden');
+            window.location.href = 'docente.html';
+            return;
+          }
+        }
+      }
+
+      if (errEl) {
+        errEl.innerText = '⚠️ Usuario o contraseña docente incorrectos. Ingrese Docente2026.';
+        errEl.classList.remove('hidden');
+      }
+    }
+
     function handleQuickBookingSubmit() {
       const name = document.getElementById('quickName').value.trim() || 'Viajero Políglota';
       const contact = document.getElementById('quickContact').value.trim() || 'viajero@polyglotmap.com';
