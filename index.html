@@ -661,7 +661,7 @@
             type="text" 
             id="teacherIndexUser" 
             required 
-            placeholder="Ej: Docente2026" 
+            placeholder="Ingresa tu usuario" 
             autocomplete="username"
             class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none text-sm font-bold tracking-wide transition shadow-inner"
           />
@@ -676,7 +676,7 @@
               type="password" 
               id="teacherIndexPass" 
               required 
-              placeholder="••••••••" 
+              placeholder="Ingresa tu contraseña" 
               autocomplete="current-password"
               class="w-full bg-white/10 border-2 border-white/20 focus:border-[#ffd200] rounded-xl px-4 py-3 pr-11 text-white placeholder-slate-400 focus:outline-none text-sm font-mono tracking-wide transition shadow-inner"
             />
@@ -772,7 +772,7 @@
       }
 
       if (errEl) {
-        errEl.innerText = '⚠️ Usuario o contraseña docente incorrectos. Ingrese Docente2026.';
+        errEl.innerText = '⚠️ Usuario o contraseña docente incorrectos. Verifique sus credenciales.';
         errEl.classList.remove('hidden');
       }
     }
