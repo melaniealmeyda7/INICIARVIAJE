@@ -1551,11 +1551,14 @@ function updateUIForUser() {
 
     if (authBtn) {
       authBtn.innerHTML = `
-        <span class="w-2.5 h-2.5 rounded-full bg-slate-950 animate-ping"></span>
-        <span class="tracking-wide">✈️ INICIAR MI VIAJE / USUARIO</span>
+        <span class="text-base">📖</span>
+        <span class="tracking-wide">VER MATERIALES</span>
       `;
       authBtn.className = "px-6 py-3 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:via-amber-400 hover:to-yellow-500 text-slate-950 shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:shadow-[0_0_35px_rgba(250,204,21,0.9)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-yellow-200 cursor-pointer select-none";
-      authBtn.onclick = () => openModal('loginModal');
+      authBtn.href = "aula.html?course=bootcamp-portugues-cero";
+      authBtn.onclick = (e) => {
+        window.location.href = "aula.html?course=bootcamp-portugues-cero";
+      };
     }
   }
 

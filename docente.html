@@ -297,6 +297,9 @@
   </aside>
 
   <!-- Scripts -->
+  <script src="js/anti-download.js"></script>
+  <script src="js/pdf.min.js"></script>
+  <script src="js/pdf-viewer.js"></script>
   <script src="js/students-data.js"></script>
   <script src="js/app.js?v=11"></script>
   <script>
@@ -483,25 +486,19 @@
           </p>
         </div>
 
-        <!-- VISOR OFICIAL DE PROYECCIÓN EN PDF (FORMATO PDF, SIN DESCARGA) -->
-        <div class="w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700/60 my-2">
-          <div class="bg-slate-950 px-4 py-2 flex items-center justify-between border-b border-white/10 flex-wrap gap-2">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-              <span class="text-xs font-mono text-slate-200 ml-2 font-bold flex items-center gap-1.5">
-                <span>📄 Visor Oficial de Diapositivas</span>
-              </span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[11px] font-mono text-yellow-300 font-bold bg-yellow-400/10 border border-yellow-400/30 px-2.5 py-0.5 rounded-full">
-                ${s.pdfName || 'Material-Oficial.pdf'}
-              </span>
-            </div>
-          </div>
-          ${s.pdfUrl ? `
-            <div class="relative w-full bg-slate-900 select-none" oncontextmenu="return false;">
+        <!-- CONTENEDOR DEL VISOR INTERACTIVO EN CANVAS (PROTEGIDO) -->
+        <div id="pdfViewerHost" class="w-full my-2"></div>
+      `;
+
+      openModal('materialDetailModal');
+
+      const host = document.getElementById('pdfViewerHost');
+      if (s.pdfUrl && window.PolyglotPdfViewer) {
+        window.PolyglotPdfViewer.init(host, s.pdfUrl);
+      } else if (s.pdfUrl) {
+        if (host) {
+          host.innerHTML = `
+            <div class="relative w-full bg-slate-900 select-none rounded-2xl overflow-hidden border border-slate-700" oncontextmenu="return false;">
               <iframe 
                 id="pdfPreviewIframe"
                 src="${s.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1" 
@@ -509,19 +506,21 @@
                 title="Proyección de Diapositivas Docente"
                 loading="lazy">
               </iframe>
+              <div class="absolute inset-0 pointer-events-none material-watermark-overlay"></div>
             </div>
-          ` : `
-            <div class="h-72 flex flex-col items-center justify-center text-slate-400 p-6 text-center">
+          `;
+        }
+      } else {
+        if (host) {
+          host.innerHTML = `
+            <div class="h-72 flex flex-col items-center justify-center text-slate-400 p-6 text-center bg-slate-900 rounded-2xl border border-slate-800">
               <span class="text-4xl mb-3">📑</span>
               <p class="text-base font-bold text-white">Diapositiva Oficial en Preparación</p>
               <p class="text-xs text-slate-300 mt-1 max-w-md">El documento en PDF para esta fecha se activará antes del inicio de la sesión.</p>
             </div>
-          `}
-        </div>
-
-      `;
-
-      openModal('materialDetailModal');
+          `;
+        }
+      }
     }
 
     function handleTeacherZoomLaunch() {
