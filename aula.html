@@ -101,7 +101,7 @@
         <!-- Selector de Curso con estética limpia -->
         <div class="relative">
           <select id="courseSwitchSelect" class="bg-white text-[#0e34a0] font-black text-xs rounded-full px-4 py-2 shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer">
-            <option value="bootcamp-ingles-cero">🇺🇸 Inglés desde cero (DEL 20 NOV AL 18 DIC · ACTUALIZACIÓN)</option>
+            <option value="bootcamp-ingles-cero">🇺🇸 Inglés desde cero (DEL 20 NOV AL 18 DIC · EN VIVO)</option>
             <option value="club-ingles-a2">🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC)</option>
             <option value="bootcamp-portugues-cero">🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC)</option>
             <option value="bootcamp-portugues-basico2">🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC)</option>
@@ -898,7 +898,7 @@
       const ALL_OPTIONS = [
         { id: 'bootcamp-portugues-cero', label: '🇧🇷 Portugués · Desde cero (DEL 17 NOV AL 17 DIC · EN VIVO)' },
         { id: 'bootcamp-portugues-basico2', label: '🇧🇷 Portugués · Básico 2 (DEL 17 NOV AL 17 DIC · EN VIVO)' },
-        { id: 'bootcamp-ingles-cero', label: '🇺🇸 Inglés desde cero (DEL 20 NOV AL 18 DIC · BLOQUEADO)' },
+        { id: 'bootcamp-ingles-cero', label: '🇺🇸 Inglés desde cero (DEL 20 NOV AL 18 DIC · EN VIVO)' },
         { id: 'club-ingles-a2', label: '🇺🇸 Club de Inglés Conversacional · Nivel A2 (DEL 9 NOV AL 14 DIC · BLOQUEADO)' }
       ];
 
@@ -960,7 +960,7 @@
       if (ytBtn) ytBtn.href = "https://www.youtube.com/@polyglot_map";
 
       if (liveBtn) {
-        if (currentAulaCourse.isLocked || currentAulaCourse.language === 'Inglés') {
+        if (currentAulaCourse.isLocked) {
           liveBtn.onclick = () => alert('🔒 Acceso a Clase en Vivo Bloqueado (Inglés)\n\nEl acceso a las clases en vivo de inglés está bloqueado por el momento. ¡Próximamente disponible!\n\nPuedes consultar el temario y los materiales interactivos de cada unidad.');
           liveBtn.className = "w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl text-xs text-center border border-slate-300 shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer";
           liveBtn.innerHTML = `<span>🔒</span> Clase en Vivo Bloqueada (Próximamente)`;

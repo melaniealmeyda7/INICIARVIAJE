@@ -12,9 +12,9 @@ const COURSES_DATA = [
     badgeText: 'BOOTCAMP · INGLÉS',
     badgeColor: 'bg-blue-100 text-blue-700 border-blue-200',
     dateBadge: 'DEL 20 NOV AL 18 DIC',
-    statusBadge: '🔒 BLOQUEADO TEMPORALMENTE',
-    statusBadgeColor: 'bg-rose-100 text-rose-800 border-rose-300 font-extrabold',
-    isLocked: true,
+    statusBadge: '🟢 ACCESO LIBRE · SALA ZOOM',
+    statusBadgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300 font-extrabold',
+    isLocked: false,
     isClosed: false,
     title: 'Inglés desde cero',
     country: 'Estados Unidos / Global',
@@ -26,8 +26,8 @@ const COURSES_DATA = [
     dateMain: '20 NOV',
     dateTo: 'AL 18 DIC',
     flightCode: 'PM-ENG01',
-    gate: 'Puerta V-01 (Auditorio Virtual)',
-    classLink: '',
+    gate: 'Puerta V-01 (Auditorio Virtual Zoom)',
+    classLink: 'https://us06web.zoom.us/j/87200978668?pwd=vEFQ3bQ2wzxWP2vtVY6kyasE7xVlxi.1',
     streamLink: 'https://www.facebook.com/PolyglotMap8/',
     youtubeLink: 'https://www.youtube.com/@polyglot_map',
     registrationLink: 'https://forms.gle/8ANqwWUxt8tfi6RC6?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafE60rN24MB4wGMEHubz6r5r_UrKPuaQhTrbIlcMs1hSweeR208EGV_SzzOsQ_aem_-2YkylOyhS6WLHyH8GU31w',
@@ -2448,7 +2448,7 @@ function renderCourses() {
                   </a>
                   <!-- Botón Ver Materiales -->
                   <a href="aula.html?course=${course.id}" target="_blank" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
-                    <span>📖</span> Ver Materiales (10 Aulas) »
+                    <span>📖</span> Ver Materiales (${course.syllabus ? course.syllabus.length + (course.language === 'Inglés' ? ' Clases' : ' Aulas') : 'Aula'}) »
                   </a>
                 </div>
 
@@ -2494,7 +2494,7 @@ function renderCourses() {
                 <span class="text-[10px] font-bold text-white">${course.scheduleTime}</span>
               </a>
               <a href="aula.html?course=${course.id}" target="_blank" class="text-xs font-bold text-blue-700 hover:text-blue-900 underline flex items-center gap-1">
-                <span>📖</span> Ver Materiales (10 Aulas) »
+                <span>📖</span> Ver Materiales (${course.syllabus ? course.syllabus.length + (course.language === 'Inglés' ? ' Clases' : ' Aulas') : 'Aula'}) »
               </a>
             </div>
           `}
@@ -2940,13 +2940,13 @@ function handleCardClick(courseId) {
   const course = COURSES_DATA.find(c => c.id === courseId);
   if (!course) return;
 
-  if (course.isLocked || course.language === 'Inglés') {
-    alert('🔒 Bootcamp de Inglés Bloqueado Temporalmente\n\nEl acceso a las clases en vivo de inglés está bloqueado por el momento. ¡Próximamente disponible!\n\nPuedes consultar el temario y las unidades en el aula virtual.');
+  if (course.isLocked) {
+    alert(`🔒 ${course.title} Bloqueado Temporalmente\n\nEl acceso a las clases en vivo de este curso está bloqueado por el momento. ¡Próximamente disponible!\n\nPuedes consultar el temario y las unidades en el aula virtual.`);
     window.open(`aula.html?course=${courseId}`, '_blank');
     return;
   }
 
-  // Portugués: Acceso libre directo al aula virtual con temarios y links
+  // Acceso libre directo al aula virtual con temarios y links
   window.open(`aula.html?course=${courseId}`, '_blank');
 }
 
