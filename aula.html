@@ -1223,6 +1223,140 @@
 
         <!-- CONTENEDOR DEL VISOR INTERACTIVO EN CANVAS (PROTEGIDO) -->
         <div id="pdfViewerHost" class="w-full my-2"></div>
+
+        <!-- REGLA DE ORO -->
+        ${m.goldenRule ? `
+          <div class="px-4 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-950 font-bold text-xs flex items-center gap-2 text-left">
+            <span class="text-base">⭐</span>
+            <span>${m.goldenRule}</span>
+          </div>
+        ` : ''}
+
+        <!-- 1. OBJETIVOS DE LA SESIÓN -->
+        ${m.goals && m.goals.length ? `
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-left">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-2.5 flex items-center gap-1.5">
+              <span>🎯</span> Objetivos de la sesión
+            </h4>
+            <div class="grid sm:grid-cols-3 gap-2.5">
+              ${m.goals.map(g => `
+                <div class="p-3 bg-white rounded-xl border border-slate-200 text-xs text-slate-800 font-semibold shadow-xs">
+                  ${g}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 2. VOCABULARIO CON PRONUNCIACIÓN FONÉTICA -->
+        ${m.vocabulary && m.vocabulary.length ? `
+          <div class="text-left">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                <span>🔤</span> Vocabulario de la Sesión
+              </h4>
+              <span class="text-[11px] text-slate-500 font-medium">Guía oficial fonética</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+              ${m.vocabulary.map(w => `
+                <div class="p-2.5 bg-slate-50 hover:bg-emerald-50 text-left rounded-xl border border-slate-200 text-slate-900 font-bold text-xs transition">
+                  ${w}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 3. ESTRUCTURAS CLAVE Y GRAMÁTICA -->
+        ${m.keyLanguage && m.keyLanguage.length ? `
+          <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 text-left">
+            <h4 class="text-xs font-black uppercase tracking-wider text-indigo-900 mb-2 flex items-center gap-1.5">
+              <span>💬</span> Estructuras Clave y Gramática
+            </h4>
+            <div class="space-y-1.5 text-xs text-slate-800 font-medium">
+              ${m.keyLanguage.map(k => `
+                <div class="flex items-start gap-2 bg-white/90 p-2.5 rounded-xl border border-indigo-100/70 font-mono text-[11px]">
+                  <span class="text-indigo-600 font-bold">›</span>
+                  <span>${k}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 4. DIÁLOGO GUIADO & LECTURA -->
+        ${m.dialogue ? `
+          <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-100 text-left">
+            <h4 class="text-xs font-black uppercase tracking-wider text-blue-900 mb-2 flex items-center gap-1.5">
+              <span>🗣️</span> Diálogo Guiado: ${m.dialogue.title}
+            </h4>
+            <div class="space-y-2">
+              ${m.dialogue.lines.map(line => `
+                <div class="text-xs flex gap-2">
+                  <span class="font-black text-blue-800 w-28 shrink-0">${line.speaker}:</span>
+                  <span class="text-slate-800 bg-white px-3 py-1.5 rounded-xl shadow-xs border border-blue-100 flex-1">${line.text}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        ${m.readingPassage ? `
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
+              <span>🎙️</span> Lectura en Voz Alta: ${m.readingPassage.title}
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed font-mono bg-white p-3.5 rounded-xl border border-slate-200">
+              ${m.readingPassage.content}
+            </p>
+          </div>
+        ` : ''}
+
+        <!-- 5. LABORATORIO DE PRONUNCIACIÓN -->
+        ${m.pronunciation ? `
+          <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100 text-left">
+            <h4 class="text-xs font-black uppercase tracking-wider text-emerald-900 mb-1.5 flex items-center gap-1.5">
+              <span>🎧</span> Laboratorio de Pronunciación
+            </h4>
+            <p class="text-xs text-emerald-950 font-medium bg-white/70 p-3 rounded-xl border border-emerald-100">
+              ${m.pronunciation}
+            </p>
+            ${m.tongueTwisters && m.tongueTwisters.length ? `
+              <div class="mt-2.5 space-y-1">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block">Cantinho do Som / Desafio rápido:</span>
+                ${m.tongueTwisters.map(t => `
+                  <div class="p-2 bg-white rounded-lg border border-emerald-100 text-xs font-mono text-slate-800">
+                    ${t}
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        ` : ''}
+
+        <!-- 6. PRÁCTICA EN VIVO & TAREA -->
+        ${m.breakoutActivity ? `
+          <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-100 text-left">
+            <h4 class="text-xs font-black uppercase tracking-wider text-purple-900 mb-2 flex items-center gap-1.5">
+              <span>👥</span> ${m.breakoutActivity.title}
+            </h4>
+            <ul class="space-y-1.5 text-xs text-purple-950">
+              ${m.breakoutActivity.tasks.map(t => `
+                <li class="flex items-start gap-2 bg-white/80 p-2 rounded-lg border border-purple-100">
+                  <span class="text-purple-600 font-bold">✔</span>
+                  <span>${t}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${m.homework ? `
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 font-bold text-xs flex items-center gap-2 text-left">
+            <span class="text-lg">🚀</span>
+            <span>${m.homework}</span>
+          </div>
+        ` : ''}
       `;
 
       openModal('materialDetailModal');

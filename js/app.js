@@ -1204,154 +1204,936 @@ const COURSES_DATA = [
     perks: ['Conversación y gramática aplicada', 'Casos prácticos de viaje y negocios', 'Módulo de 1.5 hrs intensivas', 'Sello Oficial de Inmigración Básico 2'],
     syllabus: [
       {
-        session: 'Sesión 1',
-        date: 'Martes 17 Nov',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência',
-        desc: 'Meu dia a dia: Hoje você conta sua rotina com frases completas.',
-        pdfUrl: 'materials/portugues-basico2-aula-01.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula01.pdf',
-        materials: {
-          tag: 'AULA 1 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência',
-          subtitle: 'Meu dia a dia: Hoje você conta sua rotina com frases completas.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 1",
+            "date": "Martes 17 Nov",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência",
+            "desc": "Meu dia a dia: Hoje você conta sua rotina com frases completas, horários e frequência.",
+            "pdfUrl": "materials/portugues-basico2-aula-01.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula01.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 1 DE 10",
+                  "title": "Minha Vida Cotidiana: Rotinas, Atividades e Frequência",
+                  "subtitle": "Meu dia a dia: Hoje você conta sua rotina com frases completas.",
+                  "goals": [
+                        "Falar da sua rotina diária: verbos no presente com pronomes reflexivos.",
+                        "Dizer com que frequência faz as coisas: sempre, às vezes, nunca.",
+                        "Descrever a rotina de outra pessoa com horários precisos."
+                  ],
+                  "goldenRule": "Regra de ouro: Rotina se conta no presente: Eu acordo, eu almoço, eu durmo!",
+                  "vocabulary": [
+                        "Acordar (a-kor-DAR) — despertar",
+                        "Levantar-se (le-van-TAR-se) — levantarse",
+                        "Tomar café (to-MAR ka-FE) — desayunar",
+                        "Escovar os dentes (es-ko-VAR us DEN-tchis) — cepillarse",
+                        "Tomar banho (to-MAR BA-nyu) — bañarse",
+                        "Almoçar (al-mo-SAR) — almorzar",
+                        "Jantar (zhan-TAR) — cenar",
+                        "Dormir (dor-MEER) — dormir",
+                        "Sempre (SEM-pri) — siempre",
+                        "Às vezes (as VE-zis) — a veces",
+                        "Raramente (ra-ra-MEN-tchi) — raramente",
+                        "Nunca (NUN-ka) — nunca"
+                  ],
+                  "keyLanguage": [
+                        "Eu me levanto às 6h da manhã e tomo café.",
+                        "Ela sempre estuda português à noite.",
+                        "Nós nunca dormimos antes das 23h.",
+                        "Você toma café da manhã em casa ou no trabalho?",
+                        "Lembre: Verbos reflexivos: Eu me levanto, ele se levanta, nós nos levantamos.",
+                        "Atenção aos horários: às 7h (às sete horas), ao meio-dia, à meia-noite."
+                  ],
+                  "pronunciation": "O R forte no início de palavra (raramente, rotina) soa como o J suave em espanhol ou R aspirada. Os finais -am (acordam, tomam) soam como ditongo nasal aberto -ão suave. L final tem som de U (almoço -> aumoço).",
+                  "tongueTwisters": [
+                        "Trava-língua: O rato roeu a roupa do rei de Roma, e a rainha riu da rota do rato!",
+                        "Ritmo: De manhã acordo, me levanto, tomo banho, tomo café e vou trabalhar!"
+                  ],
+                  "dialogue": {
+                        "title": "A rotina do Leo (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Bia",
+                                    "text": "Oi Leo! A que horas você acorda todo dia?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Oi Bia! Eu me levanto sempre às 6h30, tomo um banho rápido e tomo café com pão e queijo."
+                              },
+                              {
+                                    "speaker": "Bia",
+                                    "text": "E você vai trabalhar de metrô ou de carro?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Vou de metrô. Chego no trabalho às 8h e almoço ao meio-dia."
+                              },
+                              {
+                                    "speaker": "Bia",
+                                    "text": "Você volta para casa muito tarde?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Às vezes sim, chego por volta das 19h, janto e durmo às 22h30."
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "O dia a dia da Mariana em São Paulo (Leitura em voz alta)",
+                        "content": "Mariana é arquiteta e mora em São Paulo. Ela acorda cedo todos os dias, por volta das 6h da manhã. Primeiro, ela se levanta, escova os dentes e toma um copo de água. Depois, toma café com tapioca e frutas. Ela nunca sai de casa sem tomar café. Às 7h30, pega o metrô para o escritório. No trabalho, ela faz reuniões e almoça com os colegas ao meio-dia. À noite, ela faz yoga às terças e quintas, janta uma salada leve e dorme às 22h. A rotina dela é puxada, mas muito organizada!"
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Construa sua rotina",
+                        "tasks": [
+                              "1. Diga a que horas você se levanta e toma café: 'Eu me levanto às... e tomo café às...'",
+                              "2. Use um marcador de frequência: 'Eu sempre/às vezes/nunca almoço em casa.'",
+                              "3. Pergunte a um colega sobre a rotina dele: 'A que horas você costuma dormir?'",
+                              "4. Conte uma atividade curiosa do seu dia a dia."
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio no grupo de WhatsApp de 30 segundos descrevendo sua rotina: 'Eu me levanto às..., tomo café e sempre...'"
+            }
       },
       {
-        session: 'Sesión 2',
-        date: 'Jueves 19 Nov',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 2: Minhas Experiências Passadas: Ontem, Fim de Semana e Férias',
-        desc: 'O que eu fiz: Hoje você conta o que fez ontem e nas férias.',
-        pdfUrl: 'materials/portugues-basico2-aula-02.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula02.pdf',
-        materials: {
-          tag: 'AULA 2 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 2: Minhas Experiências Passadas: Ontem, Fim de Semana e Férias',
-          subtitle: 'O que eu fiz: Hoje você conta o que fez ontem e nas férias.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 2",
+            "date": "Jueves 19 Nov",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 2: Minhas Experiências Passadas: Ontem, Fim de Semana e Férias",
+            "desc": "O que eu fiz: Hoje você conta o que fez ontem e nas férias no pretérito perfeito.",
+            "pdfUrl": "materials/portugues-basico2-aula-02.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula02.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 2 DE 10",
+                  "title": "Minhas Experiências Passadas: Ontem, Fim de Semana e Férias",
+                  "subtitle": "O que eu fiz: Hoje você conta o que fez ontem e nas férias.",
+                  "goals": [
+                        "Contar eventos no passado recente: ontem, anteontem, na semana passada.",
+                        "Conjugar verbos regulares no pretérito perfeito: trabalhei, comeu, saímos.",
+                        "Falar das suas férias e viagens passadas com detalhes e emoção."
+                  ],
+                  "goldenRule": "Regra de ouro: Pretérito perfeito conta ação pontual que já terminou: Eu viajei, você comprou, nós fomos!",
+                  "vocabulary": [
+                        "Ontem (ON-ten) — ayer",
+                        "Anteontem (an-tchi-ON-ten) — anteayer",
+                        "Semana passada (se-MA-na pa-SA-da) — la semana pasada",
+                        "Fim de semana (fin dji se-MA-na) — fin de semana",
+                        "Trabalhei (tra-ba-LHEI) — trabajé",
+                        "Estudei (es-tu-DEI) — estudié",
+                        "Comi (ko-MEE) — comí",
+                        "Bebi (be-BEE) — bebí",
+                        "Saí (sa-EE) — salí",
+                        "Fui (FOO-ee) — fui",
+                        "Estive (es-TCHEE-vi) — estuve",
+                        "Fiz (FEES) — hice"
+                  ],
+                  "keyLanguage": [
+                        "Ontem eu trabalhei até tarde e não fui à academia.",
+                        "No fim de semana passado nós viajamos para o litoral.",
+                        "O que você fez no último sábado?",
+                        "Eu comi uma feijoada deliciosa com meus amigos.",
+                        "Lembre: Verbos em -AR: eu falei, você falou, nós falamos, eles falaram.",
+                        "Verbos em -ER/-IR: eu comi/vivi, você comeu/viveu, nós comemos/vivemos, eles comeram/viveram."
+                  ],
+                  "pronunciation": "Ditongos finais: -ei (falei, trabalhei) com som de 'ei' fechado; terminação -ou (falou, comprou) fecha como 'ow'; terminação -aram (eles falaram) soa como nasal /ãw̃/.",
+                  "tongueTwisters": [
+                        "Trava-língua: Quem a paca cara compra, paca cara pagará!",
+                        "Desafio de passado: Ontem comprei, paguei, comi e guardei o que sobrou!"
+                  ],
+                  "dialogue": {
+                        "title": "E o fim de semana? (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Ana",
+                                    "text": "Oi Pedro! Como foi o seu fim de semana?"
+                              },
+                              {
+                                    "speaker": "Pedro",
+                                    "text": "Oi Ana! Foi ótimo! No sábado fui à praia com minha família e nadei muito."
+                              },
+                              {
+                                    "speaker": "Ana",
+                                    "text": "Que delícia! E no domingo, você descansou?"
+                              },
+                              {
+                                    "speaker": "Pedro",
+                                    "text": "De manhã sim, mas à tarde almocei na casa da minha avó e fiz um bolo de cenoura."
+                              },
+                              {
+                                    "speaker": "Ana",
+                                    "text": "E sobrou bolo para mim?"
+                              },
+                              {
+                                    "speaker": "Pedro",
+                                    "text": "Infelizmente não, nós comemos tudo!"
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "As férias inesquecíveis do Rafael na Bahia (Leitura em voz alta)",
+                        "content": "Em janeiro do ano passado, Rafael viajou para Salvador com dois grandes amigos. Eles ficaram hospedados em um hotel perto do Pelourinho. No primeiro dia, caminharam pelo centro histórico, visitaram a Igreja de São Francisco e tiraram muitas fotos. No segundo dia, foram à praia de Itapuã e comeram acarajé quentinho preparado pelas baianas tradicionais. À noite, ouviram um show de samba ao vivo e dançaram bastante. Rafael disse que foi a viagem mais divertida da sua vida porque conheceu pessoas maravilhosas e experimentou novos sabores."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: O que você fez ontem?",
+                        "tasks": [
+                              "1. Conte 3 ações que você realizou ontem usando verbos no passado: 'Ontem eu...'",
+                              "2. Diga para onde você viajou nas suas últimas férias: 'Nas minhas últimas férias, eu viajei para...'",
+                              "3. Pergunte a um colega: 'Você estudou português ontem?'",
+                              "4. Reaja à resposta do seu parceiro: 'Nossa, que legal!' ou 'Que pena!'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio contando 3 coisas que você fez no último fim de semana usando o pretérito perfeito."
+            }
       },
       {
-        session: 'Sesión 3',
-        date: 'Martes 24 Nov',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 3: Minha Infância e Lembranças: Hábitos e Experiências do Passado',
-        desc: 'Minha infância: Hoje você conta como era sua infância.',
-        pdfUrl: 'materials/portugues-basico2-aula-03.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula03.pdf',
-        materials: {
-          tag: 'AULA 3 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 3: Minha Infância e Lembranças: Hábitos e Experiências do Passado',
-          subtitle: 'Minha infância: Hoje você conta como era sua infância.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 3",
+            "date": "Martes 24 Nov",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 3: Minha Infância e Lembranças: Hábitos e Experiências do Passado",
+            "desc": "Minha infância: Hoje você conta como era sua infância no pretérito imperfeito.",
+            "pdfUrl": "materials/portugues-basico2-aula-03.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula03.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 3 DE 10",
+                  "title": "Minha Infância e Lembranças: Hábitos e Experiências do Passado",
+                  "subtitle": "Minha infância: Hoje você conta como era sua infância.",
+                  "goals": [
+                        "Descrever hábitos e rotinas da infância: Eu brincava, eu morava, nós tínhamos.",
+                        "Contrastar o passado habitual (imperfeito) com o presente: Antes eu... agora eu...",
+                        "Expressar nostalgia e memórias afetivas em português com vocabulário expressivo."
+                  ],
+                  "goldenRule": "Regra de ouro: Pretérito imperfeito expressa rotina no passado: Quando eu era criança, eu brincava na rua todos os dias!",
+                  "vocabulary": [
+                        "Criança (kree-AN-sa) — niño/niña",
+                        "Infância (in-FAN-see-a) — infancia",
+                        "Brincar (breen-KAR) — jugar",
+                        "Brinquedo (breen-KE-du) — juguete",
+                        "Bicicleta (bee-see-KLE-ta) — bicicleta",
+                        "Desenho animado (de-ZE-nyu a-nee-MA-du) — dibujos animados",
+                        "Rua (ROO-a) — calle",
+                        "Escola primária (es-KO-la pree-MA-ree-a) — escuela primaria",
+                        "Costumava (kos-tu-MA-va) — solía / acostumbraba",
+                        "Era (E-ra) — era",
+                        "Tinha (TCHEE-nya) — tenía",
+                        "Lembrança (lem-BRAN-sa) — recuerdo"
+                  ],
+                  "keyLanguage": [
+                        "Quando eu era criança, eu morava no interior e andava de bicicleta.",
+                        "Nós tínhamos um cachorro chamado Rex e brincávamos no quintal.",
+                        "Antigamente eu assistia a muitos desenhos na televisão.",
+                        "Você costumava brincar na rua com seus vizinhos?",
+                        "Lembre: Verbos em -AR: eu cantava, você cantava, nós cantávamos, eles cantavam.",
+                        "Verbos em -ER/-IR: eu comia/abria, você comia/abria, nós comíamos/abríamos, eles comiam/abriam."
+                  ],
+                  "pronunciation": "Acento na primeira pessoa do plural do imperfeito (-ávamos, -íamos): nós brincávamos, nós comíamos. O som do NH (desenho, tinha) soa idêntico ao Ñ espanhol. O Ç tem som puro de S (criança, lembrança).",
+                  "tongueTwisters": [
+                        "Trava-língua: Sabia que a mãe do sabiá sabia assobiar?",
+                        "Memória rápida: Quando eu era pequeno, pensava, sonhava, brincava e pulava sem parar!"
+                  ],
+                  "dialogue": {
+                        "title": "Quando eu era criança (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Eva, você cresceu aqui na capital ou no interior?"
+                              },
+                              {
+                                    "speaker": "Eva",
+                                    "text": "Eu cresci em Minas Gerais, numa cidadezinha bem calma. Minha infância foi linda!"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Do que você mais gostava de brincar quando era pequena?"
+                              },
+                              {
+                                    "speaker": "Eva",
+                                    "text": "Eu brincava de esconde-esconde e subia em árvores com meus primos todos os dias."
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "E você gostava da escola?"
+                              },
+                              {
+                                    "speaker": "Eva",
+                                    "text": "Adorava! Eu tinha uma professora maravilhosa chamada Dona Lúcia, que contava histórias fantásticas."
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "As tardes de domingo na casa dos avós (Leitura em voz alta)",
+                        "content": "Lucas guarda com muito carinho as lembranças dos domingos na infância. Todos os domingos, a família inteira se reunia na casa dos avós maternos. A avó preparava um almoço delicioso que perfumava toda a rua. Depois de comer, os adultos conversavam na varanda enquanto as crianças corriam pelo pomar. Não havia celulares nem tablets; Lucas e seus irmãos criavam brinquedos de madeira e jogavam bola de gude na terra batida. Era uma época simples, cheia de risadas, afetos e liberdade."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Lembranças da sua infância",
+                        "tasks": [
+                              "1. Complete a frase: 'Quando eu era criança, eu sempre...'",
+                              "2. Diga um brinquedo ou jogo favorito da sua infância: 'Meu brinquedo favorito era...'",
+                              "3. Faça um contraste passado vs presente: 'Antes eu..., mas hoje eu...'",
+                              "4. Pergunte a um colega: 'Você assistia a desenhos animados quando era pequeno?'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Grave um áudio curto de 30 segundos: 'Quando eu tinha 8 anos, eu costumava...'"
+            }
       },
       {
-        session: 'Sesión 4',
-        date: 'Jueves 26 Nov',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 4: Meus Planos e Projetos: Desejos e Intenções para o Futuro',
-        desc: 'Meus planos: Hoje você fala dos seus planos e dos seus sonhos.',
-        pdfUrl: 'materials/portugues-basico2-aula-04.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula04.pdf',
-        materials: {
-          tag: 'AULA 4 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 4: Meus Planos e Projetos: Desejos e Intenções para o Futuro',
-          subtitle: 'Meus planos: Hoje você fala dos seus planos e dos seus sonhos.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 4",
+            "date": "Jueves 26 Nov",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 4: Meus Planos e Projetos: Desejos e Intenções para o Futuro",
+            "desc": "Meus planos: Hoje você fala dos seus planos e dos seus sonhos com IR + Infinitivo.",
+            "pdfUrl": "materials/portugues-basico2-aula-04.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula04.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 4 DE 10",
+                  "title": "Meus Planos e Projetos: Desejos e Intenções para o Futuro",
+                  "subtitle": "Meus planos: Hoje você fala dos seus planos e dos seus sonhos.",
+                  "goals": [
+                        "Expressar planos para o futuro usando IR + Infinitivo: Eu vou viajar, nós vamos comprar.",
+                        "Falar de metas profissionais, desejos e intenções: Pretendo, tenho vontade de, sonho com.",
+                        "Fazer perguntas sobre projetos futuros com marcadores temporais: amanhã, ano que vem, no futuro."
+                  ],
+                  "goldenRule": "Regra de ouro: No dia a dia, o brasileiro usa quase sempre 'IR + verbo' para falar do futuro: Amanhã eu vou estudar!",
+                  "vocabulary": [
+                        "Amanhã (a-ma-NYAN) — mañana",
+                        "Depois de amanhã (de-POYS dji a-ma-NYAN) — pasado mañana",
+                        "Semana que vem (se-MA-na ki VAYN) — la semana que viene",
+                        "Ano que vem (A-nu ki VAYN) — el próximo año",
+                        "Meta (ME-ta) — meta / objetivo",
+                        "Sonho (SO-nyu) — sueño",
+                        "Pretender (pre-ten-DER) — tener la intención de",
+                        "Ter vontade de (TER von-TA-dji dji) — tener ganas de",
+                        "Mudar de emprego (mu-DAR dji em-PRE-gu) — cambiar de trabajo",
+                        "Comprar uma casa (kom-PRAR OO-ma KA-za) — comprar una casa",
+                        "Guardar dinheiro (gwar-DAR djee-NYAY-ru) — ahorrar dinero",
+                        "Aprender (a-pren-DER) — aprender"
+                  ],
+                  "keyLanguage": [
+                        "No próximo ano eu vou fazer um curso de especialização.",
+                        "Eu pretendo comprar um apartamento novo até dezembro.",
+                        "Nós temos muita vontade de conhecer o Rio de Janeiro.",
+                        "O que você vai fazer quando terminar o bootcamp de português?",
+                        "Lembre: Estrutura do futuro imediato: Sujeito + IR (vou, vai, vamos, vão) + Verbo no Infinitivo.",
+                        "Diferença: 'Quero' expressa desejo imediato; 'Pretendo' expressa planejamento concreto."
+                  ],
+                  "pronunciation": "Sons nasais em -ã e -em: amanhã (/ã/), vem / ano que vem (/ẽj̃/). O som do R final de infinitivos (comprar, guardar, fazer) em muitas regiões do Brasil é suave ou quase mudo na fala rápida natural.",
+                  "tongueTwisters": [
+                        "Trava-língua: Teto sujo, chão sujo. Chão sujo, teto sujo!",
+                        "Ritmo de projetos: Amanhã vou, pretendo, quero e vou conseguir tudo o que planejei!"
+                  ],
+                  "dialogue": {
+                        "title": "Quais são os seus planos? (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Kim",
+                                    "text": "Sam, você já pensou no que vai fazer nas férias de julho?"
+                              },
+                              {
+                                    "speaker": "Sam",
+                                    "text": "Já sim! Eu vou viajar para Florianópolis com meus amigos. Vamos alugar uma casa perto da praia."
+                              },
+                              {
+                                    "speaker": "Kim",
+                                    "text": "Que máximo! E quais são os seus planos profissionais para este ano?"
+                              },
+                              {
+                                    "speaker": "Sam",
+                                    "text": "Pretendo mudar de área. Estou estudando tecnologia e quero trabalhar remotamente para o exterior."
+                              },
+                              {
+                                    "speaker": "Kim",
+                                    "text": "E você vai continuar estudando idiomas?"
+                              },
+                              {
+                                    "speaker": "Sam",
+                                    "text": "Com certeza! Vou terminar o português e depois vou começar italiano."
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "O plano de carreira e vida da Camila (Leitura em voz alta)",
+                        "content": "Camila tem 28 anos e organizou um plano de vida detalhado para os próximos cinco anos. No curto prazo, ela vai concluir seu mestrado em administração e guardar 20% do salário todos os meses. No médio prazo, ela pretende morar seis meses em Portugal para fazer um estágio internacional e aprimorar sua rede de contatos. O grande sonho dela é abrir a sua própria consultoria sustentável e liderar projetos de impacto socioambiental. Ela sabe que exige dedicação, mas diz com firmeza: 'Eu vou trabalhar duro todos os dias porque acredito nos meus sonhos!'"
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Seus projetos futuros",
+                        "tasks": [
+                              "1. Compartilhe um plano para o próximo mês: 'No mês que vem eu vou...'",
+                              "2. Revele um grande sonho pessoal ou profissional: 'Eu pretendo... e meu sonho é...'",
+                              "3. Faça uma pergunta a um colega: 'O que você vai fazer no próximo fim de semana?'",
+                              "4. Dê um conselho motivador ao seu parceiro: 'Tenho certeza de que você vai conseguir!'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio contando 3 planos com a estrutura 'Eu vou + infinitivo' para a próxima semana."
+            }
       },
       {
-        session: 'Sesión 5',
-        date: 'Martes 01 Dic',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 5: Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares',
-        desc: 'Viagens e turismo: Hoje você planeja uma viagem e reserva um hotel.',
-        pdfUrl: 'materials/portugues-basico2-aula-05.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula05.pdf',
-        materials: {
-          tag: 'AULA 5 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 5: Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares',
-          subtitle: 'Viagens e turismo: Hoje você planeja uma viagem e reserva um hotel.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 5",
+            "date": "Martes 01 Dic",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 5: Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares",
+            "desc": "Viagens e turismo: Hoje você viaja, se hospeda e pede informações turísticas.",
+            "pdfUrl": "materials/portugues-basico2-aula-05.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula05.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 5 DE 10",
+                  "title": "Viagens e Turismo: Transportes, Hotéis, Reservas e Lugares",
+                  "subtitle": "Viagens e turismo: Hoje você viaja, se hospeda e pede informações turísticas.",
+                  "goals": [
+                        "Fazer reservas de hotel e comprar passagens: quarto com vista, check-in, check-out.",
+                        "Pedir informações de localização e transportes: Onde fica? Como chego a...?",
+                        "Descrever experiências em pontos turísticos e expressar preferências de viagem."
+                  ],
+                  "goldenRule": "Regra de ouro: Para pedir informações com cortesia: 'Por favor, você poderia me informar onde fica...?'",
+                  "vocabulary": [
+                        "Avião (a-vee-OWN) — avión",
+                        "Ônibus (OH-nee-bus) — autobús",
+                        "Trem (TRAYN) — tren",
+                        "Passagem (pa-SA-zhayn) — boleto / pasaje",
+                        "Bagagem / Mala (ba-GA-zhayn / MA-la) — equipaje / maleta",
+                        "Reserva (re-ZER-va) — reserva",
+                        "Quarto de hotel (KWAR-tu dji o-TEL) — habitación de hotel",
+                        "Pousada (po-ZA-da) — posada / hostal típico",
+                        "Ponto turístico (PON-tu tu-REES-tchee-ku) — punto turístico",
+                        "Onde fica...? (ON-dji FEE-ka) — ¿dónde queda...?",
+                        "Virar à direita/esquerda (vee-RAR a djee-RAY-ta/es-KER-da) — girar",
+                        "Embarque (em-BAR-ki) — embarque"
+                  ],
+                  "keyLanguage": [
+                        "Gostaria de fazer o check-in, tenho uma reserva em nome de Silva.",
+                        "O café da manhã está incluído na diária?",
+                        "Com licença, como eu faço para chegar ao Museu de Arte?",
+                        "Você deve seguir em frente por dois quarteirões e virar à direita.",
+                        "Lembre: 'Onde fica...?' pergunta pela localização exata; 'Onde tem...?' pergunta pela existência.",
+                        "Diária = o valor por dia do hotel. Pousada = hospedagem aconchegante e típica do Brasil."
+                  ],
+                  "pronunciation": "Terminação nasal -ão (avião, cartão): o ar sai pelo nariz e pela boca simultaneamente. Dica: aperte levemente o nariz para sentir a vibração. LH (bagagem, melhor): língua no céu da boca.",
+                  "tongueTwisters": [
+                        "Trava-língua: Bagre branco, branco bagre. Três pratos de trigo para três tigres tristes!",
+                        "Rápido no aeroporto: Pego a passagem, despacho a bagagem e vou direto para o portão de embarque!"
+                  ],
+                  "dialogue": {
+                        "title": "No Hotel (Check-in em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Recepcionista",
+                                    "text": "Boa tarde! Bem-vinda à Pousada do Sol. Como posso ajudar?"
+                              },
+                              {
+                                    "speaker": "Mia",
+                                    "text": "Boa tarde! Eu tenho uma reserva para quatro noites em nome de Mia Santos."
+                              },
+                              {
+                                    "speaker": "Recepcionista",
+                                    "text": "Só um instante... Achei! Quarto duplo com vista para o mar, correto?"
+                              },
+                              {
+                                    "speaker": "Mia",
+                                    "text": "Isso mesmo! O café da manhã está incluído?"
+                              },
+                              {
+                                    "speaker": "Recepcionista",
+                                    "text": "Sim, é servido das 7h às 10h no restaurante do térreo. Aqui está a sua chave-cartão, quarto 204."
+                              },
+                              {
+                                    "speaker": "Mia",
+                                    "text": "Perfeito, muito obrigada! A que horas é o check-out no domingo?"
+                              },
+                              {
+                                    "speaker": "Recepcionista",
+                                    "text": "O check-out é até o meio-dia. Tenha uma excelente estadia!"
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "A aventura de Diego descobrindo Foz do Iguaçu (Leitura em voz alta)",
+                        "content": "Diego sempre quis conhecer as Cataratas do Iguaçu, uma das sete maravilhas da natureza. Ao desembarcar no aeroporto, pegou um táxi credenciado direto para o hotel. No dia seguinte, acordou às 7h, tomou um reforçado café da manhã brasileiro com suco de maracujá e pão de queijo, e pegou o ônibus do Parque Nacional. A vista das quedas d'água foi de tirar o fôlego. Ele fez o passeio de barco que chega bem perto das cataratas e ficou completamente molhado. 'A energia desse lugar é indescritível!', escreveu ele em seu diário de viagem."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Simulação de Viagem",
+                        "tasks": [
+                              "1. Faça uma reserva em um hotel: 'Gostaria de reservar um quarto para... dias em nome de...'",
+                              "2. Peça uma direção na rua: 'Com licença, onde fica a praia / o metrô mais próximo?'",
+                              "3. Indique um caminho a um colega: 'Siga em frente e vire à...'",
+                              "4. Diga qual é a viagem dos seus sonhos pelo Brasil: 'Eu gostaria de conhecer...'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio pedindo uma informação turística e fazendo o check-in em um hotel fictício no Brasil."
+            }
       },
       {
-        session: 'Sesión 6',
-        date: 'Jueves 03 Dic',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 6: No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências',
-        desc: 'No restaurante: Hoje você lê o cardápio, pede comida e pede a conta.',
-        pdfUrl: 'materials/portugues-basico2-aula-06.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula06.pdf',
-        materials: {
-          tag: 'AULA 6 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 6: No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências',
-          subtitle: 'No restaurante: Hoje você lê o cardápio, pede comida e pede a conta.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 6",
+            "date": "Jueves 03 Dic",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 6: No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências",
+            "desc": "No restaurante: Hoje você pede refeições, bebidas e fecha a conta com elegância.",
+            "pdfUrl": "materials/portugues-basico2-aula-06.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula06.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 6 DE 10",
+                  "title": "No Restaurante: Pedir Comida, Consultar Preços e Expressar Preferências",
+                  "subtitle": "No restaurante: Hoje você pede refeições, bebidas e fecha a conta com elegância.",
+                  "goals": [
+                        "Pedir pratos e bebidas com fluidez e naturalidade: Eu gostaria de..., para mim pode ser...",
+                        "Consultar ingredientes, preços e fazer pedidos especiais (sem glúten, sem cebola).",
+                        "Pedir a conta e entender as formas de pagamento: débito, crédito ou Pix."
+                  ],
+                  "goldenRule": "Regra de ouro: Para pedir comida no Brasil com simpatia: 'Por favor, para mim pode ser um prato executivo com suco de laranja!'",
+                  "vocabulary": [
+                        "Cardápio (kar-DA-pee-u) — menú / carta",
+                        "Prato principal (PRA-tu preen-see-PAL) — plato principal",
+                        "Entrada (en-TRA-da) — entrada / aperitivo",
+                        "Sobremesa (so-bre-ME-za) — postre",
+                        "Garçom / Garçonete (gar-SOHN / gar-so-NE-tchee) — mesero / mesera",
+                        "Conta (KON-ta) — cuenta",
+                        "Gorjeta (gor-ZHE-ta) — propina (10%)",
+                        "Água com/sem gás (A-gwa kon/sayn GAHS) — agua con/sin gas",
+                        "Carne ao ponto (KAR-nee ow PON-tu) — carne al punto",
+                        "Frango (FRAN-gu) — pollo",
+                        "Peixe (PAY-shee) — pescado",
+                        "Delicioso (de-lee-see-OH-zu) — delicioso / rico"
+                  ],
+                  "keyLanguage": [
+                        "Garçom, por favor, você traz o cardápio para nós?",
+                        "Para beber, eu gostaria de uma água mineral sem gás e bem gelada.",
+                        "Eu sou vegetariano, você tem alguma opção sem carne?",
+                        "A conta, por favor! Aceita cartão de crédito ou Pix?",
+                        "Lembre: Expressão típica do Brasil: 'Para mim pode ser...' (Para mí puede ser / yo quiero).",
+                        "A taxa de serviço de 10% normalmente já vem incluída na conta no Brasil."
+                  ],
+                  "pronunciation": "O X em 'peixe' soa como /ʃ/ (som de 'ch' em inglês / 'sh'). O som de 'delicioso' tem S intervocálico que soa como Z. A palavra 'garçom' termina com som nasal /õ/.",
+                  "tongueTwisters": [
+                        "Trava-língua: O pinto pia, a pia pinga. Pinga a pia, o pinto pia!",
+                        "No pedido: Peço peixe, peço pizza, peço pão e picanha para o jantar!"
+                  ],
+                  "dialogue": {
+                        "title": "Fazendo o pedido no restaurante (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Garçom",
+                                    "text": "Boa noite! Sejam bem-vindos ao Sabores do Brasil. Já escolheram?"
+                              },
+                              {
+                                    "speaker": "Ana",
+                                    "text": "Boa noite! O que você recomenda de prato do dia?"
+                              },
+                              {
+                                    "speaker": "Garçom",
+                                    "text": "Hoje nossa moqueca de peixe com camarão está espetacular, acompanha arroz e farofa."
+                              },
+                              {
+                                    "speaker": "Ana",
+                                    "text": "Parece ótima! Para mim pode ser a moqueca, por favor."
+                              },
+                              {
+                                    "speaker": "Garçom",
+                                    "text": "Excelente escolha! E para o senhor?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Eu prefiro uma picanha grelhada ao ponto com mandioca frita."
+                              },
+                              {
+                                    "speaker": "Garçom",
+                                    "text": "Perfeito! E para beber?"
+                              },
+                              {
+                                    "speaker": "Ana",
+                                    "text": "Um suco natural de abacaxi com hortelã para mim, e uma cerveja artesanal para ele."
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "E depois nós vamos pedir a sobremesa!"
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "A cultura gastronômica dos botecos brasileiros (Leitura em voz alta)",
+                        "content": "Ir a um boteco ou restaurante tradicional no Brasil é muito mais do que apenas almoçar ou jantar: é um verdadeiro evento social. Os amigos se encontram para 'jogar conversa fora' enquanto compartilham porções de pastel de queijo, coxinha e bolinho de bacalhau. O prato mais famoso dos sábados é a feijoada completa, servida em panelas de barro com couve refogada, pedaços de laranja, torresmo crocante e vinagrete. Ao final da refeição, ninguém tem pressa de ir embora, e pedir um cafezinho expresso com a conta é o costume mais tradicional dos brasileiros."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Roleplay de Restaurante",
+                        "tasks": [
+                              "1. Chame o garçom e peça o cardápio: 'Garçom, por favor...'",
+                              "2. Faça o pedido completo com prato e bebida: 'Para mim pode ser... e para beber...'",
+                              "3. Peça a conta e especifique a forma de pagamento: 'A conta, por favor. Posso pagar com...?'",
+                              "4. Elogie a refeição: 'A comida estava simplesmente deliciosa!'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio simulando seu pedido favorito em um restaurante brasileiro completo."
+            }
       },
       {
-        session: 'Sesión 7',
-        date: 'Martes 08 Dic',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 7: Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações',
-        desc: 'Saúde e bem-estar: Hoje você fala do corpo, de sintomas e de conselhos.',
-        pdfUrl: 'materials/portugues-basico2-aula-07.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula07.pdf',
-        materials: {
-          tag: 'AULA 7 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 7: Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações',
-          subtitle: 'Saúde e bem-estar: Hoje você fala do corpo, de sintomas e de conselhos.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 7",
+            "date": "Martes 08 Dic",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 7: Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações",
+            "desc": "Saúde e bem-estar: Hoje você fala de sintomas, dores e vai ao médico ou à farmácia.",
+            "pdfUrl": "materials/portugues-basico2-aula-07.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula07.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 7 DE 10",
+                  "title": "Saúde e Bem-Estar: Partes do Corpo, Sintomas e Recomendações",
+                  "subtitle": "Saúde e bem-estar: Hoje você fala de sintomas, dores e vai ao médico ou à farmácia.",
+                  "goals": [
+                        "Identificar as principais partes do corpo humano e expressar dores: Estou com dor de...",
+                        "Descrever sintomas comuns: febre, tosse, gripe, alergia, enjoo.",
+                        "Pedir remédios na farmácia e compreender instruções médicas e conselhos."
+                  ],
+                  "goldenRule": "Regra de ouro: Em português dizemos 'Estou com dor de...' (dor de cabeça, dor de garganta, dor nas costas)!",
+                  "vocabulary": [
+                        "Cabeça (ka-BE-sa) — cabeza",
+                        "Garganta (gar-GAN-ta) — garganta",
+                        "Estômago (es-TO-ma-gu) — estómago",
+                        "Costas (KOS-tas) — espalda",
+                        "Olho / Ouvido (O-lhyu / o-VEE-du) — ojo / oído",
+                        "Dente (DEN-tchi) — diente",
+                        "Febre (FE-bri) — fiebre",
+                        "Gripe / Resfriado (GREE-pee / res-free-A-du) — gripe / resfriado",
+                        "Tosse (TO-see) — tos",
+                        "Remédio / Medicamento (re-ME-djee-u / me-djee-ka-MEN-tu) — medicina",
+                        "Farmácia (far-MA-see-a) — farmacia",
+                        "Receita médica (re-SAY-ta ME-djee-ka) — receta médica"
+                  ],
+                  "keyLanguage": [
+                        "Estou com muita dor de cabeça e acho que estou com febre.",
+                        "Minha garganta está inflamada, tenho tosse seca há dois dias.",
+                        "Você deve tomar este remédio de oito em oito horas após as refeições.",
+                        "Com licença, você tem algum analgésico sem receita médica?",
+                        "Lembre: Expressões de dor: 'Estar com dor de...' ou 'O meu braço / dente está doendo'.",
+                        "Para dar recomendações de saúde: 'Você precisa descansar', 'Você deve beber bastante água'."
+                  ],
+                  "pronunciation": "O som de 'olho' e 'joelho' com LH (/ʎ/): a língua toca o palato duro. As terminações em -te (dente, dor de dente) soam como /tʃi/ em quase todo o Brasil. O som de 'remédio' com som aberto /ɛ/ no é.",
+                  "tongueTwisters": [
+                        "Trava-língua: Tecelão tece tecido para o traje de trinta e três turcos!",
+                        "Dores e remédios: Dor de dente, dor de dente, toma chá bem quente pra ficar contente!"
+                  ],
+                  "dialogue": {
+                        "title": "Na consulta médica (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Médica",
+                                    "text": "Olá, boa tarde! O que você está sentindo hoje?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Boa tarde, doutora. Desde ontem estou com uma forte dor de garganta e febre alta."
+                              },
+                              {
+                                    "speaker": "Médica",
+                                    "text": "Entendi. Você também está com tosse ou dor no corpo?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Sim, sinto o corpo todo dolorido e não consigo engolir direito."
+                              },
+                              {
+                                    "speaker": "Médica",
+                                    "text": "Deixe-me examinar sua garganta... Sim, ela está bastante inflamada. Vou prescrever um anti-inflamatório e um antibiótico."
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Como devo tomar esses remédios?"
+                              },
+                              {
+                                    "speaker": "Médica",
+                                    "text": "O anti-inflamatório uma vez ao dia e o antibiótico de 12 em 12 horas por sete dias. Beba bastante líquido e repouse!"
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "Cuidados com a saúde e vida ativa (Leitura em voz alta)",
+                        "content": "Manter uma rotina de bem-estar físico e mental é essencial para prevenir doenças e viver com energia. Os médicos brasileiros recomendam praticar ao menos 30 minutos de exercícios aeróbicos por dia, como caminhada, natação ou ciclismo. Além dos exercícios, a hidratação constante é vital, especialmente em climas tropicais onde se perde muito líquido pelo suor. Se você sentir sintomas persistentes como fadiga extrema, tonturas frequentes ou dores crônicas no corpo, nunca tome medicamentos por conta própria; procure sempre uma Unidade Básica de Saúde ou um médico de confiança."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Consulta Médica Express",
+                        "tasks": [
+                              "1. Diga o que você está sentindo usando: 'Estou com dor de... e sinto...'",
+                              "2. Descreva um sintoma comum: 'Acho que peguei um resfriado porque estou com...'",
+                              "3. Dê uma recomendação de saúde ao seu colega: 'Você deve tomar... e descansar.'",
+                              "4. Peça um produto na farmácia: 'Olá, você tem algo para dor de...?'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio explicando dois sintomas que você teve recentemente e que remédio tomou."
+            }
       },
       {
-        session: 'Sesión 8',
-        date: 'Jueves 10 Dic',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 8: Trabalho e Profissões: Ocupações, Atividades e Experiências',
-        desc: 'Trabalho e profissões: Hoje você fala do seu trabalho e da sua experiência.',
-        pdfUrl: 'materials/portugues-basico2-aula-08.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula08.pdf',
-        materials: {
-          tag: 'AULA 8 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 8: Trabalho e Profissões: Ocupações, Atividades e Experiências',
-          subtitle: 'Trabalho e profissões: Hoje você fala do seu trabalho e da sua experiência.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 8",
+            "date": "Jueves 10 Dic",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 8: Trabalho e Profissões: Ocupações, Atividades e Experiências",
+            "desc": "Trabalho e profissões: Hoje você descreve sua carreira, suas tarefas e seu currículo.",
+            "pdfUrl": "materials/portugues-basico2-aula-08.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula08.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 8 DE 10",
+                  "title": "Trabalho e Profissões: Ocupações, Atividades e Experiências",
+                  "subtitle": "Trabalho e profissões: Hoje você descreve sua carreira, suas tarefas e seu currículo.",
+                  "goals": [
+                        "Nomear profissões, cargos e setores de trabalho em português.",
+                        "Descrever suas responsabilidades diárias no trabalho: Eu gerencio, eu analiso, sou responsável por...",
+                        "Falar da sua trajetória profissional e responder perguntas de uma entrevista básica."
+                  ],
+                  "goldenRule": "Regra de ouro: Em português dizemos 'Eu trabalho como...' ou 'Eu sou engenheiro/médico' (sem artigo indefinido antes da profissão)!",
+                  "vocabulary": [
+                        "Profissão (pro-fee-SOWN) — profesión",
+                        "Engenheiro / Engenheira (en-zhe-NYAY-ru / ra) — ingeniero / ingeniera",
+                        "Advogado / Advogada (ad-vo-GA-du / da) — abogado / abogada",
+                        "Professor / Professora (pro-fe-SOHR / ra) — profesor / profesora",
+                        "Médico / Médica (ME-djee-ku / ka) — médico / médica",
+                        "Empresa (em-PRE-za) — empresa",
+                        "Escritório (es-kree-TO-ree-u) — oficina",
+                        "Reunião (re-oo-nee-OWN) — reunión",
+                        "Equipe (e-KEE-pee) — equipo de trabajo",
+                        "Salário (sa-LA-ree-u) — salario / sueldo",
+                        "Currículo (koo-REE-koo-lu) — currículum vítae",
+                        "Experiência (es-pe-ree-EN-see-a) — experiencia"
+                  ],
+                  "keyLanguage": [
+                        "Eu trabalho em uma empresa multinacional como analista de dados.",
+                        "Eu sou responsável por liderar reuniões e apresentar relatórios mensais.",
+                        "Trabalho remotamente em esquema de home office há três anos.",
+                        "Qual é a sua principal função na sua equipe de trabalho?",
+                        "Lembre: Não use artigo antes de profissão: 'Sou professor', NUNCA 'Sou um professor'.",
+                        "'Trabalho de segunda a sexta, das 9h às 18h' para expressar jornada de trabalho."
+                  ],
+                  "pronunciation": "O som de D mudo em 'advogado' (/adji-vogado/): no português do Brasil muitas pessoas pronunciam um 'i' epentético suave [adʒivoˈgadu]. O som nasal de -ão em 'reunião' e 'profissão'. O som de NH em 'engenheiro'.",
+                  "tongueTwisters": [
+                        "Trava-língua: O padre Pedro prega o prego no prato de prata!",
+                        "No escritório: Produzo relatórios, programo projetos, participo de reuniões e planejo o futuro da empresa!"
+                  ],
+                  "dialogue": {
+                        "title": "A entrevista de emprego (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Entrevistadora",
+                                    "text": "Boa tarde, Leo! Seja bem-vindo à nossa entrevista. Conte-me um pouco sobre você."
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Boa tarde! Muito obrigado pela oportunidade. Eu sou formado em marketing digital e trabalho há cinco anos com redes sociais."
+                              },
+                              {
+                                    "speaker": "Entrevistadora",
+                                    "text": "Muito interessante! Quais eram as suas principais tarefas na sua última empresa?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Eu gerenciava uma equipe de quatro pessoas, analisava métricas de engajamento e criava campanhas publicitárias."
+                              },
+                              {
+                                    "speaker": "Entrevistadora",
+                                    "text": "E por que você tem interesse em trabalhar conosco?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Porque admiro a inovação desta empresa e busco novos desafios profissionais na minha carreira."
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "A evolução do trabalho e o modelo home office no Brasil (Leitura em voz alta)",
+                        "content": "O mercado de trabalho brasileiro passou por transformações profundas nos últimos anos. Cada vez mais profissionais de áreas como tecnologia, design, finanças e atendimento ao cliente aderiram ao teletrabalho ou ao regime híbrido. Essa modalidade oferece mais flexibilidade de horário e reduz o tempo gasto no trânsito das grandes cidades. No entanto, trabalhar em casa exige muita autodisciplina e organização para separar o tempo de trabalho do momento de descanso. Criar um ambiente tranquilo de escritório em casa tornou-se essencial para a produtividade e a saúde mental."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Apresentação Profissional de 30s",
+                        "tasks": [
+                              "1. Diga qual é a sua profissão ou área de estudo: 'Eu sou... e trabalho com...'",
+                              "2. Descreva sua responsabilidade diária: 'No meu dia a dia, eu sou responsável por...'",
+                              "3. Diga como é o seu modelo de trabalho: 'Eu trabalho presencialmente / remotamente.'",
+                              "4. Faça uma pergunta a um colega sobre a carreira dele: 'Há quanto tempo você trabalha na sua área?'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio apresentando seu perfil profissional em 40 segundos como se estivesse em uma entrevista."
+            }
       },
       {
-        session: 'Sesión 9',
-        date: 'Martes 15 Dic',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 9: Opiniões e Preferências: Gostos, Opiniões e Comparações',
-        desc: 'Minha opinião: Hoje você dá sua opinião e compara opções.',
-        pdfUrl: 'materials/portugues-basico2-aula-09.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula09.pdf',
-        materials: {
-          tag: 'AULA 9 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 9: Opiniões e Preferências: Gostos, Opiniões e Comparações',
-          subtitle: 'Minha opinião: Hoje você dá sua opinião e compara opções.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 9",
+            "date": "Martes 15 Dic",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 9: Opiniões e Preferências: Gostos, Opiniões e Comparações",
+            "desc": "Minha opinião: Hoje você expressa o que pensa, compara opções e debate ideias.",
+            "pdfUrl": "materials/portugues-basico2-aula-09.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula09.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 9 DE 10",
+                  "title": "Opiniões e Preferências: Gostos, Opiniões e Comparações",
+                  "subtitle": "Minha opinião: Hoje você expressa o que pensa, compara opções e debate ideias.",
+                  "goals": [
+                        "Expressar gostos, pontos de vista e opiniões: Eu acho que..., na minha opinião...",
+                        "Fazer comparações de superioridade, inferioridade e igualdade: mais... do que, tão... quanto.",
+                        "Concordar e discordar de forma educada: Concordo plenamente, discordo respeitosamente."
+                  ],
+                  "goldenRule": "Regra de ouro: Para comparar qualidades: 'São Paulo é mais movimentada do que Curitiba!'",
+                  "vocabulary": [
+                        "Eu acho que (eu A-shu ki) — yo creo que / pienso que",
+                        "Na minha opinião (na MEE-nya o-pee-nee-OWN) — en mi opinión",
+                        "Concordo (kon-KOR-du) — estoy de acuerdo",
+                        "Discordo (dji-SKOR-du) — no estoy de acuerdo",
+                        "Com certeza (kon ser-TE-za) — por supuesto",
+                        "Mais... do que (MAYS... du ki) — más... que",
+                        "Menos... do que (ME-nus... du ki) — menos... que",
+                        "Tão... quanto (TOWN... KWAN-tu) — tan... como",
+                        "Melhor (me-LYOHR) — mejor",
+                        "Pior (pee-OHR) — peor",
+                        "Maior (ma-yOHR) — mayor / más grande",
+                        "Menor (me-NOHR) — menor / más pequeño"
+                  ],
+                  "keyLanguage": [
+                        "Eu acho que aprender português é muito mais fácil do que aprender alemão.",
+                        "Na minha opinião, a praia é melhor do que a montanha para descansar.",
+                        "Eu concordo plenamente com você, essa ideia é brilhante!",
+                        "Eu entendo o seu ponto de vista, mas discordo porque...",
+                        "Lembre: Não se diz 'mais bom' nem 'mais ruim'; use sempre 'melhor' e 'pior'.",
+                        "Para igualdade: 'Ele é tão dedicado quanto o irmão'."
+                  ],
+                  "pronunciation": "O som de CH em 'acho' (/ʃ/ como sh). O som de LH em 'melhor' (/ʎ/). O ditongo fechado em 'pior'. O ritmo das frases comparativas com ênfase no termo comparado.",
+                  "tongueTwisters": [
+                        "Trava-língua: Quem tudo quer saber, tudo quer comer, nada sabe, nada come!",
+                        "Opinião rápida: Acho que o melhor é mais belo, o mais belo é tão bom quanto o melhor!"
+                  ],
+                  "dialogue": {
+                        "title": "Praia ou Montanha? (Debate amigável em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Eva",
+                                    "text": "Max, qual destino você prefere para as férias de inverno: praia ou serra?"
+                              },
+                              {
+                                    "speaker": "Max",
+                                    "text": "Na minha opinião, a serra é muito melhor! O clima é aconchegante, a comida é deliciosa e dá para relaxar perto da lareira."
+                              },
+                              {
+                                    "speaker": "Eva",
+                                    "text": "Eu discordo totalmente! Eu acho a praia infinitamente mais animada e divertida do que o campo."
+                              },
+                              {
+                                    "speaker": "Max",
+                                    "text": "Mas a praia fica lotada de turistas no verão!"
+                              },
+                              {
+                                    "speaker": "Eva",
+                                    "text": "É verdade, mas tomar água de coco olhando o mar não tem comparação com nada no mundo!"
+                              },
+                              {
+                                    "speaker": "Max",
+                                    "text": "Bem pensado... Cada lugar tem suas qualidades únicas!"
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "O debate: Cidade grande vs Cidade do interior (Leitura em voz alta)",
+                        "content": "Morar em uma metrópole como São Paulo ou Rio de Janeiro traz inúmeras vantagens culturais e econômicas: há uma variedade incomparável de teatros, restaurantes cosmopolitas, museus de renome internacional e amplas oportunidades no mercado de trabalho. Por outro lado, o custo de vida é muito mais elevado e o trânsito diário costuma ser exaustivo. Já as cidades do interior oferecem uma tranquilidade inestimável, maior contato com a natureza e um ritmo de vida muito mais saudável. Afinal, a escolha do lugar ideal depende das prioridades e dos valores de cada fase da vida."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Rodada de Opiniões",
+                        "tasks": [
+                              "1. Expresse uma opinião: 'Na minha opinião, o melhor filme/livro é...'",
+                              "2. Faça uma comparação: 'Eu acho que o futebol é mais emocionante do que...'",
+                              "3. Use comparativos irregulares: 'Para mim, o café é melhor do que o chá.'",
+                              "4. Reaja educadamente à opinião do seu parceiro: 'Concordo com você porque...' ou 'Entendo, mas discordo porque...'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio de 30 segundos comparando duas cidades ou dois hábitos da sua vida."
+            }
       },
       {
-        session: 'Sesión 10',
-        date: 'Jueves 17 Dic',
-        time: '7:00 - 8:30 p. m.',
-        title: 'Aula 10: Situações da Vida Diária: Convites, Telefonemas e Pedidos',
-        desc: 'Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda.',
-        pdfUrl: 'materials/portugues-basico2-aula-10.pdf',
-        pdfName: 'PolyglotMap-Portugues-Basico2-Aula10.pdf',
-        materials: {
-          tag: 'AULA 10 DE 10 · PORTUGUÊS BÁSICO 2',
-          title: 'Aula 10: Situações da Vida Diária: Convites, Telefonemas e Pedidos',
-          subtitle: 'Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda.',
-          goldenRule: 'Regla de oro: ¡Práctica constante y conversación activa en cada sesión!'
-        }
+            "session": "Sesión 10",
+            "date": "Jueves 17 Dic",
+            "time": "7:00 - 8:30 p. m.",
+            "title": "Aula 10: Situações da Vida Diária: Convites, Telefonemas e Pedidos",
+            "desc": "Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda com naturalidade.",
+            "pdfUrl": "materials/portugues-basico2-aula-10.pdf",
+            "pdfName": "PolyglotMap-Portugues-Basico2-Aula10.pdf",
+            "materials": {
+                  "tag": "PORTUGUÊS BÁSICO 2 · AULA 10 DE 10",
+                  "title": "Situações da Vida Diária: Convites, Telefonemas e Pedidos",
+                  "subtitle": "Convites e telefonemas: Hoje você convida, atende o telefone e pede ajuda.",
+                  "goals": [
+                        "Atender telefonemas e iniciar conversas formais e informais: Alô, quem está falando?",
+                        "Fazer convites amigáveis e propostas de lazer: Quer sair hoje? Vamos almoçar juntos?",
+                        "Aceitar ou recusar convites com elegância e cordialidade: Adoraria!, Infelizmente hoje não posso..."
+                  ],
+                  "goldenRule": "Regra de ouro: No telefone no Brasil atendemos dizendo 'Alô!' e nos despedimos dizendo 'Um abraço!' ou 'Beijo!'",
+                  "vocabulary": [
+                        "Alô! (a-LOH) — ¡Aló! / ¡Hola! (ao telefone)",
+                        "Quem fala? (kayn FA-la) — ¿quién habla?",
+                        "Ligação / Telefonema (lee-ga-SOWN / te-le-fo-NE-ma) — llamada",
+                        "Recado (re-KA-du) — recado / mensaje",
+                        "Convite (kon-VEE-tchee) — invitación",
+                        "Festa de aniversário (FES-ta dji a-nee-ver-SA-ree-u) — fiesta de cumpleaños",
+                        "Vamos...? (VA-mus) — ¿vamos a...?",
+                        "Quer ir...? (KEHR EER) — ¿quieres ir...?",
+                        "Com certeza! / Adoraria! (kon ser-TE-za / a-do-ra-REE-a) — ¡Me encantaría!",
+                        "Infelizmente não posso (een-fe-leez-MEN-tchee nown PO-su) — no puedo",
+                        "Fica para a próxima (FEE-ka pa-ra a PRO-see-ma) — queda para la próxima",
+                        "Um abraço / Beijo! (un a-BRA-su / BAY-zhu) — un abrazo / beso"
+                  ],
+                  "keyLanguage": [
+                        "Alô! Gostaria de falar com o Gabriel, por favor.",
+                        "Ele não está no momento. Gostaria de deixar um recado?",
+                        "Oi Camila! O que você vai fazer sábado à noite? Quer ir ao cinema comigo?",
+                        "Adoraria! A que horas a gente se encontra?",
+                        "Puxa, que pena! Infelizmente já tenho outro compromisso, mas fica para a próxima!",
+                        "Lembre: 'A gente' se conjuga na 3ª pessoa do singular: 'A gente vai', 'A gente pode'."
+                  ],
+                  "pronunciation": "Entonação telefônica: 'Alô?' com tom ascendente ↗; 'Quem fala?' com tom interrogativo neutro. A pronúncia de 'abraço' e 'beijo' com entonação calorosa brasileira.",
+                  "tongueTwisters": [
+                        "Trava-língua: Se o Pedro é preto, o peito do Pedro é preto. Preto é o peito do Pedro!",
+                        "No telefone: Alô, alô! É o Leo que liga pra chamar pro baile na beira da praia!"
+                  ],
+                  "dialogue": {
+                        "title": "Convite para a festa de sexta-feira (Leia em duplas)",
+                        "lines": [
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Alô, Bia! Tudo bem por aí?"
+                              },
+                              {
+                                    "speaker": "Bia",
+                                    "text": "Oi Leo! Tudo ótimo, e você?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Tudo joia! Estou ligando para te fazer um convite: sexta-feira é aniversário do Marcos e vamos fazer uma festa surpresa."
+                              },
+                              {
+                                    "speaker": "Bia",
+                                    "text": "Ai, que máximo! Onde vai ser?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Vai ser na casa dele, a partir das 20h. Você vem?"
+                              },
+                              {
+                                    "speaker": "Bia",
+                                    "text": "Com certeza, adoraria ir! O que posso levar para ajudar?"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Se você puder trazer um bolo ou um refrigerante, vai ser ótimo!"
+                              },
+                              {
+                                    "speaker": "Bia",
+                                    "text": "Combinado! Então nos vemos na sexta. Um abraço!"
+                              },
+                              {
+                                    "speaker": "Leo",
+                                    "text": "Combinadíssimo! Um abraço e até lá!"
+                              }
+                        ]
+                  },
+                  "readingPassage": {
+                        "title": "A arte do convívio e da hospitalidade brasileira (Leitura em voz alta)",
+                        "content": "O povo brasileiro é internacionalmente reconhecido por sua espontaneidade calorosa e facilidade para cultivar amizades sinceras. Um convite informal para 'tomar um cafezinho' muitas vezes se transforma em uma longa e agradável tarde de risadas e conversas profundas. No Brasil, não se exige uma formalidade excessiva para demonstrar carinho: aceitar um convite com entusiasmo ou recusar explicando o motivo com gentileza são sinais fundamentais de consideração. Ao concluir o Básico 2, os estudantes não apenas dominam as estruturas da língua portuguesa, mas também absorvem a essência afetiva da cultura brasileira."
+                  },
+                  "breakoutActivity": {
+                        "title": "Rodada do Microfone: Ligação Telefônica e Convite",
+                        "tasks": [
+                              "1. Ligue para um colega: 'Alô, boa noite! O [nome] está?'",
+                              "2. Faça um convite tentador: 'Quer ir comigo a um show / restaurante no sábado?'",
+                              "3. Aceite ou recuse o convite usando expressões naturais: 'Adoraria!' ou 'Puxa, hoje não posso...'",
+                              "4. Despeça-se calorosamente: 'Então combinado! Um abraço!'"
+                        ]
+                  },
+                  "homework": "Ticket de saída: Envie um áudio no grupo de WhatsApp fazendo um convite oficial para seus colegas de turma comemorarem o fim do curso."
+            }
       }
     ]
   }
