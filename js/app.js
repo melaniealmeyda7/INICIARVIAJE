@@ -1301,6 +1301,7 @@ const COURSES_DATA = [
             "desc": "O que eu fiz: Hoje você conta o que fez ontem e nas férias no pretérito perfeito.",
             "pdfUrl": "materials/portugues-basico2-aula-02.pdf",
             "pdfName": "PolyglotMap-Portugues-Basico2-Aula02.pdf",
+            "recordingUrl": "https://youtu.be/KtuDDyFI6gA",
             "materials": {
                   "tag": "PORTUGUÊS BÁSICO 2 · AULA 2 DE 10",
                   "title": "Minhas Experiências Passadas: Ontem, Fim de Semana e Férias",

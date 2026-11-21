@@ -310,11 +310,14 @@
         </div>
 
         <div class="space-y-1.5 pt-1">
-          <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="w-full bg-[#ff0000] hover:bg-red-700 text-white font-black py-2.5 px-3 rounded-xl text-xs text-center shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer">
-            <span>📹</span> Ver Grabación en YouTube »
+          <button onclick="openRecordingsArchiveModal()" class="w-full bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black py-2.5 px-3 rounded-xl text-xs text-center shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>📹</span> Ver Grabaciones Subidas »
+          </button>
+          <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="w-full bg-[#ff0000] hover:bg-red-700 text-white font-bold py-2 px-3 rounded-xl text-[11px] text-center shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>▶️</span> Canal Oficial de YouTube »
           </a>
           <a href="https://www.facebook.com/PolyglotMap8/" target="_blank" class="w-full bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold py-2 px-3 rounded-xl text-[11px] text-center shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
-            <span>🔴</span> Ver Grabación en Facebook »
+            <span>🔴</span> Facebook En Vivo »
           </a>
         </div>
       </div>
@@ -388,9 +391,9 @@
         <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl font-black mb-2">
           📹
         </div>
-        <span class="text-xs uppercase font-mono tracking-widest text-amber-700 font-bold">Google Drive • Repositorio Oficial</span>
+        <span class="text-xs uppercase font-mono tracking-widest text-amber-700 font-bold">Polyglot Map • Repositorio Oficial</span>
         <h3 class="text-2xl font-black text-[#0c2364] mt-1">Grabaciones del Bootcamp</h3>
-        <p class="text-xs text-slate-500 mt-1">Las grabaciones se suben automáticamente 24 horas después de cada clase en vivo.</p>
+        <p class="text-xs text-slate-500 mt-1">Accede a las repeticiones oficiales de tus clases en vivo.</p>
       </div>
 
       <div id="recordingsListContainer" class="space-y-3">
@@ -1052,9 +1055,15 @@
                     </span>
                   `}
 
-                  <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 font-bold border border-red-200 transition shadow-xs">
-                    <span>📹</span> Ver Grabación en FB y YouTube »
-                  </a>
+                  ${hasRec ? `
+                    <a href="${item.recordingUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black border border-amber-500 shadow-xs transition hover:scale-[1.02] cursor-pointer">
+                      <span>📹</span> Ver Grabación Oficial (${item.recordingUrl.includes('youtu') ? 'YouTube' : 'Video'}) »
+                    </a>
+                  ` : `
+                    <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 font-bold border border-red-200 transition shadow-xs">
+                      <span>📹</span> Ver Grabación en FB y YouTube »
+                    </a>
+                  `}
                 </div>
 
                 <p class="text-[10px] text-slate-400 font-medium pt-1">
@@ -1066,9 +1075,15 @@
 
             <!-- Derecha: Acciones Claras de la Fecha -->
             <div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-2 w-full md:w-auto border-t md:border-t-0 md:border-l border-slate-100 pt-3 md:pt-0 md:pl-5">
-              <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="w-full md:w-44 bg-red-50 hover:bg-red-100 text-red-700 font-bold py-2 px-2.5 rounded-xl text-xs text-center border border-red-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer" title="Ver grabación en YouTube o Facebook">
-                <span>📹</span> Grabación (FB / YouTube)
-              </a>
+              ${hasRec ? `
+                <a href="${item.recordingUrl}" target="_blank" rel="noopener noreferrer" class="w-full md:w-44 bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black py-2 px-2.5 rounded-xl text-xs text-center border border-amber-500 shadow-xs transition-all flex items-center justify-center gap-1 cursor-pointer" title="Ver grabación oficial">
+                  <span>📹</span> Grabación (${item.recordingUrl.includes('youtu') ? 'YouTube' : 'Video'})
+                </a>
+              ` : `
+                <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="w-full md:w-44 bg-red-50 hover:bg-red-100 text-red-700 font-bold py-2 px-2.5 rounded-xl text-xs text-center border border-red-200 shadow-xs transition-colors flex items-center justify-center gap-1 cursor-pointer" title="Ver grabación en YouTube o Facebook">
+                  <span>📹</span> Grabación (FB / YouTube)
+                </a>
+              `}
               ${(!currentAulaCourse.isLocked && currentAulaCourse.classLink) ? `
                 <a href="${currentAulaCourse.classLink}" target="_blank" class="w-full md:w-36 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-black py-2 px-3 rounded-xl text-xs text-center shadow-xs transition-all flex items-center justify-center gap-1 cursor-pointer">
                   <span>🚀</span> Entrar a Clase
@@ -1114,7 +1129,11 @@
       if (container && currentAulaCourse) {
         const recordedSessions = (currentAulaCourse.syllabus || []).filter(s => s.recordingUrl);
         if (recordedSessions.length > 0) {
-          container.innerHTML = recordedSessions.map(s => `
+          container.innerHTML = recordedSessions.map(s => {
+            const isYT = s.recordingUrl.includes('youtu');
+            const platformText = isYT ? 'Grabación oficial en YouTube HD' : (s.recordingUrl.includes('drive.google') ? 'Grabación oficial en Google Drive HD' : 'Grabación oficial en video HD');
+            const btnText = isYT ? '▶️ Ver en YouTube »' : '▶️ Abrir Grabación »';
+            return `
             <div class="p-4 bg-amber-50/80 rounded-2xl border border-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div>
                 <div class="flex items-center gap-2">
@@ -1122,13 +1141,14 @@
                   <span class="text-xs text-slate-500 font-semibold">${s.date}</span>
                 </div>
                 <h6 class="font-black text-slate-900 text-sm mt-1">${s.title}</h6>
-                <span class="text-xs text-slate-600">Grabación oficial en Google Drive HD (9 Nov)</span>
+                <span class="text-xs text-slate-600">${platformText}</span>
               </div>
               <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black rounded-xl text-xs transition shadow-sm shrink-0 w-full sm:w-auto text-center">
-                ▶️ Abrir Grabación Drive »
+                ${btnText}
               </a>
             </div>
-          `).join('');
+          `;
+          }).join('');
         } else {
           container.innerHTML = `
             <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-center text-slate-600 text-sm">
@@ -1209,6 +1229,11 @@
             <span class="px-3 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-100 text-slate-700">
               🕒 ${s.time}
             </span>
+            ${s.recordingUrl ? `
+              <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-0.5 rounded-full text-xs font-black bg-amber-400 hover:bg-yellow-400 text-slate-950 transition flex items-center gap-1 shadow-sm">
+                <span>📹</span> Ver Grabación (${s.recordingUrl.includes('youtu') ? 'YouTube' : 'Video'}) »
+              </a>
+            ` : ''}
             <span class="px-3 py-0.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1">
               <span>🔒</span> Solo Lectura · Descarga Desactivada
             </span>

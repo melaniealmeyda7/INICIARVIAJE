@@ -521,9 +521,15 @@
                     </span>
                   `}
 
-                  <button onclick="showLockedRecordingMessage()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 font-semibold border border-slate-200 hover:bg-slate-200 transition">
-                    <span>📹</span> Grabación Drive
-                  </button>
+                  ${item.recordingUrl ? `
+                    <a href="${item.recordingUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-yellow-400 text-slate-950 font-black border border-amber-500 transition shadow-xs">
+                      <span>📹</span> Grabación (${item.recordingUrl.includes('youtu') ? 'YouTube' : 'Video'})
+                    </a>
+                  ` : `
+                    <button onclick="showLockedRecordingMessage()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 font-semibold border border-slate-200 hover:bg-slate-200 transition">
+                      <span>📹</span> Grabación
+                    </button>
+                  `}
                 </div>
 
                 <p class="text-[10px] text-slate-400 font-medium pt-1">
@@ -608,6 +614,11 @@
             <span class="px-3 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-100 text-slate-700">
               🕒 ${s.time}
             </span>
+            ${s.recordingUrl ? `
+              <a href="${s.recordingUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-0.5 rounded-full text-xs font-black bg-amber-400 hover:bg-yellow-400 text-slate-950 transition flex items-center gap-1 shadow-sm">
+                <span>📹</span> Ver Grabación (${s.recordingUrl.includes('youtu') ? 'YouTube' : 'Video'}) »
+              </a>
+            ` : ''}
             <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
               <span>👁️</span> Modo Proyección Docente
             </span>
