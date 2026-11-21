@@ -1211,6 +1211,7 @@ const COURSES_DATA = [
             "desc": "No supermercado: Perguntando preços, fazendo compras e vocabulário prático de produtos e alimentos.",
             "pdfUrl": "materials/portugues-basico2-aula-01.pdf",
             "pdfName": "PolyglotMap-Portugues-Basico2-Aula01.pdf",
+            "recordingUrl": "https://youtu.be/8tyRhIeMhIA",
             "materials": {
                   "tag": "PORTUGUÊS BÁSICO 2 · AULA 1 DE 10",
                   "title": "Aula 1: No supermercado - Perguntando preços",
@@ -2349,7 +2350,34 @@ function updateUIForUser() {
   renderCourses();
 }
 
-// Renderizar Cursos con fidelidad al Flyer
+// Control interactivo del acordeón de indicaciones por curso
+window.toggleCourseGuide = function(courseId, event) {
+  if (event && typeof event.stopPropagation === 'function') {
+    event.stopPropagation();
+  }
+  const guideEl = document.getElementById('courseGuide-' + courseId);
+  const chevronEl = document.getElementById('chevron-' + courseId);
+  if (!guideEl) return;
+
+  const isHidden = guideEl.classList.contains('hidden');
+  if (isHidden) {
+    guideEl.classList.remove('hidden');
+    if (chevronEl) {
+      chevronEl.innerHTML = '▲ Ocultar indicaciones';
+      chevronEl.classList.add('bg-blue-600', 'text-white');
+      chevronEl.classList.remove('bg-white/90', 'text-blue-800');
+    }
+  } else {
+    guideEl.classList.add('hidden');
+    if (chevronEl) {
+      chevronEl.innerHTML = '▼ Tocar para ver indicaciones';
+      chevronEl.classList.remove('bg-blue-600', 'text-white');
+      chevronEl.classList.add('bg-white/90', 'text-blue-800');
+    }
+  }
+};
+
+// Renderizar Cursos en Modo Tarjetas Interactivas y Amigables
 function renderCourses() {
   const container = document.getElementById('coursesContainer');
   if (!container) return;
@@ -2362,140 +2390,190 @@ function renderCourses() {
     if (activeFilter === 'club') return c.type === 'CLUB';
     return true;
   }).sort((a, b) => {
-    // Los cursos activos (Portugués) van primero, los bloqueados (Inglés) después
+    // Los cursos activos van primero, los bloqueados después
     if (Boolean(a.isLocked) === Boolean(b.isLocked)) return 0;
     return a.isLocked ? 1 : -1;
   });
 
   container.innerHTML = filtered.map(course => {
-    const isBooked = currentUser && currentUser.bookedCourses && currentUser.bookedCourses.some(b => b.courseId === course.id);
     const flagSvg = getFlagSvg(course.flag);
+    const isMeet = course.classLink && course.classLink.includes('meet.google.com');
+    const platformName = course.classLink ? (isMeet ? 'Google Meet' : 'Zoom') : 'Virtual';
+    const numClasses = course.syllabus ? course.syllabus.length : 9;
+    const classTerm = course.language === 'Inglés' ? 'Clases' : 'Aulas';
 
     return `
-      <div onclick="handleCardClick('${course.id}')" class="ticket-card bg-white text-slate-900 rounded-3xl p-5 sm:p-7 shadow-xl border border-white/20 flex flex-col md:flex-row items-stretch justify-between gap-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer group">
+      <div class="ticket-card bg-white text-slate-900 rounded-3xl p-5 sm:p-7 shadow-xl border-2 border-slate-100 hover:border-yellow-400/80 transition-all duration-300 hover:shadow-2xl flex flex-col justify-between gap-5 relative overflow-hidden group">
         
-        <!-- Lado Izquierdo: Bandera e Información del Curso -->
-        <div class="flex items-start sm:items-center gap-5 flex-1">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex-shrink-0 flex items-center justify-center shadow-md border-2 border-slate-100 overflow-hidden bg-slate-50">
-            ${flagSvg}
+        <!-- Franja decorativa superior según idioma -->
+        <div class="absolute top-0 left-0 right-0 h-1.5 ${course.language === 'Portugués' ? 'bg-gradient-to-r from-emerald-500 via-yellow-400 to-emerald-600' : 'bg-gradient-to-r from-blue-600 via-red-500 to-blue-700'}"></div>
+
+        <!-- Encabezado de la Tarjeta con Badges -->
+        <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-black tracking-wide ${course.badgeColor}">
+              ${course.badgeText}
+            </span>
+            ${course.isLocked ? `
+              <span class="inline-flex items-center gap-1 text-[11px] font-black px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+                🔒 PRÓXIMAMENTE
+              </span>
+            ` : `
+              <span class="inline-flex items-center gap-1 text-[11px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                🟢 EN VIVO / ACCESO LIBRE
+              </span>
+            `}
           </div>
 
-          <div class="space-y-1.5 flex-1">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="inline-block px-3 py-1 rounded-full text-xs font-black tracking-wide ${course.badgeColor}">
-                ${course.badgeText}
-              </span>
-              ${course.statusBadge ? `
-                <span class="inline-flex items-center gap-1 text-[11px] font-black px-2.5 py-0.5 rounded-full border shadow-sm ${course.statusBadgeColor}">
-                  ${course.statusBadge}
-                </span>
-              ` : ''}
-            </div>
-
-            <h3 class="text-2xl sm:text-3xl font-black text-[#0f2d8a] tracking-tight">
-              ${course.title}
-            </h3>
-
-            <div class="text-slate-600 text-sm sm:text-base space-y-0.5 pt-0.5">
-              <div class="flex items-center gap-2 font-medium">
-                <span class="text-blue-600">📅</span>
-                <span>${course.scheduleDays}</span>
-              </div>
-              <div class="flex items-center gap-2 font-medium">
-                <span class="text-blue-600">🕒</span>
-                <span>${course.scheduleTime}</span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3 pt-2 text-xs font-mono text-slate-500">
-              <span class="bg-slate-100 px-2 py-0.5 rounded font-semibold text-slate-700">✈️ ${course.flightCode}</span>
-              <span>📍 ${course.gate}</span>
-            </div>
-
-            <!-- ACCIONES Y ENLACES DEL BOOTCAMP -->
-            ${course.isLocked ? `
-              <div class="mt-3.5 p-3.5 rounded-2xl bg-rose-50 border-2 border-rose-200 text-left text-xs space-y-2" onclick="event.stopPropagation()">
-                <p class="text-rose-950 font-black text-xs sm:text-sm tracking-wide flex items-center gap-1.5">
-                  <span>🔒</span> BOOTCAMP DE INGLÉS BLOQUEADO TEMPORALMENTE
-                </p>
-                <p class="text-rose-800 text-xs font-medium">
-                  El acceso a las clases en vivo de inglés se habilitará próximamente. Puedes revisar el temario completo de las clases en el aula virtual.
-                </p>
-                <div class="flex items-center gap-2 pt-1 flex-wrap">
-                  <button onclick="alert('🔒 Acceso a Clase en Vivo Bloqueado\\n\\nEl acceso en vivo a este bootcamp de inglés está temporalmente bloqueado. ¡Próximamente disponible! Puedes consultar las unidades y temarios.');" class="px-3.5 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 flex items-center gap-1.5 cursor-pointer">
-                    <span>🔒</span> Sala en Vivo Bloqueada
-                  </button>
-                  <a href="aula.html?course=${course.id}" target="_blank" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5">
-                    <span>📖</span> Ver Temario y Unidades »
-                  </a>
-                </div>
-              </div>
-            ` : `
-              <div class="mt-3.5 p-3.5 rounded-2xl bg-emerald-50 border-2 border-emerald-200 text-left text-xs space-y-2.5" onclick="event.stopPropagation()">
-                <div class="flex items-center justify-between flex-wrap gap-2">
-                  <p class="text-emerald-950 font-black text-xs sm:text-sm tracking-wide flex items-center gap-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-                    <span>🟢 DISPONIBLE CON MATERIAL Y ACCESO EN VIVO</span>
-                  </p>
-                  <span class="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
-                    Acceso Libre sin Credenciales
-                  </span>
-                </div>
-                
-                <div class="flex items-center gap-2 flex-wrap pt-0.5">
-                  <!-- Botón Unirse a Clase -->
-                  <a href="${course.classLink}" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer">
-                    <span>🚀</span> Unirse a Clase en Vivo (${course.classLink.includes('zoom.us') ? 'Zoom' : 'Google Meet'})
-                  </a>
-                  <!-- Botón Ver Materiales -->
-                  <a href="aula.html?course=${course.id}" target="_blank" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
-                    <span>📖</span> Ver Materiales (${course.syllabus ? course.syllabus.length + (course.language === 'Inglés' ? ' Clases' : ' Aulas') : 'Aula'}) »
-                  </a>
-                </div>
-
-                <!-- Botones si la sala está llena -->
-                <div class="pt-1 border-t border-emerald-200/80 flex items-center gap-2 flex-wrap text-[11px]">
-                  <span class="font-bold text-slate-700">¿Sala llena / Grabación?</span>
-                  <a href="https://www.facebook.com/PolyglotMap8/" target="_blank" class="px-3 py-1 rounded-lg bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold transition flex items-center gap-1">
-                    <span>🔴</span> Facebook En Vivo
-                  </a>
-                  <a href="https://www.youtube.com/@polyglot_map" target="_blank" class="px-3 py-1 rounded-lg bg-[#ff0000] hover:bg-red-700 text-white font-bold transition flex items-center gap-1">
-                    <span>📹</span> Ver Grabación en FB y YouTube
-                  </a>
-                </div>
-              </div>
-            `}
-
+          <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-500">
+            <span class="bg-slate-100 px-2.5 py-1 rounded-lg text-slate-700">✈️ ${course.flightCode}</span>
+            <span class="text-blue-700 font-extrabold bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">🇵🇪 Hora Perú (UTC-5)</span>
           </div>
         </div>
 
-        <!-- Lado Derecho: Botón Exclusivo de Entrada al Aula -->
-        <div class="flex items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-8">
-          ${course.isLocked ? `
-            <div class="flex flex-col items-center gap-2 text-center select-none" onclick="event.stopPropagation()">
-              <div class="bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 font-bold rounded-2xl w-40 sm:w-48 py-4 px-3 text-center shadow-inner flex flex-col justify-center border border-slate-300">
-                <span class="inline-block mx-auto mb-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
-                  BLOQUEADO
-                </span>
-                <span class="text-xs uppercase tracking-wider font-extrabold text-slate-800">PRÓXIMAMENTE</span>
-                <span class="text-[11px] text-slate-500 mt-1">${course.dateMain}</span>
+        <!-- Cuerpo Principal: Bandera, Título y Horario -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex-shrink-0 flex items-center justify-center shadow-md border-2 border-slate-100 overflow-hidden bg-slate-50 group-hover:scale-105 transition-transform">
+              ${flagSvg}
+            </div>
+
+            <div class="space-y-1">
+              <h3 class="text-2xl sm:text-3xl font-black text-[#0f2d8a] tracking-tight">
+                ${course.title}
+              </h3>
+              
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600 text-xs sm:text-sm font-semibold pt-1">
+                <div class="flex items-center gap-1.5 text-slate-800 font-bold">
+                  <span class="text-blue-600 text-base">📅</span>
+                  <span>${course.scheduleDays}</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-blue-700 font-black bg-blue-50 px-2.5 py-0.5 rounded-lg border border-blue-200/60">
+                  <span class="text-blue-600 text-base">🕒</span>
+                  <span>${course.scheduleTime}</span>
+                </div>
               </div>
-              <a href="aula.html?course=${course.id}" target="_blank" class="text-xs font-bold text-slate-600 hover:text-slate-900 underline flex items-center gap-1">
-                <span>📖</span> Ver Temario »
+
+              <p class="text-xs text-slate-500 font-medium pt-1">
+                📍 ${course.gate}
+              </p>
+            </div>
+          </div>
+
+          <!-- Mini-chips de resumen rápido para el alumno -->
+          <div class="flex md:flex-col gap-2 shrink-0 text-left w-full md:w-auto">
+            <div class="flex-1 md:flex-initial px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5">
+              <span>🎟️</span>
+              <span>Sin clave ni contraseña</span>
+            </div>
+            <div class="flex-1 md:flex-initial px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold flex items-center gap-1.5">
+              <span>📝</span>
+              <span>Sin lista de asistencia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN INTERACTIVO: INDICACIONES RÁPIDAS PARA EL ESTUDIANTE -->
+        <div class="w-full">
+          <button type="button" onclick="toggleCourseGuide('${course.id}', event)" class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-amber-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200 text-slate-900 font-extrabold text-xs sm:text-sm flex items-center justify-between transition-all cursor-pointer shadow-xs select-none">
+            <span class="flex items-center gap-2">
+              <span class="text-base">💡</span>
+              <span class="text-blue-950 font-black text-left">¿Dudas sobre esta clase? Toca para ver indicaciones rápidas</span>
+            </span>
+            <span id="chevron-${course.id}" class="shrink-0 text-blue-800 font-black text-xs px-2.5 py-1 rounded-lg bg-white/90 border border-blue-200 shadow-xs transition-colors">
+              ▼ Tocar para ver indicaciones
+            </span>
+          </button>
+
+          <!-- Panel desplegable con respuestas claras e interactivas -->
+          <div id="courseGuide-${course.id}" class="hidden mt-3 p-4 sm:p-5 rounded-2xl bg-slate-950 text-white text-xs space-y-3 border-2 border-yellow-400 shadow-xl transition-all">
+            <div class="flex items-center justify-between border-b border-white/15 pb-2">
+              <span class="font-black text-yellow-300 text-xs uppercase tracking-wide flex items-center gap-1.5">
+                <span>📋</span> INDICACIONES PARA ESTUDIANTES · ${course.title.toUpperCase()}
+              </span>
+              <span class="text-[10px] text-slate-400 font-mono">100% ONLINE</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                <p class="font-black text-emerald-400 flex items-center gap-1.5 text-xs sm:text-sm">
+                  <span>🔑</span> ¿Pide contraseña o usuario?
+                </p>
+                <p class="text-slate-200 leading-relaxed text-xs">
+                  <strong class="text-white">¡NO!</strong> Desactivamos las credenciales. Entras con un solo clic tocando el botón verde <strong class="text-emerald-300">'Entrar a Clase'</strong>.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                <p class="font-black text-yellow-300 flex items-center gap-1.5 text-xs sm:text-sm">
+                  <span>📝</span> ¿Se toma lista de asistencia?
+                </p>
+                <p class="text-slate-200 leading-relaxed text-xs">
+                  <strong class="text-white">¡NO!</strong> No te preocupes por la asistencia. Tu certificado oficial se obtiene rindiendo el <strong class="text-yellow-300">Examen Final del 18 de diciembre</strong> (activo 1 semana).
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                <p class="font-black text-sky-300 flex items-center gap-1.5 text-xs sm:text-sm">
+                  <span>🕒</span> ¿Qué horario aplica?
+                </p>
+                <p class="text-slate-200 leading-relaxed text-xs">
+                  Rige la <strong class="text-white">Hora oficial de Perú (UTC-5)</strong>: ${course.scheduleDays} de <strong class="text-sky-200">${course.scheduleTime}</strong>.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                <p class="font-black text-rose-300 flex items-center gap-1.5 text-xs sm:text-sm">
+                  <span>🔴</span> ¿Qué pasa si la sala se llena?
+                </p>
+                <p class="text-slate-200 leading-relaxed text-xs">
+                  Transmisión simultánea en <strong class="text-blue-300">Facebook Live</strong> y grabaciones completas en <strong class="text-red-300">YouTube</strong> para ver cuando quieras.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACCIONES Y BOTONES PRINCIPALES -->
+        <div class="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          ${course.isLocked ? `
+            <div class="flex-1 p-3.5 rounded-2xl bg-rose-50 border border-rose-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-2 text-rose-950 font-bold">
+                <span class="text-base">🔒</span>
+                <span>Sala en vivo bloqueada temporalmente. ¡Próximamente disponible!</span>
+              </div>
+              <a href="aula.html?course=${course.id}" target="_blank" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black transition flex items-center justify-center gap-1.5 shadow-sm">
+                <span>📖</span> Ver Temario y Materiales »
               </a>
             </div>
           ` : `
-            <div class="flex flex-col items-center gap-2 text-center select-none" onclick="event.stopPropagation()">
-              <a href="${course.classLink}" target="_blank" class="w-44 sm:w-52 py-3 px-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-xl hover:scale-105 active:scale-95 transition-all flex flex-col items-center justify-center border-2 border-emerald-300/60">
-                <span class="text-[9px] font-extrabold uppercase tracking-wider text-emerald-200">🟢 ACCESO LIBRE</span>
-                <span class="text-xs sm:text-sm font-black text-yellow-300 flex items-center gap-1 mt-0.5">
-                  ${course.classLink.includes('zoom.us') ? '🚀 ENTRAR A ZOOM »' : '🚀 ENTRAR A MEET »'}
-                </span>
-                <span class="text-[10px] text-emerald-100 mt-1">${course.scheduleDays}</span>
-                <span class="text-[10px] font-bold text-white">${course.scheduleTime}</span>
+            <!-- Botones de Acción Inmediata -->
+            <div class="flex flex-wrap items-center gap-2.5 flex-1">
+              <!-- Botón Entrar a Clase -->
+              <a href="${course.classLink}" target="_blank" class="flex-1 sm:flex-initial px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs sm:text-sm shadow-md hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 border border-emerald-300/40 cursor-pointer">
+                <span class="text-base">🚀</span>
+                <span>ENTRAR A CLASE (${platformName.toUpperCase()})</span>
+                <span class="text-emerald-200 font-bold">»</span>
               </a>
-              <a href="aula.html?course=${course.id}" target="_blank" class="text-xs font-bold text-blue-700 hover:text-blue-900 underline flex items-center gap-1">
-                <span>📖</span> Ver Materiales (${course.syllabus ? course.syllabus.length + (course.language === 'Inglés' ? ' Clases' : ' Aulas') : 'Aula'}) »
+
+              <!-- Botón Ver Materiales -->
+              <a href="aula.html?course=${course.id}" target="_blank" class="flex-1 sm:flex-initial px-4 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-sm hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <span class="text-base">📖</span>
+                <span>Ver Materiales (${numClasses} ${classTerm}) »</span>
+              </a>
+            </div>
+
+            <!-- Accesos a Transmisión / Grabación si la sala está llena -->
+            <div class="flex items-center justify-center sm:justify-end gap-2 shrink-0 text-xs">
+              <span class="text-slate-500 font-bold text-[11px] hidden lg:inline">¿Sala llena?</span>
+              <a href="${course.streamLink || 'https://www.facebook.com/PolyglotMap8/'}" target="_blank" class="px-3 py-2 rounded-xl bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold transition flex items-center gap-1 shadow-xs cursor-pointer" title="Facebook En Vivo">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>FB En Vivo</span>
+              </a>
+              <a href="${course.youtubeLink || 'https://www.youtube.com/@polyglot_map'}" target="_blank" class="px-3 py-2 rounded-xl bg-[#ff0000] hover:bg-red-700 text-white font-bold transition flex items-center gap-1 shadow-xs cursor-pointer" title="Ver Grabaciones en YouTube">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span>YouTube</span>
               </a>
             </div>
           `}
