@@ -1207,90 +1207,90 @@ const COURSES_DATA = [
             "session": "Sesión 1",
             "date": "Martes 17 Nov",
             "time": "7:00 - 8:30 p. m.",
-            "title": "Aula 1: Minha Vida Cotidiana: Rotinas, Atividades e Frequência",
-            "desc": "Meu dia a dia: Hoje você conta sua rotina com frases completas, horários e frequência.",
+            "title": "Aula 1: No supermercado - Perguntando preços",
+            "desc": "No supermercado: Perguntando preços, fazendo compras e vocabulário prático de produtos e alimentos.",
             "pdfUrl": "materials/portugues-basico2-aula-01.pdf",
             "pdfName": "PolyglotMap-Portugues-Basico2-Aula01.pdf",
             "materials": {
                   "tag": "PORTUGUÊS BÁSICO 2 · AULA 1 DE 10",
-                  "title": "Minha Vida Cotidiana: Rotinas, Atividades e Frequência",
-                  "subtitle": "Meu dia a dia: Hoje você conta sua rotina com frases completas.",
+                  "title": "Aula 1: No supermercado - Perguntando preços",
+                  "subtitle": "No supermercado: Hoje você aprende a perguntar preços e fazer compras em português.",
                   "goals": [
-                        "Falar da sua rotina diária: verbos no presente com pronomes reflexivos.",
-                        "Dizer com que frequência faz as coisas: sempre, às vezes, nunca.",
-                        "Descrever a rotina de outra pessoa com horários precisos."
+                        "Perguntar e negociar preços em português: Quanto custa? / Quanto é?",
+                        "Identificar alimentos, unidades de medida e seções do supermercado.",
+                        "Interagir com o atendente e o caixa no momento do pagamento."
                   ],
-                  "goldenRule": "Regra de ouro: Rotina se conta no presente: Eu acordo, eu almoço, eu durmo!",
+                  "goldenRule": "Regra de ouro: Para perguntar o preço de algo: 'Por favor, quanto custa o quilo de...?' ou 'Quanto é tudo?'",
                   "vocabulary": [
-                        "Acordar (a-kor-DAR) — despertar",
-                        "Levantar-se (le-van-TAR-se) — levantarse",
-                        "Tomar café (to-MAR ka-FE) — desayunar",
-                        "Escovar os dentes (es-ko-VAR us DEN-tchis) — cepillarse",
-                        "Tomar banho (to-MAR BA-nyu) — bañarse",
-                        "Almoçar (al-mo-SAR) — almorzar",
-                        "Jantar (zhan-TAR) — cenar",
-                        "Dormir (dor-MEER) — dormir",
-                        "Sempre (SEM-pri) — siempre",
-                        "Às vezes (as VE-zis) — a veces",
-                        "Raramente (ra-ra-MEN-tchi) — raramente",
-                        "Nunca (NUN-ka) — nunca"
+                        "Supermercado (soo-per-mer-KA-doo) — supermercado",
+                        "Quanto custa? (KWAN-too KOOS-ta) — ¿cuánto cuesta?",
+                        "Quanto é? (KWAN-too E) — ¿cuánto es?",
+                        "Preço (PRAY-soo) — precio",
+                        "Caro (KA-roo) — caro",
+                        "Barato (ba-RA-too) — barato",
+                        "Promoção (pro-mo-SOWN) — oferta / promoción",
+                        "Quilo / Kg (KEE-loo) — kilo",
+                        "Pacote (pa-KO-tchee) — paquete",
+                        "Carrinho (ka-RHEE-nyoo) — carrito de compras",
+                        "Caixa (KAY-sha) — caja (pago)",
+                        "Sacola (sa-KO-la) — bolsa"
                   ],
                   "keyLanguage": [
-                        "Eu me levanto às 6h da manhã e tomo café.",
-                        "Ela sempre estuda português à noite.",
-                        "Nós nunca dormimos antes das 23h.",
-                        "Você toma café da manhã em casa ou no trabalho?",
-                        "Lembre: Verbos reflexivos: Eu me levanto, ele se levanta, nós nos levantamos.",
-                        "Atenção aos horários: às 7h (às sete horas), ao meio-dia, à meia-noite."
+                        "Com licença, quanto custa o quilo da banana?",
+                        "Quanto é tudo, por favor? Aceita cartão ou Pix?",
+                        "Está muito caro! Tem alguma opção mais barata ou em promoção?",
+                        "Onde fica a seção de laticínios e padaria?",
+                        "Lembre: 'Quanto custa...?' usa-se no singular e 'Quanto custam...?' no plural.",
+                        "Diferença: 'Quilo' para peso, 'litro' para líquidos, 'pacote' ou 'lata' para embalagens."
                   ],
-                  "pronunciation": "O R forte no início de palavra (raramente, rotina) soa como o J suave em espanhol ou R aspirada. Os finais -am (acordam, tomam) soam como ditongo nasal aberto -ão suave. L final tem som de U (almoço -> aumoço).",
+                  "pronunciation": "O som do X em 'caixa' (/ʃ/ como sh). A pronúncia de 'preço' com som de S suave no Ç. A nasalização final em 'promoção' e 'cartão' (/ãw̃/). O L final em 'sacola' e 'litro'.",
                   "tongueTwisters": [
-                        "Trava-língua: O rato roeu a roupa do rei de Roma, e a rainha riu da rota do rato!",
-                        "Ritmo: De manhã acordo, me levanto, tomo banho, tomo café e vou trabalhar!"
+                        "Trava-língua: O que é que Cacá quer? Cacá quer caqui. Qual caqui que Cacá quer? Cacá quer qualquer caqui!",
+                        "No mercado: Compro coco, compro caju, compro queijo e pergunto o preço de tudo!"
                   ],
                   "dialogue": {
-                        "title": "A rotina do Leo (Leia em duplas)",
+                        "title": "Fazendo compras no supermercado (Leia em duplas)",
                         "lines": [
                               {
-                                    "speaker": "Bia",
-                                    "text": "Oi Leo! A que horas você acorda todo dia?"
+                                    "speaker": "Cliente",
+                                    "text": "Com licença, moço! Quanto custa o quilo do tomate?"
                               },
                               {
-                                    "speaker": "Leo",
-                                    "text": "Oi Bia! Eu me levanto sempre às 6h30, tomo um banho rápido e tomo café com pão e queijo."
+                                    "speaker": "Atendente",
+                                    "text": "Bom dia! Está R$ 7,50 o quilo, mas a cenoura está em promoção hoje por R$ 4,00."
                               },
                               {
-                                    "speaker": "Bia",
-                                    "text": "E você vai trabalhar de metrô ou de carro?"
+                                    "speaker": "Cliente",
+                                    "text": "Que ótimo! Vou levar um quilo de tomates e dois de cenoura. Onde fica o azeite de oliva?"
                               },
                               {
-                                    "speaker": "Leo",
-                                    "text": "Vou de metrô. Chego no trabalho às 8h e almoço ao meio-dia."
+                                    "speaker": "Atendente",
+                                    "text": "Fica no corredor 4, bem ao lado das massas e dos enlatados."
                               },
                               {
-                                    "speaker": "Bia",
-                                    "text": "Você volta para casa muito tarde?"
+                                    "speaker": "Cliente",
+                                    "text": "Perfeito, muito obrigado! No caixa aceita pagamento por aproximação ou Pix?"
                               },
                               {
-                                    "speaker": "Leo",
-                                    "text": "Às vezes sim, chego por volta das 19h, janto e durmo às 22h30."
+                                    "speaker": "Atendente",
+                                    "text": "Sim, aceitamos todas as formas de pagamento!"
                               }
                         ]
                   },
                   "readingPassage": {
-                        "title": "O dia a dia da Mariana em São Paulo (Leitura em voz alta)",
-                        "content": "Mariana é arquiteta e mora em São Paulo. Ela acorda cedo todos os dias, por volta das 6h da manhã. Primeiro, ela se levanta, escova os dentes e toma um copo de água. Depois, toma café com tapioca e frutas. Ela nunca sai de casa sem tomar café. Às 7h30, pega o metrô para o escritório. No trabalho, ela faz reuniões e almoça com os colegas ao meio-dia. À noite, ela faz yoga às terças e quintas, janta uma salada leve e dorme às 22h. A rotina dela é puxada, mas muito organizada!"
+                        "title": "Um dia de feira e supermercado no Brasil (Leitura em voz alta)",
+                        "content": "Fazer compras em um supermercado ou em uma feira livre no Brasil é uma experiência cheia de cores, aromas e interação cultural. Os brasileiros adoram conferir os folhetos de ofertas e comparar os valores antes de encher o carrinho. Na feira de rua, é comum os feirantes gritarem os preços com bom humor: 'Olha o tomate fresquinho, freguês!'. Já nos grandes supermercados, é essencial saber perguntar onde ficam os corredores, pesar os produtos de hortifrúti na balança e escolher entre dinheiro, cartão ou Pix no caixa. Saber pechinchar com simpatia abre portas e garante ótimas compras!"
                   },
                   "breakoutActivity": {
-                        "title": "Rodada do Microfone: Construa sua rotina",
+                        "title": "Rodada do Microfone: No Caixa do Supermercado",
                         "tasks": [
-                              "1. Diga a que horas você se levanta e toma café: 'Eu me levanto às... e tomo café às...'",
-                              "2. Use um marcador de frequência: 'Eu sempre/às vezes/nunca almoço em casa.'",
-                              "3. Pergunte a um colega sobre a rotina dele: 'A que horas você costuma dormir?'",
-                              "4. Conte uma atividade curiosa do seu dia a dia."
+                              "1. Pergunte o preço de dois alimentos: 'Com licença, quanto custa...?'",
+                              "2. Expresse se algo está caro ou barato: 'Acho que está muito caro / bem barato!'",
+                              "3. Peça a localização de um produto: 'Por favor, onde fica o corredor de...?'",
+                              "4. Simule o pagamento no caixa: 'Quanto deu tudo? Posso pagar no cartão?'"
                         ]
                   },
-                  "homework": "Ticket de saída: Envie um áudio no grupo de WhatsApp de 30 segundos descrevendo sua rotina: 'Eu me levanto às..., tomo café e sempre...'"
+                  "homework": "Ticket de saída: Envie um áudio no grupo de WhatsApp simulando uma compra no supermercado: 'Bom dia, quanto custa o quilo de...?'"
             }
       },
       {
