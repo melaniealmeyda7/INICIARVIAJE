@@ -1207,91 +1207,96 @@ const COURSES_DATA = [
             "session": "Sesión 1",
             "date": "Martes 17 Nov",
             "time": "7:00 - 8:30 p. m.",
-            "title": "Aula 1: No supermercado - Perguntando preços",
-            "desc": "No supermercado: Perguntando preços, fazendo compras e vocabulário prático de produtos e alimentos.",
+            "title": "Aula 1: No mercado - Comprar e perguntar preços",
+            "desc": "No mercado: Comprar e perguntar preços, alimentos, bebidas, quantidades com 'de' e medidas.",
             "pdfUrl": "materials/portugues-basico2-aula-01.pdf",
             "pdfName": "PolyglotMap-Portugues-Basico2-Aula01.pdf",
             "recordingUrl": "https://youtu.be/8tyRhIeMhIA",
             "materials": {
                   "tag": "PORTUGUÊS BÁSICO 2 · AULA 1 DE 10",
-                  "title": "Aula 1: No supermercado - Perguntando preços",
-                  "subtitle": "No supermercado: Hoje você aprende a perguntar preços e fazer compras em português.",
+                  "title": "Aula 1: No mercado - Comprar e perguntar preços",
+                  "subtitle": "No mercado: Comprar e perguntar preços. Semana 5 · S1 · 2 horas de aula (Roteiro 120 min).",
                   "goals": [
-                        "Perguntar e negociar preços em português: Quanto custa? / Quanto é?",
-                        "Identificar alimentos, unidades de medida e seções do supermercado.",
-                        "Interagir com o atendente e o caixa no momento do pagamento."
+                        "Identificar e pedir alimentos e bebidas em português (frutas, verduras, arroz, feijão, pão, leite).",
+                        "Usar quantidades e unidades de medida com 'de': um quilo de, uma garrafa de, meia dúzia de, duas caixas de.",
+                        "Perguntar e responder preços no mercado com naturalidade: 'Quanto custa o quilo?', 'Quanto é tudo?' e 'Está muito caro!'."
                   ],
-                  "goldenRule": "Regra de ouro: Para perguntar o preço de algo: 'Por favor, quanto custa o quilo de...?' ou 'Quanto é tudo?'",
+                  "goldenRule": "Regra de ouro: Para perguntar preços use: 'Quanto custa o quilo de...?' ou 'Quanto é tudo?' | Para quantidades use sempre 'de': um quilo DE arroz, uma garrafa DE água, meia dúzia DE ovos.",
                   "vocabulary": [
-                        "Supermercado (soo-per-mer-KA-doo) — supermercado",
+                        "Frutas (FROO-tas) — frutas",
+                        "Verduras (ver-DOO-ras) — verduras",
+                        "Arroz (a-HROZ) — arroz",
+                        "Feijão (fay-ZHOWN) — frijoles",
+                        "Pão (POWN) — pan",
+                        "Leite (LAY-tchee) — leche",
+                        "Um quilo (un KEE-loo) — un kilo",
+                        "Meia dúzia (MAY-a DOO-zya) — media docena",
+                        "Uma garrafa (OO-ma ga-RHA-fa) — una botella",
+                        "Duas caixas (DOO-as KAY-shas) — dos cajas",
                         "Quanto custa? (KWAN-too KOOS-ta) — ¿cuánto cuesta?",
-                        "Quanto é? (KWAN-too E) — ¿cuánto es?",
-                        "Preço (PRAY-soo) — precio",
-                        "Caro (KA-roo) — caro",
-                        "Barato (ba-RA-too) — barato",
-                        "Promoção (pro-mo-SOWN) — oferta / promoción",
-                        "Quilo / Kg (KEE-loo) — kilo",
-                        "Pacote (pa-KO-tchee) — paquete",
-                        "Carrinho (ka-RHEE-nyoo) — carrito de compras",
-                        "Caixa (KAY-sha) — caja (pago)",
-                        "Sacola (sa-KO-la) — bolsa"
+                        "Quanto é tudo? (KWAN-too E TOO-doo) — ¿cuánto es todo?"
                   ],
                   "keyLanguage": [
-                        "Com licença, quanto custa o quilo da banana?",
-                        "Quanto é tudo, por favor? Aceita cartão ou Pix?",
-                        "Está muito caro! Tem alguma opção mais barata ou em promoção?",
-                        "Onde fica a seção de laticínios e padaria?",
-                        "Lembre: 'Quanto custa...?' usa-se no singular e 'Quanto custam...?' no plural.",
-                        "Diferença: 'Quilo' para peso, 'litro' para líquidos, 'pacote' ou 'lata' para embalagens."
+                        "Aquecimento: Quiero un jugo de naranja. -> 'Quero um suco de laranja.'",
+                        "Aquecimento: Quisiera ver la carta. -> 'Gostaria de ver o cardápio.'",
+                        "Aquecimento: ¿Cuánto cuesta el plato del día? -> 'Quanto custa o prato do dia?'",
+                        "Perguntar preços 1: 'Quanto custa o quilo?' (¿Cuánto cuesta el kilo?) -> 'Custa quatro reais o quilo.'",
+                        "Perguntar preços 2: 'Quanto é tudo?' (¿Cuánto es todo?) -> 'Pronto. São dez reais no total.'",
+                        "Pedir quantidades: 'Quero dois quilos de banana.' (Quiero dos kilos de plátano.)",
+                        "Expressar valor: 'Está muito caro!' (¡Está muy caro!)",
+                        "Gramática (Quantidades com 'de'): um quilo de arroz | uma garrafa de água | meia dúzia de ovos | duas caixas de leite",
+                        "Exemplos de uso: 'Quero uma garrafa de água.' | 'Preciso de dois quilos de arroz.' | 'Ele quer meia dúzia de ovos.'"
                   ],
-                  "pronunciation": "O som do X em 'caixa' (/ʃ/ como sh). A pronúncia de 'preço' com som de S suave no Ç. A nasalização final em 'promoção' e 'cartão' (/ãw̃/). O L final em 'sacola' e 'litro'.",
+                  "pronunciation": "O som nasal do ~ em 'feijão' e 'pão' (/ãw̃/). O som de 'leite' com 'te' palatalizado (/tʃi/ como tche). O R forte vibrante em 'arroz' (/h/ aspirado). A expressão 'meia dúzia' com Z suave (/z/).",
                   "tongueTwisters": [
-                        "Trava-língua: O que é que Cacá quer? Cacá quer caqui. Qual caqui que Cacá quer? Cacá quer qualquer caqui!",
-                        "No mercado: Compro coco, compro caju, compro queijo e pergunto o preço de tudo!"
+                        "Quiz Relâmpago (Fixação): 1. Frutas = frutas | 2. Frijoles = feijão | 3. Un kilo = um quilo | 4. Verduras = verduras",
+                        "Ordene a frase: custa · Quanto · quilo · o -> 'Quanto custa o quilo?' | dois · Quero · banana · de · quilos -> 'Quero dois quilos de banana.'",
+                        "Prática guiada das lacunas: 1. [Quanto] custa o quilo? | 2. Quero dois [quilos] de arroz. | 3. [Quanto] é tudo? | 4. Uma [garrafa] de água."
                   ],
                   "dialogue": {
-                        "title": "Fazendo compras no supermercado (Leia em duplas)",
+                        "title": "No mercado: Comprando banana e água (Slides 10 e 11)",
                         "lines": [
                               {
                                     "speaker": "Cliente",
-                                    "text": "Com licença, moço! Quanto custa o quilo do tomate?"
+                                    "text": "Bom dia! Quanto custa a banana?"
                               },
                               {
-                                    "speaker": "Atendente",
-                                    "text": "Bom dia! Está R$ 7,50 o quilo, mas a cenoura está em promoção hoje por R$ 4,00."
-                              },
-                              {
-                                    "speaker": "Cliente",
-                                    "text": "Que ótimo! Vou levar um quilo de tomates e dois de cenoura. Onde fica o azeite de oliva?"
-                              },
-                              {
-                                    "speaker": "Atendente",
-                                    "text": "Fica no corredor 4, bem ao lado das massas e dos enlatados."
+                                    "speaker": "Vendedor",
+                                    "text": "Custa quatro reais o quilo."
                               },
                               {
                                     "speaker": "Cliente",
-                                    "text": "Perfeito, muito obrigado! No caixa aceita pagamento por aproximação ou Pix?"
+                                    "text": "Quero dois quilos de banana e uma garrafa de água, por favor."
                               },
                               {
-                                    "speaker": "Atendente",
-                                    "text": "Sim, aceitamos todas as formas de pagamento!"
+                                    "speaker": "Vendedor",
+                                    "text": "Com certeza! Aqui estão as bananas e a água gelada."
+                              },
+                              {
+                                    "speaker": "Cliente",
+                                    "text": "Muito obrigado. Quanto é tudo?"
+                              },
+                              {
+                                    "speaker": "Vendedor",
+                                    "text": "Pronto. São dez reais no total!"
                               }
                         ]
                   },
                   "readingPassage": {
-                        "title": "Um dia de feira e supermercado no Brasil (Leitura em voz alta)",
-                        "content": "Fazer compras em um supermercado ou em uma feira livre no Brasil é uma experiência cheia de cores, aromas e interação cultural. Os brasileiros adoram conferir os folhetos de ofertas e comparar os valores antes de encher o carrinho. Na feira de rua, é comum os feirantes gritarem os preços com bom humor: 'Olha o tomate fresquinho, freguês!'. Já nos grandes supermercados, é essencial saber perguntar onde ficam os corredores, pesar os produtos de hortifrúti na balança e escolher entre dinheiro, cartão ou Pix no caixa. Saber pechinchar com simpatia abre portas e garante ótimas compras!"
+                        "title": "Treino Oral dos Diálogos Oficiais (Slides 10, 11 e 12)",
+                        "content": "Diálogo 1: — Quanto custa o quilo de banana? — Custa cinco reais. — Quero dois quilos, por favor. — Quanto é tudo? São dez reais.\n\nDiálogo 2: — Bom dia! Quanto custa a banana? — Custa quatro reais o quilo. — Quero um quilo e uma garrafa de água. — Pronto. São dez reais no total.\n\nDiálogo para completar (Treino Oral): 'Bom dia! Quanto custa a [___]?' / 'Custa quatro reais o [___].' / 'Quero um quilo e uma garrafa de [___].' / 'Pronto. São dez reais no [___].'"
                   },
                   "breakoutActivity": {
-                        "title": "Rodada do Microfone: No Caixa do Supermercado",
+                        "title": "Sala em grupo (15 minutos): No mercado",
                         "tasks": [
-                              "1. Pergunte o preço de dois alimentos: 'Com licença, quanto custa...?'",
-                              "2. Expresse se algo está caro ou barato: 'Acho que está muito caro / bem barato!'",
-                              "3. Peça a localização de um produto: 'Por favor, onde fica o corredor de...?'",
-                              "4. Simule o pagamento no caixa: 'Quanto deu tudo? Posso pagar no cartão?'"
+                              "1. Dinâmica da sala: Um aluno é o vendedor e os outros compram e perguntam o preço.",
+                              "2. O comprador pergunta: 'Bom dia! Quanto custa o quilo de banana / o arroz / as verduras?'",
+                              "3. O vendedor responde o valor: 'Custa quatro reais o quilo / cinco reais o pacote.'",
+                              "4. O comprador pede com quantidades: 'Quero dois quilos de arroz e uma garrafa de água.'",
+                              "5. Finalize o diálogo: 'Quanto é tudo?' -> 'Pronto. São dez reais no total.'"
                         ]
                   },
-                  "homework": "Ticket de saída: Envie um áudio no grupo de WhatsApp simulando uma compra no supermercado: 'Bom dia, quanto custa o quilo de...?'"
+                  "homework": "Revisão e prática em casa (Slide 15): 1. Leia os diálogos em voz alta 3 vezes. 2. Revise o vocabulário da aula (alimentos e medidas com 'de'). 3. Refaça a prática sem olhar. 4. Na próxima aula: S2 · Comprando roupas!"
             }
       },
       {
