@@ -2160,6 +2160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCourses();
   updateUIForUser();
   setupCredentialGenerator();
+  initDynamicHero();
 });
 
 // Cargar usuario desde LocalStorage
@@ -2353,6 +2354,72 @@ function updateUIForUser() {
 
   // Refrescar tarjetas de cursos para reflejar el estado del alumno autenticado
   renderCourses();
+}
+
+// ========================================================
+// Dynamic Hero Headline Rotation (POLYGLOT MAP)
+// Rotación continua cada 60s con transición fade-out / fade-in (700ms)
+// ========================================================
+function initDynamicHero() {
+  const titleEl = document.getElementById('dynamicHeroTitle');
+  if (!titleEl) return;
+
+  const phrases = [
+    {
+      line1: 'Conecta con el mundo.',
+      line2: 'Transforma tu futuro.'
+    },
+    {
+      line1: 'Tu origen no determina',
+      line2: 'hasta dónde puedes llegar.'
+    },
+    {
+      line1: 'Aprender con propósito.',
+      line2: 'Crecer con impacto.'
+    },
+    {
+      line1: 'Tu talento',
+      line2: 'no tiene fronteras.'
+    }
+  ];
+
+  let currentIndex = 0;
+  const ROTATION_INTERVAL = 60000; // 60 segundos
+  const TRANSITION_DURATION = 700; // 700 ms
+
+  function formatPhraseHtml(phrase) {
+    return `${phrase.line1} <br/><span class="text-[#ffd200]">${phrase.line2}</span>`;
+  }
+
+  function rotateTitle() {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const prefersReducedMotion = mediaQuery && mediaQuery.matches;
+
+    currentIndex = (currentIndex + 1) % phrases.length;
+    const nextPhrase = phrases[currentIndex];
+
+    if (prefersReducedMotion) {
+      // Cambio instantáneo para usuarios con preferencia de movimiento reducido
+      titleEl.innerHTML = formatPhraseHtml(nextPhrase);
+      return;
+    }
+
+    // 1. Transición de salida suave (fade-out 700ms)
+    titleEl.style.opacity = '0';
+
+    setTimeout(() => {
+      // 2. Actualizar titular durante opacidad 0 (sin saltos de contenido)
+      titleEl.innerHTML = formatPhraseHtml(nextPhrase);
+
+      // 3. Transición de entrada suave (fade-in 700ms)
+      requestAnimationFrame(() => {
+        titleEl.style.opacity = '1';
+      });
+    }, TRANSITION_DURATION);
+  }
+
+  // Iniciar rotación continua
+  setInterval(rotateTitle, ROTATION_INTERVAL);
 }
 
 // Control interactivo del acordeón de indicaciones por curso

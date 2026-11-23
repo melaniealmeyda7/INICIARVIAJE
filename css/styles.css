@@ -184,3 +184,16 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px -4px rgba(10, 102, 194, 0.4);
 }
+
+/* Dynamic Hero Headline Transition */
+.dynamic-hero-headline {
+  transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dynamic-hero-headline {
+    transition: none !important;
+  }
+}
+
