@@ -2541,7 +2541,7 @@ function renderCourses() {
             </div>
             <div class="flex-1 md:flex-initial px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold flex items-center gap-1.5">
               <span>📝</span>
-              <span>Sin lista de asistencia</span>
+              <span>Asistencia al final de clase</span>
             </div>
           </div>
         </div>
@@ -2579,10 +2579,10 @@ function renderCourses() {
 
               <div class="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
                 <p class="font-black text-yellow-300 flex items-center gap-1.5 text-xs sm:text-sm">
-                  <span>📝</span> ¿Se toma lista de asistencia?
+                  <span>📝</span> ¿Cómo se registra la asistencia?
                 </p>
                 <p class="text-slate-200 leading-relaxed text-xs">
-                  <strong class="text-white">¡NO!</strong> No te preocupes por la asistencia. Tu certificado oficial se obtiene rindiendo el <strong class="text-yellow-300">Examen Final del 18 de diciembre</strong> (activo 1 semana).
+                  El docente compartirá el enlace oficial de asistencia <strong class="text-white">al finalizar cada clase</strong> (o por Facebook en transmisión en vivo). La <strong class="text-yellow-300">primera semana no hubo asistencia</strong> porque fue de adaptación. El Examen Final se activará el 18 de diciembre.
                 </p>
               </div>
 
