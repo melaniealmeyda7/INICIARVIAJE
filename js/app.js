@@ -1026,6 +1026,7 @@ const COURSES_DATA = [
         desc: 'Hoje você conhece os sons do português e cumprimenta em português.',
         pdfUrl: 'materials/portugues-cero-aula-01.pdf',
         pdfName: 'PolyglotMap-Portugues-do-Zero-Aula01.pdf',
+        recordingUrl: 'https://www.facebook.com/share/v/1A3ah73M8t/',
         materials: {
           tag: 'AULA 1 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 1: Alfabeto, Fonética e Saudações',
@@ -1041,6 +1042,7 @@ const COURSES_DATA = [
         desc: 'Hoje você diz quem é, de onde é e o que faz.',
         pdfUrl: 'materials/portugues-cero-aula-02.pdf',
         pdfName: 'PolyglotMap-Portugues-do-Zero-Aula02.pdf',
+        recordingUrl: 'https://www.facebook.com/share/v/1JDH9JUD6C/',
         materials: {
           tag: 'AULA 2 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 2: Apresentações: Ser, Estar, Nacionalidades e Profissões',
@@ -1056,6 +1058,7 @@ const COURSES_DATA = [
         desc: 'Hoje você fala da sua família: quem são e quantos são.',
         pdfUrl: 'materials/portugues-cero-aula-03.pdf',
         pdfName: 'PolyglotMap-Portugues-do-Zero-Aula03.pdf',
+        recordingUrl: 'https://www.facebook.com/share/v/1CPc7aq1cQ/',
         materials: {
           tag: 'AULA 3 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 3: Informações Pessoais e Família: Ter, Possessivos e Descrições',
@@ -1071,6 +1074,7 @@ const COURSES_DATA = [
         desc: 'Hoje você fala do que faz todos os dias.',
         pdfUrl: 'materials/portugues-cero-aula-04.pdf',
         pdfName: 'PolyglotMap-Portugues-do-Zero-Aula04.pdf',
+        recordingUrl: 'https://www.facebook.com/share/v/1Eyud6VUi3/',
         materials: {
           tag: 'AULA 4 DE 10 · PORTUGUÊS DO ZERO',
           title: 'Aula 4: Rotinas e Atividades: Presente do Indicativo e Frequência',
