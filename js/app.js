@@ -1398,6 +1398,7 @@ const COURSES_DATA = [
             "desc": "Minha infância: Hoje você conta como era sua infância no pretérito imperfeito.",
             "pdfUrl": "materials/portugues-basico2-aula-03.pdf",
             "pdfName": "PolyglotMap-Portugues-Basico2-Aula03.pdf",
+            "recordingUrl": "https://www.youtube.com/watch?v=rL0jCXj7BcM",
             "materials": {
                   "tag": "PORTUGUÊS BÁSICO 2 · AULA 3 DE 10",
                   "title": "Minha Infância e Lembranças: Hábitos e Experiências do Passado",
@@ -1488,6 +1489,7 @@ const COURSES_DATA = [
             "desc": "Meus planos: Hoje você fala dos seus planos e dos seus sonhos com IR + Infinitivo.",
             "pdfUrl": "materials/portugues-basico2-aula-04.pdf",
             "pdfName": "PolyglotMap-Portugues-Basico2-Aula04.pdf",
+            "recordingUrl": "https://www.youtube.com/watch?v=rL0jCXj7BcM",
             "materials": {
                   "tag": "PORTUGUÊS BÁSICO 2 · AULA 4 DE 10",
                   "title": "Meus Planos e Projetos: Desejos e Intenções para o Futuro",
