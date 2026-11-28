@@ -1007,7 +1007,7 @@ const COURSES_DATA = [
     flightCode: 'PM-BRA01',
     gate: 'Puerta V-08 (Auditorio Virtual A)',
     classLink: 'https://us06web.zoom.us/j/82024030728?pwd=lhORcAC0JVNwqR8ibQzjtZgBMTg0eb.1',
-    streamLink: 'https://www.facebook.com/PolyglotMap8/',
+    streamLink: 'https://www.facebook.com/PolyglotMap8/?locale=es_LA',
     youtubeLink: 'https://www.youtube.com/@polyglot_map',
     registrationLink: 'https://forms.gle/wsipVZ9EkpzA9uXu6',
     seatClass: 'Inmersión Samba Principiante',
@@ -2641,9 +2641,9 @@ function renderCourses() {
             <!-- Accesos a Transmisión / Grabación si la sala está llena -->
             <div class="flex items-center justify-center sm:justify-end gap-2 shrink-0 text-xs">
               <span class="text-slate-500 font-bold text-[11px] hidden lg:inline">¿Sala llena?</span>
-              <a href="${course.streamLink || 'https://www.facebook.com/PolyglotMap8/'}" target="_blank" class="px-3 py-2 rounded-xl bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold transition flex items-center gap-1 shadow-xs cursor-pointer" title="Facebook En Vivo">
+              <a href="${course.streamLink || 'https://www.facebook.com/PolyglotMap8/?locale=es_LA'}" target="_blank" class="px-3 py-2 rounded-xl bg-[#1877f2] hover:bg-[#1264d1] text-white font-bold transition flex items-center gap-1 shadow-xs cursor-pointer" title="${course.id === 'bootcamp-portugues-cero' ? 'Ver transmisión en vivo y grabación en FB' : 'Facebook En Vivo'}">
                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                <span>FB En Vivo</span>
+                <span>${course.id === 'bootcamp-portugues-cero' ? 'FB En Vivo / Grabación' : 'FB En Vivo'}</span>
               </a>
               <a href="${course.youtubeLink || 'https://www.youtube.com/@polyglot_map'}" target="_blank" class="px-3 py-2 rounded-xl bg-[#ff0000] hover:bg-red-700 text-white font-bold transition flex items-center gap-1 shadow-xs cursor-pointer" title="Ver Grabaciones en YouTube">
                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
